@@ -12,6 +12,8 @@ const panda2 = require(source + "panda2.png");
 const panda3 = require(source + "panda3.png");
 const panda4 = require(source + "panda4.png");
 const panda5 = require(source + "panda5.png");
+const Ellipse6 = require(source + "Ellipse6.png");
+
 
 const getUri = (src) => {
     return RnImage.resolveAssetSource(src).uri;
@@ -26,7 +28,7 @@ const LEADERS = [
         priceUp: true,
         avatar: getUri(panda1),
         priceUpPercentage: 46.03,
-        active: false,
+        active: true,
     },
     {
         _id: "2",
@@ -74,7 +76,7 @@ export default function Leaderboard() {
     return (
         <ScrollView bg="#f9f9" p={4}>
             {LEADERS.map((leader, index) => (
-                <Card px={4} mb={2} key={leader._id}>
+                <Card p={4} mb={2} key={leader._id}>
                     <HStack alignItems={"center"} space={3}>
                         <Text
                             w="4%"
@@ -82,6 +84,7 @@ export default function Leaderboard() {
                             fontFamily={"body"}
                             fontWeight={500}
                             color={"#7E868C"}
+                            
                         >
                             {index + 1}
                         </Text>
@@ -105,13 +108,16 @@ export default function Leaderboard() {
                                     position={"absolute"}
                                 />
                             )}
+                    
                         </Box>
-                        <Box w="45%">
+                        <Box w="45%" paddingLeft={2} >
                             <Text
                                 fontSize={20}
                                 fontFamily={"body"}
                                 fontWeight={600}
                                 color={"#000"}
+                                pb={1}
+                                
                             >
                                 {leader.name}
                             </Text>
@@ -130,7 +136,10 @@ export default function Leaderboard() {
                                 size={16}
                                 color={"#687076"}
                             />
-                            <Text color={"#687076"}>{leader.price}</Text>
+                            <Text color={leader.priceUp ? '#25C180' : "#CE1F1F"}>
+                                {leader.priceUp ? "+" : "-"}
+
+                                {leader.priceUpPercentage}</Text>
                         </VStack>
                     </HStack>
                 </Card>
