@@ -9,6 +9,7 @@ import BackgroundImage from "./SvgComponent";
 
 export default function UserProfile({ route, navigation }) {
     const { userId } = route.params;
+    // changes
 
     return (
         <Box height={"100%"} alignItems={"center"} justifyContent={"center"}>
