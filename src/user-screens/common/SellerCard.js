@@ -2,6 +2,7 @@ import { HStack, Image, Text, VStack } from "native-base";
 import React from "react";
 import Card from "../../utility/Card";
 import Icon from "../../utility/Icon";
+import { useNavigation } from "@react-navigation/native";
 
 export default function SellerCard({
     id,
@@ -13,9 +14,14 @@ export default function SellerCard({
     price,
     ...rest
 }) {
+    const navigation = useNavigation();
+
     return (
-        <Card {...rest}>
-            <VStack space="2" >
+        <Card
+            onPress={() => navigation.navigate("UserProfile", { userId: id })}
+            {...rest}
+        >
+            <VStack space="2">
                 <HStack space="1.5" alignItems={"center"}>
                     <Image
                         borderRadius={50}
@@ -31,7 +37,9 @@ export default function SellerCard({
                     >
                         @{username}
                     </Text>
-                   {varified && <Icon name={"varified"} size={24} color={"#76C893"} />}
+                    {varified && (
+                        <Icon name={"varified"} size={24} color={"#76C893"} />
+                    )}
                 </HStack>
                 <Image
                     borderRadius={12}

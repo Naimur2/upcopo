@@ -9,7 +9,7 @@ const flashUri = RnImage.resolveAssetSource(imageSrcFlash).uri;
 const fireUri = RnImage.resolveAssetSource(imageSrcFire).uri;
 
 
-export default function SectionHeader({title,imageType}) {
+export default function SectionHeader({title,imageType,onSeAllPress}) {
 
     const imgUri= imageType ==='fire' ? fireUri : flashUri;
 
@@ -38,6 +38,7 @@ export default function SectionHeader({title,imageType}) {
                 color={"#52B69A"}
                 fontFamily={"body"}
                 fontWeight={"500"}
+                onPress={onSeAllPress}
             >
                 See all
             </Text>

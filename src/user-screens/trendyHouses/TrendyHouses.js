@@ -1,10 +1,10 @@
-import { Box, HStack, Text } from "native-base";
+import { HStack, Image, ScrollView, Text, Box } from "native-base";
 import React from "react";
 import { Image as RnImage } from "react-native";
-import SellerCard from "../../common/SellerCard";
+import Icon from "../../utility/Icon";
+import SellerCard from "../common/SellerCard";
 
-const source = "../../../../assets/images";
-
+const source = "../../../assets/images";
 const avatar1 = require(source + "/avatar-1.jpg");
 const avatar1Uri = RnImage.resolveAssetSource(avatar1).uri;
 const avatar2 = require(source + "/avatar-2.jpg");
@@ -14,6 +14,9 @@ const seller1House = require(source + "/top-seller-1.png");
 const seller1HouseUri = RnImage.resolveAssetSource(seller1House).uri;
 const seller2House = require(source + "/top-seller-2.png");
 const seller2HouseUri = RnImage.resolveAssetSource(seller2House).uri;
+
+const imageSrcFlash = require(source + "/flash.png");
+const flashUri = RnImage.resolveAssetSource(imageSrcFlash).uri;
 
 // false data for testing later it will be overwritten with redux
 const SELLER_DATA = [
@@ -53,19 +56,72 @@ const SELLER_DATA = [
         houseDescription: "By the beach",
         price: 0.8,
     },
+    {
+        _id: "5",
+        username: "70nder",
+        avatar: avatar1Uri,
+        varified: true,
+        houseImage: seller1HouseUri,
+        houseDescription: "By the beach",
+        price: 0.8,
+    },
+    {
+        _id: "6",
+        username: "70nder",
+        avatar: avatar2Uri,
+        varified: true,
+        houseImage: seller2HouseUri,
+        houseDescription: "By the beach",
+        price: 0.8,
+    },
+    {
+        _id: "7",
+        username: "70nder",
+        avatar: avatar1Uri,
+        varified: true,
+        houseImage: seller1HouseUri,
+        houseDescription: "By the beach",
+        price: 0.8,
+    },
+    {
+        _id: "8",
+        username: "70nder",
+        avatar: avatar2Uri,
+        varified: true,
+        houseImage: seller2HouseUri,
+        houseDescription: "By the beach",
+        price: 0.8,
+    },
 ];
 
 export default function TopSeller() {
-    const Item = () => (
-        <Box>
-            {" "}
-            <Text color={"red.900"}>Hello</Text>{" "}
-        </Box>
-    );
-
     return (
-        <HStack flexWrap={'wrap'} my={2} mx={4}>
-            {SELLER_DATA.map((seller, index) => (
+        <ScrollView px={4} py={4}>
+            <HStack
+                justifyContent={"space-between"}
+                w="100%"
+                py={2}
+                alignItems={"center"}
+            >
+                <Icon name={"left-arrow"} size={24} />
+                <HStack alignItems={"center"}>
+                    <Image w={6} h={6} source={{ uri: flashUri }} alt="flash" />
+                    <Text
+                        ml={2}
+                        fontSize={21}
+                        fontWeight={500}
+                        color={"#3D454A"}
+                        fontFamily={"body"}
+                    >
+                        lklk
+                    </Text>
+                </HStack>
+            </HStack>
+            <HStack
+                flexWrap={"wrap"}
+                my={2}
+            >
+                {SELLER_DATA.map((seller, index) => (
                     <Box
                         w="50%"
                         pb={4}
@@ -84,6 +140,7 @@ export default function TopSeller() {
                         />
                     </Box>
                 ))}
-        </HStack>
+            </HStack>
+        </ScrollView>
     );
 }

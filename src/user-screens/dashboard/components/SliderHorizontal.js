@@ -61,3 +61,5 @@ export default function SliderHorizontal() {
         </ScrollView>
     );
 }
+
+// njjttr
