@@ -1,7 +1,8 @@
-import { Box, HStack, Image, ScrollView, Text } from "native-base";
+import { Box, HStack, Image, ScrollView, Text, VStack } from "native-base";
 import React from "react";
 import { Image as RnImage } from "react-native";
 import Card from "../../utility/Card";
+import Icon from "../../utility/Icon";
 
 const source = "../../../assets/images/";
 
@@ -76,6 +77,7 @@ export default function Leaderboard() {
                 <Card px={4} mb={2} key={leader._id}>
                     <HStack alignItems={"center"} space={3}>
                         <Text
+                            w="4%"
                             fontSize={17}
                             fontFamily={"body"}
                             fontWeight={500}
@@ -83,7 +85,7 @@ export default function Leaderboard() {
                         >
                             {index + 1}
                         </Text>
-                        <Box>
+                        <Box w="20%">
                             <Image
                                 borderRadius={50}
                                 alt={leader.name}
@@ -104,14 +106,32 @@ export default function Leaderboard() {
                                 />
                             )}
                         </Box>
-                        <Text
-                            fontSize={17}
-                            fontFamily={"body"}
-                            fontWeight={600}
-                            color={"#000"}
-                        >
-                            {leader.name}
-                        </Text>
+                        <Box w="45%">
+                            <Text
+                                fontSize={20}
+                                fontFamily={"body"}
+                                fontWeight={600}
+                                color={"#000"}
+                            >
+                                {leader.name}
+                            </Text>
+                            <HStack>
+                                <Icon
+                                    name={"etherium"}
+                                    size={20}
+                                    color={"#687076"}
+                                />
+                                <Text color={"#687076"}>{leader.price}</Text>
+                            </HStack>
+                        </Box>
+                        <VStack w="20%" alignItems={'flex-end'}>
+                            <Icon
+                                name={"arrow-bold"}
+                                size={16}
+                                color={"#687076"}
+                            />
+                            <Text color={"#687076"}>{leader.price}</Text>
+                        </VStack>
                     </HStack>
                 </Card>
             ))}
