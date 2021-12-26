@@ -2,7 +2,6 @@ import { Box, HStack, Image, ScrollView, Text } from "native-base";
 import React from "react";
 import { Image as RnImage } from "react-native";
 import Card from "../../utility/Card";
-import Icon from "../../utility/Icon";
 
 const source = "../../../assets/images/";
 
@@ -105,7 +104,14 @@ export default function Leaderboard() {
                                 />
                             )}
                         </Box>
-                        <Text color={"dark.100"}>{leader.name}</Text>
+                        <Text
+                            fontSize={17}
+                            fontFamily={"body"}
+                            fontWeight={600}
+                            color={"#000"}
+                        >
+                            {leader.name}
+                        </Text>
                     </HStack>
                 </Card>
             ))}
