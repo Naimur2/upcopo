@@ -1,6 +1,6 @@
+import React from "react";
 import { Box, Center, Text, Image } from "native-base";
 import { Image as RnImage, Dimensions } from "react-native";
-import React from "react";
 
 const windowWidth = Dimensions.get("window").width;
 
