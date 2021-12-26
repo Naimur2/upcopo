@@ -1,23 +1,21 @@
-import * as React from "react"
-import Svg, { Path } from "react-native-svg"
+import React from "react";
+import { Image } from "native-base";
+import { Image as RnImage } from "react-native";
 
-const Varified = (props) => (
-  <Svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 16 16"
-    style={{
-      enableBackground: "new 0 0 42 42",
-    }}
-    xmlSpace="preserve"
-    {...props}
-  >
-    <Path
-      d="M40.1 18.3 37 15.2c-.5-.5-1-1.6-1-2.3V8.5c0-1.8-1.5-3.3-3.3-3.3h-4.4c-.7 0-1.8-.4-2.3-1L23 1c-1.3-1.3-3.4-1.3-4.6 0l-3.2 3.1c-.5.5-1.6 1-2.3 1H8.5c-1.8 0-3.3 1.5-3.3 3.3v4.4c0 .7-.4 1.8-1 2.3L1 18.2c-1.3 1.3-1.3 3.4 0 4.6L4.1 26c.5.5 1 1.6 1 2.3v4.4c0 1.8 1.5 3.3 3.3 3.3h4.4c.7 0 1.8.4 2.3 1l3.1 3.1c1.3 1.3 3.4 1.3 4.6 0l3.1-3.1c.5-.5 1.6-1 2.3-1h4.4c1.8 0 3.3-1.5 3.3-3.3v-4.4c0-.7.4-1.8 1-2.3l3.1-3.1c1.4-1.2 1.4-3.3.1-4.6zm-11.9-.6-8.6 8.6c-.3.3-.7.4-1.1.4s-.8-.1-1.1-.4l-3.9-3.9c-.6-.6-.6-1.5 0-2.1.6-.6 1.5-.6 2.1 0l2.9 2.9 7.6-7.6c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1z"
-      style={{
-        fill: "#6fcf97",
-      }}
-    />
-  </Svg>
-)
+const getUri = (src) => {
+    return RnImage.resolveAssetSource(src).uri;
+};
 
-export default Varified
+const source = "../../assets/images/";
+
+const varified = require(source + "varified.png");
+
+export default function Varified({ alt, ...rest }) {
+    return (
+        <Image
+            alt={alt || "image for varified id"}
+            source={{ uri: getUri(varified) }}
+            {...rest}
+        />
+    );
+}
