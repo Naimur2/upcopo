@@ -1,8 +1,7 @@
 import { Box, Pressable } from "native-base";
 import React from "react";
-
-import FormInput from "../../../utility/FormInput";
-import Icon from "../../../utility/Icon";
+import FormInput from "../../utility/FormInput";
+import Icon from "../../utility/Icon";
 
 export default function SearchArea() {
     return (
@@ -13,7 +12,6 @@ export default function SearchArea() {
             flexDir={"row"}
             my={6}
             mx={4}
-           
         >
             <FormInput
                 w="86%"
@@ -23,7 +21,6 @@ export default function SearchArea() {
                 borderRadius={12}
                 leftIcon={"search"}
                 placeHolder={"Search your houses"}
-                
             />
 
             <Pressable
