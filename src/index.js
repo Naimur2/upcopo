@@ -1,14 +1,12 @@
 import React from "react";
 import ThemeConfig from "../theme-config";
-import AuthRoute from "./AuthRoute";
-import UserRoute from "./UserRoute";
-import LeaderBoard from "./user-screens/leaderBoard/Leaderboard";
+import UserProfile from "./user-screens/userProfile/UserProfile";
 
 export default function index() {
     // authentication  will be done here
     return (
         <ThemeConfig>
-            <LeaderBoard />
+            <UserProfile />
         </ThemeConfig>
     );
 }
