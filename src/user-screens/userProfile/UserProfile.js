@@ -1,6 +1,8 @@
-import { Avatar, Box, Center, Image } from "native-base";
+import { Avatar, Box, Center, Flex, Image } from "native-base";
 import React from "react";
 import { Dimensions, Image as RnImage } from "react-native";
+import Card from '../../utility//Card';
+import Icon from '../../utility//Icon';
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -17,7 +19,7 @@ export default function UserProfile({ route, navigation }) {
     // changes
     return (
         <Center>
-            <Box  w={'full'} h={windowHeight/4} position={'relative'}>
+            <Box  w={'full'} h={windowHeight/3.4} position={'relative'}>
                 <Image
                     alt={'userId'}
                     source={{ uri: image52Uri }}
@@ -25,12 +27,34 @@ export default function UserProfile({ route, navigation }) {
                     w={"100%"}
                 />
             </Box>
-                <Avatar
+            <Avatar
                 size={'xl'}
                 source={{uri:panda_05Uri}}
                 position={'absolute'}
                 bottom={-50}
-                />
+             />
+         
+           <Flex>
+                 <Card p={4} position={'absolute'} >
+
+                 <Icon
+                     name={"export"} 
+                     size={20}
+                     color={"#687076"}    
+                      
+            />
+
+                     
+                 </Card>
+                 
+             </Flex>
+          
+
+           
+        
+           
+                    
+             
         </Center>
     );
 }
