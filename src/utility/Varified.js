@@ -1,5 +1,5 @@
-import React from "react";
 import { Image } from "native-base";
+import React from "react";
 import { Image as RnImage } from "react-native";
 
 const getUri = (src) => {
@@ -15,6 +15,8 @@ export default function Varified({ alt, ...rest }) {
         <Image
             alt={alt || "image for varified id"}
             source={{ uri: getUri(varified) }}
+            h={6} 
+            w={6}
             {...rest}
         />
     );

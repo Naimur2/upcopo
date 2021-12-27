@@ -1,8 +1,9 @@
-import { Avatar, Box, Center, Flex, Image } from "native-base";
+import { Avatar, Box, Center, HStack, Image, Text } from "native-base";
 import React from "react";
 import { Dimensions, Image as RnImage } from "react-native";
-import Card from '../../utility//Card';
-import Icon from '../../utility//Icon';
+import Card from "../../utility//Card";
+import Icon from "../../utility//Icon";
+import Varified from "../../utility/Varified";
 
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
@@ -18,43 +19,32 @@ export default function UserProfile({ route, navigation }) {
     //const { userId } = route.params;
     // changes
     return (
-        <Center>
-            <Box  w={'full'} h={windowHeight/3.4} position={'relative'}>
-                <Image
-                    alt={'userId'}
-                    source={{ uri: image52Uri }}
-                    h={"100%"}
-                    w={"100%"}
+        <Box>
+            <Center>
+                <Box w={"full"} h={windowHeight / 3.4} position={"relative"}>
+                    <Image
+                        alt={"userId"}
+                        source={{ uri: image52Uri }}
+                        h={"100%"}
+                        w={"100%"}
+                    />
+                </Box>
+                <Avatar
+                    size={"2xl"}
+                    source={{ uri: panda_05Uri }}
+                    position={"absolute"}
+                    bottom={-50}
                 />
-            </Box>
-            <Avatar
-                size={'xl'}
-                source={{uri:panda_05Uri}}
-                position={'absolute'}
-                bottom={-50}
-             />
-         
-           <Flex>
-                 <Card p={4} position={'absolute'} >
-
-                 <Icon
-                     name={"export"} 
-                     size={20}
-                     color={"#687076"}    
-                      
-            />
-
-                     
-                 </Card>
-                 
-             </Flex>
-          
-
-           
-        
-           
-                    
-             
-        </Center>
+            </Center>
+            <HStack p={4} justifyContent={"flex-end"}>
+                <Card>
+                    <Icon name={"export"} size={25} color={"#687076"} />
+                </Card>
+            </HStack>
+            <HStack space={2} alignItems={'center'} justifyContent={'center'} py={1} px={4}>
+                <Text color={"#000"}>Jhon Doe</Text>
+                <Varified h={6} w={6} />
+            </HStack>
+        </Box>
     );
 }
