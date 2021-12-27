@@ -15,7 +15,7 @@ export default function CardBody({ name, price, ...rest }) {
             >
                 {name}
             </Text>
-            <HStack>
+            <HStack space={1}>
                 <Icon name={"etherium"} size={20} color={"#687076"} />
                 <Text color={"#687076"}>{price}</Text>
             </HStack>
