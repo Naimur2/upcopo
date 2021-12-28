@@ -6,6 +6,31 @@ import Icon from "../../utility/Icon";
 import UserProfileHeader from "./components/UserProfileHeader";
 import UserProfileMenu from "./components/UserProfileMenu";
 
+const UserProfile_ = [
+    {
+        _id: "1",
+        name: "Joel Norris",
+        varified: false,
+        time:"2 days left",
+        image_url:'https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true',
+        avatar_url: 'https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg',
+        heart_number:'89',
+        price:'6.0241'
+    
+    },
+    {
+        _id: "2",
+        name: "Joel Norris",
+        varified: false,
+        time:"1 days left",
+        image_url:'https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true',
+        avatar_url: 'https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg',
+        heart_number:'89',
+        price:'6.0241'
+
+    }
+]
+
 export default function UserProfile({ route, navigation }) {
 
     return (
@@ -13,7 +38,8 @@ export default function UserProfile({ route, navigation }) {
             <UserProfileHeader />
             <UserProfileMenu />
 
-            <VStack py={4}>
+            {UserProfile_.map((Profile, index) => (
+                <VStack py={4}>
                 <Card>
                     <HStack justifyContent={'space-between'} alignItems={'center'}>
                         <HStack alignItems={'center'} space={2}>
@@ -21,7 +47,7 @@ export default function UserProfile({ route, navigation }) {
                                 size={'md'}
                                 mr={1}
 
-                                source={{ uri: 'https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg' }}
+                                source={{ uri: 'avatar_url' }}
                             />
                             <Text
                                 fontFamily={"body"}
@@ -41,7 +67,7 @@ export default function UserProfile({ route, navigation }) {
                     {/* Image*/}
                     <Image
                         alt={"card-img"}
-                        source={{ uri: 'https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true' }}
+                        source={{ uri: 'image_url' }}
                         w={'100%'}
                         h={150}
                         borderRadius={20}
@@ -53,7 +79,7 @@ export default function UserProfile({ route, navigation }) {
                     <HStack justifyContent={'space-between'}>
                         <HStack space={2} alignItems={'center'}>
                             <Icon name={'heart-dark'}
-                            size={20}
+                                size={20}
                             />
                             <Text
                                 fontFamily={"body"}
@@ -71,7 +97,7 @@ export default function UserProfile({ route, navigation }) {
                                 fontWeight={600}
                             >Top Bid</Text>
                             <HStack space={2} alignItems={'center'}>
-                                <Icon name={'etherium'} size={20}/>
+                                <Icon name={'etherium'} size={20} />
                                 <Text
                                     fontFamily={"body"}
                                     fontSize={18}
@@ -87,6 +113,9 @@ export default function UserProfile({ route, navigation }) {
                 </Card>
 
             </VStack>
+            ))}
+
+            
 
         </ScrollView>
     );
