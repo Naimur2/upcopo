@@ -1,9 +1,9 @@
-import { Box, HStack, Image, Stack, Text, VStack } from "native-base";
+import { Box, HStack, Image, Text, VStack } from "native-base";
 import React from "react";
-import UtilityBtn from "../../../utility/UtilityBtn";
 import IconWithText from "../../../utility/IconWithText";
+import UtilityBtn from "../../../utility/UtilityBtn";
 
-export default function LovedHousesCard({onPlaceBid}) {
+export default function LovedHousesCard({onPlaceBid,ImageUrl,address,numOfBed,numOfBath,isSaved,price}) {
     const icons = [
         {
             _id: "1",
@@ -41,7 +41,7 @@ export default function LovedHousesCard({onPlaceBid}) {
                         width={"100%"}
                         height={"100%"}
                         source={{
-                            uri: "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
+                            uri:ImageUrl,
                         }}
                     />
                 </Box>
@@ -59,7 +59,7 @@ export default function LovedHousesCard({onPlaceBid}) {
                         color={"#3D454A"}
                         fontSize={"18"}
                     >
-                        889 Palmeron Ave, Mcd..
+                       {address}
                     </Text>
                     <HStack
                         justifyContent={"space-between"}

@@ -1,26 +1,64 @@
-import { Box, HStack, Image, Stack, Text, VStack } from "native-base";
+import { FlatList } from "native-base";
 import React from "react";
-import UtilityBtn from "../../utility/UtilityBtn";
-import IconWithText from "../../utility/IconWithText";
 import LovedHousesCard from "./components/LovedHousesCard";
 
 export default function LovedHouses() {
-    const DATA = [
-        //
-    ];
+    const lovedHouse = [
+        {
+            _id: "1",
+            imageUrl: 'https://thelens.news/app/uploads/2020/12/236-456x342.jpg',
+            address: '889 Palmeron Ave, Mcd..',
+            numOfBed: 2,
+            numOfBath: 3,
+            isSaved: true,
+            price: 0.05686,
+        },
+        {
+            _id: "2",
+            imageUrl: 'https://thelens.news/app/uploads/2020/12/236-456x342.jpg',
+            address: '889 Palmeron Ave, Mcd..',
+            numOfBed: 2,
+            numOfBath: 3,
+            isSaved: false,
+            price: 0.05686,
+        },
 
+    ]
+const renderItem=({item})=>(
+    <LovedHousesCard
+    address={item.address}
+    numOfBed={item.numOfBed}
+    numOfBath={item.numOfBath}
+    isSaved={item.isSaved}
+    price={item.price}
+    imageUrl={item.imageUrl}
+    onPlaceBid={() => console.log('Place a bid')}
+/>
+)
     return (
-        <Stack py={10} space={4}>
+        <FlatList
+        showsVerticalScrollIndicator={false}
+        showsHorizontalScrollIndicator={false}
+       
+        data={lovedHouse}
+        renderItem={renderItem}
+        keyExtractor={(item) => item._id}
+    />
+    /*
+     <Stack py={10} space={4}>
             <LovedHousesCard
-                key={"f"}
+                key={"a"}
                 address
                 numOfBed
                 numOfBath
                 isSaved
                 price
-                onPlaceBid={()=> console.log('Place a bid') }
+                onPlaceBid={() => console.log('Place a bid')}
             />
         </Stack>
+    
+    */
+       
     );
 }
 
