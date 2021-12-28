@@ -1,7 +1,7 @@
 import { Box, Pressable } from "native-base";
 import React from "react";
-import FormInput from "../../utility/FormInput";
-import Icon from "../../utility/Icon";
+import FormInput from "../../../utility/FormInput";
+import Icon from "../../../utility/Icon";
 
 export default function SearchArea() {
     return (
@@ -27,7 +27,6 @@ export default function SearchArea() {
                 alignItems={"center"}
                 borderColor={"#E6E8EB"}
                 borderRadius={14}
-                shadow={1}
                 p={3}
                 bg="white"
             >

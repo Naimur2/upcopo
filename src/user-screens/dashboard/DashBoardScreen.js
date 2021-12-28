@@ -1,6 +1,5 @@
-import { ScrollView, View } from "native-base";
+import { ScrollView } from "native-base";
 import React from "react";
-import Screen from "../../utility/Screen";
 import ImageSlider from "./components/ImageSlider";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";

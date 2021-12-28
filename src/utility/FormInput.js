@@ -15,6 +15,8 @@ export default function FormInput({
     onLeftIconPress,
     rightIconColor,
     leftIconColor,
+    isFullWidth,
+    leftElement,
     required,
     ...rest
 }) {
@@ -61,8 +63,9 @@ export default function FormInput({
                     borderRadius={8}
                     cursorColor="#889096"
                     _focus={{ borderColor: "#3D454A" }}
-                    InputLeftElement={iconLeft}
+                    InputLeftElement={leftElement || iconLeft}
                     InputRightElement={iconRight}
+                    isFullWidth={isFullWidth}
                     {...rest}
                 />
                 {error && (
