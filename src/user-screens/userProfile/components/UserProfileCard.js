@@ -13,7 +13,7 @@ export default function UserProfileCard({
     topBid,
 }) {
     return (
-        <Card p="4">
+        <Card borderRadius={20} mb="4" mx="4" py={2} px="4">
             <UserProfileCardHeader
                 avatar={avatar}
                 userName={userName}

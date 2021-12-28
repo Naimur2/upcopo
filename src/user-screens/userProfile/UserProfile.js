@@ -1,4 +1,4 @@
-import { ScrollView, VStack } from "native-base";
+import { ScrollView, VStack, FlatList, Box } from "native-base";
 import React from "react";
 import UserProfileCard from "./components/UserProfileCard";
 import UserProfileHeader from "./components/UserProfileHeader";
@@ -47,25 +47,33 @@ const getRemainingTime = (deadline) => {
     return "2 days left";
 };
 
+const renderItem = ({ item }) => (
+    <UserProfileCard
+        key={item._id}
+        avatar={item.avatar}
+        userName={item.username}
+        deadline={getRemainingTime(item.deadline)}
+        houseImage={item.image_url}
+        likes={item.likes}
+        topBid={item.topBid}
+    />
+);
+
 export default function UserProfile({ route, navigation }) {
     return (
-        <ScrollView bg={"#f9f9f9"}>
-            <UserProfileHeader />
-            <UserProfileMenu />
-            <VStack px={4} py={4} space={4}>
-                {/* TODO: Will add dynamic data */}
-                {userProfiles.map((profiles) => (
-                    <UserProfileCard
-                        key={profiles._id}
-                        avatar={profiles.avatar}
-                        userName={profiles.username}
-                        deadline={getRemainingTime(profiles.deadline)}
-                        houseImage={profiles.image_url}
-                        likes={profiles.likes}
-                        topBid={profiles.topBid}
-                    />
-                ))}
-            </VStack>
-        </ScrollView>
+        <FlatList
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            bg={"#f9f9f9"}
+            ListHeaderComponent={
+                <Box key={"1"}>
+                    <UserProfileHeader />
+                    <UserProfileMenu />
+                </Box>
+            }
+            data={userProfiles}
+            renderItem={renderItem}
+            keyExtractor={(item) => item._id}
+        />
     );
 }

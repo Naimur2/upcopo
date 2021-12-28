@@ -3,7 +3,7 @@ import React from "react";
 
 export default function UserProfileCardImage({ houseImage }) {
     return (
-        <Box my={4} w="100%" h={150} bg="dark.100"  borderRadius={20} overflow={'hidden'}>
+        <Box my={4} w="100%" h={140}  borderRadius={15} overflow={'hidden'}>
             <Image
                 alt={"card-img"}
                 source={{

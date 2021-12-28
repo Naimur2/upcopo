@@ -10,7 +10,7 @@ export default function UserProfileCardFooter({ likes, topBid }) {
                 <Text
                     fontFamily={"body"}
                     fontSize={16}
-                    color={"#000000"}
+                    color={"#000"}
                     fontWeight={400}
                 >
                     {likes}
@@ -20,7 +20,7 @@ export default function UserProfileCardFooter({ likes, topBid }) {
             <HStack space={2}>
                 <Text
                     fontFamily={"body"}
-                    fontSize={18}
+                    fontSize={16}
                     color={"#3D454A"}
                     fontWeight={600}
                 >
