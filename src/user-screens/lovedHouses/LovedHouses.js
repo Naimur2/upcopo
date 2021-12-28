@@ -31,3 +31,21 @@ export default function LovedHouses() {
         </Stack>
     );
 }
+
+/*
+
+   <HStack space={6}>
+                <HStack alignItems={'center'} >
+                    <Icon name={'bed-filled'} size={20} color={'#889096'} />
+                    <Text color={'#687076'} fontFamily={'body'} fontSize={12}>3 bed</Text>
+                </HStack>
+                <HStack space={2} alignItems={'center'} >
+                    <Icon name={'bath'} size={20} color={'#889096'} />
+                    <Text color={'#687076'} fontFamily={'body'} fontSize={12}>2 bath</Text>
+                </HStack>
+                <HStack space={2} alignItems={'center'} >
+                    <Icon name={'heart-dark'} size={20} color={'#000'} />
+                    <Text color={'#687076'} fontFamily={'body'} fontSize={12}>Saved</Text>
+                </HStack>
+
+*/
