@@ -1,12 +1,12 @@
 import React from "react";
 import Card from "../../../../utility/Card";
 import FooterContainer from "./FooterContainer";
-
 import ImageContainer from "./ImageContainer";
+
 
 export default function TrendyHouses({
     id,
-    timeLeft,
+    deadline,
     image,
     houseName,
     onLike,
@@ -15,7 +15,7 @@ export default function TrendyHouses({
     return (
         <Card w={250}>
             <ImageContainer
-                timeLeft={timeLeft}
+                deadline={deadline}
                 image={image}
                 houseName={houseName}
                 onLike={onLike}

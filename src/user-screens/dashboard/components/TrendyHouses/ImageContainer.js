@@ -4,7 +4,7 @@ import Counter from "./Counter";
 import Like from "./Like";
 
 export default function ImageContainer({
-    timeLeft,
+    deadline,
     image,
     houseName,
     onLike,
@@ -21,7 +21,7 @@ export default function ImageContainer({
                 alt={houseName}
                 position={"relative"}
             />
-            <Counter timeLeft={timeLeft} />
+            <Counter deadline={deadline} />
 
             <HStack
                 justifyContent={"space-between"}

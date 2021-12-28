@@ -1,4 +1,4 @@
-import { Box, Text, HStack, Image, ScrollView, VStack } from "native-base";
+import { Box, HStack, Image, ScrollView, Text, VStack } from "native-base";
 import React from "react";
 
 export default function LovedHouses() {
