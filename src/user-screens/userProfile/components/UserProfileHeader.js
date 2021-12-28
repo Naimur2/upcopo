@@ -7,7 +7,7 @@ import Varified from "../../../utility/Varified";
 
 const windowHeight = Dimensions.get("window").height;
 
-const source = "../../../assets/images";
+const source = "../../../../assets/images";
 const image52 = require(source + "/image52.png");
 const image52Uri = RnImage.resolveAssetSource(image52).uri;
 
