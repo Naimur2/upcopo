@@ -1,8 +1,8 @@
-import { Text, HStack } from "native-base";
+import { HStack, Text } from "native-base";
 import React from "react";
 import Icon from "./Icon";
 
-export default function LovedHouses({
+export default function IconWithText({
     iconName,
     text,
     iconColor,
