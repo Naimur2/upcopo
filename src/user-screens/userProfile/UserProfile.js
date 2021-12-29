@@ -7,7 +7,7 @@ import UserProfileMenu from "./components/UserProfileMenu";
 const userProfiles = [
     {
         _id: "1",
-        username: "Joel Norris",
+        username: "70nder",
         varified: false,
         image_url:
             "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",
@@ -18,7 +18,7 @@ const userProfiles = [
     },
     {
         _id: "2",
-        username: "Joel Norris",
+        username: "70nder",
         varified: false,
         image_url:
             "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",

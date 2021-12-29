@@ -4,7 +4,7 @@ import Varified from "../../.././utility/Varified";
 
 const UserProfileCardHeader = ({ avatar, userName, daysLeft }) => (
     <HStack justifyContent={"space-between"} alignItems={"center"}>
-        <HStack alignItems={"center"} space={2}>
+        <HStack alignItems={"center"}>
             <Avatar
                 size={"10"}
                 mr={1}
@@ -20,7 +20,7 @@ const UserProfileCardHeader = ({ avatar, userName, daysLeft }) => (
             >
                 @{userName}
             </Text>
-            <Varified h={6} w={6} />
+            <Varified h={6} w={6} ml={1} />
         </HStack>
         <Text
             fontFamily={"body"}

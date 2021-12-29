@@ -40,24 +40,24 @@ export default function UserProfileMenu({ route, navigation }) {
                         leftElement={
                             <Icon
                                 p="2"
-                                ml={4}
+                                ml={3}
                                 mr={1}
                                 borderRadius={50}
                                 bg={"#52B69A"}
                                 color={"#fff"}
                                 name={"search"}
-                                size={20}
+                                size={16}
                             />
                         }
                         placeHolder={"Search"}
                         type={"search"}
                         isFullWidth={false}
                         borderColor={"#fff"}
-                        py={3}
+                        py={2}
                     />
                 </Box>
                 <Card justifyContent={"center"} alignItems={"center"} w={"16%"}>
-                    <Icon color={"#52B69A"} name={"candle"} size={26} />
+                    <Icon color={"#52B69A"} name={"candle"} size={25} />
                 </Card>
             </HStack>
             <HStack space="3%">
@@ -78,7 +78,7 @@ export default function UserProfileMenu({ route, navigation }) {
                     />
                 </HStack>
                 <Card justifyContent={"center"} alignItems={"center"} w={"16%"}>
-                    <Icon color={"#52B69A"} name={"square"} size={26} />
+                    <Icon color={"#52B69A"} name={"square"} size={25} />
                 </Card>
             </HStack>
         </VStack>
