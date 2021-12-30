@@ -3,7 +3,7 @@ import React from "react";
 import LovedHousesCardBody from "./LovedHousesCardBody";
 import LovedHousesCardFooter from "./LovedHousesCardFooter";
 import LovedHousesCardHeader from "./LovedHousesCardHeader";
-import LovedHousesCardImage from "./loveHouseCardImage";
+import LovedHousesCardImage from "./LoveHouseCardImage";
 
 
 
