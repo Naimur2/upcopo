@@ -1,13 +1,13 @@
 import React from "react";
 import ThemeConfig from "../theme-config";
-import Notification from "./user-screens/Notification/Notification";
-
+import Messaging from './user-screens/messaging/Messaging';
 
 export default function index() {
     // authentication  will be done here
     return (
         <ThemeConfig>
-           <Notification/>
+        <Messaging/>
+          
         </ThemeConfig>
     );
 }

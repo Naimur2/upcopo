@@ -42,7 +42,7 @@ export default function LovedHousesCard({
 
     return (
         <HStack mb={1} justifyContent={"space-between"} px={4} alignItems={"center"}>
-           <LovedHousesCardImage imageUrl={imageUrl}/>
+            <LovedHousesCardImage imageUrl={imageUrl} />
             <VStack
                 w="70%"
                 space="3"
@@ -51,10 +51,10 @@ export default function LovedHousesCard({
                 py={4}
             >
                 {/* define maximum character */}
-               <LovedHousesCardHeader address={address}/>
-               <LovedHousesCardBody numOfBath={numOfBath} numOfBed={numOfBed}/>
+                <LovedHousesCardHeader address={address} />
+                <LovedHousesCardBody numOfBath={numOfBath} numOfBed={numOfBed} />
                 <LovedHousesCardFooter onPlaceBid={onPlaceBid} price={price} />
-            
+
             </VStack>
         </HStack>
     );
