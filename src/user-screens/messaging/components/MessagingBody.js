@@ -1,14 +1,20 @@
 import { Avatar, HStack, Text, VStack } from "native-base";
 import React from "react";
-import Icon from "../../utility/Icon";
+import Icon from "../../../utility/Icon";
 
 export default function MessagingBody({
     username,
     avaterUrl,
-    lastMessageText,
+    lastMessage,
     lastMessageTime,
-    countUnreadedMessages,
+    unreadMessages,
 }) {
+
+    const lastMesage= new Date(lastMessageTime);
+    const time= lastMesage.toLocaleTimeString();
+
+
+
     return (
         <HStack
             justifyContent={"space-between"}
@@ -35,7 +41,7 @@ export default function MessagingBody({
                         >
                             {username}
                         </Text>
-                        <HStack space={2}>
+                        {/* <HStack space={2}>
                             <Icon
                                 name={"call-incoming"}
                                 color={"#687076"}
@@ -49,7 +55,7 @@ export default function MessagingBody({
                             >
                                {lastMessageText}
                             </Text>
-                        </HStack>
+                        </HStack> */}
                     </VStack>
                 </VStack>
             </HStack>
@@ -60,7 +66,7 @@ export default function MessagingBody({
                     fontFamily={"body"}
                     fontSize={"16"}
                 >
-                    {lastMessageTime}
+                    {time}
                 </Text>
             </HStack>
         </HStack>

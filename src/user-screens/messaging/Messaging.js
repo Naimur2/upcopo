@@ -1,9 +1,11 @@
 import { FlatList, ScrollView } from "native-base";
 import React from "react";
+import MessageUsers from "./components/MessageUsers";
 //import Icon from '../../utility/Icon';
-import MessagingBody from "../../user-screens/messaging/MessagingBody";
+import MessagingBody from "./components/MessagingBody";
 
 export default function Messaging() {
+    const date = "Dec 31, 2021, 18:31:30";
     const messageBodyData = [
         {
             _id: "1",
@@ -11,9 +13,11 @@ export default function Messaging() {
             avaterUrl:
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: false,
-            lastMessageText: "Call ended",
-            lastMessageTime: "11.14AM",
-            countUnreadedMessages: "0",
+            messages: "Call ended",
+            lastMessageTime: date,
+            unreadMessages: "0",
+            callEnded: false,
+            missedCall: false,
         },
         {
             _id: "2",
@@ -21,9 +25,18 @@ export default function Messaging() {
             avaterUrl:
                 "https://img.freepik.com/free-vector/cute-lion-with-console-game-icon-cartoon-vector-illustration_60438-1385.jpg?size=338&ext=jpg",
             isActive: false,
-            lastMessageText: "Hey Jol, if you're free now we can..",
-            lastMessageTime: "09.14AM",
-            countUnreadedMessages: "3",
+            messages: [
+                {
+                    from: [{ username: "hfdfgfg", email: "emai@gg.cc" }],
+                    to: [{ username: "hfdfgfg", email: "emai@gg.cc" }],
+                    messageBody: "Hi there",
+                    timesmap: "Jan ",
+                },
+            ],
+            lastMessageTime: date,
+            unreadMessages: "3",
+            callEnded: false,
+            missedCall: false,
         },
         {
             _id: "3",
@@ -31,9 +44,11 @@ export default function Messaging() {
             avaterUrl:
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
-            lastMessageText: "Yeah, can i call you back later",
-            lastMessageTime: "11.14AM",
-            countUnreadedMessages: "0",
+            messages: "Yeah, can i call you back later",
+            lastMessageTime: date,
+            unreadMessages: "0",
+            callEnded: false,
+            missedCall: false,
         },
         {
             _id: "4",
@@ -41,19 +56,22 @@ export default function Messaging() {
             avaterUrl:
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: false,
-            lastMessageText: "Hey Jol, If you're free now we can..",
-            lastMessageTime: "09.14AM",
-            countUnreadedMessages: "3",
+            messages: "Hey Jol, If you're free now we can..",
+            lastMessageTime: date,
+            unreadMessages: "3",
+            callEnded: false,
+            missedCall: false,
         },
     ];
+
     const renderItem = ({ item }) => {
         return (
             <MessagingBody
                 username={item.username}
                 avaterUrl={item.avaterUrl}
-                lastMessageText={item.lastMessageText}
+                lastMessage={item.lastMessage}
                 lastMessageTime={item.lastMessageTime}
-                countUnreadedMessages={item.countUnreadedMessages}
+                unreadMessages={item.unreadMessages}
             />
         );
     };
@@ -62,9 +80,16 @@ export default function Messaging() {
         <FlatList
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
+            ListHeaderComponent={
+                <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                    <MessageUsers  />
+                </ScrollView>
+            }
             data={messageBodyData}
             renderItem={renderItem}
             keyExtractor={(item) => item._id}
         />
     );
 }
+
+
