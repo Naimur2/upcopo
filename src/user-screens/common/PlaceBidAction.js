@@ -1,22 +1,35 @@
-import { Text, VStack } from "native-base";
-import React from "react";
-
+import React from "react"
+import {
+  Button,
+  Actionsheet,
+  useDisclose,
+  Text,
+  Box,
+} from "native-base"
 export default function PlaceBidAction() {
-    return (
-        <VStack
-            alignItems={"center"}
-            justifyContent={"center"}
-            bg="dark.200"
-            h="full"
-        >
+  const { isOpen, onOpen, onClose } = useDisclose()
+  return (
+    <>
+      <Actionsheet isOpen={isOpen} onClose={onClose}>
+        <Actionsheet.Content>
+          <Box w="100%" h={60} px={4} justifyContent="center">
             <Text
-                fontWeight={700}
-                fontFamily={"body"}
-                fontSize={20}
-                color={"light.100"}
+              fontSize="16"
+              color="gray.500"
+              _dark={{
+                color: "gray.300",
+              }}
             >
-                Naimur Rahaman
+              Albums
             </Text>
-        </VStack>
-    );
+          </Box>
+          <Actionsheet.Item>Delete</Actionsheet.Item>
+          <Actionsheet.Item>Share</Actionsheet.Item>
+          <Actionsheet.Item>Play</Actionsheet.Item>
+          <Actionsheet.Item>Favourite</Actionsheet.Item>
+          <Actionsheet.Item>Cancel</Actionsheet.Item>
+        </Actionsheet.Content>
+      </Actionsheet>
+    </>
+  )
 }

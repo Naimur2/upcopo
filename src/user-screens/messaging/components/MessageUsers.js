@@ -1,6 +1,7 @@
 import { Avatar, Box, HStack } from "native-base";
 import React from "react";
 import Icon from "../../../utility/Icon";
+import Active from "../../../utility/Active";
 
 export default function MessageUsers() {
     const users = [
@@ -34,12 +35,7 @@ export default function MessageUsers() {
     const modifiedUsers = [{ key: "plus", icon: "plus" }, ...users];
 
     return (
-        <HStack
-            p={4}
-            space="3"
-            alignItems={"center"}
-          
-        >
+        <HStack p={4} space="3" alignItems={"center"}>
             {modifiedUsers.map((user) => (
                 <Box
                     key={user._id || user.key}
@@ -50,29 +46,21 @@ export default function MessageUsers() {
                     borderColor={"#11181C"}
                     borderStyle={"dashed"}
                     p={1}
-                    overflow={"hidden"}
-                    position={'relative'}
+                    position={"relative"}
                 >
-                    {user.key && user.icon ? (
-                        <Icon
-                            bg={"#BFBFBF"}
-                            justifyContent={"center"}
-                            alignItems={"center"}
-                            w={16}
-                            h={16}
-                            borderRadius={50}
-                            p="2"
-                            name={"plus"}
-                            size={30}
-                            color={"#fff"}
-                        />
-                    ) : (
-                        <Avatar
-                            source={{
+                    <Avatar
+                        bg={"#BFBFBF"}
+                        source={
+                            user.avatar && {
                                 uri: user.avatar,
-                            }}
-                            size={"16"}
-                        />
+                            }
+                        }
+                        size={"16"}
+                    >
+                        <Icon name={"plus"} size={26} color={"#fff"} />
+                    </Avatar>
+                    {user.isActive && (
+                        <Active  right={0} bottom={0} />
                     )}
                 </Box>
             ))}

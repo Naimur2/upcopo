@@ -13,10 +13,11 @@ const varified = require(source + "ellipse.png");
 export default function Active({ alt, ...rest }) {
     return (
         <Image
+            position={"absolute"}
             alt={alt || "image for varified id"}
             source={{ uri: getUri(varified) }}
-            h={6} 
-            w={6}
+            h={5}
+            w={5}
             {...rest}
         />
     );

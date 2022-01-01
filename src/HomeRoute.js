@@ -8,9 +8,9 @@ import UserProfile from "./user-screens/userProfile/UserProfile";
 const Stack = createNativeStackNavigator();
 
 
-export default function UserRoute() {
+export default function HomeRoute() {
     return (
-        <NavigationContainer>
+        
             <Stack.Navigator
                 screenOptions={{
                     headerShown: false,
@@ -33,6 +33,6 @@ export default function UserRoute() {
                     component={UserProfile}
                 />
             </Stack.Navigator>
-        </NavigationContainer>
+        
     );
 }
