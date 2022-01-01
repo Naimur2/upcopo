@@ -33,7 +33,7 @@ export default function SellerCard({
                     <Text
                         fontFamily={"body"}
                         fontWeight={700}
-                        color={"#52B69A"}
+                        color={"#3D454A"}
                     >
                         @{username}
                     </Text>
