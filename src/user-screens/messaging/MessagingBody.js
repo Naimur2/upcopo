@@ -1,75 +1,68 @@
 import { Avatar, HStack, Text, VStack } from "native-base";
 import React from "react";
-import Icon from '../../utility/Icon';
+import Icon from "../../utility/Icon";
 
-
-export default function MessagingBody(
+export default function MessagingBody({
     username,
     avaterUrl,
     lastMessageText,
     lastMessageTime,
-    countUnreadedMessages
-) {
- 
-
+    countUnreadedMessages,
+}) {
     return (
-
-     
-
         <HStack
-            justifyContent={'space-between'}
+            justifyContent={"space-between"}
             p={4}
             borderBottomColor={"#E6E8EB"}
             borderBottomWidth={1}
-
         >
-            <HStack w={'20%'}>
+            <HStack w={"20%"}>
                 <Avatar
                     size={16}
-                    source={{ uri: 'https://thelens.news/app/uploads/2020/12/236-456x342.jpg' }}
+                    source={{
+                        uri: avaterUrl,
+                    }}
                 />
             </HStack>
-            <HStack w={'60%'} >
+            <HStack w={"60%"}>
                 <VStack>
-                    <VStack p={2} space={2}>
+                    <VStack  space={2}>
                         <Text
-                            color={'#3D454A'}
-                            fontWeight={'500'}
-                            fontFamily={'body'}
-                            fontSize={'18'}
+                            color={"#3D454A"}
+                            fontWeight={"500"}
+                            fontFamily={"body"}
+                            fontSize={"18"}
                         >
-                           {username}
+                            {username}
                         </Text>
                         <HStack space={2}>
                             <Icon
-                                name={'call-incoming'}
-                                color={'#687076'}
+                                name={"call-incoming"}
+                                color={"#687076"}
                                 size={20}
                             />
                             <Text
-                                color={'#687076'}
-                                fontWeight={'400'}
-                                fontFamily={'body'}
-                                fontSize={'16'}
+                                color={"#687076"}
+                                fontWeight={"400"}
+                                fontFamily={"body"}
+                                fontSize={"16"}
                             >
-                                Call ended
+                               {lastMessageText}
                             </Text>
                         </HStack>
                     </VStack>
                 </VStack>
             </HStack>
-            <HStack w={'20%'} mt={2}>
-
+            <HStack w={"20%"} mt={2}>
                 <Text
-                    color={'#687076'}
-                    fontWeight={'400'}
-                    fontFamily={'body'}
-                    fontSize={'16'}
+                    color={"#687076"}
+                    fontWeight={"400"}
+                    fontFamily={"body"}
+                    fontSize={"16"}
                 >
-                    10.00 AM
+                    {lastMessageTime}
                 </Text>
             </HStack>
         </HStack>
-
     );
 }
