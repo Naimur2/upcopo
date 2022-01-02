@@ -25,17 +25,12 @@ export default function LovedHousesCard({
                 w="70%"
                 space="3"
                 borderBottomColor={"#E6E8EB"}
-                borderBottomWidth={1}
+                borderBottomWidth={1.5}
                 py={4}
             >
                 {/* define maximum character */}
                 <LovedHousesCardHeader address={address} />
 
-                <LovedHousesCardBody
-                    numOfBath={numOfBath}
-                    numOfBed={numOfBed}
-                />
-                <LovedHousesCardFooter onPlaceBid={onPlaceBid} price={price} />
                 <LovedHousesCardBody
                     numOfBath={numOfBath}
                     numOfBed={numOfBed}

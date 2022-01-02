@@ -15,7 +15,7 @@ const UserProfileCardHeader = ({ avatar, userName, daysLeft }) => (
             <Text
                 fontFamily={"body"}
                 fontSize={16}
-                color={"#52B69A"}
+                color={"#3D454A"}
                 fontWeight={700}
             >
                 @{userName}

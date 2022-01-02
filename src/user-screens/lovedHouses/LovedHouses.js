@@ -47,7 +47,7 @@ export default function LovedHouses() {
     ];
 
     const renderItem = ({ item }) => {
-        if (!item.isSaved) return;
+        if (!item.isSaved) return null;
         return (
             <LovedHousesCard
                 address={item.address}

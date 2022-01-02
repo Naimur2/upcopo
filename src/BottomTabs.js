@@ -1,39 +1,70 @@
-import { Text, VStack } from "native-base";
-import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
+import Main from "./drawer-screens/Main";
+import DrawerNavigator from "./DrawerNavigator";
 import HomeRoute from "./HomeRoute";
-
+import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
+import Messaging from "./user-screens/messaging/Messaging";
+import SearchScreen from "./user-screens/searchScreen/SearchScreen";
+import Icon from "./utility/Icon";
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTabs() {
+export default function BottomTabs({navigation}) {
     return (
-        <NavigationContainer>
+        
             <Tab.Navigator
                 screenOptions={({ route }) => ({
                     tabBarIcon: ({ focused, color, size }) => {
                         let iconName;
                         if (route.name === "Home") {
-                            iconName = focused
-                                ? "ios-information-circle"
-                                : "ios-information-circle-outline";
-                        } else if (route.name === "Settings") {
-                            iconName = focused ? "ios-list-box" : "ios-list";
+                            iconName = focused ? "home" : "home-outlined";
+                        } else if (route.name === "Loved") {
+                            iconName = focused ? "love" : "love-outline";
+                        } else if (route.name === "Messages") {
+                            iconName = focused ? "message" : "message-outlline";
+                        }
+                         else if (route.name === "Search") {
+                            iconName = "search";
+                            return (
+                                <Icon borderRadius={50} color={'#fff'} bg="#52B69A" p="3" name={iconName} size={22}  />
+                            );
+                        }
+                         else if (route.name === "User") {
+                            iconName = focused ? "user" : "user-outline";
+                            return <Icon onPress={()=>console.log('Hello')}  name={iconName} size={22} color={color} />
+
                         }
                         // You can return any component that you like here!
                         return (
-                            <Ionicons name={iconName} size={size} color={color} />
+                            <Icon  name={iconName} size={22} color={color} />
                         );
                     },
-                    tabBarActiveTintColor: "tomato",
-                    tabBarInactiveTintColor: "gray",
+                    tabBarShowLabel: false,
+                    tabBarActiveTintColor: "#000000",
+                    tabBarInactiveTintColor: "#7E868C",
+                    tabBarHideOnKeyboard: true,
+                    tabBarStyle:{
+                        backgroundColor:'#fff',
+                        borderTopRightRadius:16,
+                        borderTopLeftRadius:16,
+                        height:60
+                    }
+                    
                 })}
             >
-                <Tab.Screen name="Home" component={HomeRoute} />
-                {/* <Tab.Screen name="Settings" component={SettingsScreen} /> */}
-            
+                <Tab.Screen
+                    options={{ headerShown: false }}
+                    name="Home"
+                    component={HomeRoute}
+                />
+                <Tab.Screen name="Loved" component={LovedHouses} />
+                <Tab.Screen name="Search" component={SearchScreen} />
+                <Tab.Screen name="Messages" component={Messaging} />
+                <Tab.Screen name="User"  options={{ headerShown: false }} component={Main} />
+                
             </Tab.Navigator>
-        </NavigationContainer>
+        
     );
 }

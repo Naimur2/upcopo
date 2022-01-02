@@ -113,7 +113,7 @@ const LEADERS = [
     },
 ];
 
-export default function Leaderboard() {
+export default function LeaderBoard() {
     return (
         <ScrollView showsHorizontalScrollIndicator={'false'} showsVerticalScrollIndicator={false} bg="#f9f9f9">
             <VStack p={4} space={2}>

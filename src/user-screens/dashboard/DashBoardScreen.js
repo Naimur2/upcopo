@@ -11,7 +11,11 @@ export default function DashBoardScreen() {
     const navigation = useNavigation();
 
     return (
-        <ScrollView bg="#f9f9f9">
+        <ScrollView
+            bg="#f9f9f9"
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+        >
             <SearchArea />
             <ImageSlider />
             <SectionHeader
@@ -20,7 +24,11 @@ export default function DashBoardScreen() {
                 onSeAllPress={() => navigation.navigate("TrendyHouses")}
             />
             <SliderHorizontal />
-            <SectionHeader title={"Top Sellers"} imageType={"fire"} />
+            <SectionHeader
+                title={"Top Sellers"}
+                imageType={"fire"}
+                onSeAllPress={() => navigation.navigate("LeaderBoard")}
+            />
             <TopSeller />
         </ScrollView>
     );

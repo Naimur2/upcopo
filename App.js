@@ -6,6 +6,7 @@ import Index from "./src";
 import store from "./store/";
 import theme from "./theme-config/config";
 
+
 export default function App() {
     // ignore warnings that start in a string that matchs any of
     // the ones in the array

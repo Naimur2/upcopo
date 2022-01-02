@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ForgotPasswordScreen from "./auth-screens/ForgotPasswordScreen";
 import EnterCodeScreen from "./auth-screens/EnterCodeScreen";
 import ResetPasswordScreen from "./auth-screens/ResetPasswordScreen";
+import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 
 const Stack = createNativeStackNavigator();
 export default function AuthRoute() {
