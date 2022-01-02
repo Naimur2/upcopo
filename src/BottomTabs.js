@@ -2,12 +2,13 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import Main from "./drawer-screens/Main";
-import DrawerNavigator from "./DrawerNavigator";
+
 import HomeRoute from "./HomeRoute";
 import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import Messaging from "./user-screens/messaging/Messaging";
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 import Icon from "./utility/Icon";
+
 
 const Tab = createBottomTabNavigator();
 
@@ -61,7 +62,7 @@ export default function BottomTabs() {
                 <Tab.Screen name="Loved" component={LovedHouses} />
                 <Tab.Screen name="Search" component={SearchScreen} />
                 <Tab.Screen name="Messages" component={Messaging} />
-                <Tab.Screen name="User"  options={{ headerShown: false }} component={HomeRoute} />
+                <Tab.Screen name="User"  options={{ headerShown: false }} component={Main} />
                 
             </Tab.Navigator>
         

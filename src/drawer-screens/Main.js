@@ -1,8 +1,14 @@
 import { Text, VStack } from "native-base";
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
 
 export default function Main() {
-  
+    const navigation =useNavigation();
+    let clean = false;
+    React.useEffect(() => {
+        navigation.openDrawer();
+        return () => !clean;
+    }, [navigation])
     return (
         <VStack
             alignItems={"center"}
