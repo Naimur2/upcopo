@@ -10,11 +10,19 @@ export default function DrawerNavigator() {
     return (
         <NavigationContainer>
             <Drawer.Navigator
+                drawerContent={() => <Text>Hello</Text>}
                 screenOptions={{
-                    headerShown: false,
+                    drawerStyle: {
+                        backgroundColor: "#f9f9f9",
+                        width: 300,
+                    },
                 }}
             >
-                <Drawer.Screen name="Bottom" component={BottomTabs} />
+                <Drawer.Screen
+                    options={{ headerShown: false }}
+                    name="Bottom"
+                    component={BottomTabs}
+                />
             </Drawer.Navigator>
         </NavigationContainer>
     );

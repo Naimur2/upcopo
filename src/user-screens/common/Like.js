@@ -1,6 +1,6 @@
 import { Pressable } from "native-base";
 import React from "react";
-import Icon from "../../../../utility/Icon";
+import Icon from "../../utility/Icon";
 
 export default function Like({ onPress, ...rest }) {
     return (

@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "../../../../utility/Card";
+import Card from "../../../utility/Card";
 import FooterContainer from "./FooterContainer";
 import ImageContainer from "./ImageContainer";
 

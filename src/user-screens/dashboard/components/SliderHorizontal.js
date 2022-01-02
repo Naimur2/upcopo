@@ -1,7 +1,7 @@
 import { HStack, ScrollView } from "native-base";
 import React from "react";
 import { Image as RnImage } from "react-native";
-import TrendyHouse from "./TrendyHouses/TrendyHouses";
+import TrendyHouse from "./TrendyHouses";
 
 const sourceUri = "../../../../assets/images";
 
