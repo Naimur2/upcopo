@@ -10,12 +10,13 @@ import PlaceBidAction from "./user-screens/common/PlaceBidAction";
 import Messaging from "./user-screens/messaging/Messaging";
 import BottomTabs from "./BottomTabs";
 import DrawerNavigator from "./DrawerNavigator";
+import AuthRoute from "./AuthRoute";
 
 export default function index() {
     // authentication  will be done here
     return (
         <ThemeConfig>
-            <DrawerNavigator />
+            <AuthRoute />
         </ThemeConfig>
     );
 }

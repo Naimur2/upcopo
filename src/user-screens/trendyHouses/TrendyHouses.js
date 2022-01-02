@@ -98,26 +98,6 @@ export default function TopSeller() {
     return (
         <ScrollView px={4} py={4}>
             <HStack
-                justifyContent={"space-between"}
-                w="100%"
-                py={2}
-                alignItems={"center"}
-            >
-                <Icon name={"left-arrow"} size={24} />
-                <HStack alignItems={"center"}>
-                    <Image w={6} h={6} source={{ uri: flashUri }} alt="flash" />
-                    <Text
-                        ml={2}
-                        fontSize={21}
-                        fontWeight={500}
-                        color={"#3D454A"}
-                        fontFamily={"body"}
-                    >
-                        lklk
-                    </Text>
-                </HStack>
-            </HStack>
-            <HStack
                 flexWrap={"wrap"}
                 my={2}
             >
