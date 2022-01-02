@@ -11,7 +11,7 @@ import Icon from "./utility/Icon";
 
 const Tab = createBottomTabNavigator();
 
-export default function BottomTabs({navigation}) {
+export default function BottomTabs() {
     return (
         
             <Tab.Navigator
@@ -33,7 +33,6 @@ export default function BottomTabs({navigation}) {
                         }
                          else if (route.name === "User") {
                             iconName = focused ? "user" : "user-outline";
-                            return <Icon onPress={()=>console.log('Hello')}  name={iconName} size={22} color={color} />
 
                         }
                         // You can return any component that you like here!
@@ -62,7 +61,7 @@ export default function BottomTabs({navigation}) {
                 <Tab.Screen name="Loved" component={LovedHouses} />
                 <Tab.Screen name="Search" component={SearchScreen} />
                 <Tab.Screen name="Messages" component={Messaging} />
-                <Tab.Screen name="User"  options={{ headerShown: false }} component={Main} />
+                <Tab.Screen name="User"  options={{ headerShown: false }} component={HomeRoute} />
                 
             </Tab.Navigator>
         

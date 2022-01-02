@@ -1,7 +1,7 @@
 import { Text, VStack } from "native-base";
 import React from "react";
 
-export default function Main({}) {
+export default function Main() {
   
     return (
         <VStack

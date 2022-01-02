@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
+import Notifications from "./user-screens/notifications/Notifications";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
 
@@ -22,6 +23,7 @@ export default function HomeRoute() {
                 component={UserProfile}
             />
             <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
+            <Stack.Screen name="Notifications" component={Notifications} />
         </Stack.Navigator>
     );
 }

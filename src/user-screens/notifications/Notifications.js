@@ -3,7 +3,7 @@ import React from "react";
 import Card from '../../utility/Card';
 
 
-export default function Notification() {
+export default function Notifications() {
 
     return (
         <Stack>
