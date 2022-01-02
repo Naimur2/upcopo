@@ -1,6 +1,6 @@
 import { HStack, Text, useDisclose, VStack } from "native-base";
 import React from "react";
-import UtilityBtn from "../../../../utility/UtilityBtn";
+import UtilityBtn from "../../../utility/UtilityBtn";
 
 export default function FooterContainer({currentBid}) {
     const { isOpen, onOpen, onClose } = useDisclose()

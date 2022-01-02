@@ -1,7 +1,7 @@
 import { Box, HStack, Image, Text } from "native-base";
 import React from "react";
-import Counter from "../../../common/Counter";
-import Like from "../../../common/Like";
+import Counter from "../../common/Counter";
+import Like from "../../common/Like";
 
 export default function ImageContainer({
     deadline,
