@@ -15,7 +15,7 @@ export default function House() {
                 alt={'houseName'}
                 position={"relative"}
             />
-         
+
             <HStack
                 justifyContent={"space-between"}
                 alignItems={"center"}
@@ -38,7 +38,7 @@ export default function House() {
             </HStack>
 
 
-            
+
             <HStack
                 justifyContent={"space-between"}
                 alignItems={"center"}
@@ -98,6 +98,7 @@ export default function House() {
                     </Text>
                 </HStack>
             </HStack>
+        
 
 
 
