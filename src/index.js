@@ -5,6 +5,7 @@ import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
 import UserRoute from "./HomeRoute";
+import OtherUsersProfile from './user-screens/otherUsersProfile/OtherUsersProfile'
 
 import PlaceBidAction from "./user-screens/common/PlaceBidAction";
 import Messaging from "./user-screens/messaging/Messaging";
@@ -16,7 +17,7 @@ export default function index() {
     // authentication  will be done here
     return (
         <ThemeConfig>
-            <DrawerNavigator/>
+            <OtherUsersProfile/>
         </ThemeConfig>
     );
 }
