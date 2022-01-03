@@ -34,6 +34,7 @@ export default function OtherUsersProfileBottom() {
             imgAlt:'img6'
         },
     ]
+    //hello
     return(
         <ScrollView>
             <HStack 
