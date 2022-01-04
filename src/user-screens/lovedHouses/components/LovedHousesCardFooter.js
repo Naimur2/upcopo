@@ -8,14 +8,22 @@ const LovedHousesCardFooter = ({ onPlaceBid,price }) => (
                     <IconWithText
                         iconName="etherium"
                         text={price}
-                        iconColor={"#52B69A"}
+                        iconColor={"#3D454A"}
                         textStyle={{
                             fontWeight: 700,
                             fontFamily: "body",
-                            color: "#52B69A",
+                            color: "#3D454A",
                         }}
                     />
-                    <UtilityBtn title={"Place a Bid"} onPress={onPlaceBid} />
+                    <UtilityBtn 
+                    titleStyle={{
+                        fontWeight: 600,
+                        fontFamily: "body",
+                        fontSize:16,
+                        
+                      
+                    }}
+                    title={"Place a Bid"} onPress={onPlaceBid} />
                 </HStack>
 
 );
