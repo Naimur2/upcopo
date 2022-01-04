@@ -1,46 +1,69 @@
-import React, { useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { Formik } from "formik";
 import { Stack } from "native-base";
+import React, { useState } from "react";
+import * as Yup from "yup";
+import FormInput from "../../utility/FormInput";
 import UtilityBtn from "../../utility/UtilityBtn";
 import FormCheckBox from "../common/FormCheckBox";
 import FormFooter from "../common/FormFooter";
-import FormInput from "../../utility/FormInput";
-import * as Yup from "yup";
 
-import { useNavigation } from "@react-navigation/native";
-import { Formik } from "formik";
 
 export default function LoginForm() {
     const navigation = useNavigation();
     const [isPassword, setIsPassword] = useState(true);
+    const [reminedMe, setReminedMe] = useState(true);
 
     const LoginSchema = Yup.object().shape({
-        name: Yup.string().required("Required"),
-        password: Yup.string().required("Required"),
+        username: Yup.string().required("Username is required."),
+        password: Yup.string().required("Password is required."),
     });
 
-    const getButtonVariant = (errors) =>
-        Object.keys(errors).length > 0 ? "disabled" : "";
+    const submitHandler=(values)=>{
+        const loginValues={
+            ...values,
+            reminedMe,
+        }
+        console.log(loginValues)
+    }
+
+    const getButtonVariant = (errors) => {
+        console.log(errors);
+        if (errors.username && errors.password) {
+            return "disabled";
+        }
+        return "";
+    };
 
     return (
         <Formik
             validationSchema={LoginSchema}
-            initialValues={{ name: "", password: "" }}
-            onSubmit={(values) => console.log(values)}
+            initialValues={{ username: "", password: "" }}
+            onSubmit={submitHandler}
         >
-            {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+            {({
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                values,
+                errors,
+            }) => (
                 <Stack space="3">
                     <FormInput
-                        value={values.name}
-                        onChangeText={handleChange("name")}
-                        onBlur={handleBlur("name")}
-                        placeHolder={"Name"}
+                        value={values.username}
+                        onChangeText={handleChange("username")}
+                        onBlur={handleBlur("username")}
+                        placeHolder={"Username"}
                         leftIcon={"profile"}
+                        error={errors && errors.username}
                     />
                     <FormInput
                         value={values.password}
+                        focused={true}
                         onChangeText={handleChange("password")}
                         onBlur={handleBlur("password")}
                         placeHolder={"Password"}
+                        error={errors && errors.password}
                         leftIcon={"lock"}
                         rightIcon={
                             values.password.length > 0 &&
@@ -53,14 +76,17 @@ export default function LoginForm() {
                         checkBoxText={"Remember Me"}
                         secondaryText={"Forget password ?"}
                         onForgetPress={() => navigation.navigate("ForgotPass")}
+                        isChecked={reminedMe}
+                        onChange={()=> setReminedMe(prev=>!prev) }
                     />
                     <UtilityBtn
                         mt="8%"
                         varient={getButtonVariant(errors)}
                         title={"Log In"}
                         onPress={handleSubmit}
-                        disabled={getButtonVariant(errors)}
+                        // disabled={getButtonVariant(errors)}
                     />
+
                     <FormFooter
                         bottomText={" Didn’t have an account?"}
                         linkText={"Sign Up"}

@@ -18,6 +18,7 @@ export default function FormInput({
     isFullWidth,
     leftElement,
     required,
+    isInvalid,
     ...rest
 }) {
     const placeHolderText = `${placeHolder} ${required ? "*" : ""}`;
@@ -45,7 +46,7 @@ export default function FormInput({
     ) : null;
 
     return (
-        <FormControl>
+        <FormControl isInvalid={error}>
             <Stack>
                 <Input
                     value={value}
@@ -66,10 +67,11 @@ export default function FormInput({
                     InputLeftElement={leftElement || iconLeft}
                     InputRightElement={iconRight}
                     isFullWidth={isFullWidth}
+                    _invalid={{ borderColor: "#3D454A" }}
                     {...rest}
                 />
                 {error && (
-                    <FormControl.HelperText>{error}</FormControl.HelperText>
+                    <FormControl.HelperText fontFamily={'body'} fontWeight={400} mt={0} py={1} color={'#EB5757'} bg="#FAECEC" >{error}</FormControl.HelperText>
                 )}
             </Stack>
         </FormControl>
