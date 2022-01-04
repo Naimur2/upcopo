@@ -13,6 +13,7 @@ import BottomTabs from "./BottomTabs";
 import DrawerNavigator from "./DrawerNavigator";
 
 import AuthRoute from "./AuthRoute";
+import Search from './user-screens/search/Search'
 
 
 import HouseBody from './user-screens/house/components/HouseBody'
@@ -22,7 +23,7 @@ export default function index() {
     // authentication  will be done here
     return (
         <ThemeConfig>
-            <DrawerNavigator/>
+           <Search/>
         </ThemeConfig>
     );
 }

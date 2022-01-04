@@ -1,12 +1,12 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
+import House from "./user-screens/house/House";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
 import Notifications from "./user-screens/notifications/Notifications";
+import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
-import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
-import House from "./user-screens/house/House";
 
 
 const Stack = createNativeStackNavigator();
