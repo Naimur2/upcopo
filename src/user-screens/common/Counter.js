@@ -1,7 +1,7 @@
 import { Stack, Text } from "native-base";
 import React, { useEffect, useState } from "react";
 
-export default function Counter({ deadline }) {
+export default function Counter({ deadline,...rest }) {
     const [remainingTime, setRemainingTime] = useState("");
     const [minWidth, setMinWidth] = useState(85);
 
@@ -56,14 +56,16 @@ export default function Counter({ deadline }) {
     return (
         <Stack
             alignItems={"center"}
-            py={1}
-            px={2}
+            // py={1}
+            // px={2}
             minW={minWidth}
             borderRadius={12}
-            position={"absolute"}
-            top={3}
-            left={3}
+            justifyContent={'center'}
+            height={8}
+            // top={3}
+            // left={3}
             bg={"rgba(255, 255, 255, 0.85)"}
+            {...rest}
         >
             <Text fontFamily={"body"} color={"dark.100"} fontWeight={500}>
                 {remainingTime}

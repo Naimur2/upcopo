@@ -21,7 +21,7 @@ export default function ImageContainer({
                 alt={houseName}
                 position={"relative"}
             />
-            <Counter deadline={deadline} />
+            <Counter deadline={deadline} position={"absolute"} mt={4} ml={4} />
 
             <HStack
                 justifyContent={"space-between"}

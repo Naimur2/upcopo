@@ -10,7 +10,7 @@ export default function DrawerNavigator() {
     return (
         <NavigationContainer>
             <Drawer.Navigator
-                drawerContent={() => <Text>Hello</Text>}
+                drawerContent={() => <Main />}
                 screenOptions={{
                     drawerStyle: {
                         backgroundColor: "#f9f9f9",
