@@ -12,7 +12,7 @@ export default function IconWithText({
     containerStyle,
 }) {
     return (
-        <HStack space={1.5}  alignItems={"center"} {...containerStyle}>
+        <HStack space={1.5} alignItems={"center"} {...containerStyle}>
             <Icon
                 name={iconName}
                 size={20}
