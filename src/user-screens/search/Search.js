@@ -1,14 +1,13 @@
-import { Stack } from 'native-base';
+import { Stack } from "native-base";
 import React from "react";
-import SearchBody from './components/SearchBody';
-import SearchHeader from './components/SearchHeader';
+import SearchBody from "./components/SearchBody";
+import SearchHeader from "./components/SearchHeader";
 
-export default function Search(){
-    return(
+export default function Search() {
+    return (
         <Stack>
-            <SearchHeader/>
+            <SearchHeader />
             <SearchBody />
-
         </Stack>
     );
 }
