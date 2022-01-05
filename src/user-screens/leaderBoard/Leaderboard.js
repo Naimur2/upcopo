@@ -6,6 +6,7 @@ import CardBody from "./components/CardBody";
 import CardFooter from "./components/CardFooter";
 import CardImage from "./components/CardImage";
 import CardTitle from "./components/CardTitle";
+import { useNavigation } from "@react-navigation/native";
 
 const source = "../../../assets/images/";
 
@@ -114,11 +115,21 @@ const LEADERS = [
 ];
 
 export default function LeaderBoard() {
+    const navigation = useNavigation();
+
     return (
-        <ScrollView showsHorizontalScrollIndicator={'false'} showsVerticalScrollIndicator={false} bg="#f9f9f9">
+        <ScrollView
+            showsHorizontalScrollIndicator={"false"}
+            showsVerticalScrollIndicator={false}
+            bg="#f9f9f9"
+        >
             <VStack p={4} space={2}>
                 {LEADERS.map((leader, index) => (
-                    <Card p={4} key={leader._id}>
+                    <Card
+                        p={4}
+                        key={leader._id}
+                        onPress={() => navigation.navigate("OthersProfile")}
+                    >
                         <HStack alignItems={"center"} space={3}>
                             <CardTitle value={index + 1} />
                             <CardImage

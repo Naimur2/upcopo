@@ -2,6 +2,7 @@ import React from "react";
 import Card from "../../../utility/Card";
 import FooterContainer from "./FooterContainer";
 import ImageContainer from "./ImageContainer";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function TrendyHouses({
@@ -12,8 +13,9 @@ export default function TrendyHouses({
     onLike,
     currentBid,
 }) {
+    const navigation = useNavigation();
     return (
-        <Card w={250}>
+        <Card w={250} onPress={()=>navigation.navigate('House')}>
             <ImageContainer
                 deadline={deadline}
                 image={image}

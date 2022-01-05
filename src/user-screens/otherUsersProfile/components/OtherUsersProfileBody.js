@@ -60,15 +60,14 @@ export default function OtherUsersProfileBody() {
                     ))}
                 </HStack>
             </ScrollView>
-            <Box px={4} mt={4}>
-                <Card p={4}>
-                    <HStack justifyContent={"space-between"}>
-                        <Icon name={"menu"} size={20} color={"#11181C"} />
-                        <Icon name={"activity"} size={20} color={"#889096"} />
-                        <Icon name={"tag"} size={20} color={"#889096"} />
-                    </HStack>
-                </Card>
-            </Box>
+
+            <Card mx={4} p={4} mt={4}>
+                <HStack justifyContent={"space-between"}>
+                    <Icon name={"menu"} size={22} color={"#11221C"} />
+                    <Icon name={"activity"} size={22} color={"#889096"} />
+                    <Icon name={"tag"} size={22} color={"#889096"} />
+                </HStack>
+            </Card>
         </VStack>
     );
 }
