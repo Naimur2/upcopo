@@ -22,7 +22,7 @@ export default function index() {
     // authentication  will be done here
     return (
         <ThemeConfig>
-            <OtherUsersProfile/>
+            <DrawerNavigator/>
         </ThemeConfig>
     );
 }

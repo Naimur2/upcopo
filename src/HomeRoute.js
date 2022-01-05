@@ -5,6 +5,8 @@ import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
 import Notifications from "./user-screens/notifications/Notifications";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
+import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +26,7 @@ export default function HomeRoute() {
             />
             <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
             <Stack.Screen name="Notifications" component={Notifications} />
+            <Stack.Screen name="OtherUser" component={OtherUsersProfile} />
         </Stack.Navigator>
     );
 }

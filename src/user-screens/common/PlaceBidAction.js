@@ -1,13 +1,13 @@
 import React from "react"
 import {
-  Button,
+
   Actionsheet,
-  useDisclose,
+
   Text,
   Box,
 } from "native-base"
-export default function PlaceBidAction() {
-  const { isOpen, onOpen, onClose } = useDisclose()
+export default function PlaceBidAction(isOpen, onOpen, onClose) {
+ 
   return (
     <>
       <Actionsheet isOpen={isOpen} onClose={onClose}>

@@ -30,16 +30,6 @@ export default function BottomTabs() {
                         iconName = focused ? "message" : "message-outlline";
                     } else if (route.name === "Search") {
                         iconName = "search";
-                        return (
-                            <Icon
-                                borderRadius={50}
-                                color={"#fff"}
-                                bg="#52B69A"
-                                p="3"
-                                name={iconName}
-                                size={22}
-                            />
-                        );
                     } else if (route.name === "User") {
                         iconName = isDrawerOpen ? "user" : "user-outline";
                         return <Icon name={iconName} size={22} color={color} />;
