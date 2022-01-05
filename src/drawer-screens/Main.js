@@ -1,19 +1,20 @@
-import { Text, VStack } from "native-base";
+import { Stack } from "native-base";
 import React from "react";
+import MainBody from "./components/MainBody";
+import MainFooter from "./components/MainFooter";
+import MainHeader from "./components/MainHeader";
 
 
 export default function Main() {
 
     return (
-     
-            <Text
-                fontWeight={700}
-                fontFamily={"body"}
-                fontSize={20}
-                color={"dark.100"}
-            >
-                Naimur Rahaman
-            </Text>
+     <Stack>
+         <MainHeader />
+         <MainBody />
+         <MainFooter />
+         
+
+     </Stack>
      
     );
 }

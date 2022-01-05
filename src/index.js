@@ -1,10 +1,6 @@
 import React from "react";
 import ThemeConfig from "../theme-config";
-import Search from './user-screens/search/Search';
-
-
-
-
+import DrawerNavigator from "./DrawerNavigator";
 
 
 
@@ -12,7 +8,7 @@ export default function index() {
     // authentication  will be done here
     return (
         <ThemeConfig>
-           <Search/>
+            <DrawerNavigator />
         </ThemeConfig>
     );
 }
