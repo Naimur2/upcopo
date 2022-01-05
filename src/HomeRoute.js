@@ -8,7 +8,6 @@ import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfil
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
 
-
 const Stack = createNativeStackNavigator();
 
 export default function HomeRoute() {
@@ -28,7 +27,19 @@ export default function HomeRoute() {
             <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
-            <Stack.Screen name="House" component={House} />
+            <Stack.Screen
+                options={{
+                    headerTintColor: "white",
+                    headerTransparent: true,
+                    headerTitleStyle: {
+                        color: "#fff",
+                    },
+                    headerShadowVisible: false,
+                    headerTitle: "",
+                }}
+                name="House"
+                component={House}
+            />
         </Stack.Navigator>
     );
 }
