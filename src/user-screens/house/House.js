@@ -13,8 +13,8 @@ export default function House() {
     return (
         <ScrollView>
             <Stack space={10}>
-                <VStack>
-                    <VStack space={40} p={6} >
+                <VStack >
+                    <VStack space={140} mt={'7%'} p={6}>
                         <HStack justifyContent={"space-between"}>
                             <VStack>
                                 <Text>Owned By Luckas </Text>
@@ -26,7 +26,7 @@ export default function House() {
                             <VStack space="0.5">
                                 <Text
                                     fontFamily={"body"}
-                                    fontSize={20}
+                                    fontSize={22}
                                     fontWeight={600}
                                 >
                                     Turn Key House
@@ -36,7 +36,7 @@ export default function House() {
                                     textStyle={{
                                         color: "#D7DBDF",
                                         textTransform: "uppercase",
-                                        fonSize: 16,
+                                        fonSize: 15,
                                     }}
                                     iconStyle={{ py: 1, color: "#D7DBDF" }}
                                     containerStyle={{
@@ -46,7 +46,7 @@ export default function House() {
                                     text="1523 N 106th St, Mesa, AZ 85207"
                                 />
                             </VStack>
-                            <VStack space="2" maxW={'25%'}>
+                            <VStack space="2" maxW={"25%"}>
                                 <Like alignSelf={"flex-end"} />
                                 <Text
                                     fontFamily={"body"}
@@ -57,8 +57,17 @@ export default function House() {
                                 </Text>
                             </VStack>
                         </HStack>
-                </VStack>
-                    <Image position={'absolute'} zIndex={-1} height={'full'} w={'full'} alt="1523 N 106th St, Mesa, AZ 85207" source={{uri:'https://cdna.artstation.com/p/assets/video_clips/images/035/100/932/smaller_square/ava-antonia-thumb.jpg?1614103270'}} />
+                    </VStack>
+                    <Image
+                        position={"absolute"}
+                        zIndex={-1}
+                        height={"full"}
+                        w={"full"}
+                        alt="1523 N 106th St, Mesa, AZ 85207"
+                        source={{
+                            uri: "https://cdna.artstation.com/p/assets/video_clips/images/035/100/932/smaller_square/ava-antonia-thumb.jpg?1614103270",
+                        }}
+                    />
                 </VStack>
                 <VStack px={4} space={4}>
                     <Stack>
@@ -76,24 +85,45 @@ export default function House() {
                             fontSize={16}
                             color={"#7E868C"}
                         >
-                            Simple house with modern architecture and cool interiors
-                            located in the city crnter making easier for you to
-                            access
+                            Simple house with modern architecture and cool
+                            interiors located in the city crnter making easier
+                            for you to access
                         </Text>
                         <HStack space="10" py={3}>
                             <IconWithText
-                                iconStyle={{ bg: "#fff", p: 2.5, borderRadius: 10 }}
+                                iconStyle={{
+                                    bg: "#fff",
+                                    p: 2.5,
+                                    borderRadius: 10,
+                                }}
                                 iconName={"bed"}
                                 text={"6 Bedrooms"}
+                                textStyle={{
+                                    fontWeight: 500,
+                                    color: "#3D454A",
+                                }}
                             />
                             <IconWithText
-                                iconStyle={{ bg: "#fff", p: 2.5, borderRadius: 10 }}
+                                iconStyle={{
+                                    bg: "#fff",
+                                    p: 2.5,
+                                    borderRadius: 10,
+                                }}
                                 iconName={"bath"}
                                 text={"3 Bath"}
+                                textStyle={{
+                                    fontWeight: 500,
+                                    color: "#3D454A",
+                                }}
                             />
                         </HStack>
                     </Stack>
-                    <VStack w="full" h={110} borderRadius={10} overflow={"hidden"}>
+                    <VStack
+                        w="full"
+                        h={110}
+                        borderRadius={10}
+                        overflow={"hidden"}
+                    >
                         <Image
                             resizeMode="cover"
                             alt={"map"}
