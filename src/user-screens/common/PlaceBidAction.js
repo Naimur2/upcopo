@@ -3,7 +3,7 @@ import React from "react";
 export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
     return (
         <Actionsheet  isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-            <Actionsheet.Content>
+            <Actionsheet.Content bg={'amber.100'}>
                 <Box w="100%" h={60} px={4} justifyContent="center">
                     <Text
                         fontSize="16"
@@ -15,11 +15,11 @@ export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
                         Albums
                     </Text>
                 </Box>
-                <Actionsheet.Item>Delete</Actionsheet.Item>
+                {/* <Actionsheet.Item>Delete</Actionsheet.Item>
                 <Actionsheet.Item>Share</Actionsheet.Item>
                 <Actionsheet.Item>Play</Actionsheet.Item>
                 <Actionsheet.Item>Favourite</Actionsheet.Item>
-                <Actionsheet.Item>Cancel</Actionsheet.Item>
+                <Actionsheet.Item>Cancel</Actionsheet.Item> */}
             </Actionsheet.Content>
         </Actionsheet>
     );
