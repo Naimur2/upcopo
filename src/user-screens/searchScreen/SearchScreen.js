@@ -1,6 +1,6 @@
 import { Stack, Text, VStack } from "native-base";
 import React from "react";
-import SearchArea from "./components/SearchArea";
+import SearchArea from './components/SearchArea';
 import SearchResultTabView from "./components/SearchResultTabView";
 
 export default function SearchScreen() {
