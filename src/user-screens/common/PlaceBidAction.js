@@ -1,25 +1,30 @@
-import { Actionsheet, Box, Text } from "native-base";
+import { Actionsheet, Box, HStack, Text } from "native-base";
 import React from "react";
+import Icon from '../../utility/Icon';
+import PaceBidActionCard from './placeBidActionComponents/PaceBidActionCard';
 export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
     return (
-        <Actionsheet  isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-            <Actionsheet.Content>
+        <Actionsheet isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
+            <Actionsheet.Content bg={'#F9F9F9'}>
                 <Box w="100%" h={60} px={4} justifyContent="center">
-                    <Text
-                        fontSize="16"
-                        color="gray.500"
-                        _dark={{
-                            color: "light.400",
-                        }}
-                    >
-                        Albums
-                    </Text>
+                    <HStack justifyContent={'space-between'}>
+                        <Text
+                            fontSize="16"
+                            color="#3D454A"
+                            fontWeight={'500'}
+                            fontFamily={'body'}
+                        >
+                            History of bid
+                        </Text>
+                        <Icon name={'x'} size={20} color={'#7E868C'} />  
+
+                    </HStack>
+                   
+
                 </Box>
-                <Actionsheet.Item>Delete</Actionsheet.Item>
-                <Actionsheet.Item>Share</Actionsheet.Item>
-                <Actionsheet.Item>Play</Actionsheet.Item>
-                <Actionsheet.Item>Favourite</Actionsheet.Item>
-                <Actionsheet.Item>Cancel</Actionsheet.Item>
+                <Actionsheet.Item>
+                <PaceBidActionCard />
+                </Actionsheet.Item>
             </Actionsheet.Content>
         </Actionsheet>
     );
