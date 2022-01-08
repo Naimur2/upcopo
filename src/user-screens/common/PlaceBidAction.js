@@ -2,14 +2,14 @@ import { Actionsheet, Box, Text } from "native-base";
 import React from "react";
 export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
     return (
-        <Actionsheet isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
+        <Actionsheet  isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
             <Actionsheet.Content>
                 <Box w="100%" h={60} px={4} justifyContent="center">
                     <Text
                         fontSize="16"
                         color="gray.500"
                         _dark={{
-                            color: "gray.300",
+                            color: "light.400",
                         }}
                     >
                         Albums

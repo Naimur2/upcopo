@@ -9,18 +9,25 @@ export default function IconWithText({
     iconStyle,
     textColor,
     textStyle,
+    color,
     containerStyle,
 }) {
     return (
-        <HStack space={1.5} alignItems={"center"} {...containerStyle}>
+        <HStack
+            space={1.5}
+            maxW="95%"
+            alignItems="center"
+            {...containerStyle}
+        >
             <Icon
                 name={iconName}
                 size={20}
-                color={iconColor || "#889096"}
+                color={iconColor ||color || "#889096"}
+                py={0.5}
                 {...iconStyle}
             />
             <Text
-                color={textColor || "#687076"}
+                color={textColor || color || "#687076"}
                 fontFamily={"body"}
                 fontSize={16}
                 {...textStyle}

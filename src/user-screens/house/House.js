@@ -36,9 +36,9 @@ export default function House() {
                                     textStyle={{
                                         color: "#D7DBDF",
                                         textTransform: "uppercase",
-                                        fonSize: 15,
+                                        fontSize: 16,
                                     }}
-                                    iconStyle={{ py: 1, color: "#D7DBDF" }}
+                                    iconStyle={{ py: 1, color: "#D7DBDF",size:18 }}
                                     containerStyle={{
                                         maxW: "75%",
                                         alignItems: "flex-start",
