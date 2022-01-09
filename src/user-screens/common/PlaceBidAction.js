@@ -3,7 +3,7 @@ import React from "react";
 import Icon from "../../utility/Icon";
 import KeyBoardView from '../../utility/KeyBoardView';
 import PaceBidActionCard from "./placeBidActionComponents/PaceBidActionCard";
-
+import PlaceBidActionFooter from './placeBidActionComponents/PlaceBidActionFooter';
 const cardData = [
     {
         _id: "1",
@@ -70,6 +70,7 @@ export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
                             />
                         ))}
                     </Stack>
+                    <PlaceBidActionFooter />
                 </KeyBoardView>
             </Actionsheet.Content>
         </Actionsheet>
