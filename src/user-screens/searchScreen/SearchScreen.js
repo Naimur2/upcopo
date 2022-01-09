@@ -1,23 +1,15 @@
-import { Stack, Text, VStack } from "native-base";
+import { Stack, VStack } from "native-base";
 import React from "react";
+import RecentSearches from "./components/RecentSearches";
 import SearchArea from "./components/SearchArea";
-import SearchResultTabView from "./components/SearchResultTabView";
+import { useSelector } from "react-redux";
 
 export default function SearchScreen() {
+    const recentSearch = useSelector((state) => state.recentSearch.searches);
     return (
         <Stack p={4} space={6} h={"full"}>
             <SearchArea />
-            <VStack w="full" h={'full'}>
-                <Text
-                    fontSize={20}
-                    fontWeight={600}
-                    fontFamily={"body"}
-                    color={"#11181C"}
-                >
-                    Recent Searches
-                </Text>
-                <SearchResultTabView />
-            </VStack>
+            {recentSearch.length > 0 && <RecentSearches />}
         </Stack>
     );
 }

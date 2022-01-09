@@ -3,7 +3,14 @@ import React from "react";
 import Icon from "../../../utility/Icon";
 import IconWithText from "../../../utility/IconWithText";
 
-export default function SearchResultCard() {
+export default function SearchResultCard({
+    imageUri,
+    houseName,
+    address,
+    bath,
+    bed,
+    onIconPress
+}) {
     return (
         <HStack
             p="2"
@@ -17,7 +24,7 @@ export default function SearchResultCard() {
                     h="full"
                     alt="house image"
                     source={{
-                        uri: "https://www.interest.co.nz/sites/default/files/feature_images/house-cartoon_0.jpg",
+                        uri: imageUri,
                     }}
                 />
             </Box>
@@ -35,21 +42,21 @@ export default function SearchResultCard() {
                         fontFamily={"body"}
                         color={"#52B69A"}
                     >
-                        House of secret
+                        {houseName}
                     </Text>
-                    <Icon name="x" size={24} color={"#C1C8CD"} />
+                    <Icon onPress={onIconPress} name="x" size={24} color={"#C1C8CD"} />
                 </HStack>
                 <IconWithText
                     iconName="map"
                     textStyle={{
                         fontSize: 14,
                     }}
-                    iconStyle={{ py: 0.5,size:16 }}
+                    iconStyle={{ py: 0.5, size: 16 }}
                     containerStyle={{
                         maxW: "90%",
                         alignItems: "flex-start",
                     }}
-                    text="2972 Westheimer Rd. Santa Ana, Illinois 85486 "
+                    text={address}
                 />
                 <HStack space={6}>
                     <IconWithText
@@ -60,7 +67,7 @@ export default function SearchResultCard() {
                             fontWeight: 400,
                         }}
                         iconStyle={{ size: 18 }}
-                        text="3 Bed"
+                        text={`${bed} Bed`}
                     />
                     <IconWithText
                         iconName="bath-filled"
@@ -70,7 +77,7 @@ export default function SearchResultCard() {
                             fontWeight: 400,
                         }}
                         iconStyle={{ size: 16 }}
-                        text="2 Bath"
+                        text={`${bath} Bath`}
                     />
                 </HStack>
             </VStack>
