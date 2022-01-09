@@ -1,6 +1,5 @@
-import { Box, Center, Pressable,Text } from "native-base";
+import { Box, Center, Pressable, Text } from "native-base";
 import * as React from "react";
-import { Animated, Dimensions, StatusBar } from "react-native";
 import { SceneMap, TabView } from "react-native-tab-view";
 
 const FirstRoute = () => <Center bg={"amber.100"}>This is Tab 1</Center>;
@@ -11,8 +10,6 @@ const ThirdRoute = () => <Center bg={"amber.100"}>This is Tab 3</Center>;
 
 const FourthRoute = () => <Center bg={"amber.100"}>This is Tab 4 </Center>;
 
-const initialLayout = { width: Dimensions.get("window").width };
-
 const renderScene = SceneMap({
     first: FirstRoute,
     second: SecondRoute,
@@ -22,6 +19,7 @@ const renderScene = SceneMap({
 
 export default function TabViewExample() {
     const [index, setIndex] = React.useState(0);
+
     const [routes] = React.useState([
         { key: "first", title: "Tab 1" },
         { key: "second", title: "Tab 2" },
@@ -31,7 +29,7 @@ export default function TabViewExample() {
 
     const renderTabBar = (props) => {
         return (
-            <Box flexDirection="row">
+            <Box flexDirection="row" borderRadius={10} bg={'#fff'} overflow={'hidden'}>
                 {props.navigationState.routes.map((route, i) => {
                     const color = index === i ? "#000000" : "#687076";
                     const borderColor =
@@ -42,18 +40,18 @@ export default function TabViewExample() {
                             borderBottomWidth="3"
                             borderColor={borderColor}
                             flex={1}
-                            bg="#FFFFFF"
+                            // bg="#FFFFFF"
+                            key={i}
                         >
                             <Pressable
                                 p="2"
                                 w="full"
-                                
                                 onPress={() => {
                                     console.log(i);
                                     setIndex(i);
                                 }}
                             >
-                                <Text color={ color }>
+                                <Text textAlign={"center"} color={color}>
                                     {route.title}
                                 </Text>
                             </Pressable>
@@ -70,8 +68,6 @@ export default function TabViewExample() {
             renderScene={renderScene}
             renderTabBar={renderTabBar}
             onIndexChange={setIndex}
-            initialLayout={initialLayout}
-            style={{ marginTop: StatusBar.currentHeight }}
         />
     );
 }

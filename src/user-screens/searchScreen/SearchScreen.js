@@ -1,13 +1,13 @@
 import { Stack, Text, VStack } from "native-base";
 import React from "react";
-import SearchArea from './components/SearchArea';
+import SearchArea from "./components/SearchArea";
 import SearchResultTabView from "./components/SearchResultTabView";
 
 export default function SearchScreen() {
     return (
-        <Stack p={4} space={6} h={'full'}>
+        <Stack p={4} space={6} h={"full"}>
             <SearchArea />
-            <VStack>
+            <VStack w="full" h={'full'}>
                 <Text
                     fontSize={20}
                     fontWeight={600}
@@ -16,8 +16,8 @@ export default function SearchScreen() {
                 >
                     Recent Searches
                 </Text>
+                <SearchResultTabView />
             </VStack>
-            <SearchResultTabView />
         </Stack>
     );
 }
