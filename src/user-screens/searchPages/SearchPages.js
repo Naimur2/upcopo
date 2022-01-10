@@ -58,13 +58,18 @@ export default function SearchPages() {
     };
     return (
         <Stack bg={'#E5E5E5'}>
-            <SearchPagesHeader />
+            
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 data={searchPagesBodyData}
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}
+
+                ListHeaderComponent={
+                        <SearchPagesHeader  key={"1"} />  
+                }
+
             />
            
 
