@@ -13,10 +13,10 @@ export default function SearchPagesBody({
 
 }) {
     return (
-        <Stack>
+        <Stack >
             <Card borderRadius={20} mb="4" mx="4" py={2} px="4">
             <Stack>
-                <Box my={2} w="100%" h={100} borderRadius={15} overflow={'hidden'} position={'relative'}>
+                <Box my={2} w="100%" h={140} borderRadius={15} overflow={'hidden'} position={'relative'}>
                     <Image
                         alt={"card-img"}
                         source={{

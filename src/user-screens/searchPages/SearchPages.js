@@ -31,6 +31,15 @@ export default function SearchPages() {
             address2: 'West Hollywood, CA 90046',
             price: '2.50'
 
+        },
+        {
+            _id:'4',
+            imgUrl: 'https://image.freepik.com/free-vector/isometric-smart-home-concept_1284-38335.jpg',
+            houseName: 'Broadleaf Homes',
+            address1: '2715 La Cuesta Dr',
+            address2: 'West Hollywood, CA 90046',
+            price: '2.50'
+
         }
 
     ]
