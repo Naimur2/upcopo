@@ -2,9 +2,9 @@ import { Stack, Text, VStack } from "native-base";
 import React from "react";
 import Search from "../../../utility/Search";
 
-export default function SearchArea() {
+export default function RecentSearchArea() {
     return (
-        <Stack space="5">
+        <Stack space="5" >
             <VStack>
                 <Text
                     fontSize={22}

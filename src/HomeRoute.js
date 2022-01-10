@@ -14,13 +14,13 @@ export default function HomeRoute() {
     return (
         <Stack.Navigator initialRouteName="DashBoard">
             <Stack.Screen
-                options={{ headerShown: false }}
+                // options={{ headerShown: false }}
                 name="DashBoard"
                 component={DashBoardScreen}
             />
             <Stack.Screen name="TrendyHouses" component={TrendyHouses} />
             <Stack.Screen
-                options={{ headerShown: false }}
+                // options={{ headerShown: false }}
                 name="UserProfile"
                 component={UserProfile}
             />

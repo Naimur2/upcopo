@@ -16,7 +16,7 @@ const RenderScreen = ({ category }) => {
     const searchResults = category === "all" ? recentSearches : searches;
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false}>
+        
             <VStack>
                 {searchResults.map((res) => (
                     <SearchResultCard
@@ -34,7 +34,7 @@ const RenderScreen = ({ category }) => {
                     />
                 ))}
             </VStack>
-        </ScrollView>
+        
     );
 };
 

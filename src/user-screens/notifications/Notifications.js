@@ -22,7 +22,6 @@ export default function Notifications() {
                         <Avatar
                             size={"16"}
                             source={{ uri:'https://image.freepik.com/free-vector/farmer-using-technology-digital-agriculture_53876-113813.jpg' }}
-
                         />
                         <Text color={'#11181C'}
                             fontWeight={'400'}

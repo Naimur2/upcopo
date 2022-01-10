@@ -1,34 +1,33 @@
 import { Avatar, Box, Center, HStack, Image, Stack, Text } from "native-base";
 import React from "react";
-import { Dimensions, Image as RnImage } from "react-native";
+import { Dimensions } from "react-native";
 import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
 import Varified from "../../../utility/Varified";
 
 const windowHeight = Dimensions.get("window").height;
 
-const source = "../../../../assets/images";
-const image52 = require(source + "/image52.png");
-const image52Uri = RnImage.resolveAssetSource(image52).uri;
 
-const panda_05 = require(source + "/panda_05.png");
-const panda_05Uri = RnImage.resolveAssetSource(panda_05).uri;
-
-export default function UserProfileHeader({ route, navigation }) {
+export default function UserProfileHeader({
+    userAvatar,
+    userCoverphoto,
+    name,
+    isVarified
+}) {
     return (
         <Stack>
             <Center>
                 <Box w={"full"} h={windowHeight / 3.5} position={"relative"}>
                     <Image
                         alt={"userId"}
-                        source={{ uri: image52Uri }}
+                        source={{ uri: userCoverphoto }}
                         h={"100%"}
                         w={"100%"}
                     />
                 </Box>
                 <Avatar
                     size={"2xl"}
-                    source={{ uri: panda_05Uri }}
+                    source={{ uri: userAvatar }}
                     position={"absolute"}
                     bottom={-50}
                 />
@@ -51,9 +50,9 @@ export default function UserProfileHeader({ route, navigation }) {
                     color={"#000"}
                     fontWeight={600}
                 >
-                    Jhon Doe
+                    {name}
                 </Text>
-                <Varified h={7} w={7} />
+                {isVarified && <Varified h={7} w={7} />}
             </HStack>
         </Stack>
     );

@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import FormInput from "./FormInput";
 import Icon from "./Icon";
 
 export default function Search({ onSearch,value, showRightIcon, ...rest }) {
+
+    const [showIcon,setShowIcon]=useState(false);
+
+
     return (
         <FormInput
             leftElement={
@@ -17,12 +21,13 @@ export default function Search({ onSearch,value, showRightIcon, ...rest }) {
                     size={16}
                 />
             }
+            onFocus={()=>setShowIcon(prev=>!prev)}
             onChangeText={onSearch}
             placeHolder={"85208,Mesa, Az"}
             type={"text"}
             borderColor={"#fff"}
             py={2.5}
-            rightIcon={showRightIcon && "x"}
+            rightIcon={showIcon && "x"}
             value={value}
             {...rest}
         />
