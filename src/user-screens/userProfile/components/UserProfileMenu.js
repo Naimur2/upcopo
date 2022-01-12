@@ -1,6 +1,5 @@
 import { Box, HStack, VStack } from "native-base";
 import React, { useState } from "react";
-import { Dimensions, Image as RnImage } from "react-native";
 import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
 import Search from "../../../utility/Search";
@@ -22,7 +21,7 @@ export default function UserProfileMenu({ route, navigation }) {
 
     return (
         <VStack p={4} space={4}>
-            <HStack space="3%">
+            <HStack justifyContent={'space-between'}>
                 <Box w="80%">
                     <Search />
                 </Box>
@@ -30,8 +29,8 @@ export default function UserProfileMenu({ route, navigation }) {
                     <Icon color={"#52B69A"} name={"candle"} size={25} />
                 </Card>
             </HStack>
-            <HStack space="3%">
-                <HStack space="4%" w="80%">
+            <HStack justifyContent={'space-between'}>
+                <HStack justifyContent={'space-between'} w="80%">
                     <SelectItem
                         onValueChange={(value) => setService1(value)}
                         selectedValue={service1}

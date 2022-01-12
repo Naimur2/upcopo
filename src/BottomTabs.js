@@ -1,15 +1,14 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { NavigationContainer } from "@react-navigation/native";
+import { useDrawerStatus } from '@react-navigation/drawer';
 import React from "react";
 import Main from "./drawer-screens/Main";
-
-import HomeRoute from "./HomeRoute";
 import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import Messaging from "./user-screens/messaging/Messaging";
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
+import UserRoute from "./UserRoute";
 import Icon from "./utility/Icon";
 
-import { useDrawerStatus } from '@react-navigation/drawer';
+
 
 
 const Tab = createBottomTabNavigator();
@@ -29,7 +28,7 @@ export default function BottomTabs() {
                     } else if (route.name === "Messages") {
                         iconName = focused ? "message" : "message-outlline";
                     } else if (route.name === "Search") {
-                        iconName = "search";
+                        iconName = focused ? "search-filled" : "search";
                     } else if (route.name === "User") {
                         iconName = isDrawerOpen ? "user" : "user-outline";
                         return <Icon name={iconName} size={22} color={color} />;
@@ -52,7 +51,7 @@ export default function BottomTabs() {
             <Tab.Screen
                 options={{ headerShown: false }}
                 name="Home"
-                component={HomeRoute}
+                component={UserRoute}
             />
             <Tab.Screen name="Loved" component={LovedHouses} />
             <Tab.Screen name="Search" component={SearchScreen} />
