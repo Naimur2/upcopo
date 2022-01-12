@@ -10,11 +10,18 @@ import UserProfile from "./user-screens/userProfile/UserProfile";
 
 const Stack = createNativeStackNavigator();
 
-export default function HomeRoute() {
+export default function UserRoute() {
     return (
-        <Stack.Navigator initialRouteName="DashBoard">
+        <Stack.Navigator screenOptions={{
+            headerTransparent: true,
+            headerShadowVisible: false,
+            headerTintColor: "white",
+            headerTitleStyle: {
+                color: "#fff",
+            },
+        }} initialRouteName="DashBoard">
             <Stack.Screen
-                // options={{ headerShown: false }}
+                options={{ headerShown: false }}
                 name="DashBoard"
                 component={DashBoardScreen}
             />
