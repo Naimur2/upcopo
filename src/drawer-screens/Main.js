@@ -1,8 +1,8 @@
 import { Stack } from "native-base";
 import React from "react";
+import MainHeader from "./components/MainHeader";
 import MainBody from "./components/MainBody";
 import MainFooter from "./components/MainFooter";
-import MainHeader from "./components/MainHeader";
 
 
 export default function Main() {
@@ -12,8 +12,6 @@ export default function Main() {
          <MainHeader />
          <MainBody />
          <MainFooter />
-         
-
      </Stack>
      
     );

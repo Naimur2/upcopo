@@ -1,6 +1,6 @@
-import { Image, Stack, Text } from "native-base";
+import { Image, Pressable, Stack, Text } from "native-base";
 import React from "react";
-import { Image as RnImage, TouchableHighlight } from "react-native";
+import { Image as RnImage } from "react-native";
 const imageSrc = require("../../../../assets/images/countryside.jpg");
 
 const imgUri = RnImage.resolveAssetSource(imageSrc).uri;
@@ -12,96 +12,43 @@ export default function ImageSlider() {
             mx={4}
             overflow={"hidden"}
             borderRadius={20}
-            alignItems={'center'}
-            height={145}
+            bg={{
+                linearGradient: {
+                    colors: ["#76C893", "transparent"],
+                    start: [0.2, 0],
+                    end: [1, 0],
+                },
+            }}
         >
-            <Stack
-                position={"relative"}
-                h="full"
-                w="full"
-                space="3"
-                px={4}
-                py={3}
-                bg={{
-                    linearGradient: {
-                        colors: ["#76C893", "transparent"],
-                        start: [0.2, 0],
-                        end: [1, 0],
-                    },
-                }}
-            >
+            <Stack py="3" px={4} space="3">
                 <Text
-                    w="250"
+                    w="220"
                     fontWeight={600}
-                    fontSize={20}
+                    fontSize={18}
                     fontFamily={"body"}
                 >
                     Find a lender who can offer competitive
                 </Text>
-                <TouchableHighlight
-                    style={{
-                        backgroundColor: "#fff",
-                        width: 120,
-                        paddingHorizontal: 10,
-                        paddingVertical: 6,
-                        borderRadius: 10,
-                    }}
-                >
+                <Pressable bg="#fff" maxW={120} px={6} borderRadius={10} py={2}>
                     <Text
                         textAlign={"center"}
                         fontFamily={"body"}
                         color="#52B69A"
                         fontWeight={600}
-                        fontSize={18}
+                        fontSize={16}
                     >
-                        Buy Now
+                        Bid Now
                     </Text>
-                </TouchableHighlight>
+                </Pressable>
             </Stack>
             <Image
                 position={"absolute"}
                 zIndex={-1}
                 source={{ uri: imgUri }}
-                h="100%"
-                w="100%"
+                h="full"
+                w="full"
                 alt="cover image"
             />
         </Stack>
     );
 }
-
-/* <Stack
-                    h="full"
-                    w="full"
-                    space="3"
-                    bg={{
-                        linearGradient: {
-                            colors: ["#76C893", "transparent"],
-                            start: [0.2, 0],
-                            end: [1, 0],
-                        },
-                    }}
-                >
-                    <Text
-                        w="250"
-                        fontWeight={600}
-                        fontSize={21}
-                        fontFamily={"body"}
-                    >
-                        Find a lender who can offer competitive
-                    </Text>
-                    <TouchableHighlight
-                        style={{
-                            backgroundColor: "#fff",
-                            width: 120,
-                            paddingHorizontal:10,
-                            paddingVertical:6,
-                            borderRadius:10
-            
-                        }}
-                    >
-                        <Text textAlign={'center'} fontFamily={'body'} color="#52B69A" fontWeight={600} fontSize={18}>
-                            Buy Now
-                        </Text>
-                    </TouchableHighlight>
-                </Stack> */
