@@ -1,22 +1,24 @@
-import { Text, VStack } from "native-base";
-import React from "react";
+import * as React from 'react';
+import MapView from 'react-native-maps';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
 export default function MapScreen() {
-    return (
-        <VStack
-            alignItems={"center"}
-            justifyContent={"center"}
-            bg="dark.200"
-            h="full"
-        >
-            <Text
-                fontWeight={700}
-                fontFamily={"body"}
-                fontSize={20}
-                color={"light.100"}
-            >
-                MapScreen
-            </Text>
-        </VStack>
-    );
+  return (
+    <View style={styles.container}>
+      <MapView style={styles.map} />
+    </View>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  map: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+  },
+});

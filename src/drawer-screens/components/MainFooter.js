@@ -1,27 +1,19 @@
+import { useNavigation } from "@react-navigation/native";
 import { Button, HStack, Stack, Text } from "native-base";
 import React from "react";
 import Card from "../.././utility/Card";
 import Icon from "../.././utility/Icon";
 
+
 export default function MainFooter() {
+    const navigation = useNavigation();
     const MainFooterGroupButton = ({ btnName, iconName }) => {
         return (
-            <Card borderBottomColor={"#DFE3E6"} borderBottomWidth={1.5}>
+            <Card onPress={()=>navigation.navigate('Home')} borderBottomColor={"#DFE3E6"} borderBottomWidth={1.5}>
                 <HStack alignItems={"center"} justifyContent={"space-between"}>
                     <HStack space={2} alignItems={"center"}>
                         <Icon name={iconName} size={20} color={"#7E868C"} />
-                        <Button
-                            bg={"#fff"}
-                            _text={{
-                                color: "#3D454A",
-                                fontFamily: "body",
-                                fontWeight: "600",
-                                fontSize: "17",
-                            }}
-                            _pressed={{ bg: "#fff" }}
-                        >
-                            {btnName}
-                        </Button>
+                        <Text >{btnName}</Text>
                     </HStack>
                     <Icon name={"arrow-right"} size={20} color={"#7E868C"} />
                 </HStack>
@@ -75,3 +67,11 @@ export default function MainFooter() {
         </Stack>
     );
 }
+
+// bg={"#fff"}
+// _text={{
+//     color: "#3D454A",
+//     fontFamily: "body",
+//     fontWeight: "600",
+//     fontSize: "17",
+// }}
