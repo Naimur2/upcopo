@@ -75,8 +75,8 @@ export default function SearchPagesHeader() {
     })
     const searchResult = filterSearch.map((data, i) => {
         return (
-            <Stack >
-                <Card borderRadius={20} mb="4" mx="4" py={2} px="4" key={i}>
+            <Stack w={'full'} >
+                <Card borderRadius={20} mb="4"  py={2} px="4" key={i}>
                     <Stack>
                         <Box my={2} w="100%" h={140} borderRadius={15} overflow={'hidden'} position={'relative'}>
                             <Image
@@ -186,7 +186,9 @@ export default function SearchPagesHeader() {
             </HStack>
 
 
-            { searchResult}
+            <VStack >
+                {searchResult}
+            </VStack>
         </VStack>
     );
 }
