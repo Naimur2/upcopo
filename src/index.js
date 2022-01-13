@@ -10,7 +10,12 @@ export default function index() {
     return (
         <ThemeConfig>
 
-            <DrawerNavigator />
+            <SearchPages />
+
+          
+
+
+
         </ThemeConfig>
     );
 }

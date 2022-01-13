@@ -1,6 +1,6 @@
 import { FlatList, Stack } from 'native-base';
 import React from 'react';
-import SearchPagesBody from './components/SearchPagesBody';
+//import SearchPagesBody from './components/SearchPagesBody';
 import SearchPagesHeader from './components/SearchPagesHeader';
 
 export default function SearchPages() {
@@ -46,14 +46,17 @@ export default function SearchPages() {
     
     const renderItem = ({ item }) => {
         return (
-            <SearchPagesBody 
+            <Stack>
+
+            </Stack>
+          /** <SearchPagesBody 
             imgUrl={item.imgUrl}
             houseName={item.houseName}
             address1={item.address1}
             address2={item.address2}
             price={item.price}
             
-            />
+            /> */
         );
     };
     return (
@@ -67,7 +70,16 @@ export default function SearchPages() {
                 keyExtractor={(item) => item._id}
 
                 ListHeaderComponent={
-                        <SearchPagesHeader  key={"1"} />  
+                        <SearchPagesHeader 
+                        imgUrl={searchPagesBodyData.imgUrl}
+                        houseName={searchPagesBodyData.houseName}
+                        address1={searchPagesBodyData.address1}
+                        address2={searchPagesBodyData.address2}
+                        price={searchPagesBodyData.price}
+                        _id={searchPagesBodyData._id}
+
+                        
+                        key={"1"} />  
                 }
 
             />
