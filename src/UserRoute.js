@@ -18,6 +18,7 @@ export default function UserRoute() {
             headerTintColor: "white",
             headerTitleStyle: {
                 color: "#fff",
+                textAlign:'center'
             },
         }} initialRouteName="DashBoard">
             <Stack.Screen
