@@ -5,7 +5,7 @@ import Icon from '../../../utility/Icon';
 
 export default function CollectionsBody() {
     return (
-        <VStack bg={'#F9F9F9'} borderTopRadius={50}  >
+        <VStack bg={'#F9F9F9'} borderTopRadius={20}  >
             <VStack px={2} >
                 <Text
                     fontFamily={'body'}

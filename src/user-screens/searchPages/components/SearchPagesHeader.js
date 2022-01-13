@@ -6,6 +6,7 @@ import Search from "../../../utility/Search";
 import SelectItem from "../../../utility/SelectItem";
 
 
+
 const items = [
     { _id: "01", label: "Single items", value: "ux" },
     { _id: "02", label: "Multiple items", value: "design" },
@@ -15,15 +16,18 @@ const items2 = [
     { _id: "02", label: "High to low", value: "h2l" },
 ];
 
+
+
 export default function SearchPagesHeader() {
     let [service1, setService1] = useState(items[0].value);
     let [service2, setService2] = useState(items2[0].value);
+ 
 
     return (
         <VStack p={4} space={4}>
             <HStack space="3%">
                 <Box w="80%">
-                    <Search />
+                    <Search onSearch={e=>setSearch(e.target.value)}/>
                 </Box>
                 <Box justifyContent={"center"} alignItems={"center"} w={"16%"}>
                 <Text
@@ -31,8 +35,6 @@ export default function SearchPagesHeader() {
                         fontWeight={500}
                         fontSize={16}
                         color={'#52B69A'}
-                      
-
                     >
                        Map
                     </Text>

@@ -9,7 +9,7 @@ export default function index() {
     return (
         <ThemeConfig>
 
-            <Collections />
+            <SearchPages />
         </ThemeConfig>
     );
 }

@@ -1,6 +1,6 @@
 import { Box, HStack, Image, VStack } from 'native-base';
 import React from "react";
-//https://image.freepik.com/free-vector/pink-magic-castle_107791-3704.jpg
+
 export default function CollectionsFooter() {
     return (
         <VStack p={2}>
