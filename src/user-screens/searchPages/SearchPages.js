@@ -46,7 +46,7 @@ export default function SearchPages() {
     
     const renderItem = ({ item }) => {
         return (
-            <Stack>
+            <Stack >
 
             </Stack>
           /** <SearchPagesBody 

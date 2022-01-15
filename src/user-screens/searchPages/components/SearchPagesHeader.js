@@ -24,7 +24,7 @@ const items2 = [
 export default function SearchPagesHeader() {
     let [service1, setService1] = useState(items[0].value);
     let [service2, setService2] = useState(items2[0].value);
-    let [search, setSearch] = useState(items2[0].value);
+    let [search, setSearch] = useState('');
 
     const searchPagesBodyData = [
         {
@@ -65,18 +65,23 @@ export default function SearchPagesHeader() {
         }
 
     ]
+    const onSearchHandle=(text)=>{
+        text = setSearch(text);
+    }
+    
 
     const filterSearch = searchPagesBodyData.filter(item => {
         // return item.country==="Bangladesh"
         return (
-            search !== "" ? item.houseName.includes(search) : item
+            search !== "" ? item.houseName.includes(search) : item &&  console.log(item.houseName)
+           
 
         );
     })
     const searchResult = filterSearch.map((data, i) => {
         return (
-            <Stack w={'full'} >
-                <Card borderRadius={20} mb="4"  py={2} px="4" key={i}>
+            <Stack key={i}>
+                <Card borderRadius={20} mb="4" py={2} px="4" >
                     <Stack>
                         <Box my={2} w="100%" h={140} borderRadius={15} overflow={'hidden'} position={'relative'}>
                             <Image
@@ -148,10 +153,11 @@ export default function SearchPagesHeader() {
     })
 
     return (
-        <VStack p={4} space={4}>
+        <VStack  p={4} space={4}>
             <HStack space="3%">
                 <Box w="80%">
-                    <Search onSearch={(text) => setSearch(text)} />
+                    <Search onSearch={onSearchHandle} />
+
                 </Box>
                 <Box justifyContent={"center"} alignItems={"center"} w={"16%"}>
                     <Text
@@ -186,8 +192,9 @@ export default function SearchPagesHeader() {
             </HStack>
 
 
-            <VStack >
+            <VStack  >
                 {searchResult}
+               
             </VStack>
         </VStack>
     );

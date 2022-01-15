@@ -70,6 +70,7 @@ import Icon from "./Icon";
                     _invalid={{ borderColor: "#3D454A" }}
                     ref={ref}
                     {...rest}
+                  
                 />
                 {error && (
                     <FormControl.HelperText
