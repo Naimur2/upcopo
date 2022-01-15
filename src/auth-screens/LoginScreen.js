@@ -4,8 +4,16 @@ import FormTitle from "./common/FormTitle";
 import KeyBoardView from "../utility/KeyBoardView";
 import Screen from "../utility/Screen";
 import LoginForm from "./forms/LoginForm";
+import { useDispatch } from "react-redux";
+import userActions from "../../store/slices/userSlice";
 
 export default function LoginScreen() {
+    const dispatch = useDispatch();
+
+    const formSubmitHandler = (formData) => {
+        dispatch(userActions.login(formData));
+        console.log(formData);
+    };
     return (
         <KeyBoardView>
             <Screen>
@@ -14,7 +22,7 @@ export default function LoginScreen() {
                     subtitle={"Use your oasis account"}
                 />
                 <FormTitle title={"Log in"} />
-                <LoginForm />
+                <LoginForm onFormSubmit={formSubmitHandler} />
             </Screen>
         </KeyBoardView>
     );

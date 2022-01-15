@@ -8,28 +8,28 @@ import UtilityBtn from "../../utility/UtilityBtn";
 import FormCheckBox from "../common/FormCheckBox";
 import FormFooter from "../common/FormFooter";
 
-
-export default function LoginForm() {
+export default function LoginForm({onFormSubmit}) {
+    let clean = false;
     const navigation = useNavigation();
     const [isPassword, setIsPassword] = useState(true);
     const [reminedMe, setReminedMe] = useState(true);
-
+    
     const LoginSchema = Yup.object().shape({
         username: Yup.string().required("Username is required."),
         password: Yup.string().required("Password is required."),
     });
 
-    const submitHandler=(values)=>{
-        const loginValues={
+    const submitHandler = (values) => {
+        const loginValues = {
             ...values,
             reminedMe,
-        }
-        console.log(loginValues)
-    }
+        };
+        onFormSubmit(loginValues)
+       
+    };
 
     const getButtonVariant = (errors) => {
-        console.log(errors);
-        if (errors.username && errors.password) {
+        if (errors.username || errors.password) {
             return "disabled";
         }
         return "";
@@ -41,29 +41,24 @@ export default function LoginForm() {
             initialValues={{ username: "", password: "" }}
             onSubmit={submitHandler}
         >
-            {({
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                values,
-                errors,
-            }) => (
+            {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
                 <Stack space="3">
                     <FormInput
                         value={values.username}
                         onChangeText={handleChange("username")}
-                        onBlur={handleBlur("username")}
+                       
                         placeHolder={"Username"}
                         leftIcon={"profile"}
-                        error={errors && errors.username}
+                        error={errors.username}
+                       
                     />
                     <FormInput
                         value={values.password}
                         focused={true}
                         onChangeText={handleChange("password")}
-                        onBlur={handleBlur("password")}
+                       
                         placeHolder={"Password"}
-                        error={errors && errors.password}
+                        error={errors.password}
                         leftIcon={"lock"}
                         rightIcon={
                             values.password.length > 0 &&
@@ -77,7 +72,7 @@ export default function LoginForm() {
                         secondaryText={"Forget password ?"}
                         onForgetPress={() => navigation.navigate("ForgotPass")}
                         isChecked={reminedMe}
-                        onChange={()=> setReminedMe(prev=>!prev) }
+                        onChange={() => setReminedMe((prev) => !prev)}
                     />
                     <UtilityBtn
                         mt="8%"

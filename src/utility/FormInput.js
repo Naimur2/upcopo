@@ -3,7 +3,7 @@ import React from "react";
 import Icon from "./Icon";
 
 // custom input
-export default function FormInput({
+ const FormInput =React.forwardRef(({
     placeHolder,
     leftIcon,
     rightIcon,
@@ -20,7 +20,7 @@ export default function FormInput({
     required,
     isInvalid,
     ...rest
-}) {
+},ref)=> {
     const placeHolderText = `${placeHolder} ${required ? "*" : ""}`;
 
     const iconLeft = leftIcon ? (
@@ -28,7 +28,7 @@ export default function FormInput({
             onPress={onLeftIconPress}
             ml={4}
             mr={2}
-            color={ leftIconColor || "#889096"}
+            color={leftIconColor || "#889096"}
             size={22}
             name={leftIcon}
         />
@@ -39,7 +39,7 @@ export default function FormInput({
             onPress={onRightIconPress}
             ml={2}
             mr={4}
-            color={ rightIconColor || "#889096"}
+            color={rightIconColor || "#889096"}
             size={22}
             name={rightIcon}
         />
@@ -68,12 +68,25 @@ export default function FormInput({
                     InputRightElement={iconRight}
                     isFullWidth={isFullWidth}
                     _invalid={{ borderColor: "#3D454A" }}
+                    ref={ref}
                     {...rest}
                 />
                 {error && (
-                    <FormControl.HelperText fontFamily={'body'} fontWeight={400} mt={0} py={1} color={'#EB5757'} bg="#FAECEC" >{error}</FormControl.HelperText>
+                    <FormControl.HelperText
+                        fontFamily={"body"}
+                        fontWeight={400}
+                        mt={0}
+                        py={1}
+                        color={"#EB5757"}
+                        bg="#FAECEC"
+                    >
+                        {error}
+                    </FormControl.HelperText>
                 )}
             </Stack>
         </FormControl>
     );
-}
+})
+
+
+export default FormInput

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FormInput from "./FormInput";
 import Icon from "./Icon";
 
-export default function Search({ onSearch,value, showRightIcon, ...rest }) {
+ const Search=React.forwardRef(({ onSearch,value, showRightIcon, ...rest },ref)=> {
 
     const [showIcon,setShowIcon]=useState(false);
 
@@ -29,7 +29,9 @@ export default function Search({ onSearch,value, showRightIcon, ...rest }) {
             py={2.5}
             rightIcon={showIcon && "x"}
             value={value}
+            ref={ref}
             {...rest}
         />
     );
-}
+})
+export default Search
