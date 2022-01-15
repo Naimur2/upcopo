@@ -1,10 +1,12 @@
-import { Box, HStack, Stack, Switch, Text } from 'native-base'
-import React from 'react'
+import { Box, HStack, Stack, Text } from 'native-base'
+import React, { useState } from 'react'
+import ToggleSwitch from 'toggle-switch-react-native'
 import Card from '../.././utility/Card'
 import Icon from '../.././utility/Icon'
 import UtilityBtn from '../.././utility/UtilityBtn'
 
 export default function MainBody() {
+    const [switchIsOn,setSwitchIsOn]=useState(false)
     return (
         <Stack
             bg={'#F9F9F9'}
@@ -55,13 +57,16 @@ export default function MainBody() {
 
                     </HStack>
                     <HStack >
-                        <Switch size={'lg'}
-                            offTrackColor="#889096"
-                            onTrackColor="#52B69A"
-                            offThumbColor="#fff"
-                            onThumbColor="#fff"
+                        <ToggleSwitch
+                            isOn={switchIsOn}
+                            offColor="#C0CBC8"
+                            onColor={'#52B69A'}
+                            animationSpeed={300}
+                        
+                           
+                            size="large"
+                            onToggle={() => setSwitchIsOn((prev) => !prev)}
                         />
-
 
                     </HStack>
                 </HStack>
