@@ -69,6 +69,7 @@ export default function FormInput({
                     isFullWidth={isFullWidth}
                     _invalid={{ borderColor: "#3D454A" }}
                     {...rest}
+                  
                 />
                 {error && (
                     <FormControl.HelperText fontFamily={'body'} fontWeight={400} mt={0} py={1} color={'#EB5757'} bg="#FAECEC" >{error}</FormControl.HelperText>
