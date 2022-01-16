@@ -5,7 +5,7 @@ const imageSrc = require("../../../../assets/images/countryside.jpg");
 
 const imgUri = RnImage.resolveAssetSource(imageSrc).uri;
 
-export default function ImageSlider() {
+export default function Banner() {
     return (
         <Stack
             mb={6}
@@ -29,7 +29,7 @@ export default function ImageSlider() {
                 >
                     Find a lender who can offer competitive
                 </Text>
-                <Pressable bg="#fff" maxW={120} px={6} borderRadius={10} py={2}>
+                <Pressable alignSelf={'flex-start'} bg="#fff"  px={5} borderRadius={10} py={2}>
                     <Text
                         textAlign={"center"}
                         fontFamily={"body"}

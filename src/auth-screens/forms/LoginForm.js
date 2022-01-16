@@ -8,12 +8,12 @@ import UtilityBtn from "../../utility/UtilityBtn";
 import FormCheckBox from "../common/FormCheckBox";
 import FormFooter from "../common/FormFooter";
 
-export default function LoginForm({onFormSubmit}) {
+export default function LoginForm({ onFormSubmit }) {
     let clean = false;
     const navigation = useNavigation();
     const [isPassword, setIsPassword] = useState(true);
-    const [reminedMe, setReminedMe] = useState(true);
-    
+    const [reminedMe, setReminedMe] = useState(false);
+
     const LoginSchema = Yup.object().shape({
         username: Yup.string().required("Username is required."),
         password: Yup.string().required("Password is required."),
@@ -24,8 +24,8 @@ export default function LoginForm({onFormSubmit}) {
             ...values,
             reminedMe,
         };
-        onFormSubmit(loginValues)
-       
+        console.log("submitted");
+        onFormSubmit(loginValues);
     };
 
     const getButtonVariant = (errors) => {
@@ -41,24 +41,24 @@ export default function LoginForm({onFormSubmit}) {
             initialValues={{ username: "", password: "" }}
             onSubmit={submitHandler}
         >
-            {({ handleChange, handleBlur, handleSubmit, values, errors }) => (
+            {({ handleChange, handleBlur, handleSubmit, values, errors,touched }) => (
                 <Stack space="3">
                     <FormInput
                         value={values.username}
+                        onBlur={handleBlur("username")}
                         onChangeText={handleChange("username")}
-                       
                         placeHolder={"Username"}
                         leftIcon={"profile"}
-                        error={errors.username}
-                       
+                        error={errors.username && touched.username}
+                        errorMessage={errors.username}
                     />
                     <FormInput
                         value={values.password}
-                        focused={true}
+                        onBlur={handleBlur("password")}
                         onChangeText={handleChange("password")}
-                       
                         placeHolder={"Password"}
-                        error={errors.password}
+                        error={errors.password && touched.password}
+                        errorMessage={errors.password   }
                         leftIcon={"lock"}
                         rightIcon={
                             values.password.length > 0 &&
@@ -76,10 +76,10 @@ export default function LoginForm({onFormSubmit}) {
                     />
                     <UtilityBtn
                         mt="8%"
-                        varient={getButtonVariant(errors)}
                         title={"Log In"}
                         onPress={handleSubmit}
-                        // disabled={getButtonVariant(errors)}
+                        varient={getButtonVariant(errors)}
+                        disabled={getButtonVariant(errors)}
                     />
 
                     <FormFooter

@@ -9,8 +9,8 @@ import DrawerNavigator from "./DrawerNavigator";
 
 export default function index() {
     // authentication  will be done here
-    const authState = useSelector((state) => state.user);
-    console.log(authState.isAuthenticated);
+    const authState = useSelector((state) => state.auth);
+
     return (
         <ThemeConfig>
             {authState.isAuthenticated ? <DrawerNavigator /> : <AuthRoute />}

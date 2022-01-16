@@ -5,14 +5,13 @@ import KeyBoardView from "../utility/KeyBoardView";
 import Screen from "../utility/Screen";
 import LoginForm from "./forms/LoginForm";
 import { useDispatch } from "react-redux";
-import userActions from "../../store/slices/userSlice";
+import { loginUser } from "../../store/slices/authSlice";
 
 export default function LoginScreen() {
     const dispatch = useDispatch();
 
-    const formSubmitHandler = (formData) => {
-        dispatch(userActions.login(formData));
-        console.log(formData);
+    const formSubmitHandler = async (formData) => {
+        await dispatch(loginUser(formData));
     };
     return (
         <KeyBoardView>

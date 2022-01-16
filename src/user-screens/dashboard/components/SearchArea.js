@@ -11,7 +11,7 @@ export default function SearchArea() {
     return (
         <HStack px="4" my={6}  justifyContent={"space-between"}>
             <Box w="80%">
-                <Search />
+                <Search onFocus={()=>navigation.navigate('SearchHouse')} />
             </Box>
             <Card justifyContent={"center"} alignItems={"center"} w={"16%"}>
                 <Icon color={"#52B69A"} name={"notification"} size={25} />

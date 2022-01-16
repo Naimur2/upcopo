@@ -56,14 +56,10 @@ export default function Counter({ deadline,...rest }) {
     return (
         <Stack
             alignItems={"center"}
-            // py={1}
-            // px={2}
             minW={minWidth}
             borderRadius={10}
             justifyContent={'center'}
             height={10}
-            // top={3}
-            // left={3}
             bg={"rgba(255, 255, 255, 0.85)"}
             {...rest}
         >

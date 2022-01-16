@@ -12,7 +12,7 @@ const RenderScreen = ({ category }) => {
 
     const searches = recentSearches.filter(
         (srearch) => srearch.category === category
-    );
+    )
     const searchResults = category === "all" ? recentSearches : searches;
 
     return (

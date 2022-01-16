@@ -1,11 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "native-base";
 import React from "react";
-import ImageSlider from "./components/ImageSlider";
+import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";
-import TopSeller from "./components/TopSellers";
 import SliderHorizontal from "./components/SliderHorizontal";
-import { useNavigation } from "@react-navigation/native";
+import TopSeller from "./components/TopSellers";
 
 export default function DashBoardScreen() {
     const navigation = useNavigation();
@@ -17,7 +17,7 @@ export default function DashBoardScreen() {
             showsVerticalScrollIndicator={false}
         >
             <SearchArea />
-            <ImageSlider />
+            <Banner />
             <SectionHeader
                 title={"Trendy houses"}
                 imageType={"flash"}

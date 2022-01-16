@@ -1,10 +1,13 @@
 import React from "react";
-import Heading from "./common/Heading";
 import KeyBoardView from "../utility/KeyBoardView";
 import Screen from "../utility/Screen";
+import Heading from "./common/Heading";
 import ResetPasswordForm from "./forms/ResetPasswordForm";
 
 export default function ResetPasswordScreen() {
+    const formSubmitHandler = (data) => {
+        console.log(data);
+    };
     return (
         <KeyBoardView>
             <Screen>
@@ -13,7 +16,7 @@ export default function ResetPasswordScreen() {
                     subtitle={"Enter your new password Now"}
                     maxHW={250}
                 />
-                <ResetPasswordForm />
+                <ResetPasswordForm onFormSubmit={formSubmitHandler} />
             </Screen>
         </KeyBoardView>
     );

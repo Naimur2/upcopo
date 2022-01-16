@@ -10,6 +10,7 @@ import Icon from "./Icon";
     onChangeText,
     value,
     error,
+    errorMessage,
     type,
     onRightIconPress,
     onLeftIconPress,
@@ -81,7 +82,7 @@ import Icon from "./Icon";
                         color={"#EB5757"}
                         bg="#FAECEC"
                     >
-                        {error}
+                        {errorMessage}
                     </FormControl.HelperText>
                 )}
             </Stack>

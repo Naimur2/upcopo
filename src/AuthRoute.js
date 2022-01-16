@@ -1,12 +1,11 @@
-import React from "react";
-import LoginScreen from "./auth-screens/LoginScreen";
-import RegisterScreen from "./auth-screens/RegisterScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
 import ForgotPasswordScreen from "./auth-screens/ForgotPasswordScreen";
-import EnterCodeScreen from "./auth-screens/EnterCodeScreen";
+import LoginScreen from "./auth-screens/LoginScreen";
+import OtpScreen from "./auth-screens/OtpScreen";
+import RegisterScreen from "./auth-screens/RegisterScreen";
 import ResetPasswordScreen from "./auth-screens/ResetPasswordScreen";
-import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 
 const Stack = createNativeStackNavigator();
 export default function AuthRoute() {
@@ -24,7 +23,7 @@ export default function AuthRoute() {
                     name="ForgotPass"
                     component={ForgotPasswordScreen}
                 />
-                <Stack.Screen name="EnterCode" component={EnterCodeScreen} />
+                <Stack.Screen name="SendOtp" component={OtpScreen} />
                 <Stack.Screen
                     name="ResetPassword"
                     component={ResetPasswordScreen}

@@ -1,7 +1,6 @@
 import { HStack, Text, VStack } from "native-base";
 import React, { useState } from "react";
-import UtilityBtn from "../../../utility/UtilityBtn";
-import PlaceBidAction from "../../common/PlaceBidAction";
+import UtilityBtn from "../../../../utility/UtilityBtn";
 
 export default function FooterContainer({ currentBid }) {
     const [isOpen,setIsOpen] =useState(false);
@@ -11,7 +10,7 @@ export default function FooterContainer({ currentBid }) {
     }
 
     return (
-        <HStack py={2} alignItems={"center"} justifyContent={"space-between"}>
+        <HStack  pt={2} alignItems={"center"} justifyContent={"space-between"}>
             <VStack>
                 <Text
                     fontSize={14}
@@ -38,7 +37,7 @@ export default function FooterContainer({ currentBid }) {
                 titleStyle={{ fontSize: 16 }}
                 title="Place a Bid"
             />
-            <PlaceBidAction isOpen={isOpen} onClose={handleAction} />
+           {/* {isOpen && <PlaceBidAction isOpen={isOpen} onClose={handleAction} />} */}
         </HStack>
     );
 }

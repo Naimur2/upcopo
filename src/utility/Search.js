@@ -11,7 +11,7 @@ import Icon from "./Icon";
         <FormInput
             leftElement={
                 <Icon
-                    p="2"
+                    p="1"
                     ml={3}
                     mr={1}
                     borderRadius={50}

@@ -5,6 +5,7 @@ import House from "./user-screens/house/House";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
+import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
 
@@ -35,6 +36,7 @@ export default function UserRoute() {
             <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
+            <Stack.Screen name="SearchHouse" component={SearchScreen} />
             <Stack.Screen
                 options={{
                     headerTintColor: "white",
