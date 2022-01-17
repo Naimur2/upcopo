@@ -74,7 +74,7 @@ export default function SearchPagesHeader() {
     const filterSearch = searchPagesBodyData.filter(item => {
         // return item.country==="Bangladesh"
         return (
-            search !== "" ? item.houseName.includes(search) : item  && console.log(item.houseName)
+            search !== "" ? item.houseName.includes(search) : item // && console.log(item.houseName)
            
 
         );
