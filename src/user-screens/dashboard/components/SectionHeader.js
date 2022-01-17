@@ -1,15 +1,22 @@
+import { HStack, Image, Pressable, Text } from "native-base";
 import React from "react";
-import { Text, Image, HStack, Pressable } from "native-base";
 import { Image as RnImage } from "react-native";
 
 const imageSrcFlash = require("../../../../assets/images/flash.png");
 const imageSrcFire = require("../../../../assets/images/fire.png");
+const imageArmSrc = require("../../../../assets/images/biceps.png");
 
 const flashUri = RnImage.resolveAssetSource(imageSrcFlash).uri;
 const fireUri = RnImage.resolveAssetSource(imageSrcFire).uri;
+const armUri = RnImage.resolveAssetSource(imageArmSrc).uri;
 
 export default function SectionHeader({ title, imageType, onSeAllPress }) {
-    const imgUri = imageType === "fire" ? fireUri : flashUri;
+    
+    const image={
+        arm:armUri,
+        flash:flashUri,
+        fire:fireUri
+    }
 
     return (
         <Pressable
@@ -21,7 +28,7 @@ export default function SectionHeader({ title, imageType, onSeAllPress }) {
             justifyContent={"space-between"}
         >
             <HStack alignItems={"center"}>
-                <Image w={6} h={6} source={{ uri: imgUri }} alt="flash" />
+                <Image w={6} h={6} source={{ uri: image[imageType] }} alt="flash" />
                 <Text
                     ml={2}
                     fontSize={21}

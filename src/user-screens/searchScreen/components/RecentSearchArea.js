@@ -1,18 +1,15 @@
+import { useNavigation } from "@react-navigation/native";
 import { Stack, Text, VStack } from "native-base";
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Search from "../../../utility/Search";
 
 export default function RecentSearchArea() {
     let clean = true;
     const search = useRef();
-    
+    const navigation = useNavigation();
     useEffect(() => {
         search.current.focus();
-        if (clean) {
-            clean = false;
-            return;
-        }
-    }, []);
+    }, [navigation]);
 
     return (
         <Stack space="5">
@@ -35,7 +32,7 @@ export default function RecentSearchArea() {
                 </Text>
             </VStack>
 
-            <Search ref={search} />
+            <Search  ref={search} />
         </Stack>
     );
 }

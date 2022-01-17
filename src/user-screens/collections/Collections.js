@@ -9,7 +9,6 @@ export default function Collections() {
         <ScrollView>
             <Stack>
                 <CollectionsHeader />
-
                 <CollectionsBody />
                 <CollectionsFooter />
             </Stack>

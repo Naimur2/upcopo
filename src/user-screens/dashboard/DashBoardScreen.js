@@ -5,6 +5,7 @@ import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";
 import SliderHorizontal from "./components/SliderHorizontal";
+import TopCollections from "./components/TopCollections";
 import TopSeller from "./components/TopSellers";
 
 export default function DashBoardScreen() {
@@ -27,9 +28,15 @@ export default function DashBoardScreen() {
             <SectionHeader
                 title={"Top Sellers"}
                 imageType={"fire"}
-                onSeAllPress={() => navigation.navigate("LeaderBoard")}
+                onSeAllPress={() => navigation.navigate("TrendyHouses")}
             />
             <TopSeller />
+            <SectionHeader
+                title={"Top Collections"}
+                imageType={"arm"}
+                onSeAllPress={() => navigation.navigate("LeaderBoard")}
+            />
+            <TopCollections />
         </ScrollView>
     );
 }

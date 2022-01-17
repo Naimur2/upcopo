@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState,useRef } from "react";
 import FormInput from "./FormInput";
 import Icon from "./Icon";
 
  const Search=React.forwardRef(({ onSearch,value, showRightIcon, ...rest },ref)=> {
 
     const [showIcon,setShowIcon]=useState(false);
+    
 
 
     return (
@@ -21,7 +22,7 @@ import Icon from "./Icon";
                     size={16}
                 />
             }
-            onFocus={()=>setShowIcon(prev=>!prev)}
+            onBlur={()=> console.log('ggg') }
             onChangeText={onSearch}
             placeHolder={"85208,Mesa, Az"}
             type={"text"}

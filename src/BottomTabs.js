@@ -4,7 +4,7 @@ import React from "react";
 import Main from "./user-screens/drawer-screens/Main";
 import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import Messaging from "./user-screens/messaging/Messaging";
-import SearchScreen from "./user-screens/searchScreen/SearchScreen";
+import SearchPages from "./user-screens/searchPages/SearchPages";
 import UserRoute from "./UserRoute";
 import Icon from "./utility/Icon";
 
@@ -54,7 +54,7 @@ export default function BottomTabs() {
                 component={UserRoute}
             />
             <Tab.Screen name="Loved" component={LovedHouses} />
-            <Tab.Screen name="Search" component={SearchScreen} />
+            <Tab.Screen name="Search" component={SearchPages} />
             <Tab.Screen name="Messages" component={Messaging} />
             <Tab.Screen
                 listeners={({ navigation, route }) => ({
