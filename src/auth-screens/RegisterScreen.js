@@ -6,10 +6,10 @@ import Screen from "../utility/Screen";
 import RegisterForm from "./forms/RegisterForm";
 import { useDispatch } from "react-redux";
 import { registerUser } from "../../store/slices/authSlice";
-import { useNavigation } from "@react-navigation/native";
 
-export default function RegisterScreen() {
-    const navigation = useNavigation();
+
+export default function RegisterScreen({navigation}) {
+
     const dispatch = useDispatch();
     const formSubmitHandler = async (formData) => {
         await dispatch(registerUser(formData));

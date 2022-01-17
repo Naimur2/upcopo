@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { Formik } from "formik";
+import * as Yup from "yup";
 import { Stack } from "native-base";
 import React, { useState } from "react";
-import * as Yup from "yup";
 import FormInput from "../../utility/FormInput";
 import UtilityBtn from "../../utility/UtilityBtn";
 import FormCheckBox from "../common/FormCheckBox";
@@ -36,6 +36,7 @@ export default function RegisterForm({ onFormSubmit }) {
         }
         return "";
     };
+
     const RegisterSchema = Yup.object().shape({
         username: Yup.string()
             .required("Username is required.")

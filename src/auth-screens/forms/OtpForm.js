@@ -18,8 +18,8 @@ export default function OtpForm({ onSubmitOtp }) {
     const [otp, setOtp] = useState({ 0: "", 1: "", 2: "", 3: "" });
 
     const values = Object.values(otp).reduce((prev, next) => prev + next);
-    const submitOtpHander = () => {
-        onSubmitOtp(values);
+    const submitOtpHander = async () => {
+      await  onSubmitOtp(values);
     };
 
     const textChangeHandler = (text, index) => {
