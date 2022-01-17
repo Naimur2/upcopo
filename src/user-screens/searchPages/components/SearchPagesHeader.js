@@ -1,3 +1,4 @@
+import { debounce } from 'lodash';
 import { Box, HStack, Image, Stack, Text, VStack } from "native-base";
 import React, { useState } from "react";
 import Card from "../../../utility/Card";
@@ -65,22 +66,22 @@ export default function SearchPagesHeader() {
         }
 
     ]
-    const onSearchHandle=(text)=>{
+     onSearchHandle=debounce((text)=>{
         text = setSearch(text);
-    }
+    },500);
     
 
     const filterSearch = searchPagesBodyData.filter(item => {
         // return item.country==="Bangladesh"
         return (
-            search !== "" ? item.houseName.includes(search) : item &&  console.log(item.houseName)
+            search !== "" ? item.houseName.includes(search) : item  && console.log(item.houseName)
            
 
         );
     })
     const searchResult = filterSearch.map((data, i) => {
         return (
-            <Stack key={i}>
+            <Stack key={i} >
                 <Card borderRadius={20} mb="4" py={2} px="4" >
                     <Stack>
                         <Box my={2} w="100%" h={140} borderRadius={15} overflow={'hidden'} position={'relative'}>
@@ -153,7 +154,7 @@ export default function SearchPagesHeader() {
     })
 
     return (
-        <VStack  p={4} space={4}>
+        <VStack  p={4} space={4} >
             <HStack space="3%">
                 <Box w="80%">
                     <Search onSearch={onSearchHandle} />
@@ -192,7 +193,7 @@ export default function SearchPagesHeader() {
             </HStack>
 
 
-            <VStack  >
+            <VStack >
                 {searchResult}
                
             </VStack>

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import ThemeConfig from "../theme-config";
 
 //import MapScreen from "./user-screens/mapScreen/MapScreen";
-//import SearchPages from "./user-screens/searchPages/SearchPages";
+import SearchPages from "./user-screens/searchPages/SearchPages";
 
 export default function index() {
     // authentication  will be done here
