@@ -1,10 +1,9 @@
-import { Text, VStack } from "native-base";
-import React from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Main from "./drawer-screens/Main";
-const Drawer = createDrawerNavigator();
 import { NavigationContainer } from "@react-navigation/native";
+import React from "react";
 import BottomTabs from "./BottomTabs";
+import Main from "./user-screens/drawer-screens/Main";
+const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
     return (

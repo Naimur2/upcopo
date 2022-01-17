@@ -1,7 +1,7 @@
 import { Avatar, Box, HStack, Stack, Text, VStack } from "native-base";
 import React from "react";
-import Icon from "../.././utility/Icon";
-import Varified from "../.././utility/Varified";
+import Icon from "../../../utility/Icon";
+import Varified from "../../../utility/Varified";
 export default function MainHeader({ onEditIconPress, iconName }) {
     const HeaderImg = () => {
         return (

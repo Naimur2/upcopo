@@ -46,7 +46,7 @@ export default function SearchPages() {
     
     const renderItem = ({ item }) => {
         return (
-            <Stack >
+            <Stack bg={'#E5E5E5'}>
 
             </Stack>
           /** <SearchPagesBody 
@@ -60,17 +60,17 @@ export default function SearchPages() {
         );
     };
     return (
-        <Stack bg={'#E5E5E5'}>
-            
+        <Stack > 
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 data={searchPagesBodyData}
-                renderItem={renderItem}
+               // renderItem={renderItem}
                 keyExtractor={(item) => item._id}
-
+                bg={'#E5E5E5'}
                 ListHeaderComponent={
                         <SearchPagesHeader 
+                      
                         imgUrl={searchPagesBodyData.imgUrl}
                         houseName={searchPagesBodyData.houseName}
                         address1={searchPagesBodyData.address1}
@@ -83,8 +83,7 @@ export default function SearchPages() {
                 }
 
             />
-           
-
+            
         </Stack>
 
     );

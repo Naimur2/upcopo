@@ -1,8 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { HStack, Pressable, Stack, Text } from "native-base";
 import React from "react";
-import Card from "../.././utility/Card";
-import Icon from "../.././utility/Icon";
+import Card from "../../../utility/Card";
+import Icon from "../../../utility/Icon";
 
 //onPress={()=>navigation.navigate('Home')}
 
