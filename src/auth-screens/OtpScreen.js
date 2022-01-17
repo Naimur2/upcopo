@@ -1,31 +1,49 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
-import React, { useEffect } from "react";
+import {
+    Spinner
+} from "native-base";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { validateOTP } from "../../store/slices/authSlice";
+import { authActions, extraActions } from "../../store/slices/authSlice";
+import { uiActions } from "../../store/slices/uiSlice";
 import KeyBoardView from "../utility/KeyBoardView";
 import Screen from "../utility/Screen";
 import Heading from "./common/Heading";
 import OtpForm from "./forms/OtpForm";
 
-
-export default function OtpScreen() {
-    const route = useRoute();
-    const navigation = useNavigation();
+export default function OtpScreen({ navigation, route }) {
     const { data, type } = route.params;
-    console.log(route.params)
+    console.log(route.params);
 
-    const dispatch =useDispatch()
+    const dispatch = useDispatch();
     let clean = true;
     const authState = useSelector((state) => state.auth);
+    const uiState = useSelector((state) => state.ui);
 
-    const otpSubmit =  (otp) => {
-         dispatch(validateOTP({ otp, type }));
+    const otpSubmit = async (otp) => {
+        console.log(uiState)
+        try {
+            const result = await dispatch(extraActions.verifyOtp(otp)).unwrap();
+            dispatch(uiActions.setLoading(false))
+
+            if (type === "reset") {
+                navigation.navigate("ResetPassword");
+            } else {
+                dispatch(
+                    authActions.login({
+                        ...data,
+                        isAuthenticated: true,
+                        remember: true,
+                    })
+                );
+            }
+        } catch (error) {
+            console.log("error", error);
+        }
     };
-
-   
 
     return (
         <KeyBoardView>
+             {uiState.isLoading && <Spinner position={'absolute'} top={'50%'} size={'lg'} accessibilityLabel="Loading posts" />}
             <Screen>
                 <Heading
                     title="Enter Code"

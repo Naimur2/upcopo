@@ -10,10 +10,10 @@ const uiSlice=createSlice({
     initialState:uiState,
     reducers:{
         setError:(state,action)=>{
-            state.error = action.payload.error;
+            state.error = action.payload;
         },
         setLoading:(state,action)=>{
-            state.isLoading=action.payload.isLoading;
+            state.isLoading=action.payload;
         }
     }
 

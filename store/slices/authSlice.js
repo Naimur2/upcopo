@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { uiActions } from "./uiSlice";
 
 const cts = [
     { username: "naimur", password: "123456", email: "hgfhfg@fds.vh" },
@@ -12,10 +13,25 @@ const authState = {
     isOtpValidated: false,
 };
 
-
+// async thunk
+// First, create the thunk
+const verifyOtp = createAsyncThunk(
+    "auth/verifyOtp ",
+    async (otp, thunkAPI) => {
+        thunkAPI.dispatch(uiActions.setLoading(true))
+        try {
+            const res = await fetch(
+                "https://jsonplaceholder.typicode.com/todos/1"
+            );
+            return await res.json();
+        } catch (error) {
+            return thunkAPI.rejectWithValue("error");
+        }
+    }
+);
 
 const authSlice = createSlice({
-    name: "user",
+    name: "auth",
     initialState: authState,
     reducers: {
         login: (state, action) => {
@@ -29,11 +45,12 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
             state.remember = false;
         },
-        otpValidation:(state,action)=>{
-            console.log(action.payload)
-            state.isOtpValidated=action.payload;
-        }
+        otpValidation: (state, action) => {
+            console.log(action.payload);
+            state.isOtpValidated = action.payload;
+        },
     },
+   
 });
 
 // these are the thunk
@@ -50,20 +67,10 @@ export const loginUser = (formData) => {
     };
 };
 
-export const validateOTP = (data,navigation) => {
-    return (dispatch,getState) => {
-        if(data.type==='reset'){
-            let k='1111'
-            dispatch(authSlice.actions.otpValidation(data.otp===k))
-            // navigation.navigate('ResetPassword')
-        }
-        // if type is register then update isAuthenticated to true which will redirect user to dashboard
-        // if type is reset then update isOtpValidated to true which will redirect user to reset password
-        // else call erros from uiSlice set type to otp and add an error message
-        // like {type:'otp',message:'Your Message'}
-    };
-};
+
 
 export const authActions = authSlice.actions;
+
+export const extraActions = { verifyOtp };
 
 export default authSlice.reducer;
