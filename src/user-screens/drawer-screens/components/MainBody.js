@@ -1,9 +1,9 @@
 import { Box, HStack, Stack, Text } from 'native-base'
 import React, { useState } from 'react'
 import ToggleSwitch from 'toggle-switch-react-native'
-import Card from '../.././utility/Card'
-import Icon from '../.././utility/Icon'
-import UtilityBtn from '../.././utility/UtilityBtn'
+import Card from '../../../utility/Card'
+import Icon from '../../../utility/Icon'
+import UtilityBtn from '../../../utility/UtilityBtn'
 
 export default function MainBody() {
     const [switchIsOn,setSwitchIsOn]=useState(false)

@@ -1,7 +1,7 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useDrawerStatus } from '@react-navigation/drawer';
 import React from "react";
-import Main from "./drawer-screens/Main";
+import Main from "./user-screens/drawer-screens/Main";
 import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import Messaging from "./user-screens/messaging/Messaging";
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
