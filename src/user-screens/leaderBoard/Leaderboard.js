@@ -92,7 +92,7 @@ export default function LeaderBoard() {
                         price={leader.price}
                         priceUp={leader.priceUp}
                         priceUpPercentage={leader.priceUpPercentage}
-                        onPress={() => navigation.navigate("OthersProfile")}
+                        onPress={() => navigation.navigate("Collections")}
                     />
                 ))}
             </VStack>

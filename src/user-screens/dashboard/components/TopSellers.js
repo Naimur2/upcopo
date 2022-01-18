@@ -41,13 +41,6 @@ const SELLER_DATA = [
 ];
 
 export default function TopSeller() {
-    const Item = () => (
-        <Box>
-            {" "}
-            <Text color={"red.900"}>Hello</Text>{" "}
-        </Box>
-    );
-
     return (
         <HStack flexWrap={'wrap'} my={2} mx={4}>
             {SELLER_DATA.map((seller, index) => (

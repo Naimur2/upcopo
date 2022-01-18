@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
+import CollectionScreen from "./user-screens/collectionScreen/CollectionScreen";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
 import House from "./user-screens/house/House";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
@@ -12,16 +13,28 @@ import UserProfile from "./user-screens/userProfile/UserProfile";
 const Stack = createNativeStackNavigator();
 
 export default function UserRoute() {
+    const headerWhite = {
+        headerTintColor: "white",
+        headerTransparent: true,
+        headerTitleStyle: {
+            color: "#fff",
+        },
+        headerTitle: "",
+    };
+
     return (
-        <Stack.Navigator screenOptions={{
-            headerTransparent: true,
-            headerShadowVisible: false,
-            headerTintColor: "white",
-            headerTitleStyle: {
-                color: "#fff",
-                textAlign:'center'
-            },
-        }} initialRouteName="DashBoard">
+        <Stack.Navigator
+            screenOptions={{
+                headerShadowVisible: false,
+                headerTransparent: true,
+                headerTintColor: "#000",
+                headerTitleStyle: {
+                    color: "#000",
+                    textAlign: "center",
+                },
+            }}
+            initialRouteName="DashBoard"
+        >
             <Stack.Screen
                 options={{ headerShown: false }}
                 name="DashBoard"
@@ -29,7 +42,7 @@ export default function UserRoute() {
             />
             <Stack.Screen name="TrendyHouses" component={TrendyHouses} />
             <Stack.Screen
-                // options={{ headerShown: false }}
+                options={{ headerShown: false }}
                 name="UserProfile"
                 component={UserProfile}
             />
@@ -38,15 +51,12 @@ export default function UserRoute() {
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />
             <Stack.Screen
-                options={{
-                    headerTintColor: "white",
-                    headerTransparent: true,
-                    headerTitleStyle: {
-                        color: "#fff",
-                    },
-                    headerShadowVisible: false,
-                    headerTitle: "",
-                }}
+                options={headerWhite}
+                name="Collections"
+                component={CollectionScreen}
+            />
+            <Stack.Screen
+                options={headerWhite}
                 name="House"
                 component={House}
             />

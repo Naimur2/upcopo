@@ -12,7 +12,6 @@ export default function CollectionCard(props) {
             p={4}
             key={props._id}
             onPress={props.onPress}
-            // onPress={() => navigation.navigate("OthersProfile")}
         >
             <HStack alignItems={"center"} space={3}>
                 <CardTitle value={props.standings} />

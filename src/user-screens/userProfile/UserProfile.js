@@ -1,7 +1,6 @@
 import { Box, FlatList } from "native-base";
 import React from "react";
 import UserProfileCard from "./components/UserProfileCard";
-import UserProfileHeader from "./components/UserProfileHeader";
 import UserProfileMenu from "./components/UserProfileMenu";
 
 const userProfiles = {
@@ -27,6 +26,28 @@ const userProfiles = {
         },
         {
             _id: "2",
+            username: "70nder",
+            varified: false,
+            image_url:
+                "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",
+            avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
+            likes: 89,
+            topBid: 6.0241,
+            deadline: "Jan 1, 2022 18:00:30",
+        },
+        {
+            _id: "3",
+            username: "70nder",
+            varified: false,
+            image_url:
+                "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",
+            avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
+            likes: 77,
+            topBid: 6.0241,
+            deadline: "Jan 1, 2022 18:00:30",
+        },
+        {
+            _id: "4",
             username: "70nder",
             varified: false,
             image_url:
@@ -82,13 +103,13 @@ export default function UserProfile({ route, navigation }) {
             showsHorizontalScrollIndicator={false}
             bg={"#f9f9f9"}
             ListHeaderComponent={
-                <Box key={"1"}>
-                    <UserProfileHeader
+                <Box key={"1"} >
+                    {/* <UserProfileHeader
                         name={userProfiles.name}
                         userAvatar={userProfiles.userAvatar}
                         userCoverphoto={userProfiles.userCoverPhoto}
                         isVarified={userProfiles.isVarified}
-                    />
+                    /> */}
                     <UserProfileMenu />
                 </Box>
             }

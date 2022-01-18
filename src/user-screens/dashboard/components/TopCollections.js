@@ -1,7 +1,7 @@
+import { useNavigation } from "@react-navigation/native";
 import { Stack } from "native-base";
 import React from "react";
 import CollectionCard from "../../leaderBoard/components/CollectionCard";
-import { useNavigation } from "@react-navigation/native";
 
 export default function TopCollections() {
     const navigation = useNavigation();
@@ -87,7 +87,7 @@ export default function TopCollections() {
                     price={leader.price}
                     priceUp={leader.priceUp}
                     priceUpPercentage={leader.priceUpPercentage}
-                    onPress={() => navigation.navigate("OthersProfile")}
+                    onPress={() => navigation.navigate("Collections")}
                 />
             ))}
         </Stack>
