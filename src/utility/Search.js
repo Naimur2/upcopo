@@ -1,11 +1,17 @@
-import React, { useState,useRef } from "react";
+import React, { useImperativeHandle, useRef, useState } from "react";
 import FormInput from "./FormInput";
 import Icon from "./Icon";
 
- const Search=React.forwardRef(({ onSearch,value, showRightIcon, ...rest },ref)=> {
+ const Search=React.forwardRef(({ onSearch,value, showRightIcon,placeHolder, ...rest },ref)=> {
 
     const [showIcon,setShowIcon]=useState(false);
     
+    const inputRef = useRef();
+    useImperativeHandle(ref, () => ({
+      focus: () => {
+        inputRef.current.focus();
+      }
+    }));
 
 
     return (
@@ -21,16 +27,18 @@ import Icon from "./Icon";
                     name={"search"}
                     size={16}
                 />
+                
             }
-            onBlur={()=> console.log('ggg') }
+            onFocus={()=> setShowIcon(true)}
+            onBlur={()=> setShowIcon(false)}
             onChangeText={onSearch}
-            placeHolder={"85208,Mesa, Az"}
+            placeHolder={placeHolder || 'Search your houses'}
             type={"text"}
             borderColor={"#fff"}
             py={2.5}
             rightIcon={showIcon && "x"}
             value={value}
-            ref={ref}
+            ref={inputRef}
             {...rest}
         />
     );

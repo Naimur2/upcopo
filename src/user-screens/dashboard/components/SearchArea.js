@@ -24,7 +24,7 @@ export default function SearchArea() {
                     <Text color={'#7E868C'}>Search your houses</Text>
                 </HStack>
             </Card>
-            <Card justifyContent={"center"} alignItems={"center"} w={"16%"}>
+            <Card onPress={()=>navigation.navigate('Notifications')} justifyContent={"center"} alignItems={"center"} w={"16%"}>
                 <Icon color={"#52B69A"} name={"notification"} size={25} />
             </Card>
         </HStack>

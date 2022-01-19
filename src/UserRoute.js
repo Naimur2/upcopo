@@ -19,18 +19,20 @@ export default function UserRoute() {
         headerTitleStyle: {
             color: "#fff",
         },
-        headerTitle: "",
+        title: "",
     };
 
     return (
         <Stack.Navigator
             screenOptions={{
                 headerShadowVisible: false,
-                headerTransparent: true,
                 headerTintColor: "#000",
                 headerTitleStyle: {
                     color: "#000",
-                    textAlign: "center",
+                },
+                headerTitleAlign: "center",
+                headerStyle: {
+                    backgroundColor: "transparent",
                 },
             }}
             initialRouteName="DashBoard"
@@ -46,7 +48,17 @@ export default function UserRoute() {
                 name="UserProfile"
                 component={UserProfile}
             />
-            <Stack.Screen name="LeaderBoard" component={LeaderBoard} />
+            <Stack.Screen
+                options={{
+                    headerTitleAlign: "center",
+                    title: "Top Collections",
+                    headerStyle: {
+                        backgroundColor: "transparent",
+                    },
+                }}
+                name="LeaderBoard"
+                component={LeaderBoard}
+            />
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />

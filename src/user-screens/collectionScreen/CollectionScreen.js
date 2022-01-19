@@ -5,6 +5,7 @@ import { Dimensions } from "react-native";
 import CollectionButtons from "./components/CollectionButtons";
 import CollectionsBody from "./components/CollectionsBody";
 import CollectionsHeader from "./components/CollectionsHeader";
+import CollectionsTab from "./components/CollectionsTab";
 
 // <CollectionsHeader />
 export default function Collections() {
@@ -13,9 +14,9 @@ export default function Collections() {
     const width = Dimensions.get("window").width;
     return (
         <ScrollView bg="#f9f9f9">
-            <Stack >
+            <Stack>
                 <CollectionsHeader />
-                <Stack  px={4} >
+                <Stack px={4}>
                     <Stack
                         width={width}
                         bg="#f9f9f9"
@@ -33,14 +34,21 @@ export default function Collections() {
                         />
                     </Stack>
                     <Stack>
-                        <CollectionsBody />
+                        <CollectionsBody
+                            description={`Sometimes in life we have to just go with the vibe. Enjoy the unbothered moments in life to create in your space`}
+                            collectonName={"Boston Club"}
+                            ethAddress={"0xet54trw757007QR5e5c757007"}
+                        />
                         <CollectionButtons
                             items="10.10k"
                             floorPrice="42"
                             owners="5.9k"
                             volume="237.3k"
-                            onItemKeyPress={()=>navigation.navigate('UserProfile')}
+                            onItemKeyPress={() =>
+                                navigation.navigate("UserProfile")
+                            }
                         />
+                        <CollectionsTab />
                     </Stack>
                 </Stack>
             </Stack>

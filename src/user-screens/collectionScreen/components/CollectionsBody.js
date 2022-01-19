@@ -1,9 +1,18 @@
+import * as Clipboard from 'expo-clipboard';
 import { HStack, Text, VStack } from "native-base";
 import React from "react";
-import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
 
-export default function CollectionsBody() {
+export default function CollectionsBody({collectonName,ethAddress,description}) {
+
+    const copyToClipboard = () => {
+        setTimeout(()=>{
+            Clipboard.setString(ethAddress);
+            alert('Address Copied to Clipboard')
+        },300)
+       
+      };
+
     return (
         <VStack>
             <Text
@@ -13,7 +22,7 @@ export default function CollectionsBody() {
                 color={"#3D454A"}
                 pt={4}
             >
-                Boston Club
+                {collectonName}
             </Text>
             <HStack space={2} alignItems={"center"} py={4}>
                 <Text
@@ -21,19 +30,23 @@ export default function CollectionsBody() {
                     fontWeight={400}
                     fontSize={14}
                     color={"#3D454A"}
+                    maxW={40}
+                    numberOfLines={1}
+                    _pressed={{color:'#ccc'}} 
+                    onPress={copyToClipboard}
                 >
-                    0xet54trwQR5e5c757007....
+                   {ethAddress}
                 </Text>
-                <Icon name={"copy"} size={20} color={"#000"} />
+                <Icon _pressed={{color:'#ccc'}} onPress={copyToClipboard} name={"copy"} size={20} color={"#000"} />
             </HStack>
             <Text
                 fontFamily={"body"}
                 fontWeight={400}
                 fontSize={14}
                 color={"#687076"}
+                numberOfLines={3}
             >
-                Sometimes in life we have to just go with the vibe. Enjoy the
-                unbothered moments in life to create in your space...
+                {description}
             </Text>
         </VStack>
     );
