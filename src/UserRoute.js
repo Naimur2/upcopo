@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import CollectionScreen from "./user-screens/collectionScreen/CollectionScreen";
@@ -6,13 +7,16 @@ import House from "./user-screens/house/House";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
+import SearchCollections from "./user-screens/searchCollections/SearchCollections";
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
+import Icon from './utility/Icon';
 
 const Stack = createNativeStackNavigator();
 
 export default function UserRoute() {
+    const navigation=useNavigation();
     const headerWhite = {
         headerTintColor: "white",
         headerTransparent: true,
@@ -50,15 +54,17 @@ export default function UserRoute() {
             />
             <Stack.Screen
                 options={{
-                    headerTitleAlign: "center",
                     title: "Top Collections",
-                    headerStyle: {
-                        backgroundColor: "transparent",
-                    },
+                    headerRight:()=>(
+                        <Icon onPress={()=> navigation.navigate('SearchCollection') } borderRadius={14} bg="#52B69A" p={[2,4]} color={'#fff'} name='search' size={20} />
+                    )
                 }}
                 name="LeaderBoard"
                 component={LeaderBoard}
             />
+            <Stack.Screen  options={{
+                    title: "Search Collections",
+                }} name="SearchCollection" component={SearchCollections} />
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />

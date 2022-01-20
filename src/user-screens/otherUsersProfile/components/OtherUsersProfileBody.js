@@ -1,4 +1,4 @@
-import { Avatar, Box, HStack, ScrollView, Text, VStack } from "native-base";
+import { Avatar, HStack, ScrollView, Text, VStack } from "native-base";
 import React from "react";
 import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
@@ -36,31 +36,34 @@ export default function OtherUsersProfileBody() {
             userName: "Jrny club",
         },
     ];
+
+    const Messanger = () => (
+        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <HStack space={6} px={4}>
+                {OtherUsersProfileBodyData.map((data) => (
+                    <VStack
+                        space={2}
+                        alignItems={"center"}
+                        key={data._id}
+                        justifyContent={"center"}
+                    >
+                        <Avatar size={"lg"} source={{ uri: data.avater }} />
+                        <Text
+                            fontFamily={"body"}
+                            fontWeight={500}
+                            fontSize={16}
+                            color={"#000"}
+                        >
+                            {data.userName}
+                        </Text>
+                    </VStack>
+                ))}
+            </HStack>
+        </ScrollView>
+    );
+
     return (
         <VStack py={4}>
-            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <HStack space={6} px={4}>
-                    {OtherUsersProfileBodyData.map((data) => (
-                        <VStack
-                            space={2}
-                            alignItems={"center"}
-                            key={data._id}
-                            justifyContent={"center"}
-                        >
-                            <Avatar size={"lg"} source={{ uri: data.avater }} />
-                            <Text
-                                fontFamily={"body"}
-                                fontWeight={500}
-                                fontSize={16}
-                                color={"#000"}
-                            >
-                                {data.userName}
-                            </Text>
-                        </VStack>
-                    ))}
-                </HStack>
-            </ScrollView>
-
             <Card mx={4} p={4} mt={4}>
                 <HStack justifyContent={"space-between"}>
                     <Icon name={"menu"} size={22} color={"#11221C"} />

@@ -1,13 +1,13 @@
-import { Avatar, HStack,Text } from "native-base";
+import { Avatar, HStack, Pressable, Text } from "native-base";
 import React from "react";
-import Varified from "../../.././utility/Varified";
 
-const UserProfileCardHeader = ({ avatar, userName, daysLeft }) => (
+
+const UserProfileCardHeader = ({ avatar, userName, daysLeft,onUserPress }) => (
     <HStack justifyContent={"space-between"} alignItems={"center"}>
-        <HStack alignItems={"center"}>
+        <Pressable flexDirection='row' alignItems={"center"} onPress={onUserPress}>
             <Avatar
                 size={"10"}
-                mr={1}
+                mr={2}
                 source={{
                     uri: avatar,
                 }}
@@ -20,8 +20,8 @@ const UserProfileCardHeader = ({ avatar, userName, daysLeft }) => (
             >
                 @{userName}
             </Text>
-            <Varified h={6} w={6} ml={1} />
-        </HStack>
+            {/* <Varified h={6} w={6} ml={1} /> */}
+        </Pressable>
         <Text
             fontFamily={"body"}
             fontSize={16}

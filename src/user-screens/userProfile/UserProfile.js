@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Box, FlatList } from "native-base";
 import React from "react";
 import UserProfileCard from "./components/UserProfileCard";
@@ -84,19 +85,27 @@ const getRemainingTime = (deadline) => {
     return "2 days left";
 };
 
-const renderItem = ({ item }) => (
-    <UserProfileCard
-        key={item._id}
-        avatar={item.avatar}
-        userName={item.username}
-        deadline={getRemainingTime(item.deadline)}
-        houseImage={item.image_url}
-        likes={item.likes}
-        topBid={item.topBid}
-    />
-);
 
-export default function UserProfile({ route, navigation }) {
+
+export default function UserProfile({ route }) {
+    const navigation =useNavigation();
+
+    const renderItem = ({ item }) => (
+        <UserProfileCard
+            avatar={item.avatar}
+            userId={item._id}
+            userName={item.username}
+            deadline={getRemainingTime(item.deadline)}
+            houseImage={item.image_url}
+            likes={item.likes}
+            topBid={item.topBid}
+            onUserPress={()=>navigation.navigate('OthersProfile',{
+                userId:item._id
+            })}
+        />
+    );
+
+
     return (
         <FlatList
             showsVerticalScrollIndicator={false}

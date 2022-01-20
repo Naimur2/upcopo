@@ -1,7 +1,6 @@
 import { Avatar, Box, HStack, Text, VStack } from "native-base";
 import React from "react";
 import UtilityBtn from "../../../utility/UtilityBtn";
-import Varified from "../../../utility/Varified";
 
 export default function OtherUsersProfileHeader({
     avatar,
@@ -18,7 +17,7 @@ export default function OtherUsersProfileHeader({
                 position={"relative"}
                 source={{ uri: avatarUrl }}
             />
-            <Varified size={10} position={"absolute"} bottom={0} right={0} />
+            {/* <Varified size={10} position={"absolute"} bottom={0} right={0} /> */}
         </Box>
     );
 
@@ -44,7 +43,7 @@ export default function OtherUsersProfileHeader({
     );
 
     return (
-        <VStack p={4}>
+        <VStack px={4}>
             <HStack space="4" mt={8}>
                 <VStack>
                     <UserAvatar avatarUrl={avatar} />
@@ -81,33 +80,40 @@ export default function OtherUsersProfileHeader({
                     </VStack>
                 </VStack>
             </HStack>
-            <HStack justifyContent={"center"} space={4} mt={4}>
-                <UtilityBtn
-                    title={"Follow"}
-                    bg={"#0095F6"}
-                    titleStyle={{
-                        fontWeight: "500",
-                        fontSize: "16",
-                    }}
-                />
-                <UtilityBtn
-                    title={"Message"}
-                    bg={"#DFE3E6"}
-                    titleStyle={{
-                        fontWeight: "500",
-                        fontSize: "16",
-                        color: "#3D454A",
-                    }}
-                />
-                <UtilityBtn
-                    title={"Email"}
-                    bg={"#DFE3E6"}
-                    titleStyle={{
-                        color: "#3D454A",
-                        fontWeight: "500",
-                        fontSize: "16",
-                    }}
-                />
+            <HStack justifyContent={"space-between"} mt={4}>
+                <Box w="1/3" px="1">
+                    <UtilityBtn
+                        title={"Follow"}
+                        varient="blue"
+                        py="2.5"
+                        titleStyle={{
+                            fontWeight: "500",
+                            fontSize: "16",
+                        }}
+                    />
+                </Box>
+                <Box w="1/3" px="1">
+                    <UtilityBtn
+                        title={"Messege"}
+                        varient="outlined"
+                        py="2.5"
+                        titleStyle={{
+                            fontWeight: "500",
+                            fontSize: "16",
+                        }}
+                    />
+                </Box>
+                <Box w="1/3" px="1">
+                    <UtilityBtn
+                        title={"Edit"}
+                        varient="outlined"
+                        py="2.5"
+                        titleStyle={{
+                            fontWeight: "500",
+                            fontSize: "16",
+                        }}
+                    />
+                </Box>
             </HStack>
         </VStack>
     );

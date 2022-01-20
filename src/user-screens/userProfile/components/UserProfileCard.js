@@ -11,6 +11,7 @@ export default function UserProfileCard({
     houseImage,
     likes,
     topBid,
+    onUserPress,
 }) {
     return (
         <Card borderRadius={20} mb="4" mx="4" py={2} px="4">
@@ -18,6 +19,7 @@ export default function UserProfileCard({
                 avatar={avatar}
                 userName={userName}
                 daysLeft={deadline}
+                onUserPress={onUserPress}
             />
             <UserProfileCardImage houseImage={houseImage} />
             <UserProfileCardFooter likes={likes} topBid={topBid} />

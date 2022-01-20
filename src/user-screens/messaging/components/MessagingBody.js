@@ -1,74 +1,96 @@
-import { Avatar, HStack, Text, VStack } from "native-base";
+import { Avatar, Box, HStack, Text, VStack } from "native-base";
 import React from "react";
-import Icon from "../../../utility/Icon";
 
 export default function MessagingBody({
     username,
-    avaterUrl,
-    lastMessage,
+    avatarUrl,
+    numberofUnreadMessage,
     lastMessageTime,
-    unreadMessages,
+    lastMessage,
 }) {
-
-    const lastMesage= new Date(lastMessageTime);
-    const time= lastMesage.toLocaleTimeString();
-
-
-
     return (
         <HStack
-            justifyContent={"space-between"}
-            p={4}
+            py={2}
             borderBottomColor={"#E6E8EB"}
-            borderBottomWidth={1}
+            borderBottomWidth={2}
+            justifyContent={"space-between"}
+            alignItems="center"
         >
-            <HStack w={"20%"}>
+            <Box w="18%">
                 <Avatar
                     size={16}
                     source={{
-                        uri: avaterUrl,
+                        uri: avatarUrl,
                     }}
                 />
-            </HStack>
-            <HStack w={"60%"}>
-                <VStack>
-                    <VStack  space={2}>
+            </Box>
+            <VStack space={1} w={"78%"}>
+                <HStack w="full" justifyContent={"space-between"}>
+                    <Text
+                        fontSize={16}
+                        fontFamily={"body"}
+                        numberOfLines={1}
+                        maxW={'80%'}
+                        fontWeight={
+                            numberofUnreadMessage && numberofUnreadMessage > 0
+                                ? 600
+                                : 500
+                        }
+                        color={
+                            numberofUnreadMessage && numberofUnreadMessage > 0
+                                ? "#11181C"
+                                : "#3D454A"
+                        }
+                    >
+                        {username}
+                    </Text>
+                    <Text
+                        fontSize={16}
+                        fontFamily={"body"}
+                        numberOfLines={1}
+                        fontWeight={400}
+                        color={"#687076"}
+                        textTransform="uppercase"
+                    >
+                        {lastMessageTime}
+                    </Text>
+                </HStack>
+                <HStack alignItems={'center'} w="full" justifyContent={"space-between"}>
+                    <Text
+                        fontSize={16}
+                        fontFamily={"body"}
+                        numberOfLines={1}
+                        maxW={'80%'}
+                        fontWeight={
+                            numberofUnreadMessage && numberofUnreadMessage > 0
+                                ? 400
+                                : 500
+                        }
+                        color={
+                            numberofUnreadMessage && numberofUnreadMessage > 0
+                                ? "#11181C"
+                                : "#687076"
+                        }
+                    >
+                        {lastMessage}
+                    </Text>
+                    {numberofUnreadMessage && numberofUnreadMessage > 0 ? (
                         <Text
-                            color={"#3D454A"}
-                            fontWeight={"500"}
+                            fontSize={16}
                             fontFamily={"body"}
-                            fontSize={"18"}
+                            numberOfLines={1}
+                            fontWeight={600}
+                            color={"#fff"}
+                            bg="#52B69A"
+                            px="2.5"
+                            py={0.5}
+                            borderRadius={16}
                         >
-                            {username}
+                            {numberofUnreadMessage}
                         </Text>
-                        {/* <HStack space={2}>
-                            <Icon
-                                name={"call-incoming"}
-                                color={"#687076"}
-                                size={20}
-                            />
-                            <Text
-                                color={"#687076"}
-                                fontWeight={"400"}
-                                fontFamily={"body"}
-                                fontSize={"16"}
-                            >
-                               {lastMessageText}
-                            </Text>
-                        </HStack> */}
-                    </VStack>
-                </VStack>
-            </HStack>
-            <HStack w={"20%"} mt={2}>
-                <Text
-                    color={"#687076"}
-                    fontWeight={"400"}
-                    fontFamily={"body"}
-                    fontSize={"16"}
-                >
-                    {time}
-                </Text>
-            </HStack>
+                    ) : null}
+                </HStack>
+            </VStack>
         </HStack>
     );
 }
