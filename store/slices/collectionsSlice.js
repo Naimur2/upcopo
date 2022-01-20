@@ -1,5 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 const collections = [
     {
         _id: "1",
@@ -25,7 +24,7 @@ const collections = [
     },
     {
         _id: "3",
-        name: "Joel Norris",
+        name: "Naimur",
         varified: false,
         price: 15499.86,
         priceUp: true,
@@ -36,7 +35,7 @@ const collections = [
     },
     {
         _id: "4",
-        name: "Joel Norris",
+        name: "Shohan",
         varified: true,
         price: 15499.86,
         priceUp: false,
