@@ -1,22 +1,42 @@
-import { Text, VStack } from "native-base";
-import React from "react";
+import { Box } from 'native-base';
+import React, { useCallback, useEffect, useState } from 'react';
+import { KeyboardAvoidingView, Platform } from 'react-native';
+import { GiftedChat } from 'react-native-gifted-chat';
 
 export default function MessageView() {
-    return (
-        <VStack
-            alignItems={"center"}
-            justifyContent={"center"}
-            bg="dark.200"
-            h="full"
-        >
-            <Text
-                fontWeight={700}
-                fontFamily={"body"}
-                fontSize={20}
-                color={"light.100"}
-            >
-                mesageView
-            </Text>
-        </VStack>
-    );
+  const [messages, setMessages] = useState([]);
+console.log(messages)
+  useEffect(() => {
+    setMessages([
+      {
+        _id: 1,
+        text: 'Hello developer',
+        createdAt: new Date(),
+        user: {
+          _id: 2,
+          name: 'React Native',
+          avatar: 'https://placeimg.com/140/140/any',
+        },
+      },
+    ])
+  }, [])
+
+  const onSend = useCallback((msz = []) => {
+    setMessages(previousMessages => GiftedChat.append(previousMessages, msz))
+  }, [])
+
+  return (
+    <Box flex="1">
+        <GiftedChat
+          messages={messages}
+          onSend={msz => onSend(msz)}
+          user={{
+            _id: 1,
+          }}
+        />
+        {
+            Platform.OS === 'android' && <KeyboardAvoidingView  behavior="padding" />
+         }
+    </Box>
+  )
 }

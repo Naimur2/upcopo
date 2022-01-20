@@ -1,11 +1,14 @@
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
+import { Dimensions } from "react-native";
 import BottomTabs from "./BottomTabs";
-import Main from "./user-screens/drawer-screens/Main";
+import Main from "./drawer-screens/Main";
 const Drawer = createDrawerNavigator();
 
 export default function DrawerNavigator() {
+    const {height}=Dimensions.get('window');
+
     return (
         <NavigationContainer>
             <Drawer.Navigator
@@ -13,7 +16,7 @@ export default function DrawerNavigator() {
                 screenOptions={{
                     drawerStyle: {
                         backgroundColor: "#f9f9f9",
-                        width: 300,
+                        width: Math.round(height/2.5),
                     },
                 }}
             >

@@ -9,6 +9,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
+            seenTime:"1642579204802"
         },
         to: {
             _id: "200",
@@ -17,6 +18,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: false,
+            seenTime:"1642579204802"
         },
         message: "Welcome Home",
         date: "January 18,2022,18:22:22",
@@ -31,6 +33,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
+            seenTime:"1642579204802"
         },
         to: {
             _id: "200",
@@ -39,6 +42,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: false,
+            seenTime:"1642579204802"
         },
         message: "Hello World",
         date: "January 18,2022,18:22:22",
@@ -53,6 +57,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
+            seenTime:"1642579204802"
         },
         to: {
             _id: "100",
@@ -61,6 +66,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: false,
+            seenTime:"1642579204802"
         },
         message: "Hey, Jol, If yo’re free now we can..",
         date: "January 18,2022,18:22:22",
@@ -75,6 +81,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
+            seenTime:"1642579204802"
         },
         to: {
             _id: "100",
@@ -83,6 +90,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
+            seenTime:"1642579204802"
         },
         message: "Hello World",
         date: "January 18,2022,18:22:22",

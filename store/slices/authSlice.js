@@ -6,29 +6,18 @@ const cts = [
 ];
 
 const authState = {
-    users: cts,
-    username: "",
+    _id:"100",
+    username: "vondo",
+    user: "Md Ahnaf aksar",
+    mobile: "(307) 555-0133",
+    email: "ahnafa.fgs5@co.li",
+    avatar: "https://image.freepik.com/free-vector/cute-panda-gaming-cartoon-icon-illustration-animal-technology-icon-concept-premium-flat-cartoon-style_138676-2685.jpg",
+    private: true,
     isAuthenticated: false,
     remember: false,
-    isOtpValidated: false,
+    
 };
 
-// async thunk
-// First, create the thunk
-export const verifyOtp = createAsyncThunk(
-    "auth/verifyOtp ",
-    async (otp, thunkAPI) => {
-        thunkAPI.dispatch(uiActions.setLoading(true))
-        try {
-            const res = await fetch(
-                "https://jsonplaceholder.typicode.com/todos/1"
-            );
-            return await res.json();
-        } catch (error) {
-            return thunkAPI.rejectWithValue("error");
-        }
-    }
-);
 
 const authSlice = createSlice({
     name: "auth",
@@ -45,15 +34,11 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
             state.remember = false;
         },
-        otpValidation: (state, action) => {
-            console.log(action.payload);
-            state.isOtpValidated = action.payload;
+        togglePrvacy: (state, action) => {
+            state.private = !state.private;
         },
     },
-   
 });
-
-
 
 export const authActions = authSlice.actions;
 export default authSlice.reducer;
@@ -70,3 +55,23 @@ export const loginUser = (formData) => {
         // call backend data and dispatch actions to login
     };
 };
+
+
+
+
+// async thunk
+// First, create the thunk
+export const verifyOtp = createAsyncThunk(
+    "auth/verifyOtp ",
+    async (otp, thunkAPI) => {
+        thunkAPI.dispatch(uiActions.setLoading(true));
+        try {
+            const res = await fetch(
+                "https://jsonplaceholder.typicode.com/todos/1"
+            );
+            return await res.json();
+        } catch (error) {
+            return thunkAPI.rejectWithValue("error");
+        }
+    }
+);
