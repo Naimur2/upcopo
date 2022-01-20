@@ -1,8 +1,8 @@
 import { Divider, HStack, Modal, Pressable, Stack, Text } from "native-base";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ToggleSwitch from "toggle-switch-react-native";
-import { authActions } from "../../../../store/slices/authSlice";
+import { setUserPrivacy } from "../../../../store/slices/authSlice";
 import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
 
@@ -10,23 +10,25 @@ export default function MainBody() {
     const authState = useSelector((state) => state.auth);
     const dispatch = useDispatch();
 
-    const description = authState.private
+    const description = privacy
         ? "When your account is private, only people you approve will see your updates. Your existing followers won’t be affected"
         : "When your account is public, everyone will see your updates. Your existing followers won’t be affected";
 
     let clear = true;
 
     const [showModal, setShowModal] = useState(false);
+    const [privacy, setPrivacy] = useState(false);
 
     const switchToggler = () => {
         setShowModal((prev) => !prev);
     };
 
-    const updatePrivacy = async () => {
-        // use asynchronas functions
-        await setTimeout(() => dispatch(authActions.togglePrvacy()), 500);
+    const updatePrivacy = () => {
         setShowModal((prev) => !prev);
+        setPrivacy((prev) => !prev);
     };
+
+
 
     const ConfirmModal = () => (
         <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
@@ -40,7 +42,9 @@ export default function MainBody() {
                             color="#11181C"
                             fontSize={16}
                         >
-                            {`Switch to ${authState.private?"public":"private"} account`}
+                            {`Switch to ${
+                                privacy ? "public" : "private"
+                            } account`}
                         </Text>
                         <Text
                             textAlign={"center"}
@@ -49,7 +53,7 @@ export default function MainBody() {
                             color="#687076"
                             fontSize={14}
                         >
-                            {authState.private
+                            {privacy
                                 ? "If you switch to a Public Account, everyone will see your photos & videos. You also receive updates about our latest collections."
                                 : "If you switch to a Personal Account, only people you approve will see your photos & videos. You also won’t receive updates about our latest collections."}
                         </Text>
@@ -116,12 +120,12 @@ export default function MainBody() {
                             fontWeight={600}
                             color={"#3D454A"}
                         >
-                            {authState.private ? "Private" : "Public"}
+                            {privacy ? "Private" : "Public"}
                         </Text>
                     </HStack>
                     <HStack>
                         <ToggleSwitch
-                            isOn={authState.private}
+                            isOn={privacy}
                             offColor="#C0CBC8"
                             onColor={"#52B69A"}
                             animationSpeed={200}

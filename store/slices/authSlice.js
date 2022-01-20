@@ -15,7 +15,6 @@ const authState = {
     private: true,
     isAuthenticated: false,
     remember: false,
-    
 };
 
 
@@ -35,7 +34,7 @@ const authSlice = createSlice({
             state.remember = false;
         },
         togglePrvacy: (state, action) => {
-            state.private = !state.private;
+            state.private = action.payload;
         },
     },
 });
@@ -58,13 +57,26 @@ export const loginUser = (formData) => {
 
 
 
-
 // async thunk
 // First, create the thunk
 export const verifyOtp = createAsyncThunk(
     "auth/verifyOtp ",
     async (otp, thunkAPI) => {
         thunkAPI.dispatch(uiActions.setLoading(true));
+        try {
+            const res = await fetch(
+                "https://jsonplaceholder.typicode.com/todos/1"
+            );
+            return await res.json();
+        } catch (error) {
+            return thunkAPI.rejectWithValue("error");
+        }
+    }
+);
+export const setUserPrivacy = createAsyncThunk(
+    "auth/setUserPrivacy ",
+    async (privacy, thunkAPI) => {
+        thunkAPI.dispatch(authActions.togglePrvacy(privacy));
         try {
             const res = await fetch(
                 "https://jsonplaceholder.typicode.com/todos/1"

@@ -4,6 +4,7 @@ import recentSearchReducer from "./slices/recentSearchSlice";
 import uiReducer from "./slices/uiSlice";
 import messagesReducer from "./slices/messagesSlice";
 import collectionsReducer from "./slices/collectionsSlice";
+import placebidReducer from "./slices/placeBidSlice";
 
 const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ const store = configureStore({
         recentSearch: recentSearchReducer,
         ui: uiReducer,
         messages:messagesReducer,
-        collections:collectionsReducer
+        collections:collectionsReducer,
+        placebid:placebidReducer
     },
 });
 

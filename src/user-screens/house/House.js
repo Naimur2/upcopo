@@ -1,15 +1,21 @@
 import { HStack, Image, ScrollView, Stack, Text, VStack } from "native-base";
 import React from "react";
 import { Image as RnImage } from "react-native";
+import { useDispatch } from "react-redux";
+import { placebidActions } from '../../../store/slices/placeBidSlice';
 import IconWithText from "../../utility/IconWithText";
 import UtilityBtn from "../../utility/UtilityBtn";
 import Counter from "../common/Counter";
 import Like from "../common/Like";
 
+
 const map = require("../../../assets/images/map.png");
 const mapUri = RnImage.resolveAssetSource(map).uri;
 
+
+
 export default function House() {
+    const dispatch =useDispatch();
     return (
         <ScrollView>
             <Stack space={10}>
@@ -170,7 +176,7 @@ export default function House() {
                             </Text>
                         </VStack>
                     </HStack>
-                    <UtilityBtn title={"Place a Bid"} />
+                    <UtilityBtn onPress={()=>dispatch(placebidActions.openAction())} title={"Place a Bid"} />
                 </VStack>
             </Stack>
         </ScrollView>

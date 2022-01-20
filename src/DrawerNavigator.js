@@ -10,7 +10,7 @@ export default function DrawerNavigator() {
     const {height}=Dimensions.get('window');
 
     return (
-        <NavigationContainer>
+        <NavigationContainer style={{position:'relative'}}>
             <Drawer.Navigator
                 drawerContent={() => <Main />}
                 screenOptions={{

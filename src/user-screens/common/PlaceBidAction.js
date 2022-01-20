@@ -1,9 +1,9 @@
 import { Actionsheet, Box, HStack, Stack, Text } from "native-base";
 import React from "react";
 import Icon from "../../utility/Icon";
-import KeyBoardView from '../../utility/KeyBoardView';
+import KeyBoardView from "../../utility/KeyBoardView";
 import PaceBidActionCard from "./placeBidActionComponents/PaceBidActionCard";
-import PlaceBidActionFooter from './placeBidActionComponents/PlaceBidActionFooter';
+import PlaceBidActionFooter from "./placeBidActionComponents/PlaceBidActionFooter";
 const cardData = [
     {
         _id: "1",
@@ -42,9 +42,8 @@ const cardData = [
 export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
     return (
         <Actionsheet isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
-            
             <Actionsheet.Content bg={"#F9F9F9"}>
-                <KeyBoardView style={{width:'100%'}}>
+                <KeyBoardView style={{ width: "100%" }}>
                     <Box h={60} px={4} justifyContent="center">
                         <HStack justifyContent={"space-between"}>
                             <Text
@@ -58,7 +57,7 @@ export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
                             <Icon name={"x"} size={20} color={"#7E868C"} />
                         </HStack>
                     </Box>
-                    <Stack w="100%" >
+                    <Stack w="100%">
                         {cardData.map((data) => (
                             <PaceBidActionCard
                                 key={data._id}

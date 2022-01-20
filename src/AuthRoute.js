@@ -29,6 +29,7 @@ export default function AuthRoute() {
                     component={ResetPasswordScreen}
                 />
             </Stack.Navigator>
+            
         </NavigationContainer>
     );
 }
