@@ -4,7 +4,7 @@ import React from "react";
 import CollectionScreen from "./user-screens/collectionScreen/CollectionScreen";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
 import House from "./user-screens/house/House";
-import LeaderBoard from "./user-screens/leaderBoard/Leaderboard";
+import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
 import MessageView from "./user-screens/messageView/MessageView";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";

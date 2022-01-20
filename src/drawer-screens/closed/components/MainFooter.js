@@ -1,7 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { HStack, Pressable, Stack, Text } from "native-base";
 import React from "react";
-import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
 
 //onPress={()=>navigation.navigate('Home')}
@@ -9,7 +8,7 @@ import Icon from "../../../utility/Icon";
 export default function MainFooter() {
     const navigation = useNavigation();
 
-    const FooterButton = ({ title, leftIcon, rightIcon }) => {
+    const FooterButton = ({ title, leftIcon, rightIcon="arrow-right",...rest }) => {
         return (
             <Pressable
                 borderBottomColor={"#DFE3E6"}
@@ -17,6 +16,7 @@ export default function MainFooter() {
                 px={2}
                 py={3}
                 onPress={() => console.log(title)}
+                {...rest}
             >
                 <HStack alignItems={"center"} justifyContent={"space-between"}>
                     <HStack space={2} alignItems={"center"}>
@@ -30,36 +30,12 @@ export default function MainFooter() {
                             {title}
                         </Text>
                     </HStack>
-                    <Icon name={"arrow-right"} size={20} color={"#7E868C"} />
+                    <Icon name={rightIcon} size={20} color={"#7E868C"} />
                 </HStack>
             </Pressable>
         );
     };
-    const LogoutBtn = () => {
-        return (
-            <Card my={4}>
-                <Pressable onPress={() => console.log("ok")}>
-                    <HStack
-                        alignItems={"center"}
-                        justifyContent={"space-between"}
-                    >
-                        <HStack space={2} alignItems={"center"}>
-                            <Icon name={"x"} size={20} color={"#7E868C"} />
-                            <Text
-                                color={"#3D454A"}
-                                fontFamily={"body"}
-                                fontWeight={600}
-                                fontSize={17}
-                            >
-                                logout
-                            </Text>
-                        </HStack>
-                        <Icon name={"x"} size={20} color={"#7E868C"} />
-                    </HStack>
-                </Pressable>
-            </Card>
-        );
-    };
+    
     return (
         <Stack bg={"#F9F9F9"} pt={2}>
             <Text
@@ -79,7 +55,7 @@ export default function MainFooter() {
             />
             <FooterButton title={"History"} leftIcon={"history"} />
             <FooterButton title={"Help"} leftIcon={"headphone"} />
-            <FooterButton title={"Logout"} leftIcon={"logout"} />
+            <FooterButton mt={4} borderBottomWidth={0} title={"Logout"} leftIcon={"logout"} rightIcon="x" />
 
         </Stack>
     );
