@@ -1,5 +1,5 @@
+import { Text } from "native-base";
 import React from "react";
-import {  Text } from "native-base";
 
 export default function CardTitle({value,...rest}) {
     return (
@@ -11,7 +11,7 @@ export default function CardTitle({value,...rest}) {
             color={"#7E868C"}
             {...rest}
         >
-            {value}
+            {value} 
         </Text>
     );
 }
