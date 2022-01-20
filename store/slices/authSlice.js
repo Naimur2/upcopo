@@ -15,7 +15,7 @@ const authState = {
 
 // async thunk
 // First, create the thunk
-const verifyOtp = createAsyncThunk(
+export const verifyOtp = createAsyncThunk(
     "auth/verifyOtp ",
     async (otp, thunkAPI) => {
         thunkAPI.dispatch(uiActions.setLoading(true))
@@ -53,8 +53,12 @@ const authSlice = createSlice({
    
 });
 
-// these are the thunk
 
+
+export const authActions = authSlice.actions;
+export default authSlice.reducer;
+
+// these are the thunk
 export const registerUser = (formData) => {
     return (dispatch) => {
         console.log(formData);
@@ -66,11 +70,3 @@ export const loginUser = (formData) => {
         // call backend data and dispatch actions to login
     };
 };
-
-
-
-export const authActions = authSlice.actions;
-
-export const extraActions = { verifyOtp };
-
-export default authSlice.reducer;

@@ -3,7 +3,7 @@ import {
 } from "native-base";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authActions, extraActions } from "../../store/slices/authSlice";
+import { authActions, verifyOtp } from "../../store/slices/authSlice";
 import { uiActions } from "../../store/slices/uiSlice";
 import KeyBoardView from "../utility/KeyBoardView";
 import Screen from "../utility/Screen";
@@ -22,7 +22,7 @@ export default function OtpScreen({ navigation, route }) {
     const otpSubmit = async (otp) => {
         console.log(uiState)
         try {
-            const result = await dispatch(extraActions.verifyOtp(otp)).unwrap();
+            const result = await dispatch(verifyOtp(otp)).unwrap();
             dispatch(uiActions.setLoading(false))
 
             if (type === "reset") {

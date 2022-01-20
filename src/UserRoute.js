@@ -11,12 +11,13 @@ import SearchCollections from "./user-screens/searchCollections/SearchCollection
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
-import Icon from './utility/Icon';
+import Icon from "./utility/Icon";
+import MessageView from "./user-screens/messageView/MessageView";
 
 const Stack = createNativeStackNavigator();
 
 export default function UserRoute() {
-    const navigation=useNavigation();
+    const navigation = useNavigation();
     const headerWhite = {
         headerTintColor: "white",
         headerTransparent: true,
@@ -55,16 +56,30 @@ export default function UserRoute() {
             <Stack.Screen
                 options={{
                     title: "Top Collections",
-                    headerRight:()=>(
-                        <Icon onPress={()=> navigation.navigate('SearchCollection') } borderRadius={14} bg="#52B69A" p={[2,4]} color={'#fff'} name='search' size={20} />
-                    )
+                    headerRight: () => (
+                        <Icon
+                            onPress={() =>
+                                navigation.navigate("SearchCollection")
+                            }
+                            borderRadius={14}
+                            bg="#52B69A"
+                            p={[2, 4]}
+                            color={"#fff"}
+                            name="search"
+                            size={20}
+                        />
+                    ),
                 }}
                 name="LeaderBoard"
                 component={LeaderBoard}
             />
-            <Stack.Screen  options={{
+            <Stack.Screen
+                options={{
                     title: "Search Collections",
-                }} name="SearchCollection" component={SearchCollections} />
+                }}
+                name="SearchCollection"
+                component={SearchCollections}
+            />
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />
@@ -77,6 +92,11 @@ export default function UserRoute() {
                 options={headerWhite}
                 name="House"
                 component={House}
+            />
+            <Stack.Screen
+                options={headerWhite}
+                name="MessageView"
+                component={MessageView}
             />
         </Stack.Navigator>
     );

@@ -1,20 +1,17 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useDrawerStatus } from '@react-navigation/drawer';
+import { useDrawerStatus } from "@react-navigation/drawer";
 import React from "react";
+import MessageRoutes from "./MessageRoutes";
 import Main from "./user-screens/drawer-screens/Main";
 import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
-import Messaging from "./user-screens/messaging/Messaging";
 import SearchPages from "./user-screens/searchPages/SearchPages";
 import UserRoute from "./UserRoute";
 import Icon from "./utility/Icon";
 
-
-
-
 const Tab = createBottomTabNavigator();
 
 export default function BottomTabs() {
-    const isDrawerOpen = useDrawerStatus() === 'open';
+    const isDrawerOpen = useDrawerStatus() === "open";
 
     return (
         <Tab.Navigator
@@ -25,7 +22,7 @@ export default function BottomTabs() {
                         iconName = focused ? "home" : "home-outlined";
                     } else if (route.name === "Loved") {
                         iconName = focused ? "love" : "love-outline";
-                    } else if (route.name === "Messages") {
+                    } else if (route.name === "MessagesRoute") {
                         iconName = focused ? "message" : "message-outlline";
                     } else if (route.name === "Search") {
                         iconName = focused ? "search-filled" : "search";
@@ -55,7 +52,13 @@ export default function BottomTabs() {
             />
             <Tab.Screen name="Loved" component={LovedHouses} />
             <Tab.Screen name="Search" component={SearchPages} />
-            <Tab.Screen name="Messages" component={Messaging} />
+            <Tab.Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="MessagesRoute"
+                component={MessageRoutes}
+            />
             <Tab.Screen
                 listeners={({ navigation, route }) => ({
                     tabPress: (e) => {
