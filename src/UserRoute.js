@@ -26,7 +26,7 @@ export default function UserRoute() {
         headerTitleStyle: {
             color: "#fff",
         },
-        title: "",
+        headerBackTitleVisible: false,
     };
 
     return (
@@ -85,8 +85,34 @@ export default function UserRoute() {
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />
-            <Stack.Screen name="Help" component={HelpCenter} />
-            <Stack.Screen name="History" component={ProfileHistory} />
+            <Stack.Screen
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#52B69A",
+                    },
+                    headerTintColor: "#fff",
+                    headerTitleStyle: {
+                        color: "#fff",
+                    },
+                    title: "Help Center",
+                }}
+                name="Help"
+                component={HelpCenter}
+            />
+            <Stack.Screen
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#52B69A",
+                    },
+                    headerTintColor: "#fff",
+                    headerTitleStyle: {
+                        color: "#fff",
+                    },
+                    title:'Profile History'
+                }}
+                name="History"
+                component={ProfileHistory}
+            />
             <Stack.Screen
                 options={headerWhite}
                 name="Collections"

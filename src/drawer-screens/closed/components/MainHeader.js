@@ -1,11 +1,17 @@
 import { Avatar, HStack, Stack, Text, VStack } from "native-base";
 import React from "react";
+import { Image as RnImage } from "react-native";
+
+const imageSrc = require("../../../../assets/images/images.png");
+
+const imgUri = RnImage.resolveAssetSource(imageSrc).uri;
+
 export default function MainHeader({ user, mobile, email, avatar }) {
-    const HeaderImg = () => {
+    const HeaderImg = ({avatarSrc}) => {
         return (
             <Avatar
                 source={{
-                    uri: avatar,
+                    uri: avatarSrc,
                 }}
                 size={20}
             />
@@ -14,14 +20,14 @@ export default function MainHeader({ user, mobile, email, avatar }) {
 
     const HeaderBody = () => {
         return (
-            <VStack>
+            <VStack justifyContent={'center'}>
                 <Text
                     fontSize={18}
                     fontFamily={"body"}
                     fontWeight={600}
                     color={"#fff"}
                 >
-                    {user}
+                    {user }
                 </Text>
                 {mobile && (
                     <Text
@@ -49,7 +55,7 @@ export default function MainHeader({ user, mobile, email, avatar }) {
     return (
         <Stack bg={"#52B69A"}>
             <HStack p={4} space={4}>
-                {avatar && <HeaderImg avatar={avatar} />}
+                {<HeaderImg avatarSrc={avatar ? avatar : imgUri} />}
                 <HeaderBody />
             </HStack>
         </Stack>

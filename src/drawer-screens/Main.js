@@ -1,6 +1,7 @@
-import { HStack, Text, VStack } from "native-base";
+import { HStack, Text } from "native-base";
 import React, { useState } from "react";
 import Icon from "../utility/Icon";
+import KeyBoardView from "../utility/KeyBoardView";
 import ClosedView from "./closed/ClosedView";
 import OpenView from "./open/OpenView";
 
@@ -8,7 +9,7 @@ export default function Main() {
     const [expanded, setExpanded] = useState(true);
 
     return (
-        <VStack>
+        <KeyBoardView>
             <HStack
                 bg={"#52B69A"}
                 alignItems="center"
@@ -35,7 +36,7 @@ export default function Main() {
             <ClosedView isOpen={expanded} />
             <OpenView isOpen={!expanded} />
 
-        </VStack>
+        </KeyBoardView>
     );
 }
 

@@ -1,5 +1,4 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { uiActions } from "./uiSlice";
 
 const cts = [
     { username: "naimur", password: "123456", email: "hgfhfg@fds.vh" },
@@ -15,6 +14,7 @@ const authState = {
     private: true,
     isAuthenticated: true,
     remember: false,
+    password: "1234",
 };
 
 const authSlice = createSlice({
@@ -34,6 +34,9 @@ const authSlice = createSlice({
         },
         togglePrvacy: (state, action) => {
             state.private = action.payload;
+        },
+        updateProfile: (state, action) => {
+            console.log(action.payload)
         },
     },
 });
@@ -59,7 +62,7 @@ export const loginUser = (formData) => {
 export const verifyOtp = createAsyncThunk(
     "auth/verifyOtp ",
     async (otp, thunkAPI) => {
-        thunkAPI.dispatch(uiActions.setLoading(true));
+        thunkAPI.dispatch(authActions.setLoading(true));
         try {
             const res = await fetch(
                 "https://jsonplaceholder.typicode.com/todos/1"
@@ -96,6 +99,21 @@ export const updateUserPrivacy = createAsyncThunk(
                 "https://jsonplaceholder.typicode.com/todos/1"
             );
             thunkAPI.dispatch(authActions.togglePrvacy(privacy));
+            return await privacy;
+        } catch (error) {
+            return thunkAPI.rejectWithValue("error");
+        }
+    }
+);
+export const updateUserProfile = createAsyncThunk(
+    "auth/updateProfile ",
+    async (details, thunkAPI) => {
+        const states = thunkAPI.getState();
+        try {
+            const res = await fetch(
+                "https://jsonplaceholder.typicode.com/todos/1"
+            );
+            thunkAPI.dispatch(authActions.updateProfile(details));
             return await privacy;
         } catch (error) {
             return thunkAPI.rejectWithValue("error");

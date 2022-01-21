@@ -7,6 +7,7 @@ export default function KeyBoardView({ children, ...rest }) {
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             enableOnAndroid
+            
             {...rest}
         >
             {children}

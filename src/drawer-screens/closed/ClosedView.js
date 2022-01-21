@@ -8,9 +8,9 @@ import MainHeader from "./components/MainHeader";
 export default function ClosedView({isOpen}) {
     const userDetails = useSelector(state=>state.auth)
     return (
-        <Stack height={isOpen ? 'full': 0} overflow={isOpen ? 'visible': 'hidden' } >
+        <Stack  height={isOpen ? 'full': 0} overflow={isOpen ? 'visible': 'hidden' } >
             <MainHeader
-                user={userDetails.user}
+                user={userDetails.user || userDetails.username}
                 mobile={userDetails.mobile}
                 email={userDetails.email}
                 avatar={
