@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { debounce } from "lodash";
 import { Stack } from "native-base";
 import React, { useState } from "react";
@@ -7,6 +8,7 @@ import Search from "../../utility/Search";
 import CollectionCard from '../leaderBoard/components/CollectionCard';
 
 export default function SearchCollections(props) {
+    const navigation = useNavigation();
     let [search, setSearch] = useState("");
     const collections = useSelector(state => state.collections.collections);
     const onSearchHandler = debounce((text) => {

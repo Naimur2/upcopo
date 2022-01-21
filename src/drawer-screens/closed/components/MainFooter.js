@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { Stack, Text } from "native-base";
 import React, { useState } from "react";
@@ -29,8 +30,8 @@ export default function MainFooter() {
     const userDetails = useSelector((state) => state.auth);
 
     const logOut = async () => {
-       await dispatch(authActions.logOut())
-        setShowModal(false);
+        await AsyncStorage.clear();
+        await dispatch(authActions.logOut());
     };
 
     return (
@@ -41,9 +42,18 @@ export default function MainFooter() {
                 <FooterButton
                     title={"Notifications"}
                     leftIcon={"notification"}
+                    onPress={() => navigation.navigate("Notifications")}
                 />
-                <FooterButton title={"History"} leftIcon={"history"} />
-                <FooterButton title={"Help"} leftIcon={"headphone"} />
+                <FooterButton
+                    title={"History"}
+                    leftIcon={"history"}
+                    onPress={() => navigation.navigate("History")}
+                />
+                <FooterButton
+                    onPress={() => navigation.navigate("Help")}
+                    title={"Help"}
+                    leftIcon={"headphone"}
+                />
             </Stack>
 
             <FooterButton
@@ -65,7 +75,6 @@ export default function MainFooter() {
                         color={"#687076"}
                         fontFamily={"body"}
                         fontWeight={600}
-                        
                         textAlign="center"
                     >
                         {userDetails.user}

@@ -1,40 +1,41 @@
-import { HStack, VStack } from "native-base";
+import { HStack, Text, VStack } from "native-base";
 import React, { useState } from "react";
 import Icon from "../utility/Icon";
 import ClosedView from "./closed/ClosedView";
+import OpenView from "./open/OpenView";
 
 export default function Main() {
-    const [expanded, setExpanded] = useState(false);
-    const [user, setuser] = useState({
-        user: "Md Ahnaf aksar",
-        mobile: "(307) 555-0133",
-        email: "ahnafa.fgs5@co.li",
-        avatar: "https://image.freepik.com/free-vector/cute-panda-gaming-cartoon-icon-illustration-animal-technology-icon-concept-premium-flat-cartoon-style_138676-2685.jpg",
-        private:true,
-    });
+    const [expanded, setExpanded] = useState(true);
 
     return (
         <VStack>
-            <HStack bg={"#52B69A"} justifyContent={"flex-end"} py={4} pr={4}>
+            <HStack
+                bg={"#52B69A"}
+                alignItems="center"
+                justifyContent="space-between"
+                py={4}
+                px={4}
+            >
+                <Text
+                    fontSize={18}
+                    fontFamily={"body"}
+                    fontWeight={600}
+                    color={"#fff"}
+                >
+                    {!expanded ? "Edit Profile" : ""}
+                </Text>
                 <Icon
                     onPress={() => setExpanded((prev) => !prev)}
-                    name={expanded ? "x" : "edit"}
+                    name={!expanded ? "x" : "edit"}
                     color={"#FFFFFF"}
-                    size={20}
+                    size={!expanded ? 24 : 20}
+                    alignSelf="flex-end"
                 />
             </HStack>
-            <ClosedView userDetails={user} />
+            <ClosedView isOpen={expanded} />
+            <OpenView isOpen={!expanded} />
+
         </VStack>
     );
 }
 
-/* {expanded ? (
-    <Box >
-       <MainOnEdit/>
-    </Box>
-) : (
-    <>
-        <MainBody />
-        <MainFooter />
-    </>
-)} */

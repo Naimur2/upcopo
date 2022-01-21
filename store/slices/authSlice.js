@@ -86,6 +86,7 @@ export const setUserPrivacy = createAsyncThunk(
         }
     }
 );
+
 export const updateUserPrivacy = createAsyncThunk(
     "auth/setUserPrivacy ",
     async (privacy, thunkAPI) => {

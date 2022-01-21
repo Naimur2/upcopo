@@ -1,30 +1,30 @@
-import { Collapse, Heading, HStack, Pressable, Stack, Text } from 'native-base';
-import React from "react";
-import Icon from '../.././utility/Icon';
+import CollapsibleView from "@eliav2/react-native-collapsible-view";
+import { Stack } from "native-base";
+import React, { useState } from "react";
+import { ScrollView, StyleSheet, Text } from "react-native";
 
-export default function HelpCenter() {
-    const [show, setShow] = React.useState(false);
-    const handleToggle = () => setShow(!show);
-    
+export default () => {
+    const [controlledValue, setControlledValue] = useState(false);
+
     return (
-        <Stack space={4} mx={8}>
-            <Heading justifyContent={'space-between'} alignItems={'center'} bg={'amber.400'}>
-                <HStack justifyContent={'space-between'} alignItems={'center'} bg={'amber.800'} w={'100%'}>
-                    <Text color={'#11181C'} fontFamily={'body'} fontWeight={500} fontSize={18}>
-                        How to bid new house
+        <ScrollView>
+            <Stack>
+                <CollapsibleView title="Basic Usage">
+                    <Text style={styles.descriptionText}>
+                        I am the root collapsible
                     </Text>
-                    <Pressable   _pressed={{bg:'#fff'}} onPress={handleToggle}>
-                        <Icon name={'arrow-right'} size={20} color={'#292D32'} />
-                    </Pressable>
-                </HStack>
-            </Heading>
-            <Collapse duration={700} isOpen={show}>
-                <Text color={'#7E868C'} fontFamily={'body'} fontWeight={400} fontSize={12}>
-                    Real estate salespeople and other licensees who are required to work for and under the umbrella of a designated broker are often
-                    referred to as real estate agents.
-                </Text>
-            </Collapse>
-          
-        </Stack>
+                </CollapsibleView>
+            </Stack>
+        </ScrollView>
     );
-}
+};
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        width: "100%",
+        backgroundColor: "white",
+        justifyContent: "center",
+    },
+    descriptionText: { textAlign: "center" },
+});

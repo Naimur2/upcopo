@@ -1,7 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { FlatList, Stack } from "native-base";
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearMessages, getMessages } from "../../../store/slices/messagesSlice";
 import Search from "../../utility/Search";
 import MessagingBody from "./components/MessagingBody";
 
@@ -9,6 +10,14 @@ import MessagingBody from "./components/MessagingBody";
 export default function Messaging() {
   const navigation=useNavigation();
     const messages=useSelector(state=>state.messages.messages)
+
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getMessages());
+        return ()=>{
+            dispatch(clearMessages());
+        }
+    }, []);
 
     const currentUserid = "100";
     // get all users from all mesages

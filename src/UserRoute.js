@@ -3,11 +3,13 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import CollectionScreen from "./user-screens/collectionScreen/CollectionScreen";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
+import HelpCenter from "./user-screens/helpCenter/HelpCenter";
 import House from "./user-screens/house/House";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
 import MessageView from "./user-screens/messageView/MessageView";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
+import ProfileHistory from "./user-screens/profileHistory/ProfileHistory";
 import SearchCollections from "./user-screens/searchCollections/SearchCollections";
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
@@ -83,6 +85,8 @@ export default function UserRoute() {
             <Stack.Screen name="Notifications" component={Notifications} />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />
+            <Stack.Screen name="Help" component={HelpCenter} />
+            <Stack.Screen name="History" component={ProfileHistory} />
             <Stack.Screen
                 options={headerWhite}
                 name="Collections"

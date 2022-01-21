@@ -5,7 +5,7 @@ import Card from '../../utility/Card';
 export default function NoNewNotifications(props) {
     const navigation = useNavigation();
     return (
-        <Stack bg='#E5E5E5' h='full'  >
+        <Stack bg='#fff' h='full' px={4} >
             <Stack justifyContent={'center'} alignItems={'center'}>
                 <Box h={150} w={150} my={20}>
                     <Image
@@ -26,9 +26,10 @@ export default function NoNewNotifications(props) {
                     </Text>
                     <Text
                         fontFamily={'body'}
-                        fontSize={17}
+                        fontSize={16}
                         fontWeight={500}
                         color={'#687076'}
+                        textAlign="center"
                     >
                         When you get notifications,they’ll show up
                         here
@@ -44,7 +45,7 @@ export default function NoNewNotifications(props) {
                     >
                         <Text
                             fontFamily={'body'}
-                            fontSize={17}
+                            fontSize={16}
                             fontWeight={600}
                             color={'#52B69A'}
                         >
