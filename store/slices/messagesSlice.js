@@ -112,6 +112,9 @@ const messageSlice = createSlice({
         sendMessage: (state, action) => {
             console.log(action.payload);
         },
+        clear:(state,action)=>{
+            state.messages=[]
+        }
     },
 });
 
@@ -122,6 +125,12 @@ export default messageSlice.reducer;
 export const getMessages = () => {
     return (dispatch) => {
         dispatch(messageActions.addMessages(messages));
+    };
+};
+
+export const clearMessages = () => {
+    return (dispatch) => {
+        dispatch(messageActions.clear());
     };
 };
 
