@@ -24,7 +24,6 @@ export default function ThemeConFig({children}) {
         Inter_700Bold,
         Inter_800ExtraBold,
         Inter_900Black,
-        
         CustomIcon: require("../assets/icons/icon.ttf"),
     });
     

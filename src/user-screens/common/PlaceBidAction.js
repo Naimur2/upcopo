@@ -4,7 +4,7 @@ import Icon from "../../utility/Icon";
 import KeyBoardView from "../../utility/KeyBoardView";
 import PaceBidActionCard from "./placeBidActionComponents/PaceBidActionCard";
 import PlaceBidActionFooter from "./placeBidActionComponents/PlaceBidActionFooter";
-const cardData = [
+const bidHistoryState = [
     {
         _id: "1",
         avatar: "https://img.freepik.com/free-vector/cute-cartoon-panda-listening-music-vector-illustration_60438-1436.jpg?size=338&ext=jpg",
@@ -40,6 +40,14 @@ const cardData = [
 ];
 
 export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
+    const [showAll, setShowAll] = React.useState(false);
+
+    const showAllHandler = () => {
+        setShowAll((prev) => !prev);
+    };
+
+    const items = showAll ? bidHistoryState : bidHistoryState.slice(0, 2);
+
     return (
         <Actionsheet isOpen={isOpen} onOpen={onOpen} onClose={onClose}>
             <Actionsheet.Content bg={"#F9F9F9"}>
@@ -54,11 +62,28 @@ export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
                             >
                                 History of bid
                             </Text>
-                            <Icon name={"x"} size={20} color={"#7E868C"} />
+                            {showAll ? (
+                                <Icon
+                                    onPress={showAllHandler}
+                                    name={"x"}
+                                    size={20}
+                                    color={"#7E868C"}
+                                />
+                            ) : (
+                                <Text
+                                    fontSize="16"
+                                    color="#3D454A"
+                                    fontWeight={"500"}
+                                    fontFamily={"body"}
+                                    onPress={showAllHandler}
+                                >
+                                    All
+                                </Text>
+                            )}
                         </HStack>
                     </Box>
                     <Stack w="100%">
-                        {cardData.map((data) => (
+                        {items.map((data) => (
                             <PaceBidActionCard
                                 key={data._id}
                                 price={data.price}

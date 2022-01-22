@@ -1,102 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
 const history = [
     {
-        _id: "01",
-        from: {
-            _id: "100",
-            username: "Jrny club",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: true,
-            seenTime: "1642579204802",
-        },
-        to: {
-            _id: "200",
-            username: "Crypto punks",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: false,
-            seenTime: "1642579204802",
-        },
-        message: "Welcome Home",
-        date: "January 18,2022,18:22:22",
-        timestamp: "1642579204802",
+        _id: "1",
+        imgUrl: "https://img.freepik.com/free-photo/house-isolated-field_1303-23773.jpg?size=338&ext=jpg",
+        title: "Pay in a house",
+        subtitle: `When you make payment of $5 or more when you pay at local...`,
+        time: "11:00AM",
     },
     {
-        _id: "02",
-        from: {
-            _id: "100",
-            username: "Jrny club",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: true,
-            seenTime: "1642579204802",
-        },
-        to: {
-            _id: "200",
-            username: "Crypto punks",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: false,
-            seenTime: "1642579204802",
-        },
-        message: "Hello World",
-        date: "January 18,2022,18:22:22",
-        timestamp: "1642610122256",
+        _id: "2",
+        imgUrl: "https://image.freepik.com/free-photo/real-estate-with-house-model-keys_1150-17814.jpg",
+        title: `$5 turn key house`,
+        subtitle: `When you make payment of $5 or more when you pay at local..`,
+        time: "09:14AM",
     },
     {
-        _id: "03",
-        from: {
-            _id: "300",
-            username: "Jrny club",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: true,
-            seenTime: "1642579204802",
-        },
-        to: {
-            _id: "100",
-            username: "Crypto punks",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: false,
-            seenTime: "1642579204802",
-        },
-        message: "Hey, Jol, If yo’re free now we can..",
-        date: "January 18,2022,18:22:22",
-        timestamp: "1642610338558",
+        _id: "3",
+        imgUrl: "https://image.freepik.com/free-vector/suburban-house-with-sign-sale_107791-6223.jpg",
+        title: "Cashback 5% on house ",
+        subtitle: `When you make payment of $5 or more when you pay at local..`,
+        time: "11:00AM",
     },
-    {
-        _id: "04",
-        from: {
-            _id: "300",
-            username: "Jrny club",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: true,
-            seenTime: "1642579204802",
-        },
-        to: {
-            _id: "100",
-            username: "Crypto punks",
-            avatarUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            isActive: true,
-            seen: true,
-            seenTime: "1642579204802",
-        },
-        message: "Hello World",
-        date: "January 18,2022,18:22:22",
-        timestamp: "1642610338558",
-    },
-];
+]
 
 const historyState = {
     history: [],
@@ -120,7 +45,7 @@ export default historySlice.reducer;
 
 export const getHistory = () => {
     return (dispatch) => {
-        dispatch(historyActions.setHistorys(history));
+        dispatch(historyActions.setHistory(history));
     };
 };
 

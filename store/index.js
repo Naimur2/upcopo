@@ -7,6 +7,7 @@ import collectionsReducer from "./slices/collectionsSlice";
 import placebidReducer from "./slices/placeBidSlice";
 import userReducer from "./slices/userInfoSlice";
 import historyReducer from "./slices/historySlice";
+import notificationsReducer from "./slices/notificationsSlice";
 
 const store = configureStore({
     reducer: {
@@ -17,7 +18,8 @@ const store = configureStore({
         collections:collectionsReducer,
         placebid:placebidReducer,
         user:userReducer,
-        history:historyReducer
+        history:historyReducer,
+        notifications:notificationsReducer
     },
 });
 

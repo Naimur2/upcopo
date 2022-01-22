@@ -37,6 +37,7 @@ const typography = {
       eading: "Inter",
       body: "Inter",
       mono: "Inter",
+      italic:"Inter"
     },
     fontSizes: {
       '2xs': scale(10),

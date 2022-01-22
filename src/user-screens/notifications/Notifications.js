@@ -1,103 +1,106 @@
-import { Avatar, HStack, Stack, Text } from "native-base";
-import React, { useState } from "react";
-import Card from '../../utility/Card';
-import NoNewNotifications from './NoNewNotifications';
-
+import {
+    Avatar,
+    Box,
+    Divider,
+    HStack,
+    SectionList,
+    Stack,
+    Text
+} from "native-base";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getNotifications } from "../../../store/slices/notificationsSlice";
+import NoNewNotifications from "./NoNewNotifications";
 
 export default function Notifications() {
-    const [isNotifications, setisNotifications] = useState(false);
+    const notificationsState = useSelector(
+        (state) => state.notifications.notifications
+    );
+    const dispatch = useDispatch();
 
-    return (
-        <Stack>
-            {isNotifications ? (
-                <Card p={4}>
+    React.useEffect(() => {
+        dispatch(getNotifications());
+    }, []);
+
+    const NotifyCard = ({ notify }) => (
+        <HStack p={1} justifyContent={"space-between"}>
+            <Box w="20%">
+                <Avatar size={"lg"} source={{ uri: notify.avatar }} />
+            </Box>
+            <HStack
+                alignItems={"center"}
+                w="78%"
+                justifyContent={"space-between"}
+                flexWrap="wrap"
+            >
+                <Text>
                     <Text
-                        color={'#7E868C'}
-                        fontWeight={'500'}
-                        fontFamily={'body'}
-                        fontSize={'18'}
-                        mb={'4'}
+                        pr={1}
+                        fontSize={16}
+                        fontWeight={600}
+                        fontFamily={"body"}
+                        color={"#000"}
                     >
-                        Today
+                        {notify.userName}{" "}
                     </Text>
-                    <HStack alignItems={'center'}>
-                        <HStack alignItems={'center'} space={4} flexWrap={'wrap'}>
-                            <Avatar
-                                size={"16"}
-                                source={{ uri: 'https://image.freepik.com/free-vector/farmer-using-technology-digital-agriculture_53876-113813.jpg' }}
-                            />
-                            <Text color={'#11181C'}
-                                fontWeight={'400'}
-                                fontFamily={'body'}
-                                fontSize={'16'}>
-                                Avian Rizky
-                            </Text>
-                            <Text
-                                color={'#687076'}
-                                fontWeight={'400'}
-                                fontFamily={'body'}
-                                fontSize={'16'}
-
-                            >
-                                requested a payment of
-                            </Text>
-                            <Text color={'#52B69A'}
-                                fontWeight={'400'}
-                                fontFamily={'body'}
-                                fontSize={'16'}>
-                                $200.00
-                            </Text>
-                        </HStack>
-
-
-                    </HStack>
-                </Card>
-
-            ) : (
-                <NoNewNotifications />
-
-            )}
-
-        </Stack>
-    )
-}
-/*
-Patrick 
-
-<HStack justifyContent={'space-between'} alignItems={'center'}>
-                    <HStack alignItems={'center'} space={4}>
-                        <Avatar
-                            size={"16"}
-                            source={{ uri: 'https://image.freepik.com/free-vector/cute-panda-playing-game-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3676.jpg' }}
-
-                        />
-                        <Text color={'#11181C'}
-                            fontWeight={'400'}
-                            fontFamily={'body'}
-                            fontSize={'16'}>
-                            Patrick
-                        </Text>
-                        <Text
-                            color={'#687076'}
-                            fontWeight={'400'}
-                            fontFamily={'body'}
-                            fontSize={'16'}
-
-                        >
-                            Followed you
-                        </Text>
-                    </HStack>
-
                     <Text
-                        color={'#7E868C'}
-                        fontWeight={'500'}
-                        fontFamily={'body'}
-                        fontSize={'16'}
-
+                        fontSize={16}
+                        fontWeight={400}
+                        fontFamily={"body"}
+                        color={"#687076"}
                     >
-                        Just Now
+                        {notify.message}
+                    </Text>
+                </Text>
+
+                <HStack ml={"auto"} justifyContent={"flex-end"}>
+                    <Text
+                        fontSize={16}
+                        fontWeight={400}
+                        fontFamily={"body"}
+                        color={"#687076"}
+                        alignSelf="flex-end"
+                    >
+                        {notify.timestap}
                     </Text>
                 </HStack>
+            </HStack>
+        </HStack>
+    );
 
-
-*/
+    return (
+        <Stack px={4} bg={"#FFFFFF"} flex="1">
+            {notificationsState.length > 0 ? (
+                <SectionList
+                    showsHorizontalScrollIndicator={false}
+                    showsVerticalScrollIndicator={false}
+                    pb={4}
+                    sections={notificationsState}
+                    keyExtractor={(item, index) => item + index}
+                    renderItem={({ item }) => <NotifyCard notify={item} />}
+                    renderSectionFooter={() => (
+                        <Divider
+                            thickness={2}
+                            mb={4}
+                            mt={2}
+                            bgColor={"#E6E8EB"}
+                        />
+                    )}
+                    renderSectionHeader={({ section: { title } }) => (
+                        <Text
+                            fontSize={18}
+                            fontWeight={500}
+                            fontFamily={"body"}
+                            color={"#7E868C"}
+                            py={2}
+                        >
+                            {title}
+                        </Text>
+                    )}
+                />
+            ) : (
+                <NoNewNotifications />
+            )}
+        </Stack>
+    );
+}

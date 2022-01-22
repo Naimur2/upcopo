@@ -71,7 +71,7 @@ const SELLER_DATA = [
 
 export default function TopSeller() {
     return (
-        <ScrollView px={4} py={4}>
+        <ScrollView bg="#f9f9f9" px={4} py={4}>
             <HStack
                 flexWrap={"wrap"}
                 my={2}

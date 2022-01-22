@@ -1,5 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { Text } from "native-base";
 import React from "react";
 import CollectionScreen from "./user-screens/collectionScreen/CollectionScreen";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
@@ -14,11 +15,17 @@ import SearchCollections from "./user-screens/searchCollections/SearchCollection
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
+import { useSelector, useDispatch } from "react-redux";
+
 import Icon from "./utility/Icon";
+import { clearDbNotifications } from "../store/slices/notificationsSlice";
 
 const Stack = createNativeStackNavigator();
 
 export default function UserRoute() {
+    const userState = useSelector((state) => state);
+    const dispatch = useDispatch();
+
     const navigation = useNavigation();
     const headerWhite = {
         headerTintColor: "white",
@@ -27,6 +34,10 @@ export default function UserRoute() {
             color: "#fff",
         },
         headerBackTitleVisible: false,
+        headerStyle: {
+            backgroundColor: "transparent",
+        },
+        title: "",
     };
 
     return (
@@ -39,7 +50,7 @@ export default function UserRoute() {
                 },
                 headerTitleAlign: "center",
                 headerStyle: {
-                    backgroundColor: "transparent",
+                    backgroundColor: "#f9f9f9",
                 },
             }}
             initialRouteName="DashBoard"
@@ -49,7 +60,13 @@ export default function UserRoute() {
                 name="DashBoard"
                 component={DashBoardScreen}
             />
-            <Stack.Screen name="TrendyHouses" component={TrendyHouses} />
+            <Stack.Screen
+                options={{
+                    title: "Top Sellers",
+                }}
+                name="TrendyHouses"
+                component={TrendyHouses}
+            />
             <Stack.Screen
                 options={{ headerShown: false }}
                 name="UserProfile"
@@ -82,7 +99,35 @@ export default function UserRoute() {
                 name="SearchCollection"
                 component={SearchCollections}
             />
-            <Stack.Screen name="Notifications" component={Notifications} />
+            <Stack.Screen
+                options={{
+                    headerStyle: {
+                        backgroundColor: "#fff",
+                    },
+                    headerTintColor: "#000",
+                    headerTitleStyle: {
+                        color: "#000",
+                    },
+                    title: "Notifications",
+                    headerRight: () => {
+                        if (userState.notifications.notifications.length === 0)
+                            return null;
+                        return (
+                            <Text
+                                fontFamily={"body"}
+                                fontSize={16}
+                                fontWeight={500}
+                                color={"#7E868C"}
+                                onPress={() => dispatch(clearDbNotifications())}
+                            >
+                                Clear All
+                            </Text>
+                        );
+                    },
+                }}
+                name="Notifications"
+                component={Notifications}
+            />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />
             <Stack.Screen
@@ -108,7 +153,7 @@ export default function UserRoute() {
                     headerTitleStyle: {
                         color: "#fff",
                     },
-                    title:'Profile History'
+                    title: "Profile History",
                 }}
                 name="History"
                 component={ProfileHistory}
