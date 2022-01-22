@@ -136,7 +136,7 @@ export default function FilterScreeen() {
 
     return (
         <ScrollView>
-            <Stack space={4} p={4} h="full">
+            <Stack space={4} p={4} flex="1">
                 {contents.map((content, index) => (
                     <AccordionComponent
                         key={content._id}

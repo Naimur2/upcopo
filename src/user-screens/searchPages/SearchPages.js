@@ -67,7 +67,7 @@ export default function SearchPages() {
     )
 
     return (
-        <Stack h="full" px={4} bg={"#f9f9f9"}>
+        <Stack flex="1" px={4} bg={"#f9f9f9"}>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
