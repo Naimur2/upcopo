@@ -1,7 +1,7 @@
 import { Accordion, HStack, Text } from "native-base";
 import React from "react";
 
-export default function AccordionComponent({ title, component }) {
+export default function AccordionComponent({ title,_expanded, component,headerStyle,...rest }) {
     const headerTextStyle = {
         color: "#11181C",
         fontFamily: "body",
@@ -9,17 +9,18 @@ export default function AccordionComponent({ title, component }) {
         fontSize: 17,
     };
     return (
-        <Accordion bg="#fff" borderWidth={0}>
+        <Accordion  bg="#fff" borderWidth={0} {...rest}>
             <Accordion.Item>
                 <Accordion.Summary
-                    _expanded={{ bg: "#fff", _text: headerTextStyle }}
+                    _expanded={{ bg: "#fff", _text: headerTextStyle,..._expanded }}
                     _text={headerTextStyle}
                     bgColor="#fff"
                     w={"full"}
                     justifyContent="space-between"
+                   
                 >
                     <HStack>
-                        <Text w="90%" {...headerTextStyle} flexWrap={"wrap"}>
+                        <Text w="90%" {...{...headerTextStyle,...headerStyle}} flexWrap={"wrap"}>
                             {title}
                         </Text>
                         <Accordion.Icon

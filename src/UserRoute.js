@@ -2,11 +2,15 @@ import { useNavigation } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Text } from "native-base";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearDbNotifications } from "../store/slices/notificationsSlice";
 import CollectionScreen from "./user-screens/collectionScreen/CollectionScreen";
 import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
+import FilterScreeen from "./user-screens/filterScreen/FilterScreen.js";
 import HelpCenter from "./user-screens/helpCenter/HelpCenter";
 import House from "./user-screens/house/House";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
+import MessageScreen from "./user-screens/messageScrren/MessageScreen";
 import MessageView from "./user-screens/messageView/MessageView";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
@@ -15,10 +19,7 @@ import SearchCollections from "./user-screens/searchCollections/SearchCollection
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
-import { useSelector, useDispatch } from "react-redux";
-
 import Icon from "./utility/Icon";
-import { clearDbNotifications } from "../store/slices/notificationsSlice";
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,7 @@ export default function UserRoute() {
             backgroundColor: "transparent",
         },
         title: "",
+        headerShadowVisible:false
     };
 
     return (
@@ -128,6 +130,21 @@ export default function UserRoute() {
                 name="Notifications"
                 component={Notifications}
             />
+            <Stack.Screen
+                options={{
+                   
+                    headerTintColor: "#000",
+                    headerTitleStyle: {
+                        color: "#000",
+                    },
+                    title: "Apply Filter",
+                    headerRight: () => (
+                        <Icon borderRadius={10} name={'export'} p={2} bg="#fff" size={20} />
+                    ),
+                }}
+                name="FilterScreen"
+                component={FilterScreeen}
+            />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
             <Stack.Screen name="SearchHouse" component={SearchScreen} />
             <Stack.Screen
@@ -173,6 +190,12 @@ export default function UserRoute() {
                 name="MessageView"
                 component={MessageView}
             />
+            <Stack.Screen
+                options={headerWhite}
+                name="MessageScreenView"
+                component={MessageScreen}
+            />
+            
         </Stack.Navigator>
     );
 }

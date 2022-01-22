@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { useDrawerStatus } from "@react-navigation/drawer";
 import React from "react";
 import Main from "./drawer-screens/Main";
+import SearchTabRoutes from "./SearchTabRoutes";
 import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import Messaging from "./user-screens/messaging/Messaging";
 import SearchPages from "./user-screens/searchPages/SearchPages";
@@ -43,6 +44,11 @@ export default function TabNav() {
                     borderTopLeftRadius: 16,
                     height: 60,
                 },
+                headerShadowVisible:false,
+                headerStyle:{
+                    backgroundColor:'#f9f9f9'
+                },
+                headerTitleAlign:'center',
             })}
         >
             <Tab.Screen
@@ -51,7 +57,13 @@ export default function TabNav() {
                 component={UserRoute}
             />
             <Tab.Screen name="Loved" component={LovedHouses} />
-            <Tab.Screen name="Search" component={SearchPages} />
+            <Tab.Screen
+                options={{
+                    headerShown:false
+                }}
+                name="Search"
+                component={SearchPages}
+            />
             <Tab.Screen
                 options={{
                     headerShown: false,

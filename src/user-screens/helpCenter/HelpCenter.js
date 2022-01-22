@@ -4,7 +4,7 @@ import { ScrollView } from "react-native";
 import AccordionComponent from "../../utility/AccordionComponent";
 import IconWithText from "../../utility/IconWithText";
 
-export default function () {
+export default function HelpCenter() {
     const contents = [
         {
             _id: "01",
@@ -63,15 +63,24 @@ export default function () {
 
     return (
         <ScrollView>
-            <Stack alignItems={'center'} bg={'#52B69A'} p={4}>
-                <Text fontWeight={500} fontFamily={'body'} fontSize={20} textAlign={'center'}>We're here to help!</Text>
+            <Stack alignItems={"center"} bg={"#52B69A"} p={4}>
+                <Text
+                    fontWeight={500}
+                    fontFamily={"body"}
+                    fontSize={20}
+                    textAlign={"center"}
+                >
+                    We're here to help!
+                </Text>
             </Stack>
             <Stack space={4} p={4} h="full">
-                {contents.map((content) => (
+                {contents.map((content, index) => (
                     <AccordionComponent
                         key={content._id}
                         title={content.title}
                         component={content.content}
+                        headerStyle={{ fontWeight: 600, fontSize: 20 }}
+                        index={index < 2 ? [0] : null}
                     />
                 ))}
             </Stack>

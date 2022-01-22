@@ -1,10 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
 import { Box, HStack, VStack } from "native-base";
 import React, { useState } from "react";
 import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
 import Search from "../../../utility/Search";
 import SelectItem from "../../../utility/SelectItem";
-
 
 const items = [
     { _id: "01", label: "Single items", value: "ux" },
@@ -15,9 +15,10 @@ const items2 = [
     { _id: "02", label: "High to low", value: "h2l" },
 ];
 
-export default function UserProfileMenu({ route, navigation }) {
+export default function UserProfileMenu({ route }) {
     let [service1, setService1] = useState(items[0].value);
     let [service2, setService2] = useState(items2[0].value);
+const navigation=useNavigation();
 
     return (
         <VStack p={4} space={4}>
@@ -25,8 +26,8 @@ export default function UserProfileMenu({ route, navigation }) {
                 <Box w="80%">
                     <Search />
                 </Box>
-                <Card justifyContent={"center"} alignItems={"center"} w={"16%"}>
-                    <Icon color={"#52B69A"} name={"candle"} size={25} />
+                <Card onPress={()=>navigation.navigate('FilterScreen')} justifyContent={"center"} alignItems={"center"} w={"16%"}>
+                    <Icon  color={"#52B69A"} name={"candle"} size={25} />
                 </Card>
             </HStack>
             <HStack justifyContent={'space-between'}>

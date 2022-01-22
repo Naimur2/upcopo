@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import { Box, HStack, Text, VStack } from "native-base";
 import React, { useState } from "react";
 import Card from "../../../utility/Card";
@@ -19,7 +20,7 @@ export default function SearchPagesHeader({onSearch}) {
     let [service1, setService1] = useState(items[0].value);
     let [service2, setService2] = useState(items2[0].value);
    
-
+const navigation =useNavigation();
 
     return (
         <VStack py={4} space={4}>
@@ -55,7 +56,7 @@ export default function SearchPagesHeader({onSearch}) {
                         w="48%"
                     />
                 </HStack>
-                <Card justifyContent={"center"} alignItems={"center"} w={"16%"}>
+                <Card  justifyContent={"center"} alignItems={"center"} w={"16%"}>
                     <Icon color={"#52B69A"} name={"square"} size={25} />
                 </Card>
             </HStack>

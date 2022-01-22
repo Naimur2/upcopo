@@ -50,7 +50,7 @@ export default function Messaging() {
         return (
             <MessagingBody
                 key={item[0]._id}
-                onPress={()=>navigation.navigate('MessageView',{
+                onPress={()=>navigation.navigate('MessageScreenView',{
                     userId:item[0]._id,
                 })}
                 username={item[0].username}
