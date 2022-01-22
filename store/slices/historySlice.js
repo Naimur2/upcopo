@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-const messages = [
+const history = [
     {
         _id: "01",
         from: {
@@ -9,7 +9,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         to: {
             _id: "200",
@@ -18,7 +18,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: false,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         message: "Welcome Home",
         date: "January 18,2022,18:22:22",
@@ -33,7 +33,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         to: {
             _id: "200",
@@ -42,7 +42,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: false,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         message: "Hello World",
         date: "January 18,2022,18:22:22",
@@ -57,7 +57,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         to: {
             _id: "100",
@@ -66,7 +66,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: false,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         message: "Hey, Jol, If yo’re free now we can..",
         date: "January 18,2022,18:22:22",
@@ -81,7 +81,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         to: {
             _id: "100",
@@ -90,7 +90,7 @@ const messages = [
                 "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
             isActive: true,
             seen: true,
-            seenTime:"1642579204802"
+            seenTime: "1642579204802",
         },
         message: "Hello World",
         date: "January 18,2022,18:22:22",
@@ -98,42 +98,34 @@ const messages = [
     },
 ];
 
-const initialMessageState = {
-    messages: [],
+const historyState = {
+    history: [],
 };
 
-const messageSlice = createSlice({
-    name: "messages",
-    initialState: initialMessageState,
+const historySlice = createSlice({
+    name: "history",
+    initialState: historyState,
     reducers: {
-        setMessages: (state, action) => {
-            state.messages = action.payload;
+        setHistory: (state, action) => {
+            state.history = action.payload;
         },
-        sendMessage: (state, action) => {
-            console.log(action.payload);
+        removeHistory: (state, action) => {
+            state.history = [];
         },
-        removeMessages:(state,action)=>{
-            state.messages=[]
-        }
     },
 });
 
-export const messageActions=messageSlice.actions;
-export default messageSlice.reducer;
+export const historyActions = historySlice.actions;
+export default historySlice.reducer;
 
-
-export const getMessages = () => {
+export const getHistory = () => {
     return (dispatch) => {
-        dispatch(messageActions.setMessages(messages));
+        dispatch(historyActions.setHistorys(history));
     };
 };
 
-export const clearMessages = () => {
+export const clearHistory = () => {
     return (dispatch) => {
-        dispatch(messageActions.removeMessages());
+        dispatch(historyActions.removeHistory());
     };
 };
-
-
-
-

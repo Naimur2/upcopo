@@ -34,9 +34,6 @@ console.log(messages)
             _id: 1,
           }}
         />
-        {
-            Platform.OS === 'android' && <KeyboardAvoidingView  behavior="padding" />
-         }
     </Box>
   )
 }

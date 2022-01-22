@@ -6,12 +6,6 @@ const cts = [
 
 const authState = {
     _id: "100",
-    username: "vondo",
-    user: "Md Ahnaf aksar",
-    mobile: "(307) 555-0133",
-    email: "ahnafa.fgs5@co.li",
-    avatar: "https://image.freepik.com/free-vector/cute-panda-gaming-cartoon-icon-illustration-animal-technology-icon-concept-premium-flat-cartoon-style_138676-2685.jpg",
-    private: true,
     isAuthenticated: true,
     remember: false,
     password: "1234",
@@ -31,12 +25,6 @@ const authSlice = createSlice({
             state.username = "";
             state.isAuthenticated = false;
             state.remember = false;
-        },
-        togglePrvacy: (state, action) => {
-            state.private = action.payload;
-        },
-        updateProfile: (state, action) => {
-            console.log(action.payload)
         },
     },
 });
@@ -74,49 +62,3 @@ export const verifyOtp = createAsyncThunk(
     }
 );
 
-export const setUserPrivacy = createAsyncThunk(
-    "auth/setUserPrivacy ",
-    async (privacy, thunkAPI) => {
-        const states = thunkAPI.getState();
-        try {
-            const res = await fetch(
-                "https://jsonplaceholder.typicode.com/todos/1"
-            );
-            thunkAPI.dispatch(authActions.togglePrvacy(!states.auth.private));
-            return await !states.auth.private;
-        } catch (error) {
-            return thunkAPI.rejectWithValue("error");
-        }
-    }
-);
-
-export const updateUserPrivacy = createAsyncThunk(
-    "auth/setUserPrivacy ",
-    async (privacy, thunkAPI) => {
-        const states = thunkAPI.getState();
-        try {
-            const res = await fetch(
-                "https://jsonplaceholder.typicode.com/todos/1"
-            );
-            thunkAPI.dispatch(authActions.togglePrvacy(privacy));
-            return await privacy;
-        } catch (error) {
-            return thunkAPI.rejectWithValue("error");
-        }
-    }
-);
-export const updateUserProfile = createAsyncThunk(
-    "auth/updateProfile ",
-    async (details, thunkAPI) => {
-        const states = thunkAPI.getState();
-        try {
-            const res = await fetch(
-                "https://jsonplaceholder.typicode.com/todos/1"
-            );
-            thunkAPI.dispatch(authActions.updateProfile(details));
-            return await privacy;
-        } catch (error) {
-            return thunkAPI.rejectWithValue("error");
-        }
-    }
-);

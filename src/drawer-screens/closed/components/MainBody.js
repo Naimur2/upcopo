@@ -8,7 +8,7 @@ import CModal from "./CModal";
 import { SHeader } from "./MainFooter";
 
 export default function MainBody() {
-    const privacy = useSelector((state) => state.auth.private);
+    const privacy = useSelector((state) => state.user.private);
     const [isPrivate, setIsPrivate] = useState(privacy);
     const [showModal, setShowModal] = useState(false);
     const disPatch = useDispatch();

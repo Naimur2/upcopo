@@ -6,7 +6,7 @@ import MainFooter from "./components/MainFooter";
 import MainHeader from "./components/MainHeader";
 
 export default function ClosedView({isOpen}) {
-    const userDetails = useSelector(state=>state.auth)
+    const userDetails = useSelector(state=>state.user)
     return (
         <Stack  height={isOpen ? 'full': 0} overflow={isOpen ? 'visible': 'hidden' } >
             <MainHeader

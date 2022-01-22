@@ -20,7 +20,7 @@ export default function ProfileHistory() {
         {
             _id: "3",
             imgUrl: "https://image.freepik.com/free-vector/suburban-house-with-sign-sale_107791-6223.jpg",
-            title: "Cashback 5% on house",
+            title: "Cashback 5% on house ",
             subtitle: `When you make payment of $5 or more when you pay at local..`,
             time: "11:00AM",
         },
@@ -28,24 +28,23 @@ export default function ProfileHistory() {
 
     const renderItem = ({ item }) => {
         return (
-            <HStack pt={4} px={2}>
-                <Box w={"25%"} h={100}>
+            <HStack pt={4} px={4} justifyContent="space-between" >
+                <Box  w={[60,72]} h={[60,72]} borderRadius={10} overflow="hidden">
                     <Image
                         alt="img11"
                         source={{ uri: item.imgUrl }}
                         w={"full"}
                         h={"full"}
-                        borderRadius={20}
                     />
                 </Box>
 
-                <HStack w={"55%"} ml={2}>
+                <HStack w={"65%"} ml={2}>
                     <VStack space={2}>
                         <Text
                             fontFamily={"body"}
                             fontWeight={"600"}
                             color={"#11181C"}
-                            fontSize={"18"}
+                            fontSize={"16"}
                         >
                             {item.title}
                         </Text>
@@ -64,6 +63,7 @@ export default function ProfileHistory() {
                     fontWeight={"400"}
                     color={"#687076"}
                     fontSize={"13"}
+                    w="20%"
                 >
                     {item.time}
                 </Text>
