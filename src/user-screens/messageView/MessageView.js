@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { Box, HStack, Text, VStack } from "native-base";
 import React, { useCallback, useEffect, useState } from "react";
 import { GiftedChat, InputToolbar } from "react-native-gifted-chat";
@@ -5,7 +6,28 @@ import Icon from "../../utility/Icon";
 
 export default function MessageView() {
     const [messages, setMessages] = useState([]);
-
+    useEffect(() => {
+        setMessages([
+            {
+                _id: "1",
+                text: "Hello developer",
+                createdAt: new Date(),
+                // to
+                user: {
+                    _id: "2",
+                    name: "React Native",
+                    avatar: "https://placeimg.com/140/140/any",
+                },
+                // from
+                from: {
+                    _id: "2",
+                    name: "React Native",
+                    avatar: "https://placeimg.com/140/140/any",
+                },
+                seen:false,
+            },
+        ]);
+    }, []);
     const renderInputToolbar = (props) => {
         return (
             <InputToolbar
@@ -25,7 +47,10 @@ export default function MessageView() {
     const renderMessage = (props) => {
         const { currentMessage } = props;
         const self = currentMessage.user._id === userid;
-
+        let date = currentMessage.createdAt;
+    
+   
+        date = dayjs(date).format("h:mm A").toString();
         return (
             <HStack
                 py={1}
@@ -41,6 +66,8 @@ export default function MessageView() {
                         minW={40}
                     >
                         <Text
+                            fontFamily={"body"}
+                            fontWeight={400}
                             key={currentMessage._id}
                             color={self ? "#fff" : "#687076"}
                             textAlign="center"
@@ -48,28 +75,20 @@ export default function MessageView() {
                             {currentMessage.text}
                         </Text>
                     </Box>
-                    <Text textAlign={"center"} color={"dark.100"}>
-                        send at {Date.now()}
+                    <Text
+                        fontFamily={"body"}
+                        fontWeight={400}
+                        textAlign={"center"}
+                        color={"#889096"}
+                    >
+                        send at {date}
                     </Text>
                 </VStack>
             </HStack>
         );
     };
 
-    useEffect(() => {
-        setMessages([
-            {
-                _id: "1",
-                text: "Hello developer",
-                createdAt: new Date(),
-                user: {
-                    _id: "2",
-                    name: "React Native",
-                    avatar: "https://placeimg.com/140/140/any",
-                },
-            },
-        ]);
-    }, []);
+   
 
     const onSend = useCallback((msz = []) => {
         setMessages((previousMessages) =>

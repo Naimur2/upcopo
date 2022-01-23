@@ -7,7 +7,7 @@ import UserProfileCardImage from "./UserProfileCardImage";
 export default function UserProfileCard({
     avatar,
     userName,
-    deadline,
+    expiresAt,
     houseImage,
     likes,
     topBid,
@@ -18,7 +18,7 @@ export default function UserProfileCard({
             <UserProfileCardHeader
                 avatar={avatar}
                 userName={userName}
-                daysLeft={deadline}
+                daysLeft={expiresAt}
                 onUserPress={onUserPress}
             />
             <UserProfileCardImage houseImage={houseImage} />

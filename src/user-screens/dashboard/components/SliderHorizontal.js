@@ -1,49 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
 import { HStack, ScrollView } from "native-base";
 import React from "react";
-import { Image as RnImage } from "react-native";
 import TrendyHouse from "./TrendyHouses";
 
-const sourceUri = "../../../../assets/images";
-
-const imageSrc = require(`${sourceUri}/slider1.png`);
-
-const imgUri = RnImage.resolveAssetSource(imageSrc).uri;
-
-const imageSrc2 = require(`${sourceUri}/slider2.png`);
-
-const imgUri2 = RnImage.resolveAssetSource(imageSrc2).uri;
-
-export default function SliderHorizontal() {
-    const houses = [
-        {
-            _id: 1,
-            houseName: "Turn Key House",
-            deadline: "Jan 20, 2022 18:00:30",
-            currentBid: "4.33",
-            image: imgUri,
-        },
-        {
-            _id: 2,
-            houseName: "Turn Key House",
-            deadline: "Jan 20, 2022 15:37:25",
-            currentBid: "4.33",
-            image: imgUri2,
-        },
-        {
-            _id: 3,
-            houseName: "Turn Key House",
-            deadline: "Jan 20, 2022 15:37:25",
-            currentBid: "4.33",
-            image: imgUri,
-        },
-        {
-            _id: 4,
-            houseName: "Turn Key House",
-            deadline: "Jan 20, 2022 15:37:25",
-            currentBid: "4.33",
-            image: imgUri2,
-        },
-    ];
+export default function SliderHorizontal({ houses }) {
+    const navigation = useNavigation();
 
     return (
         <ScrollView mb={4} showsHorizontalScrollIndicator={false} horizontal>
@@ -51,15 +12,18 @@ export default function SliderHorizontal() {
                 {houses.map((house) => (
                     <TrendyHouse
                         key={house._id}
-                        deadline={house.deadline}
+                        expiresAt={house.expiresAt}
                         image={house.image}
                         houseName={house.houseName}
                         currentBid={house.currentBid}
+                        onPress={() =>
+                            navigation.navigate("House", {
+                                house: house,
+                            })
+                        }
                     />
                 ))}
             </HStack>
         </ScrollView>
     );
 }
-
-// njjttr

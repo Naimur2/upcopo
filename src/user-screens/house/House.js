@@ -1,32 +1,32 @@
+import { useRoute } from "@react-navigation/native";
 import { HStack, Image, ScrollView, Stack, Text, VStack } from "native-base";
 import React from "react";
 import { Image as RnImage } from "react-native";
 import { useDispatch } from "react-redux";
-import { placebidActions } from '../../../store/slices/placeBidSlice';
+import { placebidActions } from "../../../store/slices/placeBidSlice";
 import IconWithText from "../../utility/IconWithText";
 import UtilityBtn from "../../utility/UtilityBtn";
 import Counter from "../common/Counter";
 import Like from "../common/Like";
 
-
 const map = require("../../../assets/images/map.png");
 const mapUri = RnImage.resolveAssetSource(map).uri;
 
-
-
 export default function House() {
-    const dispatch =useDispatch();
+    const dispatch = useDispatch();
+    const data = useRoute().params.house;
+
     return (
         <ScrollView>
             <Stack space={10}>
-                <VStack >
-                    <VStack space={140} mt={'7%'} p={6}>
+                <VStack>
+                    <VStack space={140} mt={"7%"} p={6}>
                         <HStack justifyContent={"space-between"}>
                             <VStack>
-                                <Text>Owned By Luckas </Text>
-                                <Text>W.year 1942</Text>
+                                <Text>Owned By {data.owner} </Text>
+                                <Text>W.year {data.builtAt}</Text>
                             </VStack>
-                            <Counter deadline={"Jan 10,2022,10:10:10 "} />
+                            <Counter expiresAt={data.expiresAt} />
                         </HStack>
                         <HStack justifyContent={"space-between"}>
                             <VStack space="0.5">
@@ -35,7 +35,7 @@ export default function House() {
                                     fontSize={22}
                                     fontWeight={600}
                                 >
-                                    Turn Key House
+                                    {data.houseName}
                                 </Text>
                                 <IconWithText
                                     iconName="map"
@@ -44,12 +44,16 @@ export default function House() {
                                         textTransform: "uppercase",
                                         fontSize: 16,
                                     }}
-                                    iconStyle={{ py: 1, color: "#D7DBDF",size:18 }}
+                                    iconStyle={{
+                                        py: 1,
+                                        color: "#D7DBDF",
+                                        size: 18,
+                                    }}
                                     containerStyle={{
                                         maxW: "75%",
                                         alignItems: "flex-start",
                                     }}
-                                    text="1523 N 106th St, Mesa, AZ 85207"
+                                    text={data.address}
                                 />
                             </VStack>
                             <VStack space="2" maxW={"25%"}>
@@ -59,7 +63,7 @@ export default function House() {
                                     fontSize={18}
                                     fontWeight={500}
                                 >
-                                    3,160sqft
+                                    {data.sqrfit}
                                 </Text>
                             </VStack>
                         </HStack>
@@ -71,7 +75,7 @@ export default function House() {
                         w={"full"}
                         alt="1523 N 106th St, Mesa, AZ 85207"
                         source={{
-                            uri: "https://cdna.artstation.com/p/assets/video_clips/images/035/100/932/smaller_square/ava-antonia-thumb.jpg?1614103270",
+                            uri: data.image,
                         }}
                     />
                 </VStack>
@@ -91,37 +95,39 @@ export default function House() {
                             fontSize={16}
                             color={"#7E868C"}
                         >
-                            Simple house with modern architecture and cool
-                            interiors located in the city crnter making easier
-                            for you to access
+                            {data.description}
                         </Text>
                         <HStack space="10" py={3}>
-                            <IconWithText
-                                iconStyle={{
-                                    bg: "#fff",
-                                    p: 2.5,
-                                    borderRadius: 10,
-                                }}
-                                iconName={"bed"}
-                                text={"6 Bedrooms"}
-                                textStyle={{
-                                    fontWeight: 500,
-                                    color: "#3D454A",
-                                }}
-                            />
-                            <IconWithText
-                                iconStyle={{
-                                    bg: "#fff",
-                                    p: 2.5,
-                                    borderRadius: 10,
-                                }}
-                                iconName={"bath"}
-                                text={"3 Bath"}
-                                textStyle={{
-                                    fontWeight: 500,
-                                    color: "#3D454A",
-                                }}
-                            />
+                            {data.bed && (
+                                <IconWithText
+                                    iconStyle={{
+                                        bg: "#fff",
+                                        p: 2.5,
+                                        borderRadius: 10,
+                                    }}
+                                    iconName={"bed"}
+                                    text={`${data.bed} Bedrooms`}
+                                    textStyle={{
+                                        fontWeight: 500,
+                                        color: "#3D454A",
+                                    }}
+                                />
+                            )}
+                            {data.bath && (
+                                <IconWithText
+                                    iconStyle={{
+                                        bg: "#fff",
+                                        p: 2.5,
+                                        borderRadius: 10,
+                                    }}
+                                    iconName={"bath"}
+                                    text={`${data.bath} Bathrooms`}
+                                    textStyle={{
+                                        fontWeight: 500,
+                                        color: "#3D454A",
+                                    }}
+                                />
+                            )}
                         </HStack>
                     </Stack>
                     <VStack
@@ -172,11 +178,14 @@ export default function House() {
                                 fontFamily={"body"}
                                 color={"#52B69A"}
                             >
-                                3.40 ETH
+                                {data.currentBid} ETH
                             </Text>
                         </VStack>
                     </HStack>
-                    <UtilityBtn onPress={()=>dispatch(placebidActions.openAction())} title={"Place a Bid"} />
+                    <UtilityBtn
+                        onPress={() => dispatch(placebidActions.openAction())}
+                        title={"Place a Bid"}
+                    />
                 </VStack>
             </Stack>
         </ScrollView>

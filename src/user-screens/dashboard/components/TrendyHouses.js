@@ -1,4 +1,3 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Dimensions } from "react-native";
 import Card from "../../../utility/Card";
@@ -7,19 +6,19 @@ import ImageContainer from "./HouseCard/ImageContainer";
 
 export default function TrendyHouses({
     id,
-    deadline,
+    expiresAt,
     image,
     houseName,
     onLike,
     currentBid,
+    onPress,
 }) {
-    const navigation = useNavigation();
     const base=Math.round(Dimensions.get('window').width/1.5)
     const md=Math.round(Dimensions.get('window').width/2.9)
     return (
-        <Card  w={[base,md]} onPress={()=>navigation.navigate('House')}>
+        <Card  w={[base,md]} onPress={onPress}>
             <ImageContainer
-                deadline={deadline}
+                expiresAt={expiresAt}
                 image={image}
                 houseName={houseName}
                 onLike={onLike}

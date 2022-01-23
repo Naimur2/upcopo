@@ -1,7 +1,7 @@
 import { Stack, Text } from "native-base";
 import React, { useEffect, useState } from "react";
 
-export default function Counter({ deadline,...rest }) {
+export default function Counter({ expiresAt,...rest }) {
     const [remainingTime, setRemainingTime] = useState("");
     const [minWidth, setMinWidth] = useState(85);
 
@@ -23,7 +23,7 @@ export default function Counter({ deadline,...rest }) {
     };
 
     useEffect(() => {
-        const countDownDate = new Date(deadline).getTime();
+        const countDownDate = new Date(expiresAt).getTime();
         // Update the count down every 1 second
         const x = setInterval(() => {
             // Get today's date and time
@@ -51,7 +51,7 @@ export default function Counter({ deadline,...rest }) {
         }, 1000);
 
         return () => clearInterval(x);
-    }, [deadline]);
+    }, [expiresAt]);
 
     return (
         <Stack

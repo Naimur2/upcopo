@@ -23,7 +23,7 @@ const userProfiles = {
             avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
             likes: 77,
             topBid: 6.0241,
-            deadline: "Jan 1, 2022 18:00:30",
+            expiresAt: "Jan 1, 2022 18:00:30",
         },
         {
             _id: "2",
@@ -34,7 +34,7 @@ const userProfiles = {
             avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
             likes: 89,
             topBid: 6.0241,
-            deadline: "Jan 1, 2022 18:00:30",
+            expiresAt: "Jan 1, 2022 18:00:30",
         },
         {
             _id: "3",
@@ -45,7 +45,7 @@ const userProfiles = {
             avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
             likes: 77,
             topBid: 6.0241,
-            deadline: "Jan 1, 2022 18:00:30",
+            expiresAt: "Jan 1, 2022 18:00:30",
         },
         {
             _id: "4",
@@ -56,7 +56,7 @@ const userProfiles = {
             avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
             likes: 89,
             topBid: 6.0241,
-            deadline: "Jan 1, 2022 18:00:30",
+            expiresAt: "Jan 1, 2022 18:00:30",
         },
     ],
     socialLinks:[
@@ -67,11 +67,11 @@ const userProfiles = {
     ]
 };
 
-const getRemainingTime = (deadline) => {
-    const deadlineTime = new Date(deadline);
+const getRemainingTime = (expiresAt) => {
+    const expiresAtTime = new Date(expiresAt);
     const now = new Date().getTime();
     // Find the distance between now and the count down date
-    const distance = deadline - now;
+    const distance = expiresAt - now;
     // Time calculations for days, hours, minutes and seconds
     let days = Math.floor(distance / (1000 * 60 * 60 * 24));
 
@@ -95,7 +95,7 @@ export default function UserProfile({ route }) {
             avatar={item.avatar}
             userId={item._id}
             userName={item.username}
-            deadline={getRemainingTime(item.deadline)}
+            expiresAt={getRemainingTime(item.expiresAt)}
             houseImage={item.image_url}
             likes={item.likes}
             topBid={item.topBid}

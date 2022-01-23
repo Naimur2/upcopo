@@ -4,7 +4,7 @@ import Counter from "../../../common/Counter";
 import Like from "../../../common/Like";
 
 export default function ImageContainer({
-    deadline,
+    expiresAt,
     image,
     houseName,
     onLike,
@@ -13,7 +13,7 @@ export default function ImageContainer({
     return (
         <Stack >
             <Stack p="2" space="16">
-                <Counter alignSelf={'flex-start'} deadline={deadline} />
+                <Counter alignSelf={'flex-start'} expiresAt={expiresAt} />
                 <HStack justifyContent={"space-between"} alignItems={"center"}>
                     <Text
                         fontWeight={500}
@@ -33,7 +33,7 @@ export default function ImageContainer({
                 w="full"
                 h={'full'}
                 source={{ uri: image }}
-                alt={houseName}
+                alt={'house Name'}
                 position="absolute"
                 zIndex={-1}
             />

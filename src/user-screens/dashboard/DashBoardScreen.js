@@ -1,6 +1,8 @@
 import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "native-base";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getTrendyHouses } from "../../../store/slices/trendyHouseesSlice";
 import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";
@@ -10,6 +12,13 @@ import TopSeller from "./components/TopSellers";
 
 export default function DashBoardScreen() {
     const navigation = useNavigation();
+
+    const dispatch = useDispatch();
+
+    const houses = useSelector((state) => state.trendyHouses.trendyHouses);
+    React.useEffect(() => {
+        dispatch(getTrendyHouses());
+    }, []);
 
     return (
         <ScrollView
@@ -24,7 +33,7 @@ export default function DashBoardScreen() {
                 imageType={"flash"}
                 onSeAllPress={() => navigation.navigate("TrendyHouses")}
             />
-            <SliderHorizontal />
+            <SliderHorizontal houses={houses} />
             <SectionHeader
                 title={"Top Sellers"}
                 imageType={"fire"}

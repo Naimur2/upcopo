@@ -1,13 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
-import recentSearchReducer from "./slices/recentSearchSlice";
-import uiReducer from "./slices/uiSlice";
-import messagesReducer from "./slices/messagesSlice";
 import collectionsReducer from "./slices/collectionsSlice";
-import placebidReducer from "./slices/placeBidSlice";
-import userReducer from "./slices/userInfoSlice";
 import historyReducer from "./slices/historySlice";
+import messagesReducer from "./slices/messagesSlice";
 import notificationsReducer from "./slices/notificationsSlice";
+import placebidReducer from "./slices/placeBidSlice";
+import recentSearchReducer from "./slices/recentSearchSlice";
+import trendyHousesReducer from "./slices/trendyHouseesSlice";
+import uiReducer from "./slices/uiSlice";
+import userReducer from "./slices/userInfoSlice";
 
 const store = configureStore({
     reducer: {
@@ -19,7 +20,8 @@ const store = configureStore({
         placebid:placebidReducer,
         user:userReducer,
         history:historyReducer,
-        notifications:notificationsReducer
+        notifications:notificationsReducer,
+        trendyHouses:trendyHousesReducer
     },
 });
 

@@ -5,7 +5,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/cY428GM/Rectangle-13.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -27,7 +27,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/rcyqj2L/Thumbnail-1.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -49,7 +49,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/RzpQ9wj/Thumbnail.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -71,7 +71,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/kg08WXS/image-54.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -94,7 +94,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/k0Sm9Fs/image-54-1.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -117,7 +117,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/2W7tv2k/image-54-2.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -139,7 +139,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/31LCwD2/image-54-3.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -161,7 +161,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/Pcg8dym/image-54-4.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
@@ -184,7 +184,7 @@ const houseData = [
         houseImgUrl: 'https://i.ibb.co/31LCwD2/image-54-3.png',
         houseOwnerName: 'Luckas',
         houseOwnDate: 'W.year 1942',
-        deadline: 'Jan 10,2022,10:10:10 ',
+        expiresAt: 'Jan 10,2022,10:10:10 ',
         houseDescriptions: `Simple house with modern architecture and cool
         interiors located in the city crnter making easier
         for you to access`,
