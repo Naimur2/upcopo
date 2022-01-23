@@ -9,7 +9,7 @@ import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
 import FilterScreeen from "./user-screens/filterScreen/FilterScreen.js";
 import HelpCenter from "./user-screens/helpCenter/HelpCenter";
 import House from "./user-screens/house/House";
-import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
+import TopCollections from "./user-screens/topCollections/TopCollections";
 import MessageView from "./user-screens/messageView/MessageView";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
@@ -90,8 +90,8 @@ export default function UserRoute() {
                         />
                     ),
                 }}
-                name="LeaderBoard"
-                component={LeaderBoard}
+                name="TopCollections"
+                component={TopCollections}
             />
             <Stack.Screen
                 options={{

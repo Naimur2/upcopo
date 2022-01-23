@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import KeyBoardView from "../../utility/KeyBoardView";
 import Search from "../../utility/Search";
-import CollectionCard from '../leaderBoard/components/CollectionCard';
+import CollectionCard from '../topCollections/components/CollectionCard';
 
 export default function SearchCollections(props) {
     const navigation = useNavigation();

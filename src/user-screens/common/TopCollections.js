@@ -1,7 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Stack } from "native-base";
 import React from "react";
-import CollectionCard from "../../leaderBoard/components/CollectionCard";
+import CollectionCard from "../topCollections/components/CollectionCard";
 
 export default function TopCollections() {
     const navigation = useNavigation();

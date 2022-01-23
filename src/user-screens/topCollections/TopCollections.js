@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllCollections } from "../../../store/slices/collectionsSlice";
 import CollectionCard from "./components/CollectionCard";
 
-export default function LeaderBoard() {
+export default function TopCollections() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const collections = useSelector((state) => state.collections.collections);

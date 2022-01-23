@@ -6,11 +6,11 @@ import {
     getTopSellers,
     getTrendyHouses
 } from "../../../store/slices/housesSlice";
+import TopCollections from "../common/TopCollections";
 import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";
 import SliderHorizontal from "./components/SliderHorizontal";
-import TopCollections from "./components/TopCollections";
 import TopSeller from "./components/TopSellers";
 
 export default function DashBoardScreen() {
@@ -20,6 +20,7 @@ export default function DashBoardScreen() {
 
     const trendyHouses = useSelector((state) => state.houses.trendyHouses);
     const topSellers = useSelector((state) => state.houses.topSellers);
+    const collections = useSelector((state) => state.collections.collections);
 
     React.useEffect(() => {
         dispatch(getTrendyHouses());
@@ -58,10 +59,10 @@ export default function DashBoardScreen() {
             <SectionHeader
                 title={"Top Collections"}
                 imageType={"arm"}
-                onSeAllPress={() => navigation.navigate("LeaderBoard")}
+                onSeAllPress={() => navigation.navigate("TopCollections")}
             />
             
-            <TopCollections />
+            <TopCollections collections={collections.slice(0,4)} />
         </ScrollView>
     );
 }
