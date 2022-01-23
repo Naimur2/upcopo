@@ -6,7 +6,7 @@ import messagesReducer from "./slices/messagesSlice";
 import notificationsReducer from "./slices/notificationsSlice";
 import placebidReducer from "./slices/placeBidSlice";
 import recentSearchReducer from "./slices/recentSearchSlice";
-import trendyHousesReducer from "./slices/trendyHouseesSlice";
+import housesReducer from "./slices/housesSlice";
 import uiReducer from "./slices/uiSlice";
 import userReducer from "./slices/userInfoSlice";
 
@@ -21,7 +21,7 @@ const store = configureStore({
         user:userReducer,
         history:historyReducer,
         notifications:notificationsReducer,
-        trendyHouses:trendyHousesReducer
+        houses:housesReducer
     },
 });
 

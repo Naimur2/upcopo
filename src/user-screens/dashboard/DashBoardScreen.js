@@ -2,7 +2,10 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "native-base";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrendyHouses } from "../../../store/slices/trendyHouseesSlice";
+import {
+    getTopSellers,
+    getTrendyHouses
+} from "../../../store/slices/housesSlice";
 import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";
@@ -15,9 +18,12 @@ export default function DashBoardScreen() {
 
     const dispatch = useDispatch();
 
-    const houses = useSelector((state) => state.trendyHouses.trendyHouses);
+    const trendyHouses = useSelector((state) => state.houses.trendyHouses);
+    const topSellers = useSelector((state) => state.houses.topSellers);
+
     React.useEffect(() => {
         dispatch(getTrendyHouses());
+        dispatch(getTopSellers());
     }, []);
 
     return (
@@ -31,20 +37,30 @@ export default function DashBoardScreen() {
             <SectionHeader
                 title={"Trendy houses"}
                 imageType={"flash"}
-                onSeAllPress={() => navigation.navigate("TrendyHouses")}
+                onSeAllPress={() =>
+                    navigation.navigate("TrendyHouses", {
+                        type: "trendyHouse",
+                    })
+                }
             />
-            <SliderHorizontal houses={houses} />
+            <SliderHorizontal houses={trendyHouses.slice(0, 5)} />
             <SectionHeader
                 title={"Top Sellers"}
                 imageType={"fire"}
-                onSeAllPress={() => navigation.navigate("TrendyHouses")}
+                onSeAllPress={() =>
+                    navigation.navigate("TrendyHouses", {
+                        type: "typeTopSellers",
+                    })
+                }
             />
-            <TopSeller />
+            <TopSeller sellers={topSellers.slice(0, 4)} />
+
             <SectionHeader
                 title={"Top Collections"}
                 imageType={"arm"}
                 onSeAllPress={() => navigation.navigate("LeaderBoard")}
             />
+            
             <TopCollections />
         </ScrollView>
     );

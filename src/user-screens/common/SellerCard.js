@@ -4,7 +4,6 @@ import React from "react";
 import Card from "../../utility/Card";
 
 export default function SellerCard({
-    id,
     username,
     avatar,
     varified,
@@ -12,13 +11,14 @@ export default function SellerCard({
     houseDescription,
     topBid,
     lastBid,
+    onPress,
     ...rest
 }) {
-    const navigation = useNavigation();
+    
 
     return (
         <Card
-            onPress={() => navigation.navigate("House", { userId: id })}
+            onPress={onPress}
             {...rest}
         >
             <VStack space="2">
