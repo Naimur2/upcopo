@@ -5,7 +5,6 @@ import Main from "./drawer-screens/Main";
 import SearchTabRoutes from "./SearchTabRoutes";
 import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import Messaging from "./user-screens/messaging/Messaging";
-import SearchPages from "./user-screens/searchPages/SearchPages";
 import UserRoute from "./UserRoute";
 import Icon from "./utility/Icon";
 
@@ -62,7 +61,7 @@ export default function TabNav() {
                     headerShown:false
                 }}
                 name="Search"
-                component={SearchPages}
+                component={SearchTabRoutes}
             />
             <Tab.Screen
                 options={{

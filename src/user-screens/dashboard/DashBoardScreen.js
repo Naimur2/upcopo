@@ -2,6 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "native-base";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { getCollections } from "../../../store/slices/collectionsSlice";
 import {
     getTopSellers,
     getTrendyHouses
@@ -25,6 +26,7 @@ export default function DashBoardScreen() {
     React.useEffect(() => {
         dispatch(getTrendyHouses());
         dispatch(getTopSellers());
+        dispatch(getCollections());
     }, []);
 
     return (

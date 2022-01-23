@@ -126,26 +126,21 @@ const houses = [
 const initialState = {
     trendyHouses: [],
     topSellers: [],
+    allHouses:[]
 };
 
 const housesSlice = createSlice({
     name: "houses",
     initialState,
     reducers: {
-        setTrendyHouses: (state, action) => {
-            state.trendyHouses = action.payload;
+        setHouses: (state, action) => {
+            state[action.payload.type] = action.payload.data;
         },
 
-        removeTrendyHouses: (state, action) => {
-            state.trendyHouses = [];
-        },
-        setTopSellers: (state, action) => {
-            state.topSellers = action.payload;
+        removeHouses: (state, action) => {
+            state[action.payload] = [];
         },
 
-        removeTopSellers: (state, action) => {
-            state.topSellers = [];
-        },
     },
 });
 
@@ -154,24 +149,37 @@ export default housesSlice.reducer;
 
 export const getTrendyHouses = () => {
     return (dispatch) => {
-        dispatch(housesActions.setTrendyHouses(houses));
+        dispatch(housesActions.setHouses({type:'trendyHouses',data:houses}));
     };
 };
 
 export const clearTrendyHouses = () => {
     return (dispatch) => {
-        dispatch(housesActions.removeTrendyHouses());
+        dispatch(housesActions.removeHouses({type:'trendyHouses'}));
     };
 };
 
 export const getTopSellers = () => {
     return (dispatch) => {
-        dispatch(housesActions.setTopSellers(houses));
+        dispatch(housesActions.setHouses({type:'topSellers',data:houses}));
     };
 };
 
+
 export const clearTopSellers = () => {
     return (dispatch) => {
-        dispatch(housesActions.removeTopSellers());
+        dispatch(housesActions.removeHouses({type:'topSellers'}));
+    };
+};
+
+export const getAllHouses = () => {
+    return (dispatch) => {
+        dispatch(housesActions.setHouses({type:'allHouses',data:houses}));
+    };
+};
+
+export const clearAllHouses = () => {
+    return (dispatch) => {
+        dispatch(housesActions.removeHouses({type:'allHouses'}));
     };
 };

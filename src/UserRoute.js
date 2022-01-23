@@ -9,13 +9,13 @@ import DashBoardScreen from "./user-screens/dashboard/DashBoardScreen";
 import FilterScreeen from "./user-screens/filterScreen/FilterScreen.js";
 import HelpCenter from "./user-screens/helpCenter/HelpCenter";
 import House from "./user-screens/house/House";
-import TopCollections from "./user-screens/topCollections/TopCollections";
 import MessageView from "./user-screens/messageView/MessageView";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
 import ProfileHistory from "./user-screens/profileHistory/ProfileHistory";
 import SearchCollections from "./user-screens/searchCollections/SearchCollections";
 import SearchScreen from "./user-screens/searchScreen/SearchScreen";
+import TopCollections from "./user-screens/topCollections/TopCollections";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
 import Icon from "./utility/Icon";
@@ -76,19 +76,6 @@ export default function UserRoute() {
             <Stack.Screen
                 options={{
                     title: "Top Collections",
-                    headerRight: () => (
-                        <Icon
-                            onPress={() =>
-                                navigation.navigate("SearchCollection")
-                            }
-                            borderRadius={14}
-                            bg="#52B69A"
-                            p={[2, 4]}
-                            color={"#fff"}
-                            name="search"
-                            size={20}
-                        />
-                    ),
                 }}
                 name="TopCollections"
                 component={TopCollections}

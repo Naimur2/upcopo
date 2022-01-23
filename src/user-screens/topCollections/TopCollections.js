@@ -1,12 +1,35 @@
 import { useNavigation } from "@react-navigation/native";
-import { ScrollView, VStack } from "native-base";
+import { Box, FlatList } from "native-base";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCollections } from "../../../store/slices/collectionsSlice";
+import Icon from "../../utility/Icon";
 import CollectionCard from "./components/CollectionCard";
 
-export default function TopCollections() {
+export const CollectionItemCard = (props) => {
     const navigation = useNavigation();
+    return (
+        <Box mb={4}>
+            <CollectionCard
+                key={props._id}
+                standings={props.standings}
+                varified={props.varified}
+                name={props.name}
+                avatar={props.avatar}
+                price={props.price}
+                priceUp={props.priceUp}
+                priceUpPercentage={props.priceUpPercentage}
+                onPress={() =>
+                    navigation.navigate("Collections", {
+                        collectionId: props._id,
+                    })
+                }
+            />
+        </Box>
+    );
+};
+
+export default function TopCollections({ navigation }) {
     const dispatch = useDispatch();
     const collections = useSelector((state) => state.collections.collections);
 
@@ -14,27 +37,30 @@ export default function TopCollections() {
         dispatch(getAllCollections());
     }, []);
 
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <Icon
+                    onPress={() => navigation.navigate("SearchCollection")}
+                    borderRadius={14}
+                    bg="#52B69A"
+                    p={[2, 4]}
+                    color={"#fff"}
+                    name="search"
+                    size={20}
+                />
+            ),
+        });
+    }, [navigation]);
+
     return (
-        <ScrollView
-            showsHorizontalScrollIndicator={"false"}
+        <FlatList
             showsVerticalScrollIndicator={false}
-            bg="#f9f9f9"
-        >
-            <VStack p={4} space={2}>
-                {collections.map((leader, index) => (
-                    <CollectionCard
-                        key={leader._id}
-                        standings={leader.standings}
-                        varified={leader.varified}
-                        name={leader.name}
-                        avatar={leader.avatar}
-                        price={leader.price}
-                        priceUp={leader.priceUp}
-                        priceUpPercentage={leader.priceUpPercentage}
-                        onPress={() => navigation.navigate("Collections")}
-                    />
-                ))}
-            </VStack>
-        </ScrollView>
+            showsHorizontalScrollIndicator={false}
+            data={collections}
+            renderItem={({ item }) => <CollectionItemCard {...item} />}
+            keyExtractor={(item) => item._id}
+            px={4}
+        />
     );
 }
