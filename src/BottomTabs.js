@@ -6,11 +6,15 @@ const Stack = createNativeStackNavigator();
 
 export default function MessageRoutes() {
     return (
-        <Stack.Navigator screenOptions={{
-            headerShown:false
-        }} initialRouteName="TabView">
-            <Stack.Screen name="TabView" component={TabNav} />
-            <Stack.Screen name="MessageView" component={MessageView} />
+        <Stack.Navigator initialRouteName="TabView">
+            <Stack.Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="TabView"
+                component={TabNav}
+            />
+            <Stack.Screen name="MessageScreenView" component={MessageView} />
         </Stack.Navigator>
     );
 }

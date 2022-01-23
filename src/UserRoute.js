@@ -10,7 +10,6 @@ import FilterScreeen from "./user-screens/filterScreen/FilterScreen.js";
 import HelpCenter from "./user-screens/helpCenter/HelpCenter";
 import House from "./user-screens/house/House";
 import LeaderBoard from "./user-screens/leaderBoard/LeaderBoard";
-import MessageScreen from "./user-screens/messageScrren/MessageScreen";
 import MessageView from "./user-screens/messageView/MessageView";
 import Notifications from "./user-screens/notifications/Notifications";
 import OtherUsersProfile from "./user-screens/otherUsersProfile/OtherUsersProfile";
@@ -190,12 +189,6 @@ export default function UserRoute() {
                 name="MessageView"
                 component={MessageView}
             />
-            <Stack.Screen
-                options={headerWhite}
-                name="MessageScreenView"
-                component={MessageScreen}
-            />
-            
         </Stack.Navigator>
     );
 }
