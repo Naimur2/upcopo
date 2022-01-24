@@ -1,16 +1,58 @@
 import { Actionsheet, Box, HStack, Stack, Text } from "native-base";
 import React from "react";
+import { useSelector } from "react-redux";
 import Icon from "../../utility/Icon";
 import KeyBoardView from "../../utility/KeyBoardView";
 import PaceBidActionCard from "./placeBidActionComponents/PaceBidActionCard";
 import PlaceBidActionFooter from "./placeBidActionComponents/PlaceBidActionFooter";
 
-
-export default function PlaceBidAction({ isOpen, onOpen, onClose,bidHistoryState }) {
+export default function PlaceBidAction({
+    isOpen,
+    onOpen,
+    onClose,
+    bidHistoryState,
+    houseId,
+    minimumBid = 0.000000000000000001,
+}) {
     const [showAll, setShowAll] = React.useState(false);
+    const [value, setValue] = React.useState("");
+    const [error, setError] = React.useState("");
+
+    const balance= useSelector(state=>state.user.balance)
 
     const showAllHandler = () => {
         setShowAll((prev) => !prev);
+    };
+
+    const hasError = (vari) => {
+        if (+vari < +minimumBid) {
+            setError("Please Bid with more value");
+            return true;
+        }
+        if (+vari < +0) {
+            setError("Please Bid with more value");
+            return true;
+        }
+
+        if (vari === "") {
+            setError("Invalid Bid");
+            return true;
+        }
+        setError("");
+        return false;
+    };
+
+    const submitHandler = () => {
+        if (hasError(value)) {
+            return;
+        } else {
+            console.log({ houseId, value });
+        }
+    };
+
+    const onChangeHandler = (text) => {
+        hasError(text);
+        setValue(text);
     };
 
     const items = showAll ? bidHistoryState : bidHistoryState.slice(0, 2);
@@ -61,7 +103,14 @@ export default function PlaceBidAction({ isOpen, onOpen, onClose,bidHistoryState
                             />
                         ))}
                     </Stack>
-                    <PlaceBidActionFooter />
+                    <PlaceBidActionFooter
+                        onSubmit={submitHandler}
+                        balance={balance}
+                        minumumbid={minimumBid}
+                        onChange={onChangeHandler}
+                        errorMessage={error}
+                        value={value}
+                    />
                 </KeyBoardView>
             </Actionsheet.Content>
         </Actionsheet>

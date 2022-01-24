@@ -8,7 +8,8 @@ const userState = {
     email: "ahnafa.fgs5@co.li",
     avatar: "https://image.freepik.com/free-vector/cute-panda-gaming-cartoon-icon-illustration-animal-technology-icon-concept-premium-flat-cartoon-style_138676-2685.jpg",
     private: true,
-    password:'123456'
+    password:'123456',
+    balance:'0.89565'
 };
 
 const userSlice = createSlice({

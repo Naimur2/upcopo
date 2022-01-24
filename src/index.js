@@ -6,8 +6,6 @@ import { useSelector } from "react-redux";
 import ThemeConfig from "../theme-config";
 import AuthRoute from "./AuthRoute";
 import DrawerNavigator from "./DrawerNavigator";
-import PlaceBidAction from "./user-screens/common/PlaceBidAction";
-import ScanQRCode from './drawer-screens/closed/components/wallet/ScanQRCode'
 
 export default function index() {
     const height = Dimensions.get("window").height;
@@ -31,7 +29,7 @@ export default function index() {
 
     return (
         <ThemeConfig>
-            {authState.isAuthenticated ? <ScanQRCode /> : <AuthRoute />}
+            {authState.isAuthenticated ? <DrawerNavigator /> : <AuthRoute />}
 
             {uiLoading && (
                 <Spinner

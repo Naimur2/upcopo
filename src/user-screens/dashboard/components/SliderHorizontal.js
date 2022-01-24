@@ -1,7 +1,9 @@
 import { useNavigation } from "@react-navigation/native";
 import { HStack, ScrollView } from "native-base";
 import React from "react";
+
 import TrendyHouse from "./TrendyHouses";
+
 
 export default function SliderHorizontal({ houses }) {
     const navigation = useNavigation();
@@ -14,8 +16,10 @@ export default function SliderHorizontal({ houses }) {
                         key={house._id}
                         expiresAt={house.expiresAt}
                         image={house.image}
+                        houseId={house._id}
                         houseName={house.houseName}
                         currentBid={house.currentBid}
+                        minimumBid={house.minimumBid}
                         onPress={() =>
                             navigation.navigate("House", {
                                 house: house,
@@ -24,6 +28,7 @@ export default function SliderHorizontal({ houses }) {
                     />
                 ))}
             </HStack>
+          
         </ScrollView>
     );
 }

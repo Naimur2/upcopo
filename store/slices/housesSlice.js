@@ -21,6 +21,7 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "2",
@@ -42,6 +43,7 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "3",
@@ -63,6 +65,7 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "4",
@@ -84,6 +87,7 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "5",
@@ -105,6 +109,7 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "6",
@@ -126,6 +131,7 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
 ];
 const top = [
@@ -149,6 +155,7 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "20",
@@ -170,6 +177,7 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "30",
@@ -191,6 +199,7 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "40",
@@ -212,6 +221,7 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "50",
@@ -233,6 +243,7 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
     {
         _id: "60",
@@ -254,6 +265,7 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
+        minimumBid:0.541455
     },
 ];
 

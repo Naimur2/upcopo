@@ -1,11 +1,18 @@
-import { HStack, Stack, Text, VStack } from 'native-base';
-import React from 'react';
-import Card from '../../../utility/Card';
-import FormInput from '../../../utility/FormInput';
-import Icon from '../../../utility/Icon';
-import UtilityBtn from '../../../utility/UtilityBtn';
+import { HStack, Stack, Text, VStack } from "native-base";
+import React from "react";
+import Card from "../../../utility/Card";
+import FormInput from "../../../utility/FormInput";
+import Icon from "../../../utility/Icon";
+import UtilityBtn from "../../../utility/UtilityBtn";
 
-export default function PlaceBidActionFooter() {
+export default function PlaceBidActionFooter({
+    onSubmit,
+    balance,
+    minumumbid,
+    onChange,
+    errorMessage,
+    value,
+}) {
     return (
         <Stack p={4}>
             <Card p={4}>
@@ -23,49 +30,53 @@ export default function PlaceBidActionFooter() {
                     fontWeight={"400"}
                     fontFamily={"body"}
                 >
-                    You must bid at least 0.825 ETH
+                    You must bid at least {minumumbid} ETH
                 </Text>
-                <HStack justifyContent={'space-between'} alignItems={'center'}>
-
-
-                    <Card borderColor={"#F1F3F5"}  borderWidth={1} py={2.5} >
-                        <Icon name="etherium" size={28} color={'#687076'} />
+                <HStack justifyContent={"space-between"} alignItems={"center"}>
+                    <Card borderColor={"#F1F3F5"} borderWidth={1} py={2.5}>
+                        <Icon name="etherium" size={28} color={"#687076"} />
                     </Card>
 
-
-
-                    <Card w={'85%'} >
+                    <Card w={"85%"}>
                         <FormInput
                             placeHolder={"0.00"}
                             keyboardType="numeric"
                             borderColor={"#ECEEF0"}
                             py={2.5}
-
+                            onChangeText={onChange}
+                            errorMessage={errorMessage}
+                            value={value}
                         />
+                        <Text
+                            fontSize="13"
+                            color="#8E8E93"
+                            fontWeight={"400"}
+                            fontFamily={"body"}
+                        >
+                            {errorMessage}
+                        </Text>
                     </Card>
                 </HStack>
-                <VStack justifyContent={'center'} alignItems={'center'} space={2}>
+                <VStack
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    space={2}
+                >
                     <Text
                         fontSize="13"
                         color="#8E8E93"
                         fontWeight={"400"}
                         fontFamily={"body"}
                     >
-                        Your Balance is 0.0052 ETH
+                        Your Balance is {balance} ETH
                     </Text>
                     <UtilityBtn
-                        title={'Submit'}
-                        w={'100%'}
+                        title={"Submit"}
+                        w={"100%"}
+                        onPress={onSubmit}
                     />
-
                 </VStack>
-
-
-
             </Card>
-
-
         </Stack>
-
     );
 }
