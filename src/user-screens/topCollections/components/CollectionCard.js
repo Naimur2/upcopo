@@ -6,20 +6,26 @@ import CardFooter from "./CardFooter";
 import CardImage from "./CardImage";
 import CardTitle from "./CardTitle";
 
-export default function CollectionCard(props) {
+export default function CollectionCard({
+    _id,
+    onPress,
+    standings,
+    name,
+    avatar,
+    price,
+    priceUp,
+    priceUpPercentage,
+    ...rest
+}) {
     return (
-        <Card
-            p={4}
-            key={props._id}
-            onPress={props.onPress}
-        >
+        <Card p={4} key={_id} onPress={onPress} {...rest}>
             <HStack alignItems={"center"} space={3}>
-                <CardTitle value={props.standings} />
-                <CardImage name={props.name} avatar={props.avatar} />
-                <CardBody name={props.name} price={props.price} />
+                <CardTitle value={standings} />
+                <CardImage name={name} avatar={avatar} />
+                <CardBody name={name} price={price} />
                 <CardFooter
-                    priceUp={props.priceUp}
-                    priceUpPercentage={props.priceUpPercentage}
+                    priceUp={priceUp}
+                    priceUpPercentage={priceUpPercentage}
                 />
             </HStack>
         </Card>

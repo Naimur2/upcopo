@@ -20,7 +20,8 @@ export default function SearchPages({ navigation }) {
         disPatch(getAllHouses());
         return () => {
             disPatch(housesActions.removeHouses({ type: "allHouses" }));
-            setText("")
+            setText("");
+            setSearch("");
         };
     }, [navigation]);
 
@@ -57,20 +58,18 @@ export default function SearchPages({ navigation }) {
 
     return (
         <Stack flex="1" px={4} bg={"#f9f9f9"}>
+            <SearchPagesHeader
+                onClear={() => setText("")}
+                onSearch={(txt) => setText(txt)}
+                key={"1"}
+                value={text}
+            />
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 data={filterSearch}
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}
-                ListHeaderComponent={
-                    <SearchPagesHeader
-                        onClear={() => setText("")}
-                        value={text}
-                        onSearch={(txt) => setText(txt)}
-                        key={"1"}
-                    />
-                }
             />
         </Stack>
     );

@@ -1,64 +1,61 @@
-import { useNavigation } from "@react-navigation/native";
 import { debounce } from "lodash";
-import { Stack } from "native-base";
+import { FlatList, Stack } from "native-base";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCollections } from "../../../store/slices/collectionsSlice";
 import { housesActions } from "../../../store/slices/housesSlice";
-import KeyBoardView from "../../utility/KeyBoardView";
 import Search from "../../utility/Search";
-import CollectionCard from "../topCollections/components/CollectionCard";
+import { CollectionItemCard } from "../topCollections/TopCollections";
 
-export default function SearchCollections(props) {
+
+export default function SearchCollections({ navigation }) {
     const dispatch = useDispatch();
+    let [search, setSearch] = useState("");
+    let [text, setText] = useState("");
+    const collections = useSelector((state) => state.collections.collections);
+
+    const onSearchHandler = debounce((txt) => {
+        setSearch(txt);
+    }, 500);
+
     React.useEffect(() => {
         dispatch(getAllCollections());
-        return ()=>{
-            dispatch(housesActions.removeHouses({type:'topSellers'}))
-        }
+        return () => {
+            dispatch(housesActions.removeHouses({ type: "topSellers" }));
+            setText("");
+            setSearch("");
+        };
     }, [navigation]);
 
+    React.useEffect(() => {
+        onSearchHandler(text);
+        return () => {
+            setSearch("");
+        };
+    }, [text]);
 
-    const navigation = useNavigation();
-    let [search, setSearch] = useState("");
-    const collections = useSelector((state) => state.collections.collections);
-    const onSearchHandler = debounce((text) => {
-        setSearch(text);
-    }, 500);
-    ///
     const filterSearch = collections.filter((item) =>
         search !== ""
             ? item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
             : item
     );
 
-    const renderItem = filterSearch.map((item, i) => {
-        return (
-            <Stack py={2} key={item._id}>
-                <CollectionCard
-                    standings={item.standings}
-                    varified={item.varified}
-                    name={item.name}
-                    avatar={item.avatar}
-                    price={item.price}
-                    priceUp={item.priceUp}
-                    priceUpPercentage={item.priceUpPercentage}
-                    onPress={() => navigation.navigate("Collections")}
-                />
-            </Stack>
-        );
-    });
-
     return (
-        <KeyBoardView>
-            <Stack px="4">
-                <Search
-                    placeholder="Search collections"
-                    onSearch={onSearchHandler}
-                    onClear={()=> console.log('hhhh') }
-                />
-                <Stack py={4}>{renderItem}</Stack>
-            </Stack>
-        </KeyBoardView>
+        <Stack flex="1" px={4} bg="#f9f9f9">
+            <Search
+                onSearch={(txt) => setText(txt)}
+                onClear={() => setText("")}
+                key={44}
+                mb={2}
+                value={text}
+            />
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                data={filterSearch}
+                renderItem={({ item }) => <CollectionItemCard {...item} />}
+                keyExtractor={(item) => item._id}
+            />
+        </Stack>
     );
 }

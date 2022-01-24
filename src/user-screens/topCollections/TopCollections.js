@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, FlatList } from "native-base";
+import { FlatList } from "native-base";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCollections } from "../../../store/slices/collectionsSlice";
@@ -10,23 +10,22 @@ import CollectionCard from "./components/CollectionCard";
 export const CollectionItemCard = (props) => {
     const navigation = useNavigation();
     return (
-        <Box mb={4}>
-            <CollectionCard
-                key={props._id}
-                standings={props.standings}
-                varified={props.varified}
-                name={props.name}
-                avatar={props.avatar}
-                price={props.price}
-                priceUp={props.priceUp}
-                priceUpPercentage={props.priceUpPercentage}
-                onPress={() =>
-                    navigation.navigate("Collections", {
-                        collectionId: props._id,
-                    })
-                }
-            />
-        </Box>
+        <CollectionCard
+            my={2}
+            key={props._id}
+            standings={props.standings}
+            varified={props.varified}
+            name={props.name}
+            avatar={props.avatar}
+            price={props.price}
+            priceUp={props.priceUp}
+            priceUpPercentage={props.priceUpPercentage}
+            onPress={() =>
+                navigation.navigate("Collections", {
+                    collectionId: props._id,
+                })
+            }
+        />
     );
 };
 
