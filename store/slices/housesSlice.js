@@ -20,6 +20,7 @@ const trendy = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "2",
@@ -40,6 +41,7 @@ const trendy = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "3",
@@ -60,6 +62,7 @@ const trendy = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "4",
@@ -80,6 +83,7 @@ const trendy = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "5",
@@ -100,6 +104,7 @@ const trendy = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "6",
@@ -120,6 +125,7 @@ const trendy = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
 ];
 const top = [
@@ -142,6 +148,7 @@ const top = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "20",
@@ -162,6 +169,7 @@ const top = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "30",
@@ -182,6 +190,7 @@ const top = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "40",
@@ -202,6 +211,7 @@ const top = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "50",
@@ -222,6 +232,7 @@ const top = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
     {
         _id: "60",
@@ -242,6 +253,7 @@ const top = [
             "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
         topBid: 0.8,
         lastBid: 0.7,
+        likes: Math.round(Math.random() * 1 + 100),
     },
 ];
 

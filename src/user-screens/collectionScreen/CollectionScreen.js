@@ -1,53 +1,355 @@
-import { useNavigation } from "@react-navigation/native";
 import { Avatar, ScrollView, Stack } from "native-base";
 import React from "react";
 import { Dimensions } from "react-native";
+import lib from "../../../lib";
 import CollectionButtons from "./components/CollectionButtons";
 import CollectionsBody from "./components/CollectionsBody";
 import CollectionsHeader from "./components/CollectionsHeader";
 import CollectionsTab from "./components/CollectionsTab";
 
-// <CollectionsHeader />
-export default function Collections() {
-    const navigation = useNavigation();
+const tabData = {
+    _id: "100",
+    collectionId: "420",
+    name: "BostonClub",
+    items: [
+        {
+            _id: "1",
+            image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "2",
+            image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "3",
+            image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "4",
+            image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+    ],
+    owned: [
+        {
+            _id: "5",
+            image: "https://media.istockphoto.com/vectors/fantasy-blue-castle-on-rock-at-morning-vector-id1301353448?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "6",
+            image: "https://media.istockphoto.com/vectors/fantasy-blue-castle-on-rock-at-morning-vector-id1301353448?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "7",
+            image: "https://media.istockphoto.com/vectors/fantasy-blue-castle-on-rock-at-morning-vector-id1301353448?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "8",
+            image: "https://media.istockphoto.com/vectors/fantasy-blue-castle-on-rock-at-morning-vector-id1301353448?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "9",
+            image: "https://media.istockphoto.com/vectors/fantasy-blue-castle-on-rock-at-morning-vector-id1301353448?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+    ],
+    liked: [
+        {
+            _id: "10",
+            image: "https://media.istockphoto.com/vectors/moonlight-scene-vector-id533098513?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "11",
+            image: "https://media.istockphoto.com/vectors/moonlight-scene-vector-id533098513?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "12",
+            image: "https://media.istockphoto.com/vectors/moonlight-scene-vector-id533098513?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "13",
+            image: "https://media.istockphoto.com/vectors/moonlight-scene-vector-id533098513?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+        {
+            _id: "14",
+            image: "https://media.istockphoto.com/vectors/moonlight-scene-vector-id533098513?s=612x612",
+            houseName: "Turn Key House",
+            expiresAt: "Jan 24, 2022 18:00:30",
+            currentBid: "4.33",
+            owner: "Luckas",
+            builtAt: "1942",
+            address: "1523 N 106th St, Mesa, AZ 85207",
+            sqrfit: " 3,160sqft",
+            description:
+                "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+            bed: 3,
+            bath: 4,
+            createdAt: "Jan 22, 2022 18:00:30",
+            mapImage:
+                "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+            topBid: 0.8,
+            lastBid: 0.7,
+            likes:40
+        },
+    ],
+};
 
-    const data = {
-        _id: "3",
-        name: "Boston Club",
-        varified: false,
-        price: 15499.86,
-        priceUp: true,
-        avatar: "https://img.freepik.com/free-vector/cute-cartoon-panda-astronaut-with-moon_60438-1427.jpg?size=338&ext=jpg",
-        priceUpPercentage: 46.03,
-        standings: 3,
-        ethAddress: "0xet54trw757007QR5e5c757007",
-        description:
-            "Sometimes in life we have to just go with the vibe. Enjoy the unbothered moments in life to create in your space",
-        coverPhoto:
-            "https://image.freepik.com/free-vector/dragon-breathing-fire-attacks-castle_107791-5336.jpg",
-        items: "10100",
-        floorPrice: "4.2",
-        owners: "5900",
-        volume: "237000000",
-    };
+const data = {
+    _id: "420",
+    name: "Boston Club",
+    varified: false,
+    price: 15499.86,
+    priceUp: true,
+    avatar: "https://img.freepik.com/free-vector/cute-cartoon-panda-astronaut-with-moon_60438-1427.jpg?size=338&ext=jpg",
+    priceUpPercentage: 46.03,
+    standings: 3,
+    ethAddress: "0xet54trw757007QR5e5c757007",
+    description:
+        "Sometimes in life we have to just go with the vibe. Enjoy the unbothered moments in life to create in your space",
+    coverPhoto:
+        "https://image.freepik.com/free-vector/dragon-breathing-fire-attacks-castle_107791-5336.jpg",
+    items: "10100",
+    floorPrice: "4.2",
+    owners: "5900",
+    volume: "237000000",
+};
+
+export default function Collections({ navigation, route }) {
+    const [selectedCategory, setSelectedCategory] = React.useState("items");
+
+    const [collectionHouses,setCollectionHouses]=React.useState([])
+
+    const userData = route.params;
 
     const width = Dimensions.get("window").width;
 
-    const numFormatter=(num)=> {
-        if(num > 999 && num < 1000000){
-            return (num/1000).toFixed(1) + 'K'; // convert to K for number from > 1000 < 1 million 
-        }
-        else if(num > 1000000 && num < 1000000000){
-            return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
-        }
-        else if(num > 1000000000){
-            return (num/1000000000).toFixed(1) + 'B'; // convert to M for number from > 1 million 
-        }
-        else if(num < 900){
-            return num; // if value < 1000, nothing to do
-        }
-    }
+    React.useEffect(() => {
+        setSelectedCategory('items');
+    }, [navigation, route.collectionId]);
 
+    React.useEffect(()=>{
+        const tabInfo = tabData[selectedCategory];
+        setCollectionHouses(tabInfo);
+    },[selectedCategory])
 
     return (
         <ScrollView bg="#f9f9f9">
@@ -77,15 +379,19 @@ export default function Collections() {
                             ethAddress={data.ethAddress}
                         />
                         <CollectionButtons
-                            items={numFormatter(+data.items)}
+                            items={lib.numFormatter(+data.items)}
                             floorPrice={`${data.floorPrice} ETH`}
-                            owners={numFormatter(data.owners)}
-                            volume={numFormatter(+data.volume)}
+                            owners={lib.numFormatter(data.owners)}
+                            volume={lib.numFormatter(+data.volume)}
                             onItemKeyPress={() =>
                                 navigation.navigate("UserProfile")
                             }
                         />
-                        <CollectionsTab />
+                        <CollectionsTab
+                            onTabPress={(cat) => setSelectedCategory(cat)}
+                            data={collectionHouses}
+                            currenTab={selectedCategory}
+                        />
                     </Stack>
                 </Stack>
             </Stack>
