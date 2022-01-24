@@ -26,7 +26,7 @@ const navigation =useNavigation();
         <VStack py={4} space={4}>
             <HStack space="3%">
                 <Box w="80%">
-                    <Search value={value} onClear={ onClear } onSearch={onSearch} />
+                    <Search value={value} onClear={ ()=> console.log('ok') } onSearch={onSearch} />
                 </Box>
                 <Box justifyContent={"center"} alignItems={"center"} w={"16%"}>
                     <Text

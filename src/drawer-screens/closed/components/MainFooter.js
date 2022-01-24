@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import { Stack, Text } from "native-base";
+import { Actionsheet, Box, Stack, Text } from "native-base";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../../../store/slices/authSlice";
@@ -22,10 +22,36 @@ export const SHeader = ({ title }) => (
     </Text>
 );
 
+const ActionOpener = ({ isOpen, onClose }) => {
+    return (
+        <Actionsheet   isOpen={isOpen} onClose={onClose}>
+            <Actionsheet.Content bg={'#fff'}>
+                <Box w="100%" h={60} px={4} justifyContent="center">
+                    <Text
+                        fontsize="16"
+                        color="gray.500"
+                        _dark={{
+                            color: "gray.300",
+                        }}
+                    >
+                        Albums
+                    </Text>
+                </Box>
+                <Actionsheet.Item>Delete</Actionsheet.Item>
+                <Actionsheet.Item>Share</Actionsheet.Item>
+                <Actionsheet.Item>Play</Actionsheet.Item>
+                <Actionsheet.Item>Favourite</Actionsheet.Item>
+                <Actionsheet.Item>Cancel</Actionsheet.Item>
+            </Actionsheet.Content>
+        </Actionsheet>
+    );
+};
+
 export default function MainFooter() {
     const navigation = useNavigation();
-
     const [showModal, setShowModal] = useState(false);
+    const [showWallet, setShowWallet] = useState(false);
+
     const dispatch = useDispatch();
     const userDetails = useSelector((state) => state.auth);
 
@@ -38,7 +64,15 @@ export default function MainFooter() {
         <Stack bg={"#F9F9F9"} pt={2}>
             <SHeader title="General Settings" />
             <Stack>
-                <FooterButton title={"Wallet"} leftIcon={"wallet"} />
+                <FooterButton
+                    onPress={() => setShowWallet(true)}
+                    title={"Wallet"}
+                    leftIcon={"wallet"}
+                />
+                <ActionOpener
+                    isOpen={showWallet}
+                    onClose={() => setShowWallet(false)}
+                />
                 <FooterButton
                     title={"Notifications"}
                     leftIcon={"notification"}

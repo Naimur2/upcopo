@@ -55,7 +55,7 @@ export default function SearchCollections(props) {
                 <Search
                     placeholder="Search collections"
                     onSearch={onSearchHandler}
-                    onClear={()=> setSearch('') }
+                    onClear={()=> console.log('hhhh') }
                 />
                 <Stack py={4}>{renderItem}</Stack>
             </Stack>

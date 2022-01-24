@@ -20,6 +20,7 @@ export default function SearchPages({ navigation }) {
         disPatch(getAllHouses());
         return () => {
             disPatch(housesActions.removeHouses({ type: "allHouses" }));
+            setText("")
         };
     }, [navigation]);
 

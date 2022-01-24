@@ -7,14 +7,21 @@ import FormInput from "../../../utility/FormInput";
 import UtilityBtn from "../../../utility/UtilityBtn";
 
 export default function OpenForm({ submitHandler }) {
-    const userDetails = useSelector((state) => state.auth);
+    const userDetails = useSelector((state) => state.user);
     const [isPassword, setIsPassword] = React.useState(true);
 
     const Inputs = [
         { _id: "01", label: "Full Name", path: "user" },
         { _id: "02", label: "Email", path: "email" },
         { _id: "03", label: "Phone Number", path: "mobile" },
-        { _id: "04", label: "Password", path: "password", type: "password" },
+        {
+            _id: "04",
+            label: "Password",
+            path: "password",
+            type: isPassword ? "password" : "text",
+            rightIcon: isPassword ? "eye-open" : "eye-off",
+            onRightIconPress:()=> setIsPassword((prev) => !prev)
+        },
     ];
     const phoneRegExp =
         /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/;
@@ -32,60 +39,52 @@ export default function OpenForm({ submitHandler }) {
     });
 
     return (
-
-            <Formik
-                validationSchema={editSchema}
-                initialValues={{
-                    user: userDetails.user,
-                    email: userDetails.email,
-                    mobile: userDetails.mobile,
-                    password: userDetails.password,
-                }}
-                onSubmit={submitHandler}
-            >
-                {({
-                    handleChange,
-                    handleBlur,
-                    handleSubmit,
-                    values,
-                    errors,
-                    touched,
-                }) => (
-                    <VStack p={4} space={4}>
-                        {Inputs.map((inp) => (
-                            <FormInput
-                                type={inp.type}
-                                key={inp._id}
-                                label={inp.label}
-                                variant="underlined"
-                                bg="transparent"
-                                borderBottomColor="#DFE3E6"
-                                borderBottomWidth={2}
-                                py={2}
-                                value={values[inp.path]}
-                                onChangeText={handleChange(inp.path)}
-                                error={errors[inp.path]}
-                                errorMessage={errors[inp.path]}
-                                rightIcon={
-                                    inp === "password" &&
-                                    values.password.length > 0 &&
-                                    (isPassword ? "eye-open" : "eye-off")
-                                }
-                                onRightIconPress={() =>
-                                    setIsPassword((prev) => !prev)
-                                }
-                            />
-                        ))}
-                        <HStack justifyContent={"flex-end"}>
-                            <UtilityBtn
-                                px={8}
-                                title={"Save"}
-                                onPress={handleSubmit}
-                            />
-                        </HStack>
-                    </VStack>
-                )}
-            </Formik>
-
+        <Formik
+            validationSchema={editSchema}
+            initialValues={{
+                user: userDetails.user,
+                email: userDetails.email,
+                mobile: userDetails.mobile,
+                password: userDetails.password,
+            }}
+            onSubmit={submitHandler}
+        >
+            {({
+                handleChange,
+                handleBlur,
+                handleSubmit,
+                values,
+                errors,
+                touched,
+            }) => (
+                <VStack p={4} space={4}>
+                    {Inputs.map((inp) => (
+                        <FormInput
+                            type={inp.type}
+                            key={inp._id}
+                            label={inp.label}
+                            variant="underlined"
+                            bg="transparent"
+                            borderBottomColor="#DFE3E6"
+                            borderBottomWidth={2}
+                            py={2}
+                            value={values[inp.path]}
+                            onChangeText={handleChange(inp.path)}
+                            error={errors[inp.path]}
+                            errorMessage={errors[inp.path]}
+                            rightIcon={inp.rightIcon}
+                            onRightIconPress={inp.onRightIconPress}
+                        />
+                    ))}
+                    <HStack justifyContent={"flex-end"}>
+                        <UtilityBtn
+                            px={8}
+                            title={"Save"}
+                            onPress={handleSubmit}
+                        />
+                    </HStack>
+                </VStack>
+            )}
+        </Formik>
     );
 }
