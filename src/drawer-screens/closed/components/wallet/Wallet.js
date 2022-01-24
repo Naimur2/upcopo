@@ -1,8 +1,11 @@
-import { Box, HStack, Pressable, Stack, Text, VStack } from "native-base";
+import { Box, HStack, Image, Pressable, Stack, Text, VStack } from "native-base";
 import React from "react";
+import { Image as RnImage } from "react-native";
 import Card from "../../../../utility/Card";
 import FormInput from "../../../../utility/FormInput";
 import Icon from "../../../../utility/Icon";
+const imgGem = require("../../../../../assets/images/fxemoji_gem.png");
+const imgGemUri = RnImage.resolveAssetSource(imgGem).uri;
 
 export default function Wallet({ ...rest }) {
     return (
@@ -33,7 +36,7 @@ export default function Wallet({ ...rest }) {
                         Source at top up from Gem
                     </Text>
                     <HStack justifyContent={"space-between"}>
-                        <Icon
+                        {/*  <Icon
                             borderWidth={1.5}
                             borderColor={"#ECEEF0"}
                             name={"x"}
@@ -44,7 +47,24 @@ export default function Wallet({ ...rest }) {
                             w="16"
                             maxW="15%"
                             borderRadius="10"
-                        />
+                        /> */}
+                        <Box
+                            h={12}
+                            w={12}
+                            borderWidth={1.5}
+                            borderColor={"#ECEEF0"}
+                            p={2}
+                            borderRadius={10}
+                        >
+                            <Image
+                                alt="gem_icon"
+                                h={'full'}
+                                w={'full'}
+                                source={{ uri: imgGemUri }}
+
+                            />
+                        </Box>
+
                         <Box w={"80%"}>
                             <FormInput
                                 keyboardType="numeric"
@@ -52,12 +72,21 @@ export default function Wallet({ ...rest }) {
                                 p={4}
                             />
                         </Box>
+                       
                     </HStack>
+                    <Box 
+                         borderWidth={1.5}
+                         borderColor={'#fff'}
+                         borderBottomColor={'#F1F3F5'}
+                         pt={4}
+                        
+                        />
                     <Text
                         fontsize="16"
                         fontFamily={"body"}
                         fontWeight={700}
                         color={"#52B69A"}
+                        pt={2}
                     >
                         Total price is US $4.99
                     </Text>
