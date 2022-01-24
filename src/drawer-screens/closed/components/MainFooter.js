@@ -4,6 +4,7 @@ import { Actionsheet, Stack, Text } from "native-base";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../../../store/slices/authSlice";
+import KeyBoardView from "../../../utility/KeyBoardView";
 import CModal from "./CModal";
 import FooterButton from "./FooterButton";
 import Wallet from "./wallet/Wallet";
@@ -23,12 +24,13 @@ export const SHeader = ({ title }) => (
     </Text>
 );
 
-const ActionOpener = ({ isOpen, onClose }) => {
+export const ActionOpener = ({ isOpen, onClose }) => {
     return (
         <Actionsheet isOpen={isOpen} onClose={onClose}>
-            <Actionsheet.Content bg={'#F9F9F9'} h={300}>
-                <Wallet />
-
+            <Actionsheet.Content bg={"#F9F9F9"}>
+                <KeyBoardView  style={{ width: "100%" }} behaviour="none" >
+                    <Wallet  />
+                </KeyBoardView>
             </Actionsheet.Content>
         </Actionsheet>
     );
