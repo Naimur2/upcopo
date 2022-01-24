@@ -11,26 +11,19 @@ export default function TopSeller({ sellers }) {
     return (
         <HStack flexWrap={"wrap"} my={2} mx={4}>
             {sellers.map((seller, index) => (
-                <Box
-                    w="50%"
-                    pb={4}
-                    pr={index % 2 === 0 ? 2 : 0}
-                    pl={index % 2 !== 0 ? 2 : 0}
+                <SellerCard
                     key={seller._id}
-                >
-                    <SellerCard
-                        id={seller._id}
-                        houseImage={seller.image}
-                        houseDescription={seller.description}
-                        topBid={seller.topBid}
-                        lastBid={seller.lastBid}
-                        onPress={() =>
-                            navigation.navigate("House", {
-                                house: seller,
-                            })
-                        }
-                    />
-                </Box>
+                    houseImage={seller.image}
+                    houseDescription={seller.description}
+                    topBid={seller.topBid}
+                    lastBid={seller.lastBid}
+                    index={index}
+                    onPress={() =>
+                        navigation.navigate("House", {
+                            house: seller,
+                        })
+                    }
+                />
             ))}
         </HStack>
     );

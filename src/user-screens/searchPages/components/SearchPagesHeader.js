@@ -16,7 +16,7 @@ const items2 = [
     { _id: "02", label: "High to low", value: "h2l" },
 ];
 
-export default function SearchPagesHeader({onSearch}) {
+export default function SearchPagesHeader({onSearch,onClear,value}) {
     let [service1, setService1] = useState(items[0].value);
     let [service2, setService2] = useState(items2[0].value);
    
@@ -26,7 +26,7 @@ const navigation =useNavigation();
         <VStack py={4} space={4}>
             <HStack space="3%">
                 <Box w="80%">
-                    <Search onSearch={onSearch} />
+                    <Search value={value} onClear={ onClear } onSearch={onSearch} />
                 </Box>
                 <Box justifyContent={"center"} alignItems={"center"} w={"16%"}>
                     <Text

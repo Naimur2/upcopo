@@ -4,11 +4,12 @@ import React, { useEffect, useRef } from "react";
 import Search from "../../../utility/Search";
 
 export default function RecentSearchArea() {
+    const [search, setSearch] = React.useState("");
     let clean = true;
-    const search = useRef();
+    const searchA = useRef();
     const navigation = useNavigation();
     useEffect(() => {
-        search.current.focus();
+        searchA.current.focus();
     }, [navigation]);
 
     return (
@@ -32,7 +33,12 @@ export default function RecentSearchArea() {
                 </Text>
             </VStack>
 
-            <Search  ref={search} />
+            <Search
+                value={search}
+                onSearch={(text) => setSearch(text)}
+                onClear={() => setSearch("")}
+                ref={searchA}
+            />
         </Stack>
     );
 }

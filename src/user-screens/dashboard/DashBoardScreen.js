@@ -5,7 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCollections } from "../../../store/slices/collectionsSlice";
 import {
     getTopSellers,
-    getTrendyHouses
+    getTrendyHouses,
+    housesActions
 } from "../../../store/slices/housesSlice";
 import TopCollections from "../common/TopCollections";
 import Banner from "./components/Banner";
@@ -27,6 +28,11 @@ export default function DashBoardScreen() {
         dispatch(getTrendyHouses());
         dispatch(getTopSellers());
         dispatch(getCollections());
+        return () => {
+            dispatch(housesActions.removeHouses({ type: "trendyHouses" }));
+            dispatch(housesActions.removeHouses({ type: "topSellers" }));
+            dispatch(housesActions.removeHouses({ type: "allHouses" }));
+        };
     }, []);
 
     return (
@@ -42,7 +48,7 @@ export default function DashBoardScreen() {
                 imageType={"flash"}
                 onSeAllPress={() =>
                     navigation.navigate("TrendyHouses", {
-                        type: "trendyHouse",
+                        type: "trendyHouses",
                     })
                 }
             />
@@ -52,7 +58,7 @@ export default function DashBoardScreen() {
                 imageType={"fire"}
                 onSeAllPress={() =>
                     navigation.navigate("TrendyHouses", {
-                        type: "typeTopSellers",
+                        type: "topSellers",
                     })
                 }
             />
@@ -63,8 +69,8 @@ export default function DashBoardScreen() {
                 imageType={"arm"}
                 onSeAllPress={() => navigation.navigate("TopCollections")}
             />
-            
-            <TopCollections collections={collections.slice(0,4)} />
+
+            <TopCollections collections={collections.slice(0, 4)} />
         </ScrollView>
     );
 }

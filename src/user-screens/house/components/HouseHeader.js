@@ -19,8 +19,8 @@ export default function HouseHeader({
             <VStack space={140} mt={"7%"} p={6}>
                 <HStack justifyContent={"space-between"}>
                     <VStack>
-                        <Text>Owned By {owner} </Text>
-                        <Text>W.year {builtAt}</Text>
+                        <Text maxW={40} fontFamily={"body"}>Owned By {owner} </Text>
+                        <Text maxW={40} fontFamily={"body"}>W.year {builtAt}</Text>
                     </VStack>
                     <Counter expiresAt={expiresAt} />
                 </HStack>

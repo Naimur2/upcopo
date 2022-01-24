@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const houses = [
+const trendy = [
     {
         _id: "1",
         houseName: "Turn Key House",
@@ -122,11 +122,133 @@ const houses = [
         lastBid: 0.7,
     },
 ];
+const top = [
+    {
+        _id: "10",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        image: "https://ak.picdn.net/shutterstock/videos/6855973/thumb/4.jpg?ip=x480",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+    },
+    {
+        _id: "20",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        image: "https://ak.picdn.net/shutterstock/videos/6855973/thumb/4.jpg?ip=x480",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+    },
+    {
+        _id: "30",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        image: "https://ak.picdn.net/shutterstock/videos/6855973/thumb/4.jpg?ip=x480",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+    },
+    {
+        _id: "40",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 26, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        image: "https://ak.picdn.net/shutterstock/videos/6855973/thumb/4.jpg?ip=x480",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+    },
+    {
+        _id: "50",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        image: "https://ak.picdn.net/shutterstock/videos/6855973/thumb/4.jpg?ip=x480",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+    },
+    {
+        _id: "60",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 26, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        image: "https://ak.picdn.net/shutterstock/videos/6855973/thumb/4.jpg?ip=x480",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+    },
+];
 
 const initialState = {
     trendyHouses: [],
     topSellers: [],
-    allHouses:[]
+    allHouses: [],
 };
 
 const housesSlice = createSlice({
@@ -140,7 +262,6 @@ const housesSlice = createSlice({
         removeHouses: (state, action) => {
             state[action.payload] = [];
         },
-
     },
 });
 
@@ -149,37 +270,43 @@ export default housesSlice.reducer;
 
 export const getTrendyHouses = () => {
     return (dispatch) => {
-        dispatch(housesActions.setHouses({type:'trendyHouses',data:houses}));
+        dispatch(
+            housesActions.setHouses({ type: "trendyHouses", data: trendy })
+        );
     };
 };
 
 export const clearTrendyHouses = () => {
     return (dispatch) => {
-        dispatch(housesActions.removeHouses({type:'trendyHouses'}));
+        dispatch(housesActions.removeHouses({ type: "trendyHouses" }));
     };
 };
 
 export const getTopSellers = () => {
     return (dispatch) => {
-        dispatch(housesActions.setHouses({type:'topSellers',data:houses}));
+        dispatch(housesActions.setHouses({ type: "topSellers", data: top }));
     };
 };
 
-
 export const clearTopSellers = () => {
     return (dispatch) => {
-        dispatch(housesActions.removeHouses({type:'topSellers'}));
+        dispatch(housesActions.removeHouses({ type: "topSellers" }));
     };
 };
 
 export const getAllHouses = () => {
     return (dispatch) => {
-        dispatch(housesActions.setHouses({type:'allHouses',data:houses}));
+        dispatch(
+            housesActions.setHouses({
+                type: "allHouses",
+                data: [...trendy, ...top],
+            })
+        );
     };
 };
 
 export const clearAllHouses = () => {
     return (dispatch) => {
-        dispatch(housesActions.removeHouses({type:'allHouses'}));
+        dispatch(housesActions.removeHouses({ type: "allHouses" }));
     };
 };

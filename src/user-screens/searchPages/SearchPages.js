@@ -8,8 +8,13 @@ import SearchPagesHeader from "./components/SearchPagesHeader";
 
 export default function SearchPages({ navigation }) {
     let [search, setSearch] = useState("");
+    let [text, setText] = useState("");
     const disPatch = useDispatch();
     const allHouses = useSelector((state) => state.houses.allHouses);
+
+    const onSearchHandler = debounce((txt) => {
+        setSearch(txt);
+    }, 100);
 
     React.useEffect(() => {
         disPatch(getAllHouses());
@@ -18,9 +23,13 @@ export default function SearchPages({ navigation }) {
         };
     }, [navigation]);
 
-    const onSearchHandler = debounce((text) => {
-        setSearch(text);
-    }, 500);
+    React.useEffect(() => {
+        onSearchHandler(text);
+
+        return () => {
+            setSearch("");
+        };
+    }, [text]);
 
     const filterSearch = allHouses.filter((item) =>
         search !== ""
@@ -54,7 +63,12 @@ export default function SearchPages({ navigation }) {
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}
                 ListHeaderComponent={
-                    <SearchPagesHeader onSearch={onSearchHandler} key={"1"} />
+                    <SearchPagesHeader
+                        onClear={() => setText("")}
+                        value={text}
+                        onSearch={(txt) => setText(txt)}
+                        key={"1"}
+                    />
                 }
             />
         </Stack>

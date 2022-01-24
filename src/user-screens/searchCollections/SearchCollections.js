@@ -2,12 +2,23 @@ import { useNavigation } from "@react-navigation/native";
 import { debounce } from "lodash";
 import { Stack } from "native-base";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCollections } from "../../../store/slices/collectionsSlice";
+import { housesActions } from "../../../store/slices/housesSlice";
 import KeyBoardView from "../../utility/KeyBoardView";
 import Search from "../../utility/Search";
 import CollectionCard from "../topCollections/components/CollectionCard";
 
 export default function SearchCollections(props) {
+    const dispatch = useDispatch();
+    React.useEffect(() => {
+        dispatch(getAllCollections());
+        return ()=>{
+            dispatch(housesActions.removeHouses({type:'topSellers'}))
+        }
+    }, [navigation]);
+
+
     const navigation = useNavigation();
     let [search, setSearch] = useState("");
     const collections = useSelector((state) => state.collections.collections);
@@ -44,6 +55,7 @@ export default function SearchCollections(props) {
                 <Search
                     placeholder="Search collections"
                     onSearch={onSearchHandler}
+                    onClear={()=> setSearch('') }
                 />
                 <Stack py={4}>{renderItem}</Stack>
             </Stack>
