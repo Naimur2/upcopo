@@ -13,7 +13,7 @@ export default function TopCollections({collections}) {
                     key={collection._id}
                     standings={index+1}
                     varified={collection.varified}
-                    name={collection.name}
+                    name={collection.collectionName}
                     avatar={collection.avatar}
                     price={collection.totalEthprice}
                     priceUp={collection.priceUp}

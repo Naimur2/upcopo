@@ -25,7 +25,7 @@ export default function index() {
     
     // authentication  will be done here
     const authState = useSelector((state) => state.auth);
-    const placeBid = useSelector((state) => state.placebid.isOpen);
+
     const uiLoading = useSelector((state) => state.ui.isLoading);
 
     return (
@@ -40,7 +40,7 @@ export default function index() {
                     position={"absolute"}
                 />
             )}
-            <PlaceBidAction isOpen={placeBid} />
+
         </ThemeConfig>
     );
 }

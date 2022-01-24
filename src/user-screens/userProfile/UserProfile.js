@@ -4,69 +4,150 @@ import React from "react";
 import UserProfileCard from "./components/UserProfileCard";
 import UserProfileMenu from "./components/UserProfileMenu";
 
-const userProfiles = {
-    _id: "1",
-    name: "John Doe",
-    username: "70nder",
-    userCoverPhoto:
-        "https://st4.depositphotos.com/5857850/29020/v/450/depositphotos_290207934-stock-illustration-modern-villa-on-residence-in.jpg",
-    userAvatar:
-        "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
-    isVarified: true,
-    bids: [
-        {
-            _id: "1",
-            username: "70nder",
-            varified: false,
-            image_url:
-                "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",
-            avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
-            likes: 77,
-            topBid: 6.0241,
-            expiresAt: "Jan 1, 2022 18:00:30",
-        },
-        {
-            _id: "2",
-            username: "70nder",
-            varified: false,
-            image_url:
-                "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",
-            avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
-            likes: 89,
-            topBid: 6.0241,
-            expiresAt: "Jan 1, 2022 18:00:30",
-        },
-        {
-            _id: "3",
-            username: "70nder",
-            varified: false,
-            image_url:
-                "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",
-            avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
-            likes: 77,
-            topBid: 6.0241,
-            expiresAt: "Jan 1, 2022 18:00:30",
-        },
-        {
-            _id: "4",
-            username: "70nder",
-            varified: false,
-            image_url:
-                "https://st4.depositphotos.com/9058402/27184/v/380/depositphotos_271847624-stock-illustration-man-skateboarding-in-future-metropolis.jpg?forcejpeg=true",
-            avatar: "https://image.freepik.com/free-psd/3d-cartoon-character-isolated-3d-rendering_235528-535.jpg",
-            likes: 89,
-            topBid: 6.0241,
-            expiresAt: "Jan 1, 2022 18:00:30",
-        },
-    ],
-    socialLinks:[
-        {type:'facebook',url:'https://www.facebook.com/'},
-        {type:'twitter',url:'https://twitter.com/home'},
-        {type:'discord',url:'https://discord.com/'},
-        {type:'instagram',url:'https://www.instagram.com/'},
-    ]
-};
+const userProfiles = [
+    {
+        _id: "1",
+        name: "John Doe",
+        username: "70nder",
+        userAvatar:
+            "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
+        isVarified: true,
 
+        image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+        likes: 40,
+    },
+    {
+        _id: "2",
+        name: "John Doe",
+        username: "70nder",
+        userAvatar:
+            "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
+        isVarified: true,
+
+        image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+        likes: 40,
+    },
+    {
+        _id: "3",
+        name: "John Doe",
+        username: "70nder",
+        userAvatar:
+            "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
+        isVarified: true,
+
+        image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+        likes: 40,
+    },
+    {
+        _id: "4",
+        name: "John Doe",
+        username: "70nder",
+        userAvatar:
+            "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
+        isVarified: true,
+
+        image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+        likes: 40,
+    },
+    {
+        _id: "5",
+        name: "John Doe",
+        username: "70nder",
+        userAvatar:
+            "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
+        isVarified: true,
+
+        image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
+        houseName: "Turn Key House",
+        expiresAt: "Jan 24, 2022 18:00:30",
+        currentBid: "4.33",
+        owner: "Luckas",
+        builtAt: "1942",
+        address: "1523 N 106th St, Mesa, AZ 85207",
+        sqrfit: " 3,160sqft",
+        description:
+            "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
+        bed: 3,
+        bath: 4,
+        createdAt: "Jan 22, 2022 18:00:30",
+        mapImage:
+            "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
+        topBid: 0.8,
+        lastBid: 0.7,
+        likes: 40,
+    },
+];
+
+const socialLinks = [
+    { type: "facebook", url: "https://www.facebook.com/" },
+    { type: "twitter", url: "https://twitter.com/home" },
+    { type: "discord", url: "https://discord.com/" },
+    { type: "instagram", url: "https://www.instagram.com/" },
+];
 const getRemainingTime = (expiresAt) => {
     const expiresAtTime = new Date(expiresAt);
     const now = new Date().getTime();
@@ -85,26 +166,25 @@ const getRemainingTime = (expiresAt) => {
     return "2 days left";
 };
 
-
-
 export default function UserProfile({ route }) {
-    const navigation =useNavigation();
+    const navigation = useNavigation();
 
     const renderItem = ({ item }) => (
         <UserProfileCard
-            avatar={item.avatar}
+            avatar={item.userAvatar}
             userId={item._id}
             userName={item.username}
             expiresAt={getRemainingTime(item.expiresAt)}
-            houseImage={item.image_url}
+            houseImage={item.image}
             likes={item.likes}
             topBid={item.topBid}
-            onUserPress={()=>navigation.navigate('OthersProfile',{
-                userId:item._id
-            })}
+            onUserPress={() =>
+                navigation.navigate("OthersProfile", {
+                    userId: item._id,
+                })
+            }
         />
     );
-
 
     return (
         <FlatList
@@ -112,7 +192,7 @@ export default function UserProfile({ route }) {
             showsHorizontalScrollIndicator={false}
             bg={"#f9f9f9"}
             ListHeaderComponent={
-                <Box key={"1"} >
+                <Box key={"1"}>
                     {/* <UserProfileHeader
                         name={userProfiles.name}
                         userAvatar={userProfiles.userAvatar}
@@ -122,7 +202,7 @@ export default function UserProfile({ route }) {
                     <UserProfileMenu />
                 </Box>
             }
-            data={userProfiles.bids}
+            data={userProfiles}
             renderItem={renderItem}
             keyExtractor={(item) => item._id}
         />

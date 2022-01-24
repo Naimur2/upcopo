@@ -129,7 +129,7 @@ const top = [
 const collections = [
     {
         _id: "1",
-        name: "Javascript Club",
+        collectionName: "Javascript Club",
         varified: false,
         totalEthprice: 15499.86,
         priceUp: true,
@@ -147,7 +147,7 @@ const collections = [
     },
     {
         _id: "2",
-        name: "Node Js Club",
+        collectionName: "Node Js Club",
         varified: false,
         totalEthprice: 10000.86,
         priceUp: true,
@@ -165,7 +165,61 @@ const collections = [
     },
     {
         _id: "3",
-        name: "Boston Club",
+        collectionName: "Boston Club",
+        varified: false,
+        totalEthprice: 16499.86,
+        priceUp: true,
+        avatar: "https://img.freepik.com/free-vector/cute-cartoon-panda-astronaut-with-moon_60438-1427.jpg?size=338&ext=jpg",
+        priceUpPercentage: 46.03,
+        ethAddress: "0xet54trw757007QR5e5c757007",
+        description:
+            "Sometimes in life we have to just go with the vibe. Enjoy the unbothered moments in life to create in your space",
+        coverPhoto:
+            "https://image.freepik.com/free-vector/dragon-breathing-fire-attacks-castle_107791-5336.jpg",
+        items: "10100",
+        floorPrice: "4.2",
+        owners: "5900",
+        volume: "237000000",
+    },
+    {
+        _id: "4",
+        collectionName: "Javascript Club",
+        varified: false,
+        totalEthprice: 15499.86,
+        priceUp: true,
+        avatar: "https://img.freepik.com/free-vector/cute-cartoon-panda-astronaut-with-moon_60438-1427.jpg?size=338&ext=jpg",
+        priceUpPercentage: 46.03,
+        ethAddress: "0xet54trw757007QR5e5c757007",
+        description:
+            "Sometimes in life we have to just go with the vibe. Enjoy the unbothered moments in life to create in your space",
+        coverPhoto:
+            "https://image.freepik.com/free-vector/dragon-breathing-fire-attacks-castle_107791-5336.jpg",
+        items: "10100",
+        floorPrice: "4.2",
+        owners: "5900",
+        volume: "237000000",
+    },
+    {
+        _id: "5",
+        collectionName: "Node Js Club",
+        varified: false,
+        totalEthprice: 10000.86,
+        priceUp: true,
+        avatar: "https://img.freepik.com/free-vector/cute-cartoon-panda-astronaut-with-moon_60438-1427.jpg?size=338&ext=jpg",
+        priceUpPercentage: 46.03,
+        ethAddress: "0xet54trw757007QR5e5c757007",
+        description:
+            "Sometimes in life we have to just go with the vibe. Enjoy the unbothered moments in life to create in your space",
+        coverPhoto:
+            "https://image.freepik.com/free-vector/dragon-breathing-fire-attacks-castle_107791-5336.jpg",
+        items: "10100",
+        floorPrice: "4.2",
+        owners: "5900",
+        volume: "237000000",
+    },
+    {
+        _id: "6",
+        collectionName: "Boston Club",
         varified: false,
         totalEthprice: 16499.86,
         priceUp: true,

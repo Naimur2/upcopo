@@ -15,7 +15,7 @@ export const CollectionItemCard = (props) => {
             key={props._id}
             standings={props.standings}
             varified={props.varified}
-            name={props.name}
+            name={props.collectionName}
             avatar={props.avatar}
             price={props.totalEthprice}
             priceUp={props.priceUp}

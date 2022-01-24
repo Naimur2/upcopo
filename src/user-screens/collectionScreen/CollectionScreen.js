@@ -10,7 +10,7 @@ import CollectionsTab from "./components/CollectionsTab";
 const tabData = {
     _id: "100",
     collectionId: "420",
-    name: "BostonClub",
+    collectionName: "BostonClub",
     items: [
         {
             _id: "1",
@@ -315,7 +315,7 @@ const tabData = {
 
 const data = {
     _id: "420",
-    name: "Boston Club",
+    collectionName: "Boston Club",
     varified: false,
     price: 15499.86,
     priceUp: true,
@@ -375,7 +375,7 @@ export default function Collections({ navigation, route }) {
                     <Stack>
                         <CollectionsBody
                             description={data.description}
-                            collectonName={data.name}
+                            collectonName={data.collectionName}
                             ethAddress={data.ethAddress}
                         />
                         <CollectionButtons

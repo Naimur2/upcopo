@@ -4,42 +4,9 @@ import Icon from "../../utility/Icon";
 import KeyBoardView from "../../utility/KeyBoardView";
 import PaceBidActionCard from "./placeBidActionComponents/PaceBidActionCard";
 import PlaceBidActionFooter from "./placeBidActionComponents/PlaceBidActionFooter";
-const bidHistoryState = [
-    {
-        _id: "1",
-        avatar: "https://img.freepik.com/free-vector/cute-cartoon-panda-listening-music-vector-illustration_60438-1436.jpg?size=338&ext=jpg",
-        varified: true,
-        userName: "Noundles",
-        price: "0.56 ETH",
-        counter: 6,
-    },
-    {
-        _id: "2",
-        avatar: "https://img.freepik.com/free-vector/cute-panda-business-holding-money-cartoon-vector-icon-illustration-animal-business-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3888.jpg?size=338&ext=jpg",
-        varified: false,
-        userName: "Jrny club",
-        price: "0.46 ETH",
-        counter: 4,
-    },
-    {
-        _id: "3",
-        avatar: "https://image.freepik.com/free-vector/cute-panda-reading-book-cartoon-icon-illustration_138676-2683.jpg",
-        varified: true,
-        userName: "Joel Norris",
-        price: "0.50 ETH",
-        counter: 3,
-    },
-    {
-        _id: "4",
-        avatar: "https://image.freepik.com/free-vector/cute-panda-playing-game-cartoon-vector-icon-illustration-animal-technology-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3676.jpg",
-        varified: false,
-        userName: "Feudalz",
-        price: "0.76 ETH",
-        counter: 1,
-    },
-];
 
-export default function PlaceBidAction({ isOpen, onOpen, onClose }) {
+
+export default function PlaceBidAction({ isOpen, onOpen, onClose,bidHistoryState }) {
     const [showAll, setShowAll] = React.useState(false);
 
     const showAllHandler = () => {
