@@ -17,7 +17,7 @@ export const CollectionItemCard = (props) => {
             varified={props.varified}
             name={props.name}
             avatar={props.avatar}
-            price={props.price}
+            price={props.totalEthprice}
             priceUp={props.priceUp}
             priceUpPercentage={props.priceUpPercentage}
             onPress={() =>
@@ -32,6 +32,7 @@ export const CollectionItemCard = (props) => {
 export default function TopCollections({ navigation }) {
     const dispatch = useDispatch();
     const collections = useSelector((state) => state.collections.collections);
+    
 
     useEffect(() => {
         dispatch(getAllCollections());
@@ -61,7 +62,9 @@ export default function TopCollections({ navigation }) {
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
             data={collections}
-            renderItem={({ item }) => <CollectionItemCard {...item} />}
+            renderItem={({ item, index }) => (
+                <CollectionItemCard standings={index + 1} {...item} />
+            )}
             keyExtractor={(item) => item._id}
             px={4}
         />

@@ -6,7 +6,7 @@ import { getCollections } from "../../../store/slices/collectionsSlice";
 import {
     getTopSellers,
     getTrendyHouses,
-    housesActions
+    housesActions,
 } from "../../../store/slices/housesSlice";
 import TopCollections from "../common/TopCollections";
 import Banner from "./components/Banner";

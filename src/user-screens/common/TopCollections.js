@@ -11,11 +11,11 @@ export default function TopCollections({collections}) {
             {collections.slice(0, 3).map((collection, index) => (
                 <CollectionCard
                     key={collection._id}
-                    standings={collection.standings}
+                    standings={index+1}
                     varified={collection.varified}
                     name={collection.name}
                     avatar={collection.avatar}
-                    price={collection.price}
+                    price={collection.totalEthprice}
                     priceUp={collection.priceUp}
                     priceUpPercentage={collection.priceUpPercentage}
                     onPress={() => navigation.navigate("Collections",{
