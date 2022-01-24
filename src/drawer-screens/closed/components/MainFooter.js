@@ -1,11 +1,12 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import { Actionsheet, Box, Stack, Text } from "native-base";
+import { Actionsheet, Stack, Text } from "native-base";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../../../store/slices/authSlice";
 import CModal from "./CModal";
 import FooterButton from "./FooterButton";
+import Wallet from "./wallet/Wallet";
 
 //onPress={()=>navigation.navigate('Home')}
 
@@ -24,24 +25,10 @@ export const SHeader = ({ title }) => (
 
 const ActionOpener = ({ isOpen, onClose }) => {
     return (
-        <Actionsheet   isOpen={isOpen} onClose={onClose}>
-            <Actionsheet.Content bg={'#fff'}>
-                <Box w="100%" h={60} px={4} justifyContent="center">
-                    <Text
-                        fontsize="16"
-                        color="gray.500"
-                        _dark={{
-                            color: "gray.300",
-                        }}
-                    >
-                        Albums
-                    </Text>
-                </Box>
-                <Actionsheet.Item>Delete</Actionsheet.Item>
-                <Actionsheet.Item>Share</Actionsheet.Item>
-                <Actionsheet.Item>Play</Actionsheet.Item>
-                <Actionsheet.Item>Favourite</Actionsheet.Item>
-                <Actionsheet.Item>Cancel</Actionsheet.Item>
+        <Actionsheet isOpen={isOpen} onClose={onClose}>
+            <Actionsheet.Content bg={'#F9F9F9'} h={300}>
+                <Wallet />
+
             </Actionsheet.Content>
         </Actionsheet>
     );
