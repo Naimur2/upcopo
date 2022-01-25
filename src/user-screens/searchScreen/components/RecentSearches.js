@@ -1,14 +1,15 @@
 import { filter } from "lodash";
 import { HStack, Pressable, Text, VStack } from "native-base";
 import * as React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { recentSearchActions } from "../../../../store/slices/recentSearchSlice";
 import Card from "../../../utility/Card";
 import SearchResultCard from "./SearchResultCard";
 
 export default function RecentSearches() {
     const [category, setCategory] = React.useState("all");
     const [data, setData] = React.useState([]);
-
+    const dispatch=useDispatch();
     const recentSearches = useSelector((state) => state.recentSearch.searches);
 
     const getSearches = (catg) => {
@@ -23,7 +24,7 @@ export default function RecentSearches() {
         return () => {
             setData([]);
         };
-    }, [category]);
+    }, [category,recentSearches]);
 
     React.useEffect(() => {
         setCategory("all");
@@ -97,6 +98,7 @@ export default function RecentSearches() {
                     address={dt.address}
                     imageUri={dt.image}
                     houseName={dt.houseName}
+                    onIconPress={()=>dispatch(recentSearchActions.removeSearch(dt._id))}
                 />
             ))}
         </VStack>

@@ -5,7 +5,7 @@ import { clearLikes, getLikes } from "../../../store/slices/likeSlice";
 import LovedHousesCard from "./components/LovedHousesCard";
 
 
-export default function LovedHouses({}) {
+export default function LovedHouses() {
     const houses=useSelector(state=>state.likes.likes);
   
     const dispatch =useDispatch();
@@ -16,7 +16,7 @@ export default function LovedHouses({}) {
         return ()=>{
             dispatch(clearLikes());
         }
-    },[])
+    },[houses])
 
 
     const renderItem = ({ item }) => {
