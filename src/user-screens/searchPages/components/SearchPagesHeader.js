@@ -1,5 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
-import { Box, HStack, Text, VStack } from "native-base";
+import { Box, HStack, Pressable, Text, VStack } from "native-base";
 import React, { useState } from "react";
 import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
@@ -28,7 +28,7 @@ const navigation =useNavigation();
                 <Box w="80%">
                     <Search value={value} onClear={ onClear } onSearch={onSearch} />
                 </Box>
-                <Box justifyContent={"center"} alignItems={"center"} w={"16%"}>
+                <Pressable onPress={()=>navigation.navigate('ARview')} justifyContent={"center"} alignItems={"center"} w={"16%"}>
                     <Text
                         fontFamily={"body"}
                         fontWeight={500}
@@ -37,7 +37,7 @@ const navigation =useNavigation();
                     >
                         Map
                     </Text>
-                </Box>
+                </Pressable>
             </HStack>
 
             <HStack space="3%">

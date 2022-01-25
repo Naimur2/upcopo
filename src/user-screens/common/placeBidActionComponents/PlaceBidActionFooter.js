@@ -33,7 +33,7 @@ export default function PlaceBidActionFooter({
                     You must bid at least {minumumbid} ETH
                 </Text>
                 <HStack justifyContent={"space-between"} alignItems={"center"}>
-                    <Card borderColor={"#F1F3F5"} borderWidth={1} py={2.5}>
+                    <Card borderColor={"#F1F3F5"} borderWidth={1}>
                         <Icon name="etherium" size={28} color={"#687076"} />
                     </Card>
 
@@ -42,11 +42,18 @@ export default function PlaceBidActionFooter({
                             placeHolder={"0.00"}
                             keyboardType="numeric"
                             borderColor={"#ECEEF0"}
-                            py={2.5}
                             onChangeText={onChange}
-                            errorMessage={errorMessage}
                             value={value}
+                            pl={4}
                         />
+                    </Card>
+                </HStack>
+                <VStack
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    space={2}
+                >
+                    {errorMessage ? (
                         <Text
                             fontSize="13"
                             color="#8E8E93"
@@ -55,13 +62,7 @@ export default function PlaceBidActionFooter({
                         >
                             {errorMessage}
                         </Text>
-                    </Card>
-                </HStack>
-                <VStack
-                    justifyContent={"center"}
-                    alignItems={"center"}
-                    space={2}
-                >
+                    ):null}
                     <Text
                         fontSize="13"
                         color="#8E8E93"
