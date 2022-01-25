@@ -3,6 +3,7 @@ import React from "react";
 import ARview from "./user-screens/ARview/ARview";
 import House from "./user-screens/house/House";
 import SearchPages from "./user-screens/searchPages/SearchPages";
+import SelectWorldScreen from "./user-screens/selectWorld/SelectWorldScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -20,6 +21,13 @@ export default function SearchTabRoutes() {
                 }}
                 name="Searches"
                 component={SearchPages}
+            />
+            <Stack.Screen
+                options={{
+                    headerShown: false,
+                }}
+                name="SelectWorld"
+                component={SelectWorldScreen}
             />
             <Stack.Screen
                 options={{
