@@ -36,6 +36,14 @@ const UtilityBtn = React.forwardRef(
                 borderWidth: 0,
                 pressedText:"#687076"
             },
+            gray: {
+                base: "#ECEEF0",
+                pressed: "light.300",
+                text: "#7E868C",
+                border: null,
+                borderWidth: 0,
+                pressedText:"#687076"
+            },
         };
 
         return (
