@@ -1,62 +1,35 @@
 import { FlatList } from "native-base";
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { clearLikes, getLikes } from "../../../store/slices/likeSlice";
 import LovedHousesCard from "./components/LovedHousesCard";
 
-export default function LovedHouses() {
-    const lovedHouse = [
-        {
-            _id: "1",
-            imageUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            address: "889 Palmeron Ave, Mcd..",
-            numOfBed: 10,
-            numOfBath: 5,
-            isSaved: true,
-            price: 0.05686,
-        },
-        {
-            _id: "2",
-            imageUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            address: "889 Palmeron Ave, Mcd..",
-            numOfBed: 2,
-            numOfBath: 3,
-            isSaved: false,
-            price: 0.05686,
-        },
-        {
-            _id: "3",
-            imageUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            address: "889 Palmeron Ave, Mcd..",
-            numOfBed: 10,
-            numOfBath: 5,
-            isSaved: true,
-            price: 0.05686,
-        },
-        {
-            _id: "4",
-            imageUrl:
-                "https://thelens.news/app/uploads/2020/12/236-456x342.jpg",
-            address: "889 Palmeron Ave, Mcd..",
-            numOfBed: 2,
-            numOfBath: 3,
-            isSaved: true,
-            price: 0.05686,
-        },
-    ];
+
+export default function LovedHouses({}) {
+    const houses=useSelector(state=>state.likes.likes);
+  
+    const dispatch =useDispatch();
+
+
+    React.useEffect(()=>{
+        dispatch(getLikes())
+        return ()=>{
+            dispatch(clearLikes());
+        }
+    },[])
+
 
     const renderItem = ({ item }) => {
-        if (!item.isSaved) return null;
         return (
             <LovedHousesCard
                 address={item.address}
-                numOfBed={item.numOfBed}
-                numOfBath={item.numOfBath}
-                isSaved={item.isSaved}
-                price={item.price}
-                imageUrl={item.imageUrl}
-                onPlaceBid={() => console.log("Place a bid")}
+                numOfBed={item.bed}
+                numOfBath={item.bath}
+                isSaved={true}
+                price={item.topBid}
+                imageUrl={item.image}
+                houseId={item._id}
+                minimumBid={item.minimumBid}
             />
         );
     };
@@ -65,7 +38,7 @@ export default function LovedHouses() {
         <FlatList
             showsVerticalScrollIndicator={false}
             showsHorizontalScrollIndicator={false}
-            data={lovedHouse}
+            data={houses}
             renderItem={renderItem}
             keyExtractor={(item) => item._id}
         />

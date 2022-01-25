@@ -15,7 +15,7 @@ export default function House() {
     const dispatch = useDispatch();
     const data = useRoute().params.house;
     const houseId =data._id;
-    const [bidHistory,showActions,showActionHandler,closeActionHandler,submitBid] = usePlaceBid(houseId)
+    const [bidHistory,showActions,showActionHandler,closeActionHandler] = usePlaceBid(houseId)
 
     const HouseMap = ({ uri }) => (
         <VStack w="full" h={110} borderRadius={10} overflow={"hidden"}>
@@ -40,6 +40,7 @@ export default function House() {
                     address={data.address}
                     sqrfit={data.sqrfit}
                     image={data.image}
+                    houseId={data.houseId}
                 />
 
                 <VStack px={4} space={4}>

@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+
+
 const trendy = [
     {
         _id: "1",

@@ -39,7 +39,7 @@ const bidHistoryState = [
 ];
 
 
-export default function useAction(houseId) {
+export default function usePlaceBid(houseId) {
 
     const [bidHistory, setBitHistory] = React.useState([]);
     const [showActions, setShowActions] = React.useState(false);
@@ -48,6 +48,9 @@ export default function useAction(houseId) {
         setBitHistory(bidHistoryState);
         setShowActions(true);
     };
+    const getActionData = () => {
+        setBitHistory(bidHistoryState);
+    };
 
     const closeActionHandler=()=>{
         setBitHistory([]);
@@ -55,5 +58,5 @@ export default function useAction(houseId) {
     }
 
 
-  return [bidHistory,showActions,showActionHandler,closeActionHandler];
+  return [bidHistory,showActions,showActionHandler,closeActionHandler,getActionData];
 }

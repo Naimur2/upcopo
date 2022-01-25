@@ -4,15 +4,23 @@ import LovedHousesCardBody from "./LovedHousesCardBody";
 import LovedHousesCardFooter from "./LovedHousesCardFooter";
 import LovedHousesCardHeader from "./LovedHousesCardHeader";
 import LovedHousesCardImage from "./LovedHousesCardImage";
+import usePlaceBid from "../../../hooks/usePlaceBid";
+import PlaceBidAction from "../../common/PlaceBidAction";
 
 export default function LovedHousesCard({
-    onPlaceBid,
-    imageUrl,
+   imageUrl,
     address,
     numOfBed,
     numOfBath,
     price,
+    houseId,
+    minimumBid
 }) {
+
+    const [bidHistory,showActions,showActionHandler,closeActionHandler] = usePlaceBid(houseId)
+
+
+
     return (
         <HStack
             mb={1}
@@ -35,7 +43,14 @@ export default function LovedHousesCard({
                     numOfBath={numOfBath}
                     numOfBed={numOfBed}
                 />
-                <LovedHousesCardFooter onPlaceBid={onPlaceBid} price={price} />
+                <LovedHousesCardFooter onPlaceBid={showActionHandler} price={price} />
+                <PlaceBidAction
+                    isOpen={showActions}
+                    bidHistoryState={bidHistory}
+                    onClose={closeActionHandler}
+                    houseId={houseId}
+                    minimumBid={minimumBid}
+                />
             </VStack>
         </HStack>
     );
