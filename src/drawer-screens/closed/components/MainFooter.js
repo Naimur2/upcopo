@@ -8,6 +8,7 @@ import KeyBoardView from "../../../utility/KeyBoardView";
 import CModal from "./CModal";
 import FooterButton from "./FooterButton";
 import ScanFace from "./wallet/ScanFace";
+import TransectionPage from "./wallet/TransectionPage";
 import Wallet from "./wallet/Wallet";
 
 //onPress={()=>navigation.navigate('Home')}
@@ -29,8 +30,11 @@ export default function MainFooter() {
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
     const [showWallet, setShowWallet] = useState(false);
-    const [openModal, setOpenModal] = React.useState(false);
-    const [money, setMoney] = React.useState("0.00");
+    const [openModal, setOpenModal] = useState(false);
+    const [openFaceModal, setFaceModal] = useState(false);
+    const [openTransection, setOpenTransection] = useState(false);
+
+    const [money, setMoney] = useState("0.00");
 
     const dispatch = useDispatch();
     const userDetails = useSelector((state) => state.auth);
@@ -38,8 +42,15 @@ export default function MainFooter() {
     const moneyChangeHandler = (cv) => {
         setMoney(cv);
     };
+
     const handleSubmit = () => {
-        console.log(money);
+        setShowWallet(false);
+        setFaceModal(true);
+    };
+
+    const successHandler = () => {
+        setFaceModal(false);
+        setOpenTransection(true);
     };
 
     const logOut = async () => {
@@ -51,6 +62,15 @@ export default function MainFooter() {
         <Stack bg={"#F9F9F9"} pt={2}>
             <ScanFace onClose={() => setOpenModal(false)} isOPen={openModal} />
             <SHeader title="General Settings" />
+            <ScanFace
+                isOPen={openFaceModal}
+                onClose={() => setFaceModal(false)}
+                onSuccess={successHandler}
+            />
+            <TransectionPage
+                isOPen={openTransection}
+                onClose={() => setOpenTransection(false)}
+            />
             <Stack>
                 <FooterButton
                     onPress={() => setShowWallet(true)}
@@ -59,11 +79,12 @@ export default function MainFooter() {
                 />
                 <Wallet
                     isOpen={showWallet}
-                    onClose={()=>setShowWallet(false)}
+                    onClose={() => setShowWallet(false)}
                     onValueChange={moneyChangeHandler}
                     money={money}
                     onSubmit={handleSubmit}
                 />
+
                 <FooterButton
                     title={"Notifications"}
                     leftIcon={"notification"}
@@ -89,6 +110,7 @@ export default function MainFooter() {
                 rightIcon="x"
                 onPress={() => setShowModal(true)}
             />
+
             <CModal
                 heading={"Are you sure want to log out?"}
                 isOPen={showModal}

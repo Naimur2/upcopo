@@ -132,7 +132,12 @@ export default function UserRoute() {
                 component={FilterScreeen}
             />
             <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
-            <Stack.Screen name="SearchHouse" component={SearchScreen} />
+            <Stack.Screen options={{
+                title:'',
+                headerStyle: {
+                    backgroundColor: "#f9f9f9",
+                },
+            }} name="SearchHouse" component={SearchScreen} />
             <Stack.Screen
                 options={{
                     headerStyle: {

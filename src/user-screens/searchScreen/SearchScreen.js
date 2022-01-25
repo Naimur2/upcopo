@@ -1,15 +1,24 @@
-import { Stack } from "native-base";
+import { ScrollView, Stack } from "native-base";
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearRecentSearches, getRecentSearches } from "../../../store/slices/recentSearchSlice";
 import RecentSearchArea from "./components/RecentSearchArea";
+import RecentSearches from "./components/RecentSearches";
 
 export default function SearchScreen() {
-    const recentSearch = useSelector((state) => state.recentSearch.searches);
+    const dispatch = useDispatch();
+
+    React.useEffect(() => {
+        dispatch(getRecentSearches());
+        
+    }, []);
+
     return (
-        <>
-            <Stack p={4} space={6}>
+        <ScrollView>
+            <Stack px={4} flex={1} space={6}>
                 <RecentSearchArea />
+                <RecentSearches  />
             </Stack>
-        </>
+        </ScrollView>
     );
 }

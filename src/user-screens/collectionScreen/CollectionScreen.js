@@ -390,7 +390,7 @@ export default function Collections({ navigation, route }) {
                         <CollectionsTab
                             onTabPress={(cat) => setSelectedCategory(cat)}
                             data={collectionHouses}
-                            currenTab={selectedCategory}
+                            currentTab={selectedCategory}
                         />
                     </Stack>
                 </Stack>
