@@ -28,6 +28,14 @@ const UtilityBtn = React.forwardRef(
                 borderWidth: 1,
                 pressedText:'#fff'
             },
+            white: {
+                base: "#fff",
+                pressed: "light.300",
+                text: "#687076",
+                border: null,
+                borderWidth: 0,
+                pressedText:"#687076"
+            },
         };
 
         return (
