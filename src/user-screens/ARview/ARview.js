@@ -24,6 +24,7 @@ export default function ARview({ navigation }) {
                     color={"#52B69A"}
                     name="cube"
                     size={20}
+                   
                 />
             ),
         });

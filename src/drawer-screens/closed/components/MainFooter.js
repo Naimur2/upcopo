@@ -7,6 +7,7 @@ import { authActions } from "../../../../store/slices/authSlice";
 import KeyBoardView from "../../../utility/KeyBoardView";
 import CModal from "./CModal";
 import FooterButton from "./FooterButton";
+import ScanFace from "./wallet/ScanFace";
 import Wallet from "./wallet/Wallet";
 
 //onPress={()=>navigation.navigate('Home')}
@@ -24,25 +25,22 @@ export const SHeader = ({ title }) => (
     </Text>
 );
 
-export const ActionOpener = ({ isOpen, onClose }) => {
-    return (
-        <Actionsheet isOpen={isOpen} onClose={onClose}>
-            <Actionsheet.Content bg={"#F9F9F9"}>
-                <KeyBoardView  style={{ width: "100%" }} behaviour="none" >
-                    <Wallet  />
-                </KeyBoardView>
-            </Actionsheet.Content>
-        </Actionsheet>
-    );
-};
-
 export default function MainFooter() {
     const navigation = useNavigation();
     const [showModal, setShowModal] = useState(false);
     const [showWallet, setShowWallet] = useState(false);
+    const [openModal, setOpenModal] = React.useState(false);
+    const [money, setMoney] = React.useState("0.00");
 
     const dispatch = useDispatch();
     const userDetails = useSelector((state) => state.auth);
+
+    const moneyChangeHandler = (cv) => {
+        setMoney(cv);
+    };
+    const handleSubmit = () => {
+        console.log(money);
+    };
 
     const logOut = async () => {
         await AsyncStorage.clear();
@@ -51,6 +49,7 @@ export default function MainFooter() {
 
     return (
         <Stack bg={"#F9F9F9"} pt={2}>
+            <ScanFace onClose={() => setOpenModal(false)} isOPen={openModal} />
             <SHeader title="General Settings" />
             <Stack>
                 <FooterButton
@@ -58,9 +57,12 @@ export default function MainFooter() {
                     title={"Wallet"}
                     leftIcon={"wallet"}
                 />
-                <ActionOpener
+                <Wallet
                     isOpen={showWallet}
-                    onClose={() => setShowWallet(false)}
+                    onClose={()=>setShowWallet(false)}
+                    onValueChange={moneyChangeHandler}
+                    money={money}
+                    onSubmit={handleSubmit}
                 />
                 <FooterButton
                     title={"Notifications"}

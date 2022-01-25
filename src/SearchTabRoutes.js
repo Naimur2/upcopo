@@ -40,8 +40,10 @@ export default function SearchTabRoutes() {
                     headerBackTitleVisible: false,
                     headerStyle: {
                         backgroundColor: "transparent",
+                      
                     },
                     headerShadowVisible: false,
+                    
                 }}
                 name="ARview"
                 component={ARview}
