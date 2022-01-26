@@ -1,9 +1,9 @@
-import { Box, HStack, Stack, Text, VStack } from "native-base";
+import { Box, Center, HStack, Stack, Text, VStack } from "native-base";
 import React from "react";
 import Card from "../../../../utility/Card";
 import Icon from "../../../../utility/Icon";
 
-export default function TransectionDetails({ transectionDetailsData,toggleTransection }) {
+export default function TransectionDetails({ transectionDetailsData, toggleTransection }) {
     const TransectionHistory = ({ _id, type, price, date, succeed }) => {
         return (
             <VStack space={4} pt={4} key={_id}>
@@ -62,6 +62,15 @@ export default function TransectionDetails({ transectionDetailsData,toggleTranse
     return (
         <Stack>
             <Card>
+                <Center>
+                    <Box
+                        borderRadius={5}
+                        mt={2}
+                        h={1.5}
+                        px="10"
+                        bg="#DFE3E6"
+                    />
+                </Center>
                 <HStack justifyContent={"flex-end"}>
                     <Icon onPress={toggleTransection} name="x" color={"#7E868C"} size={20} />
                 </HStack>
