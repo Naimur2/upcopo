@@ -340,25 +340,21 @@ export default function OtherUsersProfile() {
     const route = useRoute();
 
     const [data, setData] = React.useState({});
-    const [houses, setHouses] = React.useState([]);
     const [category, setCategory] = React.useState("houses");
 
     React.useEffect(() => {
         setData(OtherUsersProfileHeaderData);
-        setCategory("houses");
-        setTimeout(() => {
-            const selectedData = data["houses"];
-            setHouses(selectedData);
-        }, 200);
+        return () => {
+            setData({});
+            setCategory("");
+        };
     }, [route]);
 
-    React.useEffect(() => {
-        const selectedData = data[category];
-        setHouses(selectedData);
-    }, [category]);
 
-    const renderHouse = houses ? (
-        <OtherUsersProfileBottom houses={houses} />
+    const selectedData = data[category];
+
+    const renderHouse = selectedData ? (
+        <OtherUsersProfileBottom type={category} houses={selectedData} />
     ) : null;
 
     return (
