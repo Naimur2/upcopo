@@ -97,9 +97,45 @@ const messages = [
         timestamp: "1642610338558",
     },
 ];
+const peoples=[
+    {
+        _id: "01",
+        sentId:'100',
+        receiveId:'100',
+        name: "crypto punks",
+        lastMesage: "Hello World",
+        time: "11:10pm",
+        numberofUnseen:1,
+        isActive:false,
+        avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgfRTtZ5IDzkb9mBLw8CVhljThHIxBngLH_Q&usqp=CAU"
+    },
+    {
+        _id: "02",
+        userId:'100',
+        sentId:'100',
+        name: "crypto punks",
+        lastMesage: "Hello World",
+        time: "11:10pm",
+        numberofUnseen:1,
+        isActive:false,
+        avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgfRTtZ5IDzkb9mBLw8CVhljThHIxBngLH_Q&usqp=CAU"
+    },
+    {
+        _id: "03",
+        userId:'100',
+        sentId:'100',
+        name: "crypto punks",
+        lastMesage: "Hello World",
+        time: "11:10pm",
+        numberofUnseen:1,
+        isActive:false,
+        avatar:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgfRTtZ5IDzkb9mBLw8CVhljThHIxBngLH_Q&usqp=CAU"
+    },
+]
 
 const initialMessageState = {
     messages: [],
+    peoples:[]
 };
 
 const messageSlice = createSlice({
@@ -114,6 +150,12 @@ const messageSlice = createSlice({
         },
         removeMessages:(state,action)=>{
             state.messages=[]
+        },
+        setPeoples: (state, action) => {
+            state.peoples = action.payload;
+        },
+        removePeoples:(state,action)=>{
+            state.peoples=[]
         }
     },
 });
@@ -131,6 +173,18 @@ export const getMessages = () => {
 export const clearMessages = () => {
     return (dispatch) => {
         dispatch(messageActions.removeMessages());
+    };
+};
+
+export const getPeoples = () => {
+    return (dispatch) => {
+        dispatch(messageActions.setPeoples(peoples));
+    };
+};
+
+export const clearPeoples = () => {
+    return (dispatch) => {
+        dispatch(messageActions.removePeoples());
     };
 };
 

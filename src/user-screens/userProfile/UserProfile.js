@@ -98,7 +98,7 @@ const userProfiles = [
     {
         _id: "4",
         name: "John Doe",
-        username: "70nder",
+        username: "jhoj00",
         userAvatar:
             "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
         isVarified: true,
@@ -128,7 +128,7 @@ const userProfiles = [
     {
         _id: "5",
         name: "John Doe",
-        username: "70nder",
+        username: "70hhhhnder",
         userAvatar:
             "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
         isVarified: true,
@@ -191,15 +191,12 @@ export default function UserProfile() {
     let [service1, setService1] = React.useState('ux');
     let [service2, setService2] = React.useState('l2h');
 
-    const onSearchHandler = debounce((text) => {
-    
-        setText(text);
-    
+    const onSearchHandler = debounce((tc) => {
+        setSearch(tc);
     }, 500);
 
     React.useEffect(() => {
         onSearchHandler(text);
-
         return () => {
             setSearch("");
         };
@@ -207,10 +204,10 @@ export default function UserProfile() {
 
 
     const filterSearch = userProfiles.filter((item) =>
-        text !== ""
+        search !== ""
             ? item.username
                 .toLocaleLowerCase()
-                .includes(text.toLocaleLowerCase())
+                .includes(search.toLocaleLowerCase())
             : item
     );
 
@@ -245,9 +242,9 @@ export default function UserProfile() {
                         isVarified={userProfiles.isVarified}
                     /> */}
                 <UserProfileMenu
-                    searchValue={text}
                     onClear={() => setText("")}
-                    onSearch={onSearchHandler}
+                    onSearch={(txt)=>setText(txt)}
+                    searchValue={text}
                     setService1={(value1) => setService1(value1)}
                     setService2={(value2) => setService2(value2)}
                     service1={service1}
