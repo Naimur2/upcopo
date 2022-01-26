@@ -12,6 +12,7 @@ export default function SearchTabRoutes() {
         <Stack.Navigator
             screenOptions={{
                 headerTitleAlign: "center",
+                headerShadowVisible: false,
             }}
             initialRouteName="Searches"
         >
@@ -24,7 +25,11 @@ export default function SearchTabRoutes() {
             />
             <Stack.Screen
                 options={{
-                    headerShown: false,
+                    headerTitleAlign: "left",
+                    headerStyle: {
+                        backgroundColor: "transparent",
+                    },
+                    title: "Select world",
                 }}
                 name="SelectWorld"
                 component={SelectWorldScreen}
@@ -40,7 +45,7 @@ export default function SearchTabRoutes() {
                     headerBackTitleVisible: false,
                     headerStyle: {
                         backgroundColor: "transparent",
-                      
+                        
                     },
                     headerShadowVisible: false,
                     
@@ -56,8 +61,10 @@ export default function SearchTabRoutes() {
                         color: "#fff",
                     },
                     headerBackTitleVisible: false,
+
                     headerStyle: {
                         backgroundColor: "transparent",
+
                     },
                     title: "",
                     headerShadowVisible: false,

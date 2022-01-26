@@ -1,33 +1,49 @@
+import { useRoute } from "@react-navigation/native";
 import dayjs from "dayjs";
 import { Box, HStack, Text, VStack } from "native-base";
 import React, { useCallback, useEffect, useState } from "react";
 import { GiftedChat, InputToolbar } from "react-native-gifted-chat";
+import { useSelector } from "react-redux";
 import Icon from "../../utility/Icon";
 
 export default function MessageView() {
     const [messages, setMessages] = useState([]);
+    const currentUser = useSelector((state) => state.user);
+
+    if (currentUser.password) delete currentUser["passwors"];
+    const route = useRoute();
+
+    const { user } = route.params;
+
+    const receiver = {
+        _id: user._id,
+        avatar: user.avatar,
+        name: user.name,
+    };
+
     useEffect(() => {
         setMessages([
             {
                 _id: "1",
                 text: "Hello developer",
                 createdAt: new Date(),
-                // to
+                // from
                 user: {
                     _id: "2",
                     name: "React Native",
                     avatar: "https://placeimg.com/140/140/any",
                 },
-                // from
-                from: {
+                // to
+                receiver: {
                     _id: "2",
                     name: "React Native",
                     avatar: "https://placeimg.com/140/140/any",
                 },
-                seen:false,
+                seen: false,
             },
         ]);
     }, []);
+
     const renderInputToolbar = (props) => {
         return (
             <InputToolbar
@@ -46,10 +62,9 @@ export default function MessageView() {
 
     const renderMessage = (props) => {
         const { currentMessage } = props;
-        const self = currentMessage.user._id === userid;
+        const self = currentMessage.user._id === currentUser._id;
         let date = currentMessage.createdAt;
-    
-   
+
         date = dayjs(date).format("h:mm A").toString();
         return (
             <HStack
@@ -88,19 +103,20 @@ export default function MessageView() {
         );
     };
 
-   
-
     const onSend = useCallback((msz = []) => {
         setMessages((previousMessages) =>
             GiftedChat.append(previousMessages, msz)
         );
     }, []);
 
-    const userid = "1";
-
     const validateMessage = (msz) => {
-        if (msz[0].text.length > 0) onSend(msz);
-        else return;
+        const userDetails = { ...user };
+        if (userDetails.password) delete userDetails["password"];
+        if (msz[0].text.length > 0) {
+            msz[0].receiver = receiver;
+            console.log(msz);
+            onSend(msz);
+        } else return;
     };
 
     return (
@@ -138,7 +154,9 @@ export default function MessageView() {
             minInputToolbarHeight={80}
             infiniteScroll
             user={{
-                _id: userid,
+                _id: currentUser._id,
+                name: currentUser.user,
+                avatar: currentUser.avatar,
             }}
         />
     );

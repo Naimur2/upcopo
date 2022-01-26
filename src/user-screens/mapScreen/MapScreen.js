@@ -36,7 +36,7 @@ export default function MapScreen() {
                 <MapViewDirections
           origin={origin}
           destination={destination}
-          apikey={'AIzaSyDB79QR-FmWtyyrt7mHUDEH0rbRGi2PBxE'} // insert your API Key here
+        //   apikey={'AIzaSyDB79QR-FmWtyyrt7mHUDEH0rbRGi2PBxE'} // insert your API Key here
           strokeWidth={4}
           strokeColor="#111111"
           lineDashPattern={[0]}
