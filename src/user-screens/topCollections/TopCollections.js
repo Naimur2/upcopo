@@ -22,7 +22,7 @@ export const CollectionItemCard = (props) => {
             priceUpPercentage={props.priceUpPercentage}
             onPress={() =>
                 navigation.navigate("Collections", {
-                    collectionId: props._id,
+                    ...props,
                 })
             }
         />

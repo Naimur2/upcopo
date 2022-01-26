@@ -1,3 +1,4 @@
+import { useRoute } from "@react-navigation/native";
 import { Avatar, ScrollView, Stack } from "native-base";
 import React from "react";
 import { Dimensions } from "react-native";
@@ -31,7 +32,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "2",
@@ -52,7 +56,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "3",
@@ -73,7 +80,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "4",
@@ -94,7 +104,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
     ],
     owned: [
@@ -117,7 +130,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "6",
@@ -138,7 +154,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "7",
@@ -159,7 +178,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "8",
@@ -180,7 +202,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "9",
@@ -201,7 +226,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
     ],
     liked: [
@@ -224,7 +252,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "11",
@@ -245,7 +276,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "12",
@@ -266,7 +300,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "13",
@@ -287,7 +324,10 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
         {
             _id: "14",
@@ -308,12 +348,15 @@ const tabData = {
                 "https://miro.medium.com/max/1200/1*qYUvh-EtES8dtgKiBRiLsA.png",
             topBid: 0.8,
             lastBid: 0.7,
-            likes:40
+            likes: 40,
+            minimumBid: 0.541455,
+            userId: "111",
+            collectionId: "fgvhfhgf",
         },
     ],
 };
 
-const data = {
+const collectionInformation = {
     _id: "420",
     collectionName: "Boston Club",
     varified: false,
@@ -333,23 +376,24 @@ const data = {
     volume: "237000000",
 };
 
-export default function Collections({ navigation, route }) {
+export default function Collections({ navigation }) {
     const [selectedCategory, setSelectedCategory] = React.useState("items");
 
-    const [collectionHouses,setCollectionHouses]=React.useState([])
+    const [collectionHouses, setCollectionHouses] = React.useState([]);
 
-    const userData = route.params;
-
+    const route = useRoute();
+    const data = route.params;
+ 
     const width = Dimensions.get("window").width;
 
     React.useEffect(() => {
-        setSelectedCategory('items');
-    }, [navigation, route.collectionId]);
+        setSelectedCategory("items");
+    }, [data._id]);
 
-    React.useEffect(()=>{
+    React.useEffect(() => {
         const tabInfo = tabData[selectedCategory];
         setCollectionHouses(tabInfo);
-    },[selectedCategory])
+    }, [selectedCategory]);
 
     return (
         <ScrollView bg="#f9f9f9">

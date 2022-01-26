@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
-
-
-
 const trendy = [
     {
         _id: "1",
@@ -25,7 +21,9 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "2",
@@ -47,7 +45,9 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "3",
@@ -69,7 +69,9 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "4",
@@ -91,7 +93,9 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "5",
@@ -113,7 +117,9 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "6",
@@ -135,7 +141,9 @@ const trendy = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
 ];
 const top = [
@@ -159,7 +167,9 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "20",
@@ -181,7 +191,9 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "30",
@@ -203,7 +215,9 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "40",
@@ -225,7 +239,9 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "50",
@@ -247,7 +263,9 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "60",
@@ -269,7 +287,9 @@ const top = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
-        minimumBid:0.541455
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
 ];
 

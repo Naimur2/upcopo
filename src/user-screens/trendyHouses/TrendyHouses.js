@@ -4,84 +4,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     getTopSellers,
-    getTrendyHouses
+    getTrendyHouses,
 } from "../../../store/slices/housesSlice";
 import SellerCard from "../common/SellerCard";
-
-const SELLER_DATA = [
-    {
-        _id: "1",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/wooden-mystic-stilt-house-above-swamp-in-forest-vector-id1211708398?k=20&m=1211708398&s=612x612&w=0&h=9aHuQrLCCR4Y_QiLH6AdpFa_eQTfP37SUwLj7iS-p4s=",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-    {
-        _id: "2",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/stilt-house-in-swamp-with-boat-at-night-vector-id1302589254?s=612x612",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-    {
-        _id: "3",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/wooden-mystic-stilt-house-above-swamp-in-forest-vector-id1211708398?k=20&m=1211708398&s=612x612&w=0&h=9aHuQrLCCR4Y_QiLH6AdpFa_eQTfP37SUwLj7iS-p4s=",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-    {
-        _id: "4",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/stilt-house-in-swamp-with-boat-at-night-vector-id1302589254?s=612x612",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-    {
-        _id: "5",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/wooden-mystic-stilt-house-above-swamp-in-forest-vector-id1211708398?k=20&m=1211708398&s=612x612&w=0&h=9aHuQrLCCR4Y_QiLH6AdpFa_eQTfP37SUwLj7iS-p4s=",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-    {
-        _id: "6",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/stilt-house-in-swamp-with-boat-at-night-vector-id1302589254?s=612x612",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-    {
-        _id: "7",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/wooden-mystic-stilt-house-above-swamp-in-forest-vector-id1211708398?k=20&m=1211708398&s=612x612&w=0&h=9aHuQrLCCR4Y_QiLH6AdpFa_eQTfP37SUwLj7iS-p4s=",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-    {
-        _id: "8",
-        varified: true,
-        houseImage:
-            "https://media.istockphoto.com/vectors/stilt-house-in-swamp-with-boat-at-night-vector-id1302589254?s=612x612",
-        houseDescription: "By the beach",
-        topBid: 0.8,
-        lastBid: 0.7,
-    },
-];
 
 export default function TopSeller() {
     const navigation = useNavigation();
