@@ -22,6 +22,8 @@ const likedHouses = [
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
         minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "2",
@@ -44,6 +46,8 @@ const likedHouses = [
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
         minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "3",
@@ -66,6 +70,8 @@ const likedHouses = [
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
         minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "4",
@@ -88,6 +94,8 @@ const likedHouses = [
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
         minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "5",
@@ -110,6 +118,8 @@ const likedHouses = [
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
         minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "6",
@@ -132,6 +142,8 @@ const likedHouses = [
         lastBid: 0.7,
         likes: Math.round(Math.random() * 1 + 100),
         minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
 ];
 

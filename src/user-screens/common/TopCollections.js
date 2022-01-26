@@ -19,7 +19,8 @@ export default function TopCollections({collections}) {
                     priceUp={collection.priceUp}
                     priceUpPercentage={collection.priceUpPercentage}
                     onPress={() => navigation.navigate("Collections",{
-                        collectionId:collection._id
+                        collectionId:collection._id,
+                        ...collection,
                     })}
                 />
             ))}
