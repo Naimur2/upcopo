@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { debounce } from "lodash";
 import { Box, FlatList, VStack } from "native-base";
 import React from "react";
 import UserProfileCard from "./components/UserProfileCard";
@@ -181,13 +182,38 @@ const getRemainingTime = (expiresAt) => {
     return "2 days left";
 };
 
+
 export default function UserProfile() {
     const navigation = useNavigation();
     const [text, setText] = React.useState("");
+    let [search, setSearch] = React.useState("");
+
     let [service1, setService1] = React.useState('ux');
     let [service2, setService2] = React.useState('l2h');
 
-    console.log(text);
+    const onSearchHandler = debounce((text) => {
+    
+        setText(text);
+    
+    }, 500);
+
+    React.useEffect(() => {
+        onSearchHandler(text);
+
+        return () => {
+            setSearch("");
+        };
+    }, [text]);
+
+
+    const filterSearch = userProfiles.filter((item) =>
+        text !== ""
+            ? item.username
+                .toLocaleLowerCase()
+                .includes(text.toLocaleLowerCase())
+            : item
+    );
+
 
     const route = useRoute();
 
@@ -221,9 +247,9 @@ export default function UserProfile() {
                 <UserProfileMenu
                     searchValue={text}
                     onClear={() => setText("")}
-                    onSearch={(tex) => setText(tex)}
-                    setService1={(value1)=>setService1(value1)}
-                    setService2={(value2)=>setService2(value2)}
+                    onSearch={onSearchHandler}
+                    setService1={(value1) => setService1(value1)}
+                    setService2={(value2) => setService2(value2)}
                     service1={service1}
                     service2={service2}
                 />
@@ -232,7 +258,7 @@ export default function UserProfile() {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 bg={"#f9f9f9"}
-                data={userProfiles}
+                data={filterSearch}
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}
             />
