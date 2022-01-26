@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import { Box, HStack, VStack } from "native-base";
-import React, { useState } from "react";
+import React from "react";
 import Card from "../../../utility/Card";
 import Icon from "../../../utility/Icon";
 import Search from "../../../utility/Search";
