@@ -172,7 +172,7 @@ const OtherUsersProfileHeaderData = {
             builtAt: "1942",
             address: "1523 N 106th St, Mesa, AZ 85207",
             sqrfit: " 3,160sqft",
-            image: "https://media.istockphoto.com/vectors/wooden-mystic-stilt-house-on-swamp-in-night-forest-vector-id1212664849?k=20&m=1212664849&s=612x612&w=0&h=h7btIEwYFb_Cb-0MIv65AGuRfGwE3RFY-NB65ZRxIxk=",
+            image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             description:
                 "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
             bed: 3,
@@ -196,7 +196,7 @@ const OtherUsersProfileHeaderData = {
             builtAt: "1942",
             address: "1523 N 106th St, Mesa, AZ 85207",
             sqrfit: " 3,160sqft",
-            image: "https://media.istockphoto.com/vectors/wooden-mystic-stilt-house-on-swamp-in-night-forest-vector-id1212664849?k=20&m=1212664849&s=612x612&w=0&h=h7btIEwYFb_Cb-0MIv65AGuRfGwE3RFY-NB65ZRxIxk=",
+            image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             description:
                 "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
             bed: 3,
@@ -220,7 +220,7 @@ const OtherUsersProfileHeaderData = {
             builtAt: "1942",
             address: "1523 N 106th St, Mesa, AZ 85207",
             sqrfit: " 3,160sqft",
-            image: "https://media.istockphoto.com/vectors/wooden-mystic-stilt-house-on-swamp-in-night-forest-vector-id1212664849?k=20&m=1212664849&s=612x612&w=0&h=h7btIEwYFb_Cb-0MIv65AGuRfGwE3RFY-NB65ZRxIxk=",
+            image: "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
             description:
                 "Simple house with modern architecture and cool interiors located in the city crnter making easier for you to access",
             bed: 3,
@@ -341,23 +341,20 @@ export default function OtherUsersProfile() {
 
     const [data, setData] = React.useState({});
     const [houses, setHouses] = React.useState([]);
-    const [category, setCategory] = React.useState("");
+    const [category, setCategory] = React.useState("houses");
 
     React.useEffect(() => {
         setData(OtherUsersProfileHeaderData);
         setCategory("houses");
-        return ()=>{
-            setData({});
-            setCategory("");
-        }
+        setTimeout(() => {
+            const selectedData = data["houses"];
+            setHouses(selectedData);
+        }, 200);
     }, [route]);
 
     React.useEffect(() => {
-        setTimeout(()=>{
-            const selectedData = data[category];
-            setHouses(selectedData);
-        },500)
-
+        const selectedData = data[category];
+        setHouses(selectedData);
     }, [category]);
 
     const renderHouse = houses ? (
@@ -377,9 +374,21 @@ export default function OtherUsersProfile() {
             <VStack py={4}>
                 <Card mx={4} p={4} mt={4}>
                     <HStack justifyContent={"space-between"}>
-                        <Icon name={"menu"} size={22} color={ category==='houses' ? "#11221C":"#889096"} />
+                        <Icon
+                            onPress={() => setCategory("houses")}
+                            name={"menu"}
+                            size={22}
+                            color={
+                                category === "houses" ? "#11221C" : "#889096"
+                            }
+                        />
                         <Icon name={"activity"} size={22} color={"#889096"} />
-                        <Icon name={"tag"} size={22} color={category==='saved' ? "#11221C":"#889096"} />
+                        <Icon
+                            onPress={() => setCategory("saved")}
+                            name={"tag"}
+                            size={22}
+                            color={category === "saved" ? "#11221C" : "#889096"}
+                        />
                     </HStack>
                 </Card>
             </VStack>
