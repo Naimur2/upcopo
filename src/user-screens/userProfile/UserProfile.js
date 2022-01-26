@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Box, FlatList } from "native-base";
 import React from "react";
 import UserProfileCard from "./components/UserProfileCard";
@@ -12,7 +12,6 @@ const userProfiles = [
         userAvatar:
             "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
         isVarified: true,
-
         image: "https://media.istockphoto.com/vectors/fisherman-with-rod-fishing-at-mountain-lake-morning-landscape-vector-vector-id871204174?s=612x612",
         houseName: "Turn Key House",
         expiresAt: "Jan 24, 2022 18:00:30",
@@ -31,6 +30,9 @@ const userProfiles = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: 40,
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "2",
@@ -58,6 +60,9 @@ const userProfiles = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: 40,
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "3",
@@ -85,6 +90,9 @@ const userProfiles = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: 40,
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "4",
@@ -112,6 +120,9 @@ const userProfiles = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: 40,
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
     {
         _id: "5",
@@ -139,6 +150,9 @@ const userProfiles = [
         topBid: 0.8,
         lastBid: 0.7,
         likes: 40,
+        minimumBid: 0.541455,
+        userId: "111",
+        collectionId: "fgvhfhgf",
     },
 ];
 
@@ -166,8 +180,10 @@ const getRemainingTime = (expiresAt) => {
     return "2 days left";
 };
 
-export default function UserProfile({ route }) {
+export default function UserProfile() {
     const navigation = useNavigation();
+    const route=useRoute();
+    console.log(route.params)
 
     const renderItem = ({ item }) => (
         <UserProfileCard

@@ -428,7 +428,9 @@ export default function Collections({ navigation }) {
                             owners={lib.numFormatter(data.owners)}
                             volume={lib.numFormatter(+data.volume)}
                             onItemKeyPress={() =>
-                                navigation.navigate("UserProfile")
+                                navigation.navigate("UserProfile",{
+                                    collectionId:data._id
+                                })
                             }
                         />
                         <CollectionsTab
