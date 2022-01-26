@@ -14,14 +14,14 @@ export default function TransectionPage({ isOPen, onClose, ...rest }) {
                 <Modal.Body>
                     <Card>
                         <Center>
-                            <Box w="50%" h="200" >
+                            <Box borderRadius={5} mt={2} mb={10} h={1.5} px="10" bg="#DFE3E6"/>
+                            <Box w="70%" h="150" >
                                 <Image
                                     alt={"QR code"}
+                                    resizeMode="cover"
                                     source={{ uri: wallet }}
-                                    style={{
-                                        height:120,
-                                        width:Math.round(width/2)
-                                    }}
+                                    h="full"
+                                    w="full"
                                 />
                             </Box>
                         </Center>

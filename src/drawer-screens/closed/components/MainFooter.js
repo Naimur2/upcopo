@@ -1,10 +1,9 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
-import { Actionsheet, Stack, Text } from "native-base";
+import { Stack, Text } from "native-base";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../../../store/slices/authSlice";
-import KeyBoardView from "../../../utility/KeyBoardView";
 import CModal from "./CModal";
 import FooterButton from "./FooterButton";
 import ScanFace from "./wallet/ScanFace";
@@ -38,21 +37,23 @@ export default function MainFooter() {
 
     const dispatch = useDispatch();
     const userDetails = useSelector((state) => state.auth);
-
+    // wallet textinput handler
     const moneyChangeHandler = (cv) => {
         setMoney(cv);
     };
 
+    // wallet handler
     const handleSubmit = () => {
         setShowWallet(false);
         setFaceModal(true);
     };
 
+    //face recognition handler
     const successHandler = () => {
         setFaceModal(false);
         setOpenTransection(true);
     };
-
+    // logout function
     const logOut = async () => {
         await AsyncStorage.clear();
         await dispatch(authActions.logOut());
@@ -60,41 +61,32 @@ export default function MainFooter() {
 
     return (
         <Stack bg={"#F9F9F9"} pt={2}>
-            <ScanFace onClose={() => setOpenModal(false)} isOPen={openModal} />
+            {/* section header */}
             <SHeader title="General Settings" />
-            <ScanFace
-                isOPen={openFaceModal}
-                onClose={() => setFaceModal(false)}
-                onSuccess={successHandler}
-            />
-            <TransectionPage
-                isOPen={openTransection}
-                onClose={() => setOpenTransection(false)}
-            />
+
             <Stack>
+                {/* show wallet button */}
                 <FooterButton
                     onPress={() => setShowWallet(true)}
                     title={"Wallet"}
                     leftIcon={"wallet"}
                 />
-                <Wallet
-                    isOpen={showWallet}
-                    onClose={() => setShowWallet(false)}
-                    onValueChange={moneyChangeHandler}
-                    money={money}
-                    onSubmit={handleSubmit}
-                />
 
+                {/* notifications buton */}
                 <FooterButton
                     title={"Notifications"}
                     leftIcon={"notification"}
                     onPress={() => navigation.navigate("Notifications")}
                 />
+
+                {/* show history button */}
                 <FooterButton
                     title={"History"}
                     leftIcon={"history"}
                     onPress={() => navigation.navigate("History")}
                 />
+
+                {/* help button */}
                 <FooterButton
                     onPress={() => navigation.navigate("Help")}
                     title={"Help"}
@@ -102,6 +94,7 @@ export default function MainFooter() {
                 />
             </Stack>
 
+            {/* logout button */}
             <FooterButton
                 mt={4}
                 borderBottomWidth={0}
@@ -111,6 +104,28 @@ export default function MainFooter() {
                 onPress={() => setShowModal(true)}
             />
 
+            {/* face scan modal */}
+            <ScanFace
+                isOPen={openFaceModal}
+                onClose={() => setFaceModal(false)}
+                onSuccess={successHandler}
+            />
+            {/* transection modal view */}
+            <TransectionPage
+                isOPen={openTransection}
+                onClose={() => setOpenTransection(false)}
+            />
+            {/* wallet modal view */}
+
+            <Wallet
+                isOpen={showWallet}
+                onClose={() => setShowWallet(false)}
+                onValueChange={moneyChangeHandler}
+                money={money}
+                onSubmit={handleSubmit}
+            />
+
+            {/* modal for showing log out  */}
             <CModal
                 heading={"Are you sure want to log out?"}
                 isOPen={showModal}

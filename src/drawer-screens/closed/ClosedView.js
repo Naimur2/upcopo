@@ -7,6 +7,8 @@ import MainHeader from "./components/MainHeader";
 
 export default function ClosedView({isOpen}) {
     const userDetails = useSelector(state=>state.user)
+    // it is for initial view
+    // all button codes in components/mainfooter
     return (
         <Stack  height={isOpen ? 'full': 0} overflow={isOpen ? 'visible': 'hidden' } >
             <MainHeader

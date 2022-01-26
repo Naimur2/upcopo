@@ -1,4 +1,3 @@
-import { filter } from "lodash";
 import { HStack, Pressable, Text, VStack } from "native-base";
 import * as React from "react";
 import { useDispatch, useSelector } from "react-redux";

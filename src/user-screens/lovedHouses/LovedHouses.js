@@ -16,7 +16,7 @@ export default function LovedHouses() {
         return ()=>{
             dispatch(clearLikes());
         }
-    },[houses])
+    },[])
 
 
     const renderItem = ({ item }) => {

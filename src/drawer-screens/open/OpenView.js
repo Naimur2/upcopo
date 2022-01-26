@@ -11,6 +11,8 @@ export default function OpenView({ isOpen }) {
     const [image, setImage] = React.useState(userDetails.avatar);
     const dispatch =useDispatch();
 
+    // it is for open view or edit profile
+
     const updateImage = (uri) => {
         setImage(uri);
     };

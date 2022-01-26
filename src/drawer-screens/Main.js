@@ -7,6 +7,7 @@ import OpenView from "./open/OpenView";
 
 export default function Main() {
     const [expanded, setExpanded] = useState(true);
+// in closed view u get the initial view and in open view you get the edit view
 
     return (
         <KeyBoardView>
