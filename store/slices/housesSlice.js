@@ -146,6 +146,7 @@ const trendy = [
         collectionId: "fgvhfhgf",
     },
 ];
+
 const top = [
     {
         _id: "10",

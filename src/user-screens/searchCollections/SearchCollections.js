@@ -36,7 +36,7 @@ export default function SearchCollections({ navigation }) {
 
     const filterSearch = collections.filter((item) =>
         search !== ""
-            ? item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+            ? item.collectionName.toLocaleLowerCase().includes(search.toLocaleLowerCase())
             : item
     );
 

@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Box, FlatList } from "native-base";
+import { Box, FlatList, VStack } from "native-base";
 import React from "react";
 import UserProfileCard from "./components/UserProfileCard";
 import UserProfileMenu from "./components/UserProfileMenu";
@@ -162,6 +162,7 @@ const socialLinks = [
     { type: "discord", url: "https://discord.com/" },
     { type: "instagram", url: "https://www.instagram.com/" },
 ];
+
 const getRemainingTime = (expiresAt) => {
     const expiresAtTime = new Date(expiresAt);
     const now = new Date().getTime();
@@ -182,8 +183,14 @@ const getRemainingTime = (expiresAt) => {
 
 export default function UserProfile() {
     const navigation = useNavigation();
-    const route=useRoute();
-    console.log(route.params)
+    const [text, setText] = React.useState("");
+    let [service1, setService1] = React.useState('ux');
+    let [service2, setService2] = React.useState('l2h');
+
+    console.log(text);
+
+    const route = useRoute();
+
 
     const renderItem = ({ item }) => (
         <UserProfileCard
@@ -203,24 +210,32 @@ export default function UserProfile() {
     );
 
     return (
-        <FlatList
-            showsVerticalScrollIndicator={false}
-            showsHorizontalScrollIndicator={false}
-            bg={"#f9f9f9"}
-            ListHeaderComponent={
-                <Box key={"1"}>
-                    {/* <UserProfileHeader
+        <VStack flex="1">
+            <Box key={"1"}>
+                {/* <UserProfileHeader
                         name={userProfiles.name}
                         userAvatar={userProfiles.userAvatar}
                         userCoverphoto={userProfiles.userCoverPhoto}
                         isVarified={userProfiles.isVarified}
                     /> */}
-                    <UserProfileMenu />
-                </Box>
-            }
-            data={userProfiles}
-            renderItem={renderItem}
-            keyExtractor={(item) => item._id}
-        />
+                <UserProfileMenu
+                    searchValue={text}
+                    onClear={() => setText("")}
+                    onSearch={(tex) => setText(tex)}
+                    setService1={(value1)=>setService1(value1)}
+                    setService2={(value2)=>setService2(value2)}
+                    service1={service1}
+                    service2={service2}
+                />
+            </Box>
+            <FlatList
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                bg={"#f9f9f9"}
+                data={userProfiles}
+                renderItem={renderItem}
+                keyExtractor={(item) => item._id}
+            />
+        </VStack>
     );
 }
