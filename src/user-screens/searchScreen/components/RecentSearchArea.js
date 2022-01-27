@@ -3,7 +3,7 @@ import { Stack, Text, VStack } from "native-base";
 import React, { useEffect, useRef } from "react";
 import Search from "../../../utility/Search";
 
-export default function RecentSearchArea() {
+export default function RecentSearchArea({onSearch,onClear,searchValue}) {
     const [search, setSearch] = React.useState("");
     let clean = true;
     const searchA = useRef();
@@ -34,8 +34,9 @@ export default function RecentSearchArea() {
             </VStack>
 
             <Search
-                value={search}
-                onSearch={(text) => setSearch(text)}
+                value={searchValue}
+                onSearch={onSearch}
+                onClear={onClear}
                 onClear={() => setSearch("")}
                 ref={searchA}
             />
