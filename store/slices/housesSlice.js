@@ -417,6 +417,7 @@ export const clearTopSellers = () => {
 
 export const getAllHouses = () => {
     return (dispatch) => {
+     
         dispatch(
             housesActions.setHouses({
                 type: "allHouses",

@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCollections } from "../../../store/slices/collectionsSlice";
 import {
     getTopSellers,
-    getTrendyHouses,
     housesActions,
 } from "../../../store/slices/housesSlice";
 import TopCollections from "../common/TopCollections";
@@ -20,17 +19,11 @@ export default function DashBoardScreen() {
 
     const dispatch = useDispatch();
 
-    const trendyHouses = useSelector((state) => state.houses.trendyHouses);
-    const topSellers = useSelector((state) => state.houses.topSellers);
     const collections = useSelector((state) => state.collections.collections);
 
     React.useEffect(() => {
-        dispatch(getTrendyHouses());
         dispatch(getTopSellers());
-        dispatch(getCollections());
         return () => {
-            dispatch(housesActions.removeHouses({ type: "trendyHouses" }));
-            dispatch(housesActions.removeHouses({ type: "topSellers" }));
             dispatch(housesActions.removeHouses({ type: "allHouses" }));
         };
     }, []);
@@ -52,7 +45,7 @@ export default function DashBoardScreen() {
                     })
                 }
             />
-            <TrendyHouses houses={trendyHouses.slice(0, 5)} />
+            <TrendyHouses />
             <SectionHeader
                 title={"Top Sellers"}
                 imageType={"fire"}
@@ -62,7 +55,7 @@ export default function DashBoardScreen() {
                     })
                 }
             />
-            <TopSeller sellers={topSellers.slice(0, 4)} />
+            <TopSeller />
 
             <SectionHeader
                 title={"Top Collections"}

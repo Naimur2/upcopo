@@ -9,8 +9,8 @@ import SearchPagesHeader from "./components/SearchPagesHeader";
 export default function SearchPages({ navigation }) {
     let [search, setSearch] = useState("");
     let [text, setText] = useState("");
-    let [service1, setService1] = useState('ux');
-    let [service2, setService2] = useState('l2h');
+    let [service1, setService1] = useState("ux");
+    let [service2, setService2] = useState("l2h");
 
     const disPatch = useDispatch();
     const allHouses = useSelector((state) => state.houses.allHouses);
@@ -61,19 +61,21 @@ export default function SearchPages({ navigation }) {
 
     return (
         <Stack flex="1" px={4} bg={"#f9f9f9"}>
-            <SearchPagesHeader
-                onClear={() => setText("")}
-                onSearch={(txt) => setText(txt)}
-                key={"1"}
-                value={text}
-                service1={service1}
-                setService1={(v) => setService1(v)}
-                service2={service2}
-                setService2={(v) => setService2(v)}
-            />
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
+                ListHeaderComponent={
+                    <SearchPagesHeader
+                        onClear={() => setText("")}
+                        onSearch={(txt) => setText(txt)}
+                        key={"1"}
+                        value={text}
+                        service1={service1}
+                        setService1={(v) => setService1(v)}
+                        service2={service2}
+                        setService2={(v) => setService2(v)}
+                    />
+                }
                 data={filterSearch}
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}

@@ -1,8 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import uiActions from "./uiSlice";
 
 const likedHouses = [
     {
         _id: "1",
+        houseId: "1",
         houseName: "Turn Key House",
         expiresAt: "Jan 24, 2022 18:00:30",
         currentBid: "4.33",
@@ -27,6 +29,7 @@ const likedHouses = [
     },
     {
         _id: "2",
+        houseId: "2",
         houseName: "Turn Key House",
         expiresAt: "Jan 24, 2022 18:00:30",
         currentBid: "4.33",
@@ -51,6 +54,7 @@ const likedHouses = [
     },
     {
         _id: "3",
+        houseId: "3",
         houseName: "Turn Key House",
         expiresAt: "Jan 24, 2022 18:00:30",
         currentBid: "4.33",
@@ -75,6 +79,7 @@ const likedHouses = [
     },
     {
         _id: "4",
+        houseId: "4",
         houseName: "Turn Key House",
         expiresAt: "Jan 26, 2022 18:00:30",
         currentBid: "4.33",
@@ -99,6 +104,7 @@ const likedHouses = [
     },
     {
         _id: "5",
+        houseId: "5",
         houseName: "Turn Key House",
         expiresAt: "Jan 24, 2022 18:00:30",
         currentBid: "4.33",
@@ -123,6 +129,7 @@ const likedHouses = [
     },
     {
         _id: "6",
+        houseId: "6",
         houseName: "Turn Key House",
         expiresAt: "Jan 26, 2022 18:00:30",
         currentBid: "4.33",
@@ -192,3 +199,20 @@ export const clearDbLikes = () => {
         dispatch(likeAction.removeLikes());
     };
 };
+
+export const getIsLiked = createAsyncThunk(
+    "likes/isLiked ",
+    async (houseId, thunkAPI) => {
+        thunkAPI.dispatch(uiActions.setLoading(true));
+        const { likes } = thunkAPI.getState().likesState;
+        const isLiked=likes.filter(like=>like.houseId===houseId).length >0;
+        try {
+            const res = await fetch(
+                "https://jsonplaceholder.typicode.com/todos/1"
+            );
+            return isLiked;
+        } catch (error) {
+            return thunkAPI.rejectWithValue("error");
+        }
+    }
+);
