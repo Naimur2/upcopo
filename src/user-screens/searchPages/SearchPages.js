@@ -1,5 +1,5 @@
 import { debounce } from "lodash";
-import { FlatList, Stack } from "native-base";
+import { FlatList, Stack, Text } from "native-base";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHouses, housesActions } from "../../../store/slices/housesSlice";
@@ -51,6 +51,7 @@ export default function SearchPages({ navigation }) {
             imgUrl={item.image}
             houseName={item.houseName}
             price={item.topBid}
+            houseId={item._id}
             onPress={() =>
                 navigation.navigate("HouseScreen", {
                     house: item,
@@ -79,6 +80,13 @@ export default function SearchPages({ navigation }) {
                 data={filterSearch}
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}
+                ListFooterComponent={
+                    search.length > 0 && filterSearch.length === 0 ? (
+                        <Text fontFamily="body" textAlign="center" color="#000">
+                            No Results Found
+                        </Text>
+                    ) : null
+                }
             />
         </Stack>
     );

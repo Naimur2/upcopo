@@ -24,6 +24,8 @@ const trendy = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "2",
@@ -48,6 +50,8 @@ const trendy = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "3",
@@ -72,6 +76,8 @@ const trendy = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "4",
@@ -96,6 +102,8 @@ const trendy = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "5",
@@ -120,6 +128,8 @@ const trendy = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "6",
@@ -144,6 +154,8 @@ const trendy = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
 ];
 
@@ -171,6 +183,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "20",
@@ -195,6 +209,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "30",
@@ -219,6 +235,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "40",
@@ -243,6 +261,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "50",
@@ -267,6 +287,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "60",
@@ -291,6 +313,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "80",
@@ -315,6 +339,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "90",
@@ -339,6 +365,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
     {
         _id: "100",
@@ -363,6 +391,8 @@ const top = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
+        latitude: 40.724066,
+        longitude: 285.999418,
     },
 ];
 

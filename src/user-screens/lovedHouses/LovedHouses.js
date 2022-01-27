@@ -2,9 +2,9 @@ import { FlatList } from "native-base";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHouses } from "../../../store/slices/housesSlice";
-import { clearLikes, getLikes } from "../../../store/slices/likeSlice";
-import useHouse from "../../hooks/useHouse";
+import { getLikes } from "../../../store/slices/likeSlice";
 import LovedHousesCard from "./components/LovedHousesCard";
+import NoLovedHouses from "./NoLovedHouses";
 
 const renderItem = ({ item }) => {
     return <LovedHousesCard houseId={item.houseId} />;
@@ -33,6 +33,8 @@ export default function LovedHouses() {
                 clear = false;
             };
     }, [houses]);
+
+    if (likedHouses.length === 0) return <NoLovedHouses />;
 
     return (
         <FlatList

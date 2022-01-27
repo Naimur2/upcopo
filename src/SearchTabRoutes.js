@@ -61,14 +61,14 @@ export default function SearchTabRoutes() {
                         color: "#3D454A",
 
                     },
-                    headerBackTitleVisible: false,
+
                     headerStyle: {
                         backgroundColor: "transparent",
                         
                     },
                     headerShadowVisible: false,
                     headerTintColor:'#3D454A',
-                    headerBackVisible:false
+
                 }}
                 name="Gmap"
                 component={MapScreen}

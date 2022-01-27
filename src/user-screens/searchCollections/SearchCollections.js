@@ -1,5 +1,5 @@
 import { debounce } from "lodash";
-import { FlatList, Stack } from "native-base";
+import { FlatList, Stack,Text } from "native-base";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCollections } from "../../../store/slices/collectionsSlice";
@@ -59,6 +59,13 @@ export default function SearchCollections({ navigation }) {
                 data={filterSearch}
                 renderItem={({ item }) => <CollectionItemCard {...item} />}
                 keyExtractor={(item) => item._id}
+                ListFooterComponent={
+                    search.length > 0 && filterSearch.length === 0 ? (
+                        <Text fontFamily="body" textAlign="center" color="#000">
+                            No Results Found
+                        </Text>
+                    ) : null
+                }
             />
         </Stack>
     );

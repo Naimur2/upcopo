@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import {  createSlice } from "@reduxjs/toolkit";
 
 const likedHouses = [];
 
@@ -30,20 +30,7 @@ const likeSlice = createSlice({
                 state.likes=newState;
             }
 
-            // let likes = state.likes;
-
-            // if (iAvailablie) {
-            //     state.likes = likes.filter((like) => like.houseId === hId);
-
-            // } else {
-            //     const housedetails = { _id: `${Date.now().toString()}-${hId}`, houseId: hId };
-            //     state.likes.push(housedetails);
-            // }
         },
-        removeNewLike: (state, action) => {
-            state.likes = action.payload;
-        },
-
         removeLikes: (state, action) => {
             state.likes = [];
         },
@@ -73,16 +60,3 @@ export const clearDbLikes = () => {
     };
 };
 
-export const getIsLiked = createAsyncThunk(
-    "likes/isLiked ",
-    async (houseId, thunkAPI) => {
-        try {
-            const { likes } = thunkAPI.getState().likesState;
-
-            return likes.filter((like) => like.houseId === houseId).length > 0;
-            return isLiked;
-        } catch (error) {
-            return thunkAPI.rejectWithValue("error");
-        }
-    }
-);

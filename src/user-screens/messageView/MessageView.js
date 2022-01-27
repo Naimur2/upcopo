@@ -119,6 +119,9 @@ export default function MessageView() {
         } else return;
     };
 
+    
+
+
     return (
         <GiftedChat
             messages={messages}

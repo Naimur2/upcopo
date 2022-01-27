@@ -1,5 +1,6 @@
 import { HStack, Stack, Text, VStack } from "native-base";
 import React from "react";
+import useLike from "../../../hooks/useLike";
 import Card from "../../../utility/Card";
 import IconWithText from "../../../utility/IconWithText";
 import ImageView from "../../../utility/ImageView";
@@ -11,9 +12,10 @@ export default function ResultsCard({
     address1,
     onPress,
     price,
-    isLiked,
-    onLike,
+    houseId
 }) {
+    const [liked,onLike]=useLike(houseId);
+
     return (
         <Card onPress={onPress} borderRadius={20} mb="4" p={4}>
             <Stack>
@@ -26,7 +28,7 @@ export default function ResultsCard({
                 >
                     <VStack py="4" px={3} space="16">
                         <Like
-                            isLiked={isLiked}
+                            isLiked={liked}
                             onLike={onLike}
                             alignSelf="flex-end"
                         />

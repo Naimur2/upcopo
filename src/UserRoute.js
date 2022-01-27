@@ -38,7 +38,7 @@ export default function UserRoute() {
             backgroundColor: "transparent",
         },
         title: "",
-        headerShadowVisible:false
+        headerShadowVisible: false,
     };
 
     return (
@@ -118,26 +118,46 @@ export default function UserRoute() {
             />
             <Stack.Screen
                 options={{
-                   
                     headerTintColor: "#000",
                     headerTitleStyle: {
                         color: "#000",
                     },
                     title: "Apply Filter",
                     headerRight: () => (
-                        <Icon borderRadius={10} name={'export'} p={2} bg="#fff" size={20} />
+                        <Icon
+                            borderRadius={10}
+                            name={"export"}
+                            p={2}
+                            bg="#fff"
+                            size={20}
+                        />
                     ),
                 }}
                 name="FilterScreen"
                 component={FilterScreeen}
             />
-            <Stack.Screen name="OthersProfile" component={OtherUsersProfile} />
-            <Stack.Screen options={{
-                title:'',
-                headerStyle: {
-                    backgroundColor: "#f9f9f9",
-                },
-            }} name="SearchHouse" component={SearchScreen} />
+            <Stack.Screen
+                options={{
+                    title: "",
+                    headerStyle: {
+                        backgroundColor: "transparent",
+                    },
+
+                    headerTransparent: true,
+                }}
+                name="OthersProfile"
+                component={OtherUsersProfile}
+            />
+            <Stack.Screen
+                options={{
+                    title: "",
+                    headerStyle: {
+                        backgroundColor: "transparent",
+                    },
+                }}
+                name="SearchHouse"
+                component={SearchScreen}
+            />
             <Stack.Screen
                 options={{
                     headerStyle: {

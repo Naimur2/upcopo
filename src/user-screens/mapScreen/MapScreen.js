@@ -1,16 +1,18 @@
+import { useNavigation } from "@react-navigation/native";
 import { Box, Center, FlatList, HStack, VStack } from "native-base";
 import * as React from "react";
-import { Dimensions, StyleSheet } from "react-native";
+import { Dimensions, Keyboard, StyleSheet } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHouses, housesActions } from "../../../store/slices/housesSlice";
-import UtilityBtn from '../.././utility/UtilityBtn';
+import UtilityBtn from "../.././utility/UtilityBtn";
 //import env from "../../../env";
 import Search from "../../utility/Search";
-import MapScreenCard from './components/MapScreenCard';
+import MapCard from "./components/MapCard";
 
-export default function MapScreen({ navigation }) {
+export default function MapScreen() {
     const { width, height } = Dimensions.get("window");
+    const navigation = useNavigation();
 
     const disPatch = useDispatch();
     const allHouses = useSelector((state) => state.houses.allHouses);
@@ -29,14 +31,8 @@ export default function MapScreen({ navigation }) {
      * 
      */
 
-
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => (
-                <Center alignSelf={"center"} my={4} w="85%">
-                    <Search />
-                </Center>
-            ),
             title: "",
             headerStyle: {
                 height: 100,
@@ -51,22 +47,33 @@ export default function MapScreen({ navigation }) {
         });
     }, [navigation]);
 
-    const origin = {
+    const [area, seArea] = React.useState({
         latitude: 40.724066,
         longitude: 285.999418,
+    });
+
+    const origin = {
+        latitude: area.latitude,
+        longitude: area.longitude,
     };
-    const destination = {
-        latitude: 40.720143,
-        longitude: 285.998276,
-    };
+
     const renderItem = ({ item }) => (
-        <MapScreenCard
+        <MapCard
+            item={item}
+            onPress={() =>
+                seArea({ latitude: item.latitude, longitude: item.longitude })
+            }
         />
     );
 
     return (
         <VStack flex={1}>
+            <HStack ml={'20%'} bg={'transparent'} zIndex={2} position={'absolute'} justifyContent={"flex-end"}>
+                <Search  />
+
+            </HStack>
             <MapView
+                onPress={() => Keyboard.dismiss()}
                 style={styles.map}
                 initialRegion={{
                     latitude: 40.724066,
@@ -78,7 +85,7 @@ export default function MapScreen({ navigation }) {
             >
                 <Marker coordinate={origin} />
 
-                <Marker coordinate={destination} />
+                {/* <Marker coordinate={destination} /> */}
                 {/* <MapViewDirections
                     origin={origin}
                     destination={destination}
@@ -88,46 +95,44 @@ export default function MapScreen({ navigation }) {
                     lineDashPattern={[0]}
                 /> */}
             </MapView>
-            <VStack borderTopRadius={20} h={Math.round(height / 4)} bottom={0} position={'absolute'} flex={0.5} w={width} bg={"#F9F9F9"}>
+            <VStack
+                borderTopRadius={20}
+                minH={Math.round(height / 3)}
+                bottom={0}
+                position={"absolute"}
+                flex={0.5}
+                w={width}
+                bg={"#F9F9F9"}
+            >
                 <Center>
-                    <Box
-                        borderRadius={5}
-                        mt={4}
-                        h={1.5}
-                        px="10"
-                        bg="#DFE3E6"
-                    />
+                    <Box borderRadius={5} mt={4} h={1.5} px="10" bg="#DFE3E6" />
                 </Center>
                 <FlatList
                     showsVerticalScrollIndicator={false}
                     showsHorizontalScrollIndicator={false}
                     horizontal
-
                     data={allHouses}
                     renderItem={renderItem}
                     keyExtractor={(item) => item._id}
-                   
                 />
                 <HStack
                     w={"100%"}
                     space={"4"}
                     justifyContent={"center"}
                     alignItems={"center"}
-                    mt={10}
                     py={2}
+                    my={6}
                     px="4"
                     flexDir={"row"}
-
                 >
+                    <UtilityBtn w="1/2" alignSelf="stretch" title="Map" />
                     <UtilityBtn
+                        onPress={() => navigation.navigate("ARview")}
                         w="1/2"
-                        alignSelf="stretch"
-                        title="Map"
-                    // onPress={() => navigation.navigate('Gmap')}
+                        title="AR"
+                        varient="white"
                     />
-                    <UtilityBtn w="1/2" title="AR" varient="white" />
                 </HStack>
-
             </VStack>
         </VStack>
     );
@@ -135,11 +140,11 @@ export default function MapScreen({ navigation }) {
 
 const styles = StyleSheet.create({
     map: {
-        width: '100%',
-        height: '100%',
-        flex: 1
+        width: "100%",
+        height: "100%",
+        flex: 1,
     },
 });
 /**
- * 
+ *
  */

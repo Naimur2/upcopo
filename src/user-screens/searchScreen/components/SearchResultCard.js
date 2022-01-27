@@ -9,7 +9,7 @@ export default function SearchResultCard({
     address,
     bath,
     bed,
-    onIconPress
+    onIconPress,showClose
 }) {
     return (
         <HStack
@@ -44,7 +44,7 @@ export default function SearchResultCard({
                     >
                         {houseName}
                     </Text>
-                    <Icon onPress={onIconPress} name="x" size={24} color={"#C1C8CD"} />
+                   {showClose && <Icon onPress={onIconPress} name="x" size={24} color={"#C1C8CD"} />}
                 </HStack>
                 <IconWithText
                     iconName="map"

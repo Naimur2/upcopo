@@ -8,11 +8,11 @@ import SearchResultCard from "./SearchResultCard";
 export default function RecentSearches() {
     const [category, setCategory] = React.useState("all");
     const [data, setData] = React.useState([]);
-    const dispatch=useDispatch();
+    const dispatch = useDispatch();
     const recentSearches = useSelector((state) => state.recentSearch.searches);
 
     const getSearches = (catg) => {
-        if (catg==="all") return recentSearches;
+        if (catg === "all") return recentSearches;
         return recentSearches.filter((searches) => searches.category === catg);
     };
 
@@ -23,7 +23,7 @@ export default function RecentSearches() {
         return () => {
             setData([]);
         };
-    }, [category,recentSearches]);
+    }, [category, recentSearches]);
 
     React.useEffect(() => {
         setCategory("all");
@@ -91,13 +91,16 @@ export default function RecentSearches() {
             </Card>
             {data.map((dt) => (
                 <SearchResultCard
-                   key={dt._id}
+                    showClose={true}
+                    key={dt._id}
                     bed={dt.bed}
                     bath={dt.bath}
                     address={dt.address}
                     imageUri={dt.image}
                     houseName={dt.houseName}
-                    onIconPress={()=>dispatch(recentSearchActions.removeSearch(dt._id))}
+                    onIconPress={() =>
+                        dispatch(recentSearchActions.removeSearch(dt._id))
+                    }
                 />
             ))}
         </VStack>
