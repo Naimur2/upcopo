@@ -100,6 +100,7 @@ export default function ARview({ navigation }) {
                     varient="white"
                     alignSelf="stretch"
                     title="Map"
+                    onPress={()=>navigation.navigate('Gmap')}
                 />
                 <UtilityBtn w="1/2" title="AR" />
             </HStack>
