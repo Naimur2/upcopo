@@ -1,12 +1,25 @@
-import { Center, VStack } from "native-base";
+import { Box, Center, FlatList, HStack, VStack } from "native-base";
 import * as React from "react";
 import { Dimensions, StyleSheet } from "react-native";
 import MapView, { Marker, PROVIDER_GOOGLE } from "react-native-maps";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllHouses, housesActions } from "../../../store/slices/housesSlice";
+import UtilityBtn from '../.././utility/UtilityBtn';
 //import env from "../../../env";
 import Search from "../../utility/Search";
+import MapScreenCard from './components/MapScreenCard';
 
 export default function MapScreen({ navigation }) {
     const { width, height } = Dimensions.get("window");
+
+    const disPatch = useDispatch();
+    const allHouses = useSelector((state) => state.houses.allHouses);
+    React.useEffect(() => {
+        disPatch(getAllHouses());
+        return () => {
+            disPatch(housesActions.removeHouses({ type: "allHouses" }));
+        };
+    }, [navigation]);
 
     /**
      *   const mapurl = `https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap
@@ -15,6 +28,7 @@ export default function MapScreen({ navigation }) {
     &key=${env.map}`;
      * 
      */
+
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
@@ -45,6 +59,11 @@ export default function MapScreen({ navigation }) {
         latitude: 40.720143,
         longitude: 285.998276,
     };
+    const renderItem = ({ item }) => (
+        <MapScreenCard
+        />
+    );
+
     return (
         <VStack flex={1}>
             <MapView
@@ -69,7 +88,47 @@ export default function MapScreen({ navigation }) {
                     lineDashPattern={[0]}
                 /> */}
             </MapView>
-            <VStack borderTopRadius={20} h={Math.round(height/4)} bottom={0} position={'absolute'} flex={0.5} w={width} bg={"#fff"}></VStack>
+            <VStack borderTopRadius={20} h={Math.round(height / 4)} bottom={0} position={'absolute'} flex={0.5} w={width} bg={"#F9F9F9"}>
+                <Center>
+                    <Box
+                        borderRadius={5}
+                        mt={4}
+                        h={1.5}
+                        px="10"
+                        bg="#DFE3E6"
+                    />
+                </Center>
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                    horizontal
+
+                    data={allHouses}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item._id}
+                   
+                />
+                <HStack
+                    w={"100%"}
+                    space={"4"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    mt={10}
+                    py={2}
+                    px="4"
+                    flexDir={"row"}
+
+                >
+                    <UtilityBtn
+                        w="1/2"
+                        alignSelf="stretch"
+                        title="Map"
+                    // onPress={() => navigation.navigate('Gmap')}
+                    />
+                    <UtilityBtn w="1/2" title="AR" varient="white" />
+                </HStack>
+
+            </VStack>
         </VStack>
     );
 }
@@ -78,6 +137,9 @@ const styles = StyleSheet.create({
     map: {
         width: '100%',
         height: '100%',
-        flex:1
+        flex: 1
     },
 });
+/**
+ * 
+ */
