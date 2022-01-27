@@ -2,6 +2,7 @@ import { useRoute } from "@react-navigation/native";
 import { Image, ScrollView, Stack, VStack } from "native-base";
 import React from "react";
 import { useDispatch } from "react-redux";
+import useLike from "../../hooks/useLike";
 import usePlaceBid from "../../hooks/usePlaceBid";
 import UtilityBtn from "../../utility/UtilityBtn";
 import PlaceBidAction from "../common/PlaceBidAction";
@@ -10,10 +11,11 @@ import HouseDetails from "./components/HouseDetails";
 import HouseHeader from "./components/HouseHeader";
 
 export default function House() {
-    const dispatch = useDispatch();
     const data = useRoute().params.house;
     const houseId =data._id;
-    const [bidHistory,showActions,showActionHandler,closeActionHandler] = usePlaceBid(houseId)
+    const [bidHistory,showActions,showActionHandler,closeActionHandler] = usePlaceBid(houseId);
+
+    const [liked,onLike]=useLike(houseId);
 
     const HouseMap = ({ uri }) => (
         <VStack w="full" h={110} borderRadius={10} overflow={"hidden"}>
@@ -39,6 +41,8 @@ export default function House() {
                     sqrfit={data.sqrfit}
                     image={data.image}
                     houseId={data.houseId}
+                    isLiked={liked}
+                    onLike={onLike}
                 />
 
                 <VStack px={4} space={4}>

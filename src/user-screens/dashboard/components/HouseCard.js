@@ -1,6 +1,6 @@
 import React from "react";
 import { Dimensions } from "react-native";
-import { useDispatch, useSelector } from "react-redux";
+import useLike from "../../../hooks/useLike";
 import usePlaceBid from "../../../hooks/usePlaceBid";
 import Card from "../../../utility/Card";
 import PlaceBidAction from "../../common/PlaceBidAction";
@@ -17,20 +17,8 @@ export default function HouseCard({
     onPress,
     minimumBid,
 }) {
-    const [liked, setLiked] = React.useState(false);
-    const dispatch=useDispatch();
 
-    const likes = useSelector((state) => state.likes.likes);
-
-    React.useEffect(() => {
-        const isLiked =
-            likes.filter((like) => like.houseId === houseId).length > 0;
-        setLiked(isLiked);
-    }, [likes]);
-
-    React.useEffect(() => {
-       console.log(liked)
-    }, [liked]);
+    const [liked,onLike]=useLike(houseId);
 
     const base = Math.round(Dimensions.get("window").width / 1.5);
     const md = Math.round(Dimensions.get("window").width / 2.9);
@@ -43,7 +31,7 @@ export default function HouseCard({
                 expiresAt={expiresAt}
                 image={image}
                 houseName={houseName}
-                onLike={() => setLiked((prev) => !prev)}
+                onLike={onLike}
                 isLiked={liked}
                 id={id}
             />

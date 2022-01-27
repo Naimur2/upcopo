@@ -1,25 +1,19 @@
 import { HStack, VStack } from "native-base";
 import React from "react";
+import useHouse from "../../../hooks/useHouse";
+import usePlaceBid from "../../../hooks/usePlaceBid";
+import PlaceBidAction from "../../common/PlaceBidAction";
 import LovedHousesCardBody from "./LovedHousesCardBody";
 import LovedHousesCardFooter from "./LovedHousesCardFooter";
 import LovedHousesCardHeader from "./LovedHousesCardHeader";
 import LovedHousesCardImage from "./LovedHousesCardImage";
-import usePlaceBid from "../../../hooks/usePlaceBid";
-import PlaceBidAction from "../../common/PlaceBidAction";
 
 export default function LovedHousesCard({
-   imageUrl,
-    address,
-    numOfBed,
-    numOfBath,
-    price,
     houseId,
-    minimumBid
 }) {
-
-    const [bidHistory,showActions,showActionHandler,closeActionHandler] = usePlaceBid(houseId)
-
-
+    const [bidHistory, showActions, showActionHandler, closeActionHandler] =
+        usePlaceBid(houseId);
+    const house = useHouse(houseId);
 
     return (
         <HStack
@@ -28,7 +22,7 @@ export default function LovedHousesCard({
             px={4}
             alignItems={"center"}
         >
-            <LovedHousesCardImage imageUrl={imageUrl} />
+            <LovedHousesCardImage imageUrl={house.image} />
             <VStack
                 w="70%"
                 space="3"
@@ -37,19 +31,22 @@ export default function LovedHousesCard({
                 py={4}
             >
                 {/* define maximum character */}
-                <LovedHousesCardHeader address={address} />
+                <LovedHousesCardHeader address={house.address} />
 
                 <LovedHousesCardBody
-                    numOfBath={numOfBath}
-                    numOfBed={numOfBed}
+                    numOfBath={house.bath}
+                    numOfBed={house.bed}
                 />
-                <LovedHousesCardFooter onPlaceBid={showActionHandler} price={price} />
+                <LovedHousesCardFooter
+                    onPlaceBid={showActionHandler}
+                    price={house.topBid}
+                />
                 <PlaceBidAction
                     isOpen={showActions}
                     bidHistoryState={bidHistory}
                     onClose={closeActionHandler}
                     houseId={houseId}
-                    minimumBid={minimumBid}
+                    minimumBid={house.minimumBid}
                 />
             </VStack>
         </HStack>
