@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllCollections } from "../../../store/slices/collectionsSlice";
 import { housesActions } from "../../../store/slices/housesSlice";
-import Search from "../../utility/Search";
 import { CollectionItemCard } from "../topCollections/TopCollections";
+import SearchComponents from './SearchComponents';
 
 export default function SearchCollections({ navigation }) {
     const dispatch = useDispatch();
@@ -47,13 +47,14 @@ export default function SearchCollections({ navigation }) {
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 ListHeaderComponent={
-                    <Search
-                        onSearch={(txt) => setText(txt)}
-                        onClear={() => setText("")}
-                        key={44}
-                        mb={2}
-                        value={text}
+                    <SearchComponents
+                    onSearch={(txt) => setText(txt)}
+                    onClear={() => setText("")}
+                    key={44}
+                    value={text}
+                    
                     />
+                   
                 }
                 data={filterSearch}
                 renderItem={({ item }) => <CollectionItemCard {...item} />}
