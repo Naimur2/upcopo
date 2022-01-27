@@ -1,6 +1,7 @@
 import { useRoute } from "@react-navigation/native";
 import { Center, HStack, ScrollView, Text, VStack } from "native-base";
 import React from "react";
+import useFollow from "../../hooks/useFollow";
 import Card from "../../utility/Card";
 import Icon from "../../utility/Icon";
 import NoDataImage from "./components/NoDataImage";
@@ -15,7 +16,7 @@ const OtherUsersProfileHeaderData = {
     numberOfFOllowers: "62267",
     numberOfFOllowing: "62267",
     intro: `Data processing it takes a great deal of bravery to stand up to our enemies, but just as much to stand up to our friends.”   -J. K. Rowling`,
-    isPrivate: false,
+    isPrivate: true,
     houses: [
         {
             _id: "1",
@@ -339,7 +340,9 @@ const NoData = () => (
 export default function OtherUsersProfile() {
     const route = useRoute();
 
+    console.log(route.params);
     const [data, setData] = React.useState({});
+    const [followData, setFollowData] = React.useState(false);
     const [category, setCategory] = React.useState("houses");
 
     React.useEffect(() => {
@@ -350,7 +353,6 @@ export default function OtherUsersProfile() {
         };
     }, [route]);
 
-
     const selectedData = data[category];
 
     const renderHouse = selectedData ? (
@@ -359,6 +361,10 @@ export default function OtherUsersProfile() {
 
     return (
         <ScrollView bg={"#F9F9F9"} showsVerticalScrollIndicator={false}>
+            {/* onFollow
+isFollowing
+onMessage
+onEdit */}
             <OtherUsersProfileHeader
                 avatar={data.avatar}
                 userName={data.userName}
@@ -366,6 +372,8 @@ export default function OtherUsersProfile() {
                 numberOfFOllowers={data.numberOfFOllowers}
                 numberOfFOllowing={data.numberOfFOllowing}
                 intro={data.intro}
+                isFollowing={followData}
+                onFollow={()=>setFollowData((prev) => !prev)}
             />
             <VStack py={4}>
                 <Card mx={4} p={4} mt={4}>
@@ -388,7 +396,7 @@ export default function OtherUsersProfile() {
                     </HStack>
                 </Card>
             </VStack>
-            {data.isPrivate ? <NoData /> : renderHouse}
+            {data.isPrivate && !followData ? <NoData /> : renderHouse}
         </ScrollView>
     );
 }

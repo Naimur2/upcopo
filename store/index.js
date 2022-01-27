@@ -10,6 +10,7 @@ import housesReducer from "./slices/housesSlice";
 import uiReducer from "./slices/uiSlice";
 import userReducer from "./slices/userInfoSlice";
 import likeReducer from "./slices/likeSlice";
+import followingsReducer from './slices/followingsSlice'
 
 const store = configureStore({
     reducer: {
@@ -23,7 +24,8 @@ const store = configureStore({
         history:historyReducer,
         notifications:notificationsReducer,
         houses:housesReducer,
-        likes:likeReducer
+        likes:likeReducer,
+        followings:followingsReducer
     },
 });
 

@@ -10,15 +10,15 @@ const UtilityBtn = React.forwardRef(
                 text: "#fff",
                 border: null,
                 borderWidth: 0,
-                pressedText:'#fff'
+                pressedText: "#fff",
             },
             blue: {
                 base: "#0095F6",
                 pressed: "transparent",
                 text: "#fff",
-                border: null,
-                borderWidth: 0,
-                pressedText:'#000'
+                border: "#DFE3E6",
+                borderWidth: 1,
+                pressedText: "#000",
             },
             outlined: {
                 base: "transparent",
@@ -26,7 +26,7 @@ const UtilityBtn = React.forwardRef(
                 text: "#000",
                 border: "#DFE3E6",
                 borderWidth: 1,
-                pressedText:'#fff'
+                pressedText: "#fff",
             },
             white: {
                 base: "#fff",
@@ -34,7 +34,7 @@ const UtilityBtn = React.forwardRef(
                 text: "#687076",
                 border: null,
                 borderWidth: 0,
-                pressedText:"#687076"
+                pressedText: "#687076",
             },
             gray: {
                 base: "#ECEEF0",
@@ -42,7 +42,7 @@ const UtilityBtn = React.forwardRef(
                 text: "#7E868C",
                 border: null,
                 borderWidth: 0,
-                pressedText:"#687076"
+                pressedText: "#687076",
             },
         };
 
@@ -52,22 +52,43 @@ const UtilityBtn = React.forwardRef(
                 borderRadius={8}
                 py={2}
                 _pressed={{
-                    bg: varient ? varients[varient].pressed : "#489982",
-                    _text:{
-                        color:varient ? varients[varient].pressedText : '#fff'
-                    }
+                    bg:
+                        varient && varients[varient].pressed
+                            ? varients[varient].pressed
+                            : "#489982",
+                    _text: {
+                        color:
+                            varient && varients[varient].pressedText
+                                ? varients[varient].pressedText
+                                : "#fff",
+                    },
                 }}
                 _text={{
-                    color: varient ? varients[varient].text : "#fff",
+                    color:
+                        varient && varients[varient].text
+                            ? varients[varient].text
+                            : "#fff",
                     fontFamily: "body",
                     fontWeight: "600",
                     fontSize: "17",
                     ...titleStyle,
                 }}
-                bg={varient ? varients[varient].base : "#52B69A"}
+                bg={
+                    varient && varients[varient].base
+                        ? varients[varient].base
+                        : "#52B69A"
+                }
                 ref={ref}
-                borderWidth={varient ? varients[varient].borderWidth : 0}
-                borderColor={varient ? varients[varient].border : null}
+                borderWidth={
+                    varient && varients[varient].borderWidth
+                        ? varients[varient].borderWidth
+                        : 0
+                }
+                borderColor={
+                    varient && varients[varient].border
+                        ? varients[varient].border
+                        : null
+                }
                 {...rest}
             >
                 {title ? title : ""}

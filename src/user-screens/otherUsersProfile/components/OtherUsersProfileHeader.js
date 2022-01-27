@@ -9,6 +9,10 @@ export default function OtherUsersProfileHeader({
     numberOfFOllowers,
     numberOfFOllowing,
     intro,
+    onFollow,
+    isFollowing,
+    onMessage,
+    onEdit,
 }) {
     const UserAvatar = ({ avatarUrl }) => (
         <Box>
@@ -84,7 +88,8 @@ export default function OtherUsersProfileHeader({
                 <Box w="1/3" px="1">
                     <UtilityBtn
                         title={"Follow"}
-                        varient="blue"
+                        onPress={onFollow}
+                        varient={isFollowing ? "blue" : "outlined"}
                         py="2.5"
                         titleStyle={{
                             fontWeight: "500",
@@ -95,6 +100,7 @@ export default function OtherUsersProfileHeader({
                 <Box w="1/3" px="1">
                     <UtilityBtn
                         title={"Messege"}
+                        onPress={onMessage}
                         varient="outlined"
                         py="2.5"
                         titleStyle={{
@@ -105,6 +111,7 @@ export default function OtherUsersProfileHeader({
                 </Box>
                 <Box w="1/3" px="1">
                     <UtilityBtn
+                        onPress={onEdit}
                         title={"Edit"}
                         varient="outlined"
                         py="2.5"
