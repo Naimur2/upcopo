@@ -12,7 +12,7 @@ import TopCollections from "../common/TopCollections";
 import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";
-import SliderHorizontal from "./components/SliderHorizontal";
+import TrendyHouses from "./components/TrendyHouses";
 import TopSeller from "./components/TopSellers";
 
 export default function DashBoardScreen() {
@@ -52,7 +52,7 @@ export default function DashBoardScreen() {
                     })
                 }
             />
-            <SliderHorizontal houses={trendyHouses.slice(0, 5)} />
+            <TrendyHouses houses={trendyHouses.slice(0, 5)} />
             <SectionHeader
                 title={"Top Sellers"}
                 imageType={"fire"}

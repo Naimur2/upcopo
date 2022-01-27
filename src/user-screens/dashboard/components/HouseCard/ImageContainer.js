@@ -8,12 +8,13 @@ export default function ImageContainer({
     image,
     houseName,
     onLike,
+    isLiked,
     id,
 }) {
     return (
-        <Stack >
+        <Stack>
             <Stack p="2" space="16">
-                <Counter alignSelf={'flex-start'} expiresAt={expiresAt} />
+                <Counter alignSelf={"flex-start"} expiresAt={expiresAt} />
                 <HStack justifyContent={"space-between"} alignItems={"center"}>
                     <Text
                         fontWeight={500}
@@ -24,16 +25,16 @@ export default function ImageContainer({
                     >
                         {houseName}
                     </Text>
-                    <Like onLike={onLike} id={id} />
+                    <Like onLike={onLike} isLiked={isLiked} />
                 </HStack>
             </Stack>
             <Image
                 borderRadius={12}
                 resizeMode="cover"
                 w="full"
-                h={'full'}
+                h={"full"}
                 source={{ uri: image }}
-                alt={'house Name'}
+                alt={"house Name"}
                 position="absolute"
                 zIndex={-1}
             />

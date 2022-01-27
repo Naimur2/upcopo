@@ -17,47 +17,53 @@ export default function MapScreen({ navigation }) {
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
-                <Center alignSelf={'center'} my={4} w="85%">
 
-                    <Search />
-                </Center>
-            ),
-            title: "",
-            headerStyle: {
-                height: 100,
-                justifyContent: 'center',
+
+                    <Center alignSelf={"center"} my={4} w="85%">
+
+                        <Search />
+                    </Center>
+                    ),
+                    title: "",
+                    headerStyle: {
+                        height: 100,
+
+                    justifyContent: 'center',
+
+
+                    justifyContent: "center",
 
             },
-            headerBackTitleStyle: {
-                paddingVertical: 4,
-            }
+                    headerBackTitleStyle: {
+                        paddingVertical: 4,
+            },
         });
     }, [navigation]);
 
-    const origin = {
-        latitude: 40.724066,
-        longitude: 285.999418,
-    };
-    const destination = {
-        latitude: 40.720143,
-        longitude: 285.998276,
-    };
-    return (
-        <View style={styles.container}>
-            <MapView
-                style={styles.map}
-                initialRegion={{
-                    latitude: 40.724066,
+                    const origin = {
+                        latitude: 40.724066,
                     longitude: 285.999418,
-                    latitudeDelta: 0.00922,
-                    longitudeDelta: 0.00421,
-                }}
-                provider={PROVIDER_GOOGLE}
-            >
-                <Marker coordinate={origin} />
+    };
+                    const destination = {
+                        latitude: 40.720143,
+                    longitude: 285.998276,
+    };
+                    return (
+                    <View style={styles.container}>
+                        <MapView
+                            style={styles.map}
+                            initialRegion={{
+                                latitude: 40.724066,
+                                longitude: 285.999418,
+                                latitudeDelta: 0.00922,
+                                longitudeDelta: 0.00421,
+                            }}
+                            provider={PROVIDER_GOOGLE}
+                        >
+                            <Marker coordinate={origin} />
 
-                <Marker coordinate={destination} />
-                {/* <MapViewDirections
+                            <Marker coordinate={destination} />
+                            {/* <MapViewDirections
                     origin={origin}
                     destination={destination}
                     apikey={"AIzaSyDB79QR-FmWtyyrt7mHUDEH0rbRGi2PBxE"} // insert your API Key here
@@ -65,20 +71,20 @@ export default function MapScreen({ navigation }) {
                     strokeColor="#111111"
                     lineDashPattern={[0]}
                 /> */}
-            </MapView>
-        </View>
-    );
+                        </MapView>
+                    </View>
+                    );
 }
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-        alignItems: "center",
-        justifyContent: "center",
+                    const styles = StyleSheet.create({
+                        container: {
+                        flex: 1,
+                    backgroundColor: "#fff",
+                    alignItems: "center",
+                    justifyContent: "center",
     },
-    map: {
-        width: Dimensions.get("window").width,
-        height: Dimensions.get("window").height,
+                    map: {
+                        width: Dimensions.get("window").width,
+                    height: Dimensions.get("window").height,
     },
 });

@@ -4,7 +4,6 @@ import IconWithText from "../../../utility/IconWithText";
 import Counter from "../../common/Counter";
 import Like from "../../common/Like";
 
-
 export default function HouseHeader({
     owner,
     builtAt,
@@ -13,14 +12,20 @@ export default function HouseHeader({
     address,
     sqrfit,
     image,
+    onLike,
+    isLiked,
 }) {
     return (
         <VStack>
             <VStack space={140} mt={"7%"} p={6}>
                 <HStack justifyContent={"space-between"}>
                     <VStack>
-                        <Text maxW={40} fontFamily={"body"}>Owned By {owner} </Text>
-                        <Text maxW={40} fontFamily={"body"}>W.year {builtAt}</Text>
+                        <Text maxW={40} fontFamily={"body"}>
+                            Owned By {owner}{" "}
+                        </Text>
+                        <Text maxW={40} fontFamily={"body"}>
+                            W.year {builtAt}
+                        </Text>
                     </VStack>
                     <Counter expiresAt={expiresAt} />
                 </HStack>
@@ -53,7 +58,11 @@ export default function HouseHeader({
                         />
                     </VStack>
                     <VStack space="2" maxW={"25%"}>
-                        <Like alignSelf={"flex-end"} />
+                        <Like
+                            isLiked={isLiked}
+                            onLike={onLike}
+                            alignSelf={"flex-end"}
+                        />
                         <Text
                             fontFamily={"body"}
                             fontSize={18}
