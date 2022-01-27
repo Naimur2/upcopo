@@ -7,7 +7,6 @@ import { housesActions } from "../../../store/slices/housesSlice";
 import Search from "../../utility/Search";
 import { CollectionItemCard } from "../topCollections/TopCollections";
 
-
 export default function SearchCollections({ navigation }) {
     const dispatch = useDispatch();
     let [search, setSearch] = useState("");
@@ -36,22 +35,26 @@ export default function SearchCollections({ navigation }) {
 
     const filterSearch = collections.filter((item) =>
         search !== ""
-            ? item.collectionName.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+            ? item.collectionName
+                  .toLocaleLowerCase()
+                  .includes(search.toLocaleLowerCase())
             : item
     );
 
     return (
         <Stack flex="1" px={4} bg="#f9f9f9">
-            <Search
-                onSearch={(txt) => setText(txt)}
-                onClear={() => setText("")}
-                key={44}
-                mb={2}
-                value={text}
-            />
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
+                ListHeaderComponent={
+                    <Search
+                        onSearch={(txt) => setText(txt)}
+                        onClear={() => setText("")}
+                        key={44}
+                        mb={2}
+                        value={text}
+                    />
+                }
                 data={filterSearch}
                 renderItem={({ item }) => <CollectionItemCard {...item} />}
                 keyExtractor={(item) => item._id}
