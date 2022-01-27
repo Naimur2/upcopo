@@ -6,8 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
     clearPeoples, getPeoples
 } from "../../../store/slices/messagesSlice";
-import Search from "../../utility/Search";
 import MessagingBody from "./components/MessagingBody";
+import SearchMessage from "./components/SearchMessage";
 
 export default function Messaging() {
     const [text, setText] = React.useState("");
@@ -61,18 +61,17 @@ export default function Messaging() {
         );
     };
 
+
     return (
         <Stack p={4}>
             <FlatList
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 ListHeaderComponent={
-                    <Search placeholder="Search in Messages" mb={4}
-                        value={text}
-                        onSearch={(text) => setText(text)}
-                       // onClear={() => setSearch("")}
-
-
+                    <SearchMessage 
+                    value={text}
+                    onSearch={(text) => setText(text)}
+                    onClear={() => setSearch("")}
                     />
                 }
                 data={filterSearch}

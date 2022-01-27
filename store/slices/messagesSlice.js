@@ -102,7 +102,7 @@ const peoples=[
         _id: "01",
         sentId:'100',
         receiveId:'100',
-        name: "crypto punks",
+        name: "Jole Norris",
         lastMesage: "Hello World",
         time: "11:10pm",
         numberofUnseen:1,
