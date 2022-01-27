@@ -11,6 +11,8 @@ export default function ResultsCard({
     address1,
     onPress,
     price,
+    isLiked,
+    onLike,
 }) {
     return (
         <Card onPress={onPress} borderRadius={20} mb="4" p={4}>
@@ -23,7 +25,11 @@ export default function ResultsCard({
                     mb={4}
                 >
                     <VStack py="4" px={3} space="16">
-                        <Like alignSelf="flex-end" />
+                        <Like
+                            isLiked={isLiked}
+                            onLike={onLike}
+                            alignSelf="flex-end"
+                        />
                         <Text
                             fontFamily={"body"}
                             fontWeight={600}

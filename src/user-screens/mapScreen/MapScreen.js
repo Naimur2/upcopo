@@ -16,20 +16,18 @@ export default function MapScreen({ navigation }) {
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
-                <Center alignSelf={'center'} my={4} w="85%">
-                    
+                <Center alignSelf={"center"} my={4} w="85%">
                     <Search />
                 </Center>
             ),
             title: "",
-            headerStyle:{
-                height:100,
-                justifyContent:'center',
-                
+            headerStyle: {
+                height: 100,
+                justifyContent: "center",
             },
-            headerBackTitleStyle:{
+            headerBackTitleStyle: {
                 paddingVertical: 4,
-            }
+            },
         });
     }, [navigation]);
 
