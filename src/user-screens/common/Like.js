@@ -2,7 +2,7 @@ import { Pressable } from "native-base";
 import React from "react";
 import Icon from "../../utility/Icon";
 
-export default function Like({ onPress, isLiked, ...rest }) {
+export default function Like({ onLike, isLiked, ...rest }) {
     return (
         <Pressable
             alignItems={"center"}
@@ -11,7 +11,7 @@ export default function Like({ onPress, isLiked, ...rest }) {
             p={1.5}
             _pressed={{ bg: "#F9F9F9" }}
             bg={"#FFFFFF"}
-            onPress={onPress}
+            onPress={onLike}
             opacity={isLiked ? 1 : 0.75}
             {...rest}
         >

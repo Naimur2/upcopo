@@ -9,8 +9,6 @@ import HouseBody from "./components/HouseBody";
 import HouseDetails from "./components/HouseDetails";
 import HouseHeader from "./components/HouseHeader";
 
-
-
 export default function House() {
     const dispatch = useDispatch();
     const data = useRoute().params.house;

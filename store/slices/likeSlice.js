@@ -4,7 +4,7 @@ import uiActions from "./uiSlice";
 const likedHouses = [
     {
         _id: "1",
-        houseId: "1",
+        houseId: "1000",
         houseName: "Turn Key House",
         expiresAt: "Jan 24, 2022 18:00:30",
         currentBid: "4.33",
@@ -29,7 +29,7 @@ const likedHouses = [
     },
     {
         _id: "2",
-        houseId: "2",
+        houseId: "200",
         houseName: "Turn Key House",
         expiresAt: "Jan 24, 2022 18:00:30",
         currentBid: "4.33",
@@ -79,7 +79,7 @@ const likedHouses = [
     },
     {
         _id: "4",
-        houseId: "4",
+        houseId: "40",
         houseName: "Turn Key House",
         expiresAt: "Jan 26, 2022 18:00:30",
         currentBid: "4.33",
@@ -129,7 +129,7 @@ const likedHouses = [
     },
     {
         _id: "6",
-        houseId: "6",
+        houseId: "600",
         houseName: "Turn Key House",
         expiresAt: "Jan 26, 2022 18:00:30",
         currentBid: "4.33",

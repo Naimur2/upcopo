@@ -2,14 +2,16 @@ import { useNavigation } from "@react-navigation/native";
 import { HStack, ScrollView } from "native-base";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTrendyHouses, housesActions } from "../../../../store/slices/housesSlice";
+import {
+    getTrendyHouses,
+    housesActions,
+} from "../../../../store/slices/housesSlice";
 import HouseCard from "./HouseCard";
 
-
-export default function TrendyHouses({ houses }) {
+export default function TrendyHouses() {
     const navigation = useNavigation();
     const dispatch = useDispatch();
-
+    const [houses, setHouses] = React.useState([]);
     const trendyHouses = useSelector((state) => state.houses.trendyHouses);
 
     React.useEffect(() => {
@@ -19,10 +21,14 @@ export default function TrendyHouses({ houses }) {
         };
     }, []);
 
+    React.useEffect(() => {
+        setHouses(trendyHouses);
+    }, [trendyHouses]);
+
     return (
         <ScrollView mb={4} showsHorizontalScrollIndicator={false} horizontal>
             <HStack mx={4} my={1} space="4">
-                {trendyHouses.slice(0, 4).map((house) => (
+                {houses.slice(0, 4).map((house) => (
                     <HouseCard
                         key={house._id}
                         expiresAt={house.expiresAt}
@@ -31,6 +37,7 @@ export default function TrendyHouses({ houses }) {
                         houseName={house.houseName}
                         currentBid={house.currentBid}
                         minimumBid={house.minimumBid}
+                        isLiked={house.isLiked}
                         onPress={() =>
                             navigation.navigate("House", {
                                 house: house,
@@ -39,7 +46,6 @@ export default function TrendyHouses({ houses }) {
                     />
                 ))}
             </HStack>
-          
         </ScrollView>
     );
 }
