@@ -2,17 +2,16 @@ import { useNavigation } from "@react-navigation/native";
 import { ScrollView } from "native-base";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getCollections } from "../../../store/slices/collectionsSlice";
+import { collectionsActions, getCollections } from "../../../store/slices/collectionsSlice";
 import {
-    getTopSellers,
-    housesActions,
+    housesActions
 } from "../../../store/slices/housesSlice";
 import TopCollections from "../common/TopCollections";
 import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";
 import SectionHeader from "./components/SectionHeader";
-import TrendyHouses from "./components/TrendyHouses";
 import TopSeller from "./components/TopSellers";
+import TrendyHouses from "./components/TrendyHouses";
 
 export default function DashBoardScreen() {
     const navigation = useNavigation();
@@ -22,9 +21,10 @@ export default function DashBoardScreen() {
     const collections = useSelector((state) => state.collections.collections);
 
     React.useEffect(() => {
-        dispatch(getTopSellers());
+        dispatch(getCollections());
         return () => {
-            dispatch(housesActions.removeHouses({ type: "allHouses" }));
+            dispatch(collectionsActions.removeAllCollections());
+
         };
     }, []);
 
@@ -45,7 +45,7 @@ export default function DashBoardScreen() {
                     })
                 }
             />
-            <TrendyHouses />
+            <TrendyHouses  />
             <SectionHeader
                 title={"Top Sellers"}
                 imageType={"fire"}
@@ -55,7 +55,7 @@ export default function DashBoardScreen() {
                     })
                 }
             />
-            <TopSeller />
+            <TopSeller  />
 
             <SectionHeader
                 title={"Top Collections"}

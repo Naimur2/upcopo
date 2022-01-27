@@ -203,13 +203,10 @@ export const clearDbLikes = () => {
 export const getIsLiked = createAsyncThunk(
     "likes/isLiked ",
     async (houseId, thunkAPI) => {
-        thunkAPI.dispatch(uiActions.setLoading(true));
-        const { likes } = thunkAPI.getState().likesState;
-        const isLiked=likes.filter(like=>like.houseId===houseId).length >0;
         try {
-            const res = await fetch(
-                "https://jsonplaceholder.typicode.com/todos/1"
-            );
+            const { likes } = thunkAPI.getState().likesState;
+           
+              return  likes.filter((like) => like.houseId === houseId).length > 0;
             return isLiked;
         } catch (error) {
             return thunkAPI.rejectWithValue("error");

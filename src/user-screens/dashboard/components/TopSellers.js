@@ -7,23 +7,37 @@ import {
     housesActions,
 } from "../../../../store/slices/housesSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getLikes } from "../../../../store/slices/likeSlice";
 // false data for testing later it will be overwritten with redux
 
 export default function TopSeller({ sellers }) {
     const navigation = useNavigation();
     const dispatch = useDispatch();
+    const [houses,setHouses]=React.useState([])
 
     const topSellers = useSelector((state) => state.houses.topSellers);
+    const likes = useSelector(state=>state.likes.likes);
+
+    
+    
     React.useEffect(() => {
         dispatch(getTopSellers());
+        dispatch(getLikes());
+        setHouses(topSellers);
         return () => {
             dispatch(housesActions.removeHouses({ type: "topSellers" }));
         };
     }, []);
 
+    React.useEffect(() => {
+        setHouses(topSellers);
+    }, [topSellers]);
+
+
+
     return (
         <HStack flexWrap={"wrap"} my={2} mx={4}>
-            {topSellers.slice(0,4).map((seller, index) => (
+            {houses.slice(0,4).map((seller, index) => (
                 <SellerCard
                     key={seller._id}
                     houseImage={seller.image}

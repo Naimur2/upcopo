@@ -248,6 +248,9 @@ const collectionsSlice = createSlice({
         updateCollections: (state, action) => {
             state.collections = action.payload;
         },
+        removeAllCollections: (state, action) => {
+            state.collections = [];
+        },
     },
 });
 

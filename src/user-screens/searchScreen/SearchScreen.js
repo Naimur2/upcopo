@@ -42,6 +42,7 @@ export default function SearchScreen() {
             setSearch("");
         };
     }, [text]);
+    
     const filterSearch = houses.filter((item) =>
         search !== ""
             ? item.houseName
