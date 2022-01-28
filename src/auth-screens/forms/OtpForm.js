@@ -5,7 +5,6 @@ import FormInput from "../../utility/FormInput";
 import UtilityBtn from "../../utility/UtilityBtn";
 import FormFooter from "../common/FormFooter";
 
-
 const inputs = Array(4).fill("");
 let newInputIndex = 0;
 
@@ -19,7 +18,7 @@ export default function OtpForm({ onSubmitOtp }) {
 
     const values = Object.values(otp).reduce((prev, next) => prev + next);
     const submitOtpHander = async () => {
-      await  onSubmitOtp(values);
+        await onSubmitOtp(values);
     };
 
     const textChangeHandler = (text, index) => {
@@ -76,15 +75,36 @@ export default function OtpForm({ onSubmitOtp }) {
                     </Text>
                 </HStack>
             ) : null}
-            
+
+            <Text
+             fontFamily={"body"}
+                mt={"30%"}
+                textDecoration={"underline"}
+                textAlign={"center"}
+                fontWeight={500}
+                color={"#3D454A"}
+            >
+                Resend code in 0:07
+            </Text>
             <UtilityBtn
                 onPress={submitOtpHander}
-                mt="40%"
                 disabled={values.length < 4}
                 varient={values.length < 4 && "disabled"}
                 title={"Submit"}
+                mt={4}
             />
-            <FormFooter bottomText={"Didn't you recive any code?"} />
+            <FormFooter bottomText={"Didn't recive any code?"} />
+            <Text
+             fontFamily={"body"}
+                textDecoration={"underline"}
+                textAlign={"center"}
+                fontWeight={700}
+                color={"#52B69A"}
+                onPress={() => console.log('send otp')}
+                
+            >
+                Re-send code
+            </Text>
         </Stack>
     );
 }

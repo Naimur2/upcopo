@@ -27,7 +27,6 @@ export default function UserRoute() {
     const userState = useSelector((state) => state);
     const dispatch = useDispatch();
 
-    const navigation = useNavigation();
     const headerWhite = {
         headerTintColor: "white",
         headerTransparent: true,

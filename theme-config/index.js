@@ -10,10 +10,11 @@ import {
     Inter_900Black,
     useFonts,
 } from "@expo-google-fonts/inter";
-import { Center, Spinner, StatusBar } from "native-base";
+import AppLoading from "expo-app-loading";
+import { StatusBar } from "native-base";
 import React from "react";
 
-export default function ThemeConFig({children}) {
+export default function ThemeConFig({ children }) {
     let [fontsLoaded] = useFonts({
         Inter_100Thin,
         Inter_200ExtraLight,
@@ -26,15 +27,14 @@ export default function ThemeConFig({children}) {
         Inter_900Black,
         CustomIcon: require("../assets/icons/icon.ttf"),
     });
-    
 
     const GetContent = () => {
         if (!fontsLoaded) {
             return (
-                <Center flex={1} px="3">
+                <>
                     <StatusBar hidden />
-                    <Spinner size={"lg"} />
-                </Center>
+                    <AppLoading />
+                </>
             );
         }
         return (

@@ -78,7 +78,7 @@ export default function HouseHeader({
                 zIndex={-1}
                 height={"full"}
                 w={"full"}
-                alt={houseName}
+                alt={houseName||'house'}
                 source={{
                     uri: image,
                 }}

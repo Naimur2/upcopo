@@ -87,6 +87,7 @@ export default function LoginForm({ onFormSubmit }) {
                         linkText={"Sign Up"}
                         onLinkPress={() => navigation.navigate("Register")}
                     />
+                    
                 </Stack>
             )}
         </Formik>

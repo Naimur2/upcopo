@@ -3,12 +3,9 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHouses } from "../../../store/slices/housesSlice";
 import { getLikes } from "../../../store/slices/likeSlice";
+import useHouse from "../../hooks/useHouse";
 import LovedHousesCard from "./components/LovedHousesCard";
 import NoLovedHouses from "./NoLovedHouses";
-
-const renderItem = ({ item }) => {
-    return <LovedHousesCard houseId={item.houseId} />;
-};
 
 export default function LovedHouses({ navigation }) {
     const houses = useSelector((state) => state.likes.likes);
@@ -19,8 +16,8 @@ export default function LovedHouses({ navigation }) {
         navigation.setOptions({
             title:
                 likedHouses.length > 0
-                    ? `${likedHouses.length} Liked houses `
-                    : "Liked houses",
+                    ? `${likedHouses.length} Loved houses `
+                    : "Loved houses",
         });
     }, [navigation, likedHouses]);
 
@@ -45,6 +42,9 @@ export default function LovedHouses({ navigation }) {
 
     if (likedHouses.length === 0) return <NoLovedHouses />;
 
+    const renderItem = ({ item }) => {
+        return <LovedHousesCard houseId={item.houseId} />;
+    };
     return (
         <FlatList
             showsVerticalScrollIndicator={false}
