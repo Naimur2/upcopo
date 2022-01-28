@@ -1,9 +1,10 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { debounce } from "lodash";
-import { Box, FlatList, VStack } from "native-base";
+import { FlatList, Text, VStack, Spinner } from "native-base";
 import React from "react";
+import SearchPagesHeader from "../searchPages/components/SearchPagesHeader";
 import UserProfileCard from "./components/UserProfileCard";
-import UserProfileMenu from "./components/UserProfileMenu";
+import dayjs from 'dayjs'
 
 const userProfiles = [
     {
@@ -164,32 +165,13 @@ const socialLinks = [
     { type: "instagram", url: "https://www.instagram.com/" },
 ];
 
-const getRemainingTime = (expiresAt) => {
-    const expiresAtTime = new Date(expiresAt);
-    const now = new Date().getTime();
-    // Find the distance between now and the count down date
-    const distance = expiresAt - now;
-    // Time calculations for days, hours, minutes and seconds
-    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-    const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-    );
-    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    return "2 days left";
-};
-
-
 export default function UserProfile() {
     const navigation = useNavigation();
     const [text, setText] = React.useState("");
     let [search, setSearch] = React.useState("");
 
-    let [service1, setService1] = React.useState('ux');
-    let [service2, setService2] = React.useState('l2h');
+    let [service1, setService1] = React.useState("ux");
+    let [service2, setService2] = React.useState("l2h");
 
     const onSearchHandler = debounce((tc) => {
         setSearch(tc);
@@ -202,25 +184,22 @@ export default function UserProfile() {
         };
     }, [text]);
 
-
     const filterSearch = userProfiles.filter((item) =>
         search !== ""
             ? item.username
-                .toLocaleLowerCase()
-                .includes(search.toLocaleLowerCase())
+                  .toLocaleLowerCase()
+                  .includes(search.toLocaleLowerCase())
             : item
     );
 
-
     const route = useRoute();
-
 
     const renderItem = ({ item }) => (
         <UserProfileCard
             avatar={item.userAvatar}
             userId={item._id}
             userName={item.username}
-            expiresAt={getRemainingTime(item.expiresAt)}
+            expiresAt={"2 days left"}
             houseImage={item.image}
             likes={item.likes}
             topBid={item.topBid}
@@ -231,34 +210,55 @@ export default function UserProfile() {
             }
         />
     );
-
+    const renderNull = () => {
+        if (search.length > 0 && filterSearch.length === 0) {
+            return (
+                <Text fontFamily="body" textAlign="center" color="#000">
+                    No Results Found
+                </Text>
+            );
+        }
+        return null;
+    };
     return (
         <VStack flex="1">
-            <Box key={"1"}>
-                {/* <UserProfileHeader
-                        name={userProfiles.name}
-                        userAvatar={userProfiles.userAvatar}
-                        userCoverphoto={userProfiles.userCoverPhoto}
-                        isVarified={userProfiles.isVarified}
-                    /> */}
-                <UserProfileMenu
-                    onClear={() => setText("")}
-                    onSearch={(txt)=>setText(txt)}
-                    searchValue={text}
-                    setService1={(value1) => setService1(value1)}
-                    setService2={(value2) => setService2(value2)}
-                    service1={service1}
-                    service2={service2}
-                />
-            </Box>
             <FlatList
+                ListHeaderComponent={
+                    <SearchPagesHeader
+                        onClear={() => setText("")}
+                        onSearch={(txt) => setText(txt)}
+                        key={"1"}
+                        value={text}
+                        service1={service1}
+                        setService1={(v) => setService1(v)}
+                        service2={service2}
+                        setService2={(v) => setService2(v)}
+                    />
+                }
+                ListHeaderComponentStyle={{
+                    paddingHorizontal: 16,
+                }}
                 showsVerticalScrollIndicator={false}
                 showsHorizontalScrollIndicator={false}
                 bg={"#f9f9f9"}
                 data={filterSearch}
                 renderItem={renderItem}
                 keyExtractor={(item) => item._id}
+                ListFooterComponent={renderNull}
             />
         </VStack>
     );
 }
+
+// <UserProfileHeader
+//     name={userProfiles.name}
+//     userAvatar={userProfiles.userAvatar}
+//     userCoverphoto={userProfiles.userCoverPhoto}
+//     isVarified={userProfiles.isVarified}
+// />
+
+// search.length > 0 && filterSearch.length === 0 ? (
+//     <Text fontFamily="body" textAlign="center" color="#000">
+//         No Results Found
+//     </Text>
+// ) : null

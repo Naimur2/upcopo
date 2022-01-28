@@ -1,7 +1,7 @@
 import * as ImagePicker from "expo-image-picker";
 import { Spinner } from "native-base";
 import React, { useEffect } from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, SafeAreaView } from "react-native";
 import { useSelector } from "react-redux";
 import ThemeConfig from "../theme-config";
 import AuthRoute from "./AuthRoute";
@@ -29,16 +29,17 @@ export default function index() {
 
     return (
         <ThemeConfig>
-            {authState.isAuthenticated ? <DrawerNavigator /> : <AuthRoute />}
-
-            {uiLoading && (
-                <Spinner
-                    size={"lg"}
-                    zIndex={1}
-                    top={-Math.round(height / 2)}
-                    position={"absolute"}
-                />
-            )}
+            <SafeAreaView style={{flex:1}}>
+                {authState.isAuthenticated ? <DrawerNavigator /> : <AuthRoute />}
+                {uiLoading && (
+                    <Spinner
+                        size={"lg"}
+                        zIndex={1}
+                        top={-Math.round(height / 2)}
+                        position={"absolute"}
+                    />
+                )}
+            </SafeAreaView>
 
         </ThemeConfig>
     );

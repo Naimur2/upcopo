@@ -33,12 +33,9 @@ export default function MapScreen() {
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            title: "",
+            headerTitle:(props)=> <Search w={Math.round(width/1.3)} {...props}  />,
             headerStyle: {
                 height: 100,
-
-                justifyContent: "center",
-
                 justifyContent: "center",
             },
             headerBackTitleStyle: {
@@ -68,10 +65,7 @@ export default function MapScreen() {
 
     return (
         <VStack flex={1}>
-            <HStack ml={'20%'} bg={'transparent'} zIndex={2} position={'absolute'} justifyContent={"flex-end"}>
-                <Search  />
-
-            </HStack>
+              
             <MapView
                 onPress={() => Keyboard.dismiss()}
                 style={styles.map}

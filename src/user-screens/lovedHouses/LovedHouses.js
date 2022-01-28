@@ -10,10 +10,19 @@ const renderItem = ({ item }) => {
     return <LovedHousesCard houseId={item.houseId} />;
 };
 
-export default function LovedHouses() {
+export default function LovedHouses({ navigation }) {
     const houses = useSelector((state) => state.likes.likes);
     const [likedHouses, setLikedHouses] = React.useState([]);
     const dispatch = useDispatch();
+
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            title:
+                likedHouses.length > 0
+                    ? `${likedHouses.length} Liked houses `
+                    : "Liked houses",
+        });
+    }, [navigation, likedHouses]);
 
     let clear = true;
 

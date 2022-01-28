@@ -3,9 +3,6 @@ import { ScrollView } from "native-base";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { collectionsActions, getCollections } from "../../../store/slices/collectionsSlice";
-import {
-    housesActions
-} from "../../../store/slices/housesSlice";
 import TopCollections from "../common/TopCollections";
 import Banner from "./components/Banner";
 import SearchArea from "./components/SearchArea";

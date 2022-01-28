@@ -1,4 +1,4 @@
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Center, HStack, ScrollView, Text, VStack } from "native-base";
 import React from "react";
 import useFollow from "../../hooks/useFollow";
@@ -339,6 +339,7 @@ const NoData = () => (
 
 export default function OtherUsersProfile() {
     const route = useRoute();
+    const navigation = useNavigation();
 
     console.log(route.params);
     const [data, setData] = React.useState({});
@@ -373,7 +374,12 @@ onEdit */}
                 numberOfFOllowing={data.numberOfFOllowing}
                 intro={data.intro}
                 isFollowing={followData}
-                onFollow={()=>setFollowData((prev) => !prev)}
+                onFollow={() => setFollowData((prev) => !prev)}
+                onMessage={() =>
+                    navigation.navigate("MessageScreenView", {
+                        user: data._id,
+                    })
+                }
             />
             <VStack py={4}>
                 <Card mx={4} p={4} mt={4}>
@@ -386,7 +392,16 @@ onEdit */}
                                 category === "houses" ? "#11221C" : "#889096"
                             }
                         />
-                        <Icon name={"activity"} size={22} color={"#889096"} />
+                        <Icon
+                            onPress={() =>
+                                navigation.navigate("MessageScreenView", {
+                                    user: data._id,
+                                })
+                            }
+                            name={"activity"}
+                            size={22}
+                            color={"#889096"}
+                        />
                         <Icon
                             onPress={() => setCategory("saved")}
                             name={"tag"}

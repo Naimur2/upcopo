@@ -19,6 +19,7 @@ import TopCollections from "./user-screens/topCollections/TopCollections";
 import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
 import Icon from "./utility/Icon";
+import ARview from "./user-screens/ARview/ARview";
 
 const Stack = createNativeStackNavigator();
 
@@ -200,6 +201,23 @@ export default function UserRoute() {
                 options={headerWhite}
                 name="MessageView"
                 component={MessageView}
+            />
+            <Stack.Screen
+                options={{
+                    title: "Turn key house",
+                    headerTintColor: "white",
+                    headerTransparent: true,
+                    headerTitleStyle: {
+                        color: "#fff",
+                    },
+                    headerBackTitleVisible: false,
+                    headerStyle: {
+                        backgroundColor: "transparent",
+                    },
+                    headerShadowVisible: false,
+                }}
+                name="ARview"
+                component={ARview}
             />
         </Stack.Navigator>
     );
