@@ -1,7 +1,6 @@
 import { useRoute } from "@react-navigation/native";
 import { Image, ScrollView, Stack, VStack } from "native-base";
 import React from "react";
-import { useDispatch } from "react-redux";
 import useLike from "../../hooks/useLike";
 import usePlaceBid from "../../hooks/usePlaceBid";
 import UtilityBtn from "../../utility/UtilityBtn";
@@ -30,8 +29,8 @@ export default function House() {
     );
 
     return (
-        <ScrollView>
-            <Stack space={10}>
+        <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+            <Stack pb={4} flex="1" space={10}>
                 <HouseHeader
                     owner={data.owner}
                     builtAt={data.builtAt}

@@ -1,17 +1,21 @@
-import * as Clipboard from 'expo-clipboard';
+import * as Clipboard from "expo-clipboard";
 import { HStack, Text, VStack } from "native-base";
 import React from "react";
 import Icon from "../../../utility/Icon";
+import { Alert } from "react-native";
 
-export default function CollectionsBody({collectonName,ethAddress,description}) {
 
+export default function CollectionsBody({
+    collectonName,
+    ethAddress,
+    description,
+}) {
     const copyToClipboard = () => {
-        setTimeout(()=>{
-            Clipboard.setString(ethAddress);
-            alert('Address Copied to Clipboard')
-        },300)
-       
-      };
+        Clipboard.setString(ethAddress);
+        setTimeout(() => {
+            Alert.alert("Copied to clipboard");
+        }, 300);
+    };
 
     return (
         <VStack>
@@ -32,12 +36,18 @@ export default function CollectionsBody({collectonName,ethAddress,description}) 
                     color={"#3D454A"}
                     maxW={40}
                     numberOfLines={1}
-                    _pressed={{color:'#ccc'}} 
+                    _pressed={{ color: "#ccc" }}
                     onPress={copyToClipboard}
                 >
-                   {ethAddress}
+                    {ethAddress}
                 </Text>
-                <Icon _pressed={{color:'#ccc'}} onPress={copyToClipboard} name={"copy"} size={20} color={"#000"} />
+                <Icon
+                    _pressed={{ color: "#ccc" }}
+                    onPress={copyToClipboard}
+                    name={"copy"}
+                    size={20}
+                    color={"#000"}
+                />
             </HStack>
             <Text
                 fontFamily={"body"}

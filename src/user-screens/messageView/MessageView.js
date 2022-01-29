@@ -1,7 +1,8 @@
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import dayjs from "dayjs";
 import { Box, HStack, Text, VStack } from "native-base";
 import React, { useCallback, useEffect, useState } from "react";
+import { Image } from "react-native";
 import { GiftedChat, InputToolbar } from "react-native-gifted-chat";
 import { useSelector } from "react-redux";
 import Icon from "../../utility/Icon";
@@ -20,6 +21,27 @@ export default function MessageView() {
         avatar: user.avatar,
         name: user.name,
     };
+    const navigation = useNavigation();
+    React.useLayoutEffect(() => {
+        navigation.setOptions({
+            headerTitleAlign: "center",
+            headerStyle: {
+                backgroundColor: "#f9f9f9",
+            },
+            headerShadowVisible: false,
+            headerTitle: (props) => (
+                <HStack space={2} py={1} alignItems={'center'} {...props}>
+                    <Image
+                        source={{
+                            uri: "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
+                        }}
+                        style={{ width: 50, height: 50, borderRadius: 50 }}
+                    />
+                    <Text fontSize={18} fontFamily={'body'} fontWeight={600} color={'#3D454A'}>Joel Norris</Text>
+                </HStack>
+            ),
+        });
+    }, [navigation]);
 
     useEffect(() => {
         setMessages([
@@ -118,9 +140,6 @@ export default function MessageView() {
             onSend(msz);
         } else return;
     };
-
-    
-
 
     return (
         <GiftedChat
