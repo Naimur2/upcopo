@@ -50,12 +50,11 @@ export const loginUser = (formData) => {
 export const verifyOtp = createAsyncThunk(
     "auth/verifyOtp ",
     async (otp, thunkAPI) => {
-        thunkAPI.dispatch(authActions.setLoading(true));
         try {
             const res = await fetch(
                 "https://jsonplaceholder.typicode.com/todos/1"
             );
-            return await res.json();
+            return true;
         } catch (error) {
             return thunkAPI.rejectWithValue("error");
         }

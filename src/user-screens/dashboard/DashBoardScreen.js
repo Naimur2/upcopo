@@ -44,7 +44,7 @@ export default function DashBoardScreen() {
             />
             <TrendyHouses  />
             <SectionHeader
-                title={"Top Sellers"}
+                title={"Top Bids"}
                 imageType={"fire"}
                 onSeAllPress={() =>
                     navigation.navigate("TrendyHouses", {

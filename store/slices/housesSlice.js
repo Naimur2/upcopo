@@ -4,7 +4,7 @@ const trendy = [
     {
         _id: "1",
         houseName: "Turn Key House",
-        expiresAt: "Jan 24, 2022 18:00:30",
+        expiresAt: "Jan 30, 2022 18:00:30",
         currentBid: "4.33",
         owner: "Luckas",
         builtAt: "1942",

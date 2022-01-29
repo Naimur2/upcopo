@@ -20,7 +20,7 @@ import TrendyHouses from "./user-screens/trendyHouses/TrendyHouses";
 import UserProfile from "./user-screens/userProfile/UserProfile";
 import Icon from "./utility/Icon";
 import ARview from "./user-screens/ARview/ARview";
-
+import MapScreen from "./user-screens/mapScreen/MapScreen";
 const Stack = createNativeStackNavigator();
 
 export default function UserRoute() {
@@ -63,7 +63,7 @@ export default function UserRoute() {
             />
             <Stack.Screen
                 options={{
-                    title: "Top Sellers",
+                    title: "Top Bids",
                 }}
                 name="TrendyHouses"
                 component={TrendyHouses}
@@ -217,6 +217,25 @@ export default function UserRoute() {
                 }}
                 name="ARview"
                 component={ARview}
+            />
+             <Stack.Screen
+                options={{
+                    headerTransparent: true,
+                    headerTitleStyle: {
+                        color: "#3D454A",
+
+                    },
+
+                    headerStyle: {
+                        backgroundColor: "transparent",
+                        
+                    },
+                    headerShadowVisible: false,
+                    headerTintColor:'#3D454A',
+
+                }}
+                name="Gmap"
+                component={MapScreen}
             />
         </Stack.Navigator>
     );

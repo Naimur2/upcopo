@@ -28,7 +28,7 @@ export default function TopSeller() {
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            title: type === "topSellers" ? "Top Sellers" : "Trendy Houses",
+            title: type === "topSellers" ? "Top Bids" : "Trendy Houses",
         });
     }, [navigation]);
 

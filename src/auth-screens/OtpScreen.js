@@ -20,11 +20,9 @@ export default function OtpScreen({ navigation, route }) {
     const uiState = useSelector((state) => state.ui);
 
     const otpSubmit = async (otp) => {
-        console.log(uiState)
         try {
             const result = await dispatch(verifyOtp(otp)).unwrap();
-            dispatch(uiActions.setLoading(false))
-
+        
             if (type === "reset") {
                 navigation.navigate("ResetPassword");
             } else {

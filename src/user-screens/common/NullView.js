@@ -5,12 +5,18 @@ import Card from '../../utility/Card';
 export default function NullView({title,subtitle,message,type,path="DashBoard"}) {
     const navigation = useNavigation();
 
+    const image={
+        notifications:"https://i.ibb.co/n8B9gdB/image-118-removebg-preview.png",
+        message:"https://i.ibb.co/n8B9gdB/image-118-removebg-preview.png",
+        love:"https://i.ibb.co/n8B9gdB/image-118-removebg-preview.png",
+    }
+
     return (
         <Stack bg='#fff' flex={1} px={4} >
             <Stack justifyContent={'center'} alignItems={'center'}>
                 <Box h={150} w={150} my={20}>
                     <Image
-                        source={{ uri: "https://i.ibb.co/n8B9gdB/image-118-removebg-preview.png" }}
+                        source={{ uri: image[type] }}
                         w='full'
                         h='full'
                         alt="NoNewNotifications img"
