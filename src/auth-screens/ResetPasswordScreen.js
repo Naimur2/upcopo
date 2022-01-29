@@ -1,10 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
+import { useToast } from 'native-base';
 import React from "react";
 import KeyBoardView from "../utility/KeyBoardView";
 import Screen from "../utility/Screen";
+import Toast from "../utility/Toast";
 import Heading from "./common/Heading";
 import ResetPasswordForm from "./forms/ResetPasswordForm";
-import { useNavigation } from "@react-navigation/native";
-import { useToast } from 'native-base';
 
 
 export default function ResetPasswordScreen() {
@@ -12,8 +13,14 @@ export default function ResetPasswordScreen() {
     const toast = useToast();
     const formSubmitHandler = (data) => {
         toast.show({
-            description: "Your password has been reset successfully, please login with your new password",
-          })
+            placement: "bottom",
+            duration: 2000,
+            render: () => (
+                <Toast
+                    text={"Your link has been copied, you can share now"}
+                />
+            ),
+        });
         navigation.navigate("Login");
 
         console.log(data);

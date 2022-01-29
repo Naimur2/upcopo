@@ -1,12 +1,12 @@
 import { useNavigation } from "@react-navigation/native";
 import { debounce } from "lodash";
-import { FlatList, Stack,Text} from "native-base";
+import { FlatList, Stack, Text } from "native-base";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPeoples, getPeoples } from "../../../store/slices/messagesSlice";
+import NullView from "../common/NullView";
 import MessagingBody from "./components/MessagingBody";
 import SearchMessage from "./components/SearchMessage";
-import NoMessageView from "./NoMessageView";
 
 export default function Messaging() {
     const [text, setText] = React.useState("");
@@ -56,7 +56,14 @@ export default function Messaging() {
         );
     };
 
-    if (peoples.length === 0) return <NoMessageView />;
+    if (peoples.length === 0)
+        return (
+            <NullView
+                subtitle={"When you get notifications,they’ll show up here"}
+                title={"No new Notifications"}
+                type={"message"}
+            />
+        );
 
     return (
         <Stack p={4}>

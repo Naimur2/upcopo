@@ -10,7 +10,7 @@ import {
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getNotifications } from "../../../store/slices/notificationsSlice";
-import NoNewNotifications from "./NoNewNotifications";
+import NullView from "../common/NullView";
 
 export default function Notifications() {
     const notificationsState = useSelector(
@@ -68,39 +68,34 @@ export default function Notifications() {
         </HStack>
     );
 
+    if (notificationsState.length === 0) {
+        return <NullView subtitle={'When you get notifications,they’ll show up here'} type="notifications" title={'No new Notifications'} />;
+    }
+
     return (
         <Stack px={4} bg={"#FFFFFF"} flex="1">
-            {notificationsState.length > 0 ? (
-                <SectionList
-                    showsHorizontalScrollIndicator={false}
-                    showsVerticalScrollIndicator={false}
-                    pb={4}
-                    sections={notificationsState}
-                    keyExtractor={(item, index) => item + index}
-                    renderItem={({ item }) => <NotifyCard notify={item} />}
-                    renderSectionFooter={() => (
-                        <Divider
-                            thickness={2}
-                            mb={4}
-                            mt={2}
-                            bgColor={"#E6E8EB"}
-                        />
-                    )}
-                    renderSectionHeader={({ section: { title } }) => (
-                        <Text
-                            fontSize={18}
-                            fontWeight={500}
-                            fontFamily={"body"}
-                            color={"#7E868C"}
-                            py={2}
-                        >
-                            {title}
-                        </Text>
-                    )}
-                />
-            ) : (
-                <NoNewNotifications />
-            )}
+            <SectionList
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
+                pb={4}
+                sections={notificationsState}
+                keyExtractor={(item, index) => item + index}
+                renderItem={({ item }) => <NotifyCard notify={item} />}
+                renderSectionFooter={() => (
+                    <Divider thickness={2} mb={4} mt={2} bgColor={"#E6E8EB"} />
+                )}
+                renderSectionHeader={({ section: { title } }) => (
+                    <Text
+                        fontSize={18}
+                        fontWeight={500}
+                        fontFamily={"body"}
+                        color={"#7E868C"}
+                        py={2}
+                    >
+                        {title}
+                    </Text>
+                )}
+            />
         </Stack>
     );
 }

@@ -1,19 +1,29 @@
 import * as Clipboard from "expo-clipboard";
-import { HStack, Text, VStack } from "native-base";
+import { HStack, Text, VStack, useToast, Box } from "native-base";
 import React from "react";
 import Icon from "../../../utility/Icon";
 import { Alert } from "react-native";
-
+import Toast from "../../../utility/Toast";
 
 export default function CollectionsBody({
     collectonName,
     ethAddress,
     description,
 }) {
+    const toast = useToast();
+
     const copyToClipboard = () => {
-        Clipboard.setString(ethAddress);
         setTimeout(() => {
-            Alert.alert("Copied to clipboard");
+            Clipboard.setString(ethAddress);
+            toast.show({
+                placement: "bottom",
+                duration: 2000,
+                render: () => (
+                    <Toast
+                        text={"Your link has been copied, you can share now"}
+                    />
+                ),
+            });
         }, 300);
     };
 

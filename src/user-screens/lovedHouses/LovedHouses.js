@@ -3,9 +3,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllHouses } from "../../../store/slices/housesSlice";
 import { getLikes } from "../../../store/slices/likeSlice";
-import useHouse from "../../hooks/useHouse";
+import NullView from "../common/NullView";
 import LovedHousesCard from "./components/LovedHousesCard";
-import NoLovedHouses from "./NoLovedHouses";
 
 export default function LovedHouses({ navigation }) {
     const houses = useSelector((state) => state.likes.likes);
@@ -40,7 +39,15 @@ export default function LovedHouses({ navigation }) {
             };
     }, [houses]);
 
-    if (likedHouses.length === 0) return <NoLovedHouses />;
+    if (likedHouses.length === 0)
+        return (
+            <NullView
+                title={"No new Loved Houses"}
+                subtitle="When you click on love icon,they’ll show
+    up here"
+                type="love"
+            />
+        );
 
     const renderItem = ({ item }) => {
         return <LovedHousesCard houseId={item.houseId} />;
