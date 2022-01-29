@@ -46,6 +46,7 @@ export default function PlaceBidAction({
         if (hasError(value)) {
             return;
         } else {
+            // submit the bid
             console.log({ houseId, value });
         }
     };

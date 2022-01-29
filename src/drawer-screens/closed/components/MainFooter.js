@@ -32,20 +32,44 @@ export default function MainFooter() {
     const [openModal, setOpenModal] = useState(false);
     const [openFaceModal, setFaceModal] = useState(false);
     const [openTransection, setOpenTransection] = useState(false);
-
+    const minimum = 0.8;
     const [money, setMoney] = useState("0.00");
+    const [error, setError] = React.useState("");
+
+    const hasError = (vari) => {
+        if (+vari < +minimum) {
+            setError("Please use more value");
+            return true;
+        }
+        if (+vari < +0) {
+            setError("Please use more value");
+            return true;
+        }
+
+        if (vari === "") {
+            setError("Invalid amount");
+            return true;
+        }
+        setError("");
+        return false;
+    };
 
     const dispatch = useDispatch();
     const userDetails = useSelector((state) => state.auth);
     // wallet textinput handler
     const moneyChangeHandler = (cv) => {
+        hasError(cv);
         setMoney(cv);
     };
 
     // wallet handler
     const handleSubmit = () => {
-        setShowWallet(false);
-        setFaceModal(true);
+        if (hasError(money)) {
+            return;
+        } else {
+            setShowWallet(false);
+            setFaceModal(true);
+        }
     };
 
     //face recognition handler
@@ -123,6 +147,7 @@ export default function MainFooter() {
                 onValueChange={moneyChangeHandler}
                 money={money}
                 onSubmit={handleSubmit}
+                errorMessage={error}
             />
 
             {/* modal for showing log out  */}

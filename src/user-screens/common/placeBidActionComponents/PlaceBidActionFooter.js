@@ -56,9 +56,10 @@ export default function PlaceBidActionFooter({
                     {errorMessage ? (
                         <Text
                             fontSize="13"
-                            color="#8E8E93"
+                            color="#EB5757"
                             fontWeight={"400"}
                             fontFamily={"body"}
+                           
                         >
                             {errorMessage}
                         </Text>

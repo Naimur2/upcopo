@@ -41,7 +41,7 @@ const TopUpBtn = ({ onPress, ...re }) => (
 );
 
 export default function Wallet({
-    error,
+    errorMessage,
     onClose,
     onValueChange,
     handleMoneyChange,
@@ -102,7 +102,7 @@ export default function Wallet({
                                             source={{ uri: imgGemUri }}
                                         />
                                     </Box>
-                                    <Box w={"80%"}>
+                                    <VStack space={1} w={"80%"}>
                                         <FormInput
                                             keyboardType="numeric"
                                             type={"numeric"}
@@ -110,17 +110,18 @@ export default function Wallet({
                                             onChangeText={onValueChange}
                                             value={money}
                                         />
-                                    </Box>
-                                    {error ? (
-                                        <Text
-                                            fontsize="14"
-                                            fontFamily={"body"}
-                                            fontWeight={400}
-                                            color={"#687076"}
-                                        >
-                                            {error}
-                                        </Text>
-                                    ) : null}
+                                        {errorMessage ? (
+                                            <Text
+                                                fontsize="14"
+                                                fontFamily={"body"}
+                                                fontWeight={400}
+                                                color={"#EB5757"}
+                                                
+                                            >
+                                                {errorMessage}
+                                            </Text>
+                                        ) : null}
+                                    </VStack>
                                 </HStack>
                                 <Box
                                     borderWidth={1.5}
