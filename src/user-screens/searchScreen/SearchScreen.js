@@ -68,7 +68,7 @@ export default function SearchScreen() {
         <ScrollView>
             <Stack px={4} flex={1} space={6}>
                 <RecentSearchArea
-                    onClear={() => setText("")}
+                    onClear={() => console.log('clear')}
                     onSearch={(txt) => setText(txt)}
                     searchValue={text}
                 />

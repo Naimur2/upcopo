@@ -13,6 +13,7 @@ const imgUri = Image.resolveAssetSource(image).uri;
 
 export default function ARview({ navigation }) {
     const { width } = Dimensions.get("window");
+
     React.useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => (
@@ -24,7 +25,6 @@ export default function ARview({ navigation }) {
                     color={"#52B69A"}
                     name="cube"
                     size={20}
-                   
                 />
             ),
         });

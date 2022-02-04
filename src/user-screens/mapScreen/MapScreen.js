@@ -1,4 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Box, Center, FlatList, HStack, VStack } from "native-base";
 import * as React from "react";
 import { Dimensions, Keyboard, StyleSheet } from "react-native";
@@ -11,17 +11,50 @@ import Search from "../../utility/Search";
 import MapCard from "./components/MapCard";
 
 export default function MapScreen() {
+    const [area, seArea] = React.useState({
+        latitude: 40.724066,
+        longitude: 285.999418,
+    });
+
+    const [text, setText] = React.useState("");
+    const [allHouses, setAllHouses] = React.useState([]);
     const { width, height } = Dimensions.get("window");
     const navigation = useNavigation();
-
+    const route = useRoute();
     const disPatch = useDispatch();
-    const allHouses = useSelector((state) => state.houses.allHouses);
+    const houses = useSelector((state) => state.houses.allHouses);
+
     React.useEffect(() => {
         disPatch(getAllHouses());
         return () => {
             disPatch(housesActions.removeHouses({ type: "allHouses" }));
         };
-    }, [navigation]);
+    }, [navigation, route]);
+
+    React.useEffect(() => {
+        const output = route.params;
+        if (output.destination) {
+            const longlat = {
+                latitude: output.destination.latitude,
+                longitude: output.destination.longitude,
+            };
+            seArea(longlat);
+            const filteredHouse = houses.filter(
+                (item) =>
+                    item.longitude !== output.destination.longitude &&
+                    item.latitude !== output.destination.latitude
+            );
+            const mainHouse = houses.filter(
+                (item) =>
+                    item.longitude === output.destination.longitude &&
+                    item.latitude === output.destination.latitude
+            );
+            //    show the house on the map and the house on the list when matches route
+            setAllHouses([...mainHouse, ...filteredHouse]);
+        } else {
+            setAllHouses(houses);
+        }
+    }, [route]);
 
     /**
      *   const mapurl = `https://maps.googleapis.com/maps/api/staticmap?center=Brooklyn+Bridge,New+York,NY&zoom=13&size=600x300&maptype=roadmap
@@ -33,7 +66,15 @@ export default function MapScreen() {
 
     React.useLayoutEffect(() => {
         navigation.setOptions({
-            headerTitle:(props)=> <Search w={Math.round(width/1.3)} {...props}  />,
+            headerTitle: (props) => (
+                <Search
+                    value={text}
+                    onClear={() => setText("")}
+                    onSearch={(txt) => setText(txt)}
+                    w={Math.round(width / 1.3)}
+                    {...props}
+                />
+            ),
             headerStyle: {
                 height: 100,
                 justifyContent: "center",
@@ -43,11 +84,6 @@ export default function MapScreen() {
             },
         });
     }, [navigation]);
-
-    const [area, seArea] = React.useState({
-        latitude: 40.724066,
-        longitude: 285.999418,
-    });
 
     const origin = {
         latitude: area.latitude,
@@ -65,7 +101,6 @@ export default function MapScreen() {
 
     return (
         <VStack flex={1}>
-              
             <MapView
                 onPress={() => Keyboard.dismiss()}
                 style={styles.map}

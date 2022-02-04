@@ -4,7 +4,6 @@ import React, { useEffect, useRef } from "react";
 import Search from "../../../utility/Search";
 
 export default function RecentSearchArea({onSearch,onClear,searchValue}) {
-    const [search, setSearch] = React.useState("");
     let clean = true;
     const searchA = useRef();
     const navigation = useNavigation();
@@ -37,7 +36,6 @@ export default function RecentSearchArea({onSearch,onClear,searchValue}) {
                 value={searchValue}
                 onSearch={onSearch}
                 onClear={onClear}
-                onClear={() => setSearch("")}
                 ref={searchA}
             />
         </Stack>

@@ -31,16 +31,7 @@ export default function index() {
         <ThemeConfig>
             <SafeAreaView style={{flex:1}}>
                 {authState.isAuthenticated ? <DrawerNavigator /> : <AuthRoute />}
-                {uiLoading && (
-                    <Spinner
-                        size={"lg"}
-                        zIndex={1}
-                        top={-Math.round(height / 2)}
-                        position={"absolute"}
-                    />
-                )}
             </SafeAreaView>
-
         </ThemeConfig>
     );
 }

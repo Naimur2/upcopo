@@ -76,8 +76,8 @@ const trendy = [
         minimumBid: 0.541455,
         userId: "111",
         collectionId: "fgvhfhgf",
-        latitude: 40.724066,
-        longitude: 285.999418,
+        latitude: 40.724068,
+        longitude: 285.999420,
     },
     {
         _id: "4",

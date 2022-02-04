@@ -1,5 +1,5 @@
-import { useRoute } from "@react-navigation/native";
-import { Image, ScrollView, Stack, VStack } from "native-base";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import { Image, Pressable, ScrollView, Stack, VStack } from "native-base";
 import React from "react";
 import useLike from "../../hooks/useLike";
 import usePlaceBid from "../../hooks/usePlaceBid";
@@ -11,25 +11,32 @@ import HouseHeader from "./components/HouseHeader";
 
 export default function House() {
     const data = useRoute().params.house;
-    const houseId =data._id;
-    const [bidHistory,showActions,showActionHandler,closeActionHandler] = usePlaceBid(houseId);
+    const houseId = data._id;
+    const [bidHistory, showActions, showActionHandler, closeActionHandler] =
+        usePlaceBid(houseId);
+    const [liked, onLike] = useLike(houseId);
 
-    const [liked,onLike]=useLike(houseId);
+    const navigation=useNavigation();
 
-    const HouseMap = ({ uri }) => (
-        <VStack w="full" h={110} borderRadius={10} overflow={"hidden"}>
-            <Image
-                resizeMode="cover"
-                alt={"map"}
-                source={{ uri: uri }}
-                w={"full"}
-                h="full"
-            />
-        </VStack>
+    const HouseMap = ({ uri,onPress }) => (
+        <Pressable onPress={onPress}>
+            <VStack w="full" h={110} borderRadius={10} overflow={"hidden"}>
+                <Image
+                    resizeMode="cover"
+                    alt={"map"}
+                    source={{ uri: uri }}
+                    w={"full"}
+                    h="full"
+                />
+            </VStack>
+        </Pressable>
     );
 
     return (
-        <ScrollView showsVerticalScrollIndicator={false} showsHorizontalScrollIndicator={false}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+        >
             <Stack pb={4} flex="1" space={10}>
                 <HouseHeader
                     owner={data.owner}
@@ -50,7 +57,10 @@ export default function House() {
                         bed={data.bed}
                         bath={data.bath}
                     />
-                    <HouseMap uri={data.mapImage} />
+                    <HouseMap onPress={()=>navigation.navigate('Gmap',{
+                           latitude: data.latitude,
+                           longitude: data.longitude,
+                    })} uri={data.mapImage} />
                     <HouseDetails
                         currentBid={data.currentBid}
                         time="2h:10 min"
@@ -61,15 +71,14 @@ export default function House() {
                     />
                 </VStack>
             </Stack>
-           
-                <PlaceBidAction
-                    isOpen={showActions}
-                    bidHistoryState={bidHistory}
-                    onClose={closeActionHandler}
-                    houseId={houseId}
-                    minimumBid={data.minimumBid}
-                />
-         
+
+            <PlaceBidAction
+                isOpen={showActions}
+                bidHistoryState={bidHistory}
+                onClose={closeActionHandler}
+                houseId={houseId}
+                minimumBid={data.minimumBid}
+            />
         </ScrollView>
     );
 }
