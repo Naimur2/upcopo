@@ -6,6 +6,7 @@ import { Image } from "react-native";
 import { GiftedChat, InputToolbar } from "react-native-gifted-chat";
 import { useSelector } from "react-redux";
 import Icon from "../../utility/Icon";
+import SafeAreaNew from "../../utility/SafeAreaNew";
 
 export default function MessageView() {
     const [messages, setMessages] = useState([]);
@@ -30,14 +31,21 @@ export default function MessageView() {
             },
             headerShadowVisible: false,
             headerTitle: (props) => (
-                <HStack space={2} py={1} alignItems={'center'} {...props}>
+                <HStack space={2} py={1} alignItems={"center"} {...props}>
                     <Image
                         source={{
                             uri: "https://image.freepik.com/free-vector/cute-panda-surprised-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector-flat-cartoon-style_138676-3508.jpg",
                         }}
-                        style={{ width: 50, height: 50, borderRadius: 50 }}
+                        style={{ width: 34, height: 34, borderRadius: 50 }}
                     />
-                    <Text fontSize={18} fontFamily={'body'} fontWeight={600} color={'#3D454A'}>Joel Norris</Text>
+                    <Text
+                        fontSize={18}
+                        fontFamily={"body"}
+                        fontWeight={600}
+                        color={"#3D454A"}
+                    >
+                        Joel Norris
+                    </Text>
                 </HStack>
             ),
         });
@@ -142,44 +150,46 @@ export default function MessageView() {
     };
 
     return (
-        <GiftedChat
-            messages={messages}
-            onSend={validateMessage}
-            renderInputToolbar={renderInputToolbar}
-            textInputStyle={{
-                backgroundColor: "#F1F3F5",
-                paddingVertical: 14,
-                paddingHorizontal: 16,
-                borderRadius: 10,
-            }}
-            renderSend={(props) => (
-                <Box
-                    h={"full"}
-                    alignSelf={"center"}
-                    px={4}
-                    justifyContent="center"
-                >
-                    <Icon
-                        color={"#fff"}
-                        bg="#52B69A"
-                        size={20}
-                        py={3}
-                        px={3}
-                        borderRadius={10}
-                        onPress={() => props.onSend({ text: props.text })}
-                        name="send"
-                        {...props}
-                    />
-                </Box>
-            )}
-            renderMessage={renderMessage}
-            minInputToolbarHeight={80}
-            infiniteScroll
-            user={{
-                _id: currentUser._id,
-                name: currentUser.user,
-                avatar: currentUser.avatar,
-            }}
-        />
+        <SafeAreaNew>
+            <GiftedChat
+                messages={messages}
+                onSend={validateMessage}
+                renderInputToolbar={renderInputToolbar}
+                textInputStyle={{
+                    backgroundColor: "#F1F3F5",
+                    paddingVertical: 14,
+                    paddingHorizontal: 16,
+                    borderRadius: 10,
+                }}
+                renderSend={(props) => (
+                    <Box
+                        h={"full"}
+                        alignSelf={"center"}
+                        px={4}
+                        justifyContent="center"
+                    >
+                        <Icon
+                            color={"#fff"}
+                            bg="#52B69A"
+                            size={20}
+                            py={3}
+                            px={3}
+                            borderRadius={10}
+                            onPress={() => props.onSend({ text: props.text })}
+                            name="send"
+                            {...props}
+                        />
+                    </Box>
+                )}
+                renderMessage={renderMessage}
+                minInputToolbarHeight={80}
+                infiniteScroll
+                user={{
+                    _id: currentUser._id,
+                    name: currentUser.user,
+                    avatar: currentUser.avatar,
+                }}
+            />
+        </SafeAreaNew>
     );
 }

@@ -1,7 +1,8 @@
 import * as ImagePicker from "expo-image-picker";
 import { Spinner } from "native-base";
 import React, { useEffect } from "react";
-import { Dimensions, SafeAreaView } from "react-native";
+import { Dimensions } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useSelector } from "react-redux";
 import ThemeConfig from "../theme-config";
 import AuthRoute from "./AuthRoute";
@@ -21,7 +22,7 @@ export default function index() {
         };
         getPermissions();
     }, []);
-    
+
     // authentication  will be done here
     const authState = useSelector((state) => state.auth);
 
@@ -29,9 +30,7 @@ export default function index() {
 
     return (
         <ThemeConfig>
-            <SafeAreaView style={{flex:1}}>
-                {authState.isAuthenticated ? <DrawerNavigator /> : <AuthRoute />}
-            </SafeAreaView>
+            {authState.isAuthenticated ? <DrawerNavigator /> : <AuthRoute />}
         </ThemeConfig>
     );
 }

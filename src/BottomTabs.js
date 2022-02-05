@@ -14,7 +14,10 @@ export default function MessageRoutes() {
                 name="TabView"
                 component={TabNav}
             />
-            <Stack.Screen name="MessageScreenView" component={MessageView} />
+            <Stack.Screen options={{
+                headerBackTitleVisible: false,
+                headerTintColor: "#000000",
+            }} name="MessageScreenView" component={MessageView} />
         </Stack.Navigator>
     );
 }

@@ -4,6 +4,7 @@ import { FlatList, Stack, Text } from "native-base";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearPeoples, getPeoples } from "../../../store/slices/messagesSlice";
+import SafeAreaNew from "../../utility/SafeAreaNew";
 import NullView from "../common/NullView";
 import MessagingBody from "./components/MessagingBody";
 import SearchMessage from "./components/SearchMessage";
@@ -66,29 +67,35 @@ export default function Messaging() {
         );
 
     return (
-        <Stack p={4}>
-            <FlatList
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                ListHeaderComponent={
-                    <SearchMessage
-                        value={text}
-                        onSearch={(text) => setText(text)}
-                        onClear={() => setSearch("")}
-                    />
-                }
-                data={filterSearch}
-                renderItem={renderItem}
-                h={"full"}
-                keyExtractor={(item) => item._id}
-                ListFooterComponent={
-                    search.length > 0 && filterSearch.length === 0 ? (
-                        <Text fontFamily="body" textAlign="center" color="#000">
-                            No Results Found
-                        </Text>
-                    ) : null
-                }
-            />
-        </Stack>
+        <SafeAreaNew>
+            <Stack p={4}>
+                <FlatList
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                    ListHeaderComponent={
+                        <SearchMessage
+                            value={text}
+                            onSearch={(text) => setText(text)}
+                            onClear={() => setSearch("")}
+                        />
+                    }
+                    data={filterSearch}
+                    renderItem={renderItem}
+                    h={"full"}
+                    keyExtractor={(item) => item._id}
+                    ListFooterComponent={
+                        search.length > 0 && filterSearch.length === 0 ? (
+                            <Text
+                                fontFamily="body"
+                                textAlign="center"
+                                color="#000"
+                            >
+                                No Results Found
+                            </Text>
+                        ) : null
+                    }
+                />
+            </Stack>
+        </SafeAreaNew>
     );
 }

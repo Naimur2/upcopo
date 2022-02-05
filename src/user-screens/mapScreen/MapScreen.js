@@ -33,7 +33,7 @@ export default function MapScreen() {
 
     React.useEffect(() => {
         const output = route.params;
-        if (output.destination) {
+        if (output && output.destination) {
             const longlat = {
                 latitude: output.destination.latitude,
                 longitude: output.destination.longitude,

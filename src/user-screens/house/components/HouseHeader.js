@@ -3,6 +3,7 @@ import React from "react";
 import IconWithText from "../../../utility/IconWithText";
 import Counter from "../../common/Counter";
 import Like from "../../common/Like";
+const overLay = require("../../../../assets/images/overlay.png");
 
 export default function HouseHeader({
     owner,
@@ -75,13 +76,21 @@ export default function HouseHeader({
             </VStack>
             <Image
                 position={"absolute"}
-                zIndex={-1}
+                zIndex={-2}
                 height={"full"}
                 w={"full"}
                 alt={houseName||'house'}
                 source={{
                     uri: image,
                 }}
+            />
+            <Image
+                position={"absolute"}
+                zIndex={-1}
+                height={"full"}
+                w={"full"}
+                alt={houseName||'house'}
+                source={overLay}
             />
         </VStack>
     );

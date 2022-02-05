@@ -1,11 +1,11 @@
-import { HStack, Stack, Text, VStack } from "native-base";
+import { HStack, Stack, Text, VStack ,Image} from "native-base";
 import React from "react";
 import useLike from "../../../hooks/useLike";
 import Card from "../../../utility/Card";
 import IconWithText from "../../../utility/IconWithText";
 import ImageView from "../../../utility/ImageView";
 import Like from "../../common/Like";
-
+const overlay=require("../../../../assets/images/overlay.png");
 export default function ResultsCard({
     imgUrl,
     houseName,

@@ -1,10 +1,10 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { debounce } from "lodash";
-import { FlatList, Text, VStack, Spinner } from "native-base";
+import { FlatList, Text, VStack } from "native-base";
 import React from "react";
+import SafeAreaNew from "../../utility/SafeAreaNew";
 import SearchPagesHeader from "../searchPages/components/SearchPagesHeader";
 import UserProfileCard from "./components/UserProfileCard";
-import dayjs from 'dayjs'
 
 const userProfiles = [
     {
@@ -221,32 +221,34 @@ export default function UserProfile() {
         return null;
     };
     return (
-        <VStack flex="1">
-            <FlatList
-                ListHeaderComponent={
-                    <SearchPagesHeader
-                        onClear={() => setText("")}
-                        onSearch={(txt) => setText(txt)}
-                        key={"1"}
-                        value={text}
-                        service1={service1}
-                        setService1={(v) => setService1(v)}
-                        service2={service2}
-                        setService2={(v) => setService2(v)}
-                    />
-                }
-                ListHeaderComponentStyle={{
-                    paddingHorizontal: 16,
-                }}
-                showsVerticalScrollIndicator={false}
-                showsHorizontalScrollIndicator={false}
-                bg={"#f9f9f9"}
-                data={filterSearch}
-                renderItem={renderItem}
-                keyExtractor={(item) => item._id}
-                ListFooterComponent={renderNull}
-            />
-        </VStack>
+        <SafeAreaNew>
+            <VStack flex="1">
+                <FlatList
+                    ListHeaderComponent={
+                        <SearchPagesHeader
+                            onClear={() => setText("")}
+                            onSearch={(txt) => setText(txt)}
+                            key={"1"}
+                            value={text}
+                            service1={service1}
+                            setService1={(v) => setService1(v)}
+                            service2={service2}
+                            setService2={(v) => setService2(v)}
+                        />
+                    }
+                    ListHeaderComponentStyle={{
+                        paddingHorizontal: 16,
+                    }}
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                    bg={"#f9f9f9"}
+                    data={filterSearch}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => item._id}
+                    ListFooterComponent={renderNull}
+                />
+            </VStack>
+        </SafeAreaNew>
     );
 }
 

@@ -9,6 +9,7 @@ import HouseBody from "./components/HouseBody";
 import HouseDetails from "./components/HouseDetails";
 import HouseHeader from "./components/HouseHeader";
 
+
 export default function House() {
     const data = useRoute().params.house;
     const houseId = data._id;

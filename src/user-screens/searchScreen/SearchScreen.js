@@ -1,17 +1,18 @@
 import { useNavigation } from "@react-navigation/native";
 import { debounce } from "lodash";
-import { ScrollView, Stack,Text } from "native-base";
+import { ScrollView, Stack, Text } from "native-base";
 import React from "react";
-
 import { useDispatch, useSelector } from "react-redux";
 import {
     clearAllHouses,
-    getAllHouses,
+    getAllHouses
 } from "../../../store/slices/housesSlice";
 import { getRecentSearches } from "../../../store/slices/recentSearchSlice";
+import SafeAreaNew from "../../utility/SafeAreaNew";
 import RecentSearchArea from "./components/RecentSearchArea";
 import RecentSearches from "./components/RecentSearches";
 import SearchResultCard from "./components/SearchResultCard";
+
 
 export default function SearchScreen() {
     const dispatch = useDispatch();
@@ -65,22 +66,24 @@ export default function SearchScreen() {
     });
 
     return (
-        <ScrollView>
-            <Stack px={4} flex={1} space={6}>
-                <RecentSearchArea
-                    onClear={() => console.log('clear')}
-                    onSearch={(txt) => setText(txt)}
-                    searchValue={text}
-                />
-                {search.length > 0 && housers}
-                {search.length > 0 && housers.length === 0 ? (
-                    <Text fontFamily="body" textAlign="center" color="#000">
-                        No Results Found
-                    </Text>
-                ) : null}
+        <SafeAreaNew>
+            <ScrollView>
+                <Stack px={4} flex={1} space={6}>
+                    <RecentSearchArea
+                        onClear={() => console.log("clear")}
+                        onSearch={(txt) => setText(txt)}
+                        searchValue={text}
+                    />
+                    {search.length > 0 && housers}
+                    {search.length > 0 && housers.length === 0 ? (
+                        <Text fontFamily="body" textAlign="center" color="#000">
+                            No Results Found
+                        </Text>
+                    ) : null}
 
-                {search.length === 0 && <RecentSearches />}
-            </Stack>
-        </ScrollView>
+                    {search.length === 0 && <RecentSearches />}
+                </Stack>
+            </ScrollView>
+        </SafeAreaNew>
     );
 }

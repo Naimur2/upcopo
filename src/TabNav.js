@@ -8,6 +8,7 @@ import LovedHouses from "./user-screens/lovedHouses/LovedHouses";
 import Messaging from "./user-screens/messaging/Messaging";
 import UserRoute from "./UserRoute";
 import Icon from "./utility/Icon";
+import { Platform } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
@@ -42,7 +43,7 @@ export default function TabNav() {
                     backgroundColor: "#fff",
                     borderTopRightRadius: 16,
                     borderTopLeftRadius: 16,
-                    height: 60,
+                    height: Platform.OS === "ios" ? 70 : 60,
                 },
                 headerShadowVisible: false,
                 headerStyle: {
